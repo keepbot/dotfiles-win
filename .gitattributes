@@ -4,6 +4,7 @@
 *.aac binary
 *.ai binary
 *.chm binary
+*.dll binary
 *.hlp binary
 *.gif binary
 *.gz binary
