@@ -3,6 +3,8 @@
 
 *.aac binary
 *.ai binary
+*.chm binary
+*.hlp binary
 *.gif binary
 *.gz binary
 *.exe binary
@@ -14,6 +16,7 @@
 *.png binary
 *.psd binary
 *.spl binary
+*.sys binary
 
 
 
