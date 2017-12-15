@@ -20,19 +20,19 @@ dev)
 	echo "    Please be careful and read all instructions."
 	echo ""
 	echo "!!! Warninng: your current files: "
-	echo "~/.bash"
-	echo "~/.bash_profile"
-  echo "~/.profile"
-	echo "~/.bashrc"
-	echo "~/.bin"
-	echo "~/.fonts.conf"
-	echo "~/.gemrc"
-	echo "~/.gitconfig"
-	echo "~/.gitmessage"
-	echo "~/.tmux"
-	echo "~/.tmux.conf"
-	echo "~/.vim"
-	echo "~/.vimrc"
+	echo "$HOME/.bash"
+	echo "$HOME/.bash_profile"
+  echo "$HOME/.profile"
+	echo "$HOME/.bashrc"
+	echo "$HOME/.bin"
+	echo "$HOME/.fonts.conf"
+	echo "$HOME/.gemrc"
+	echo "$HOME/.gitconfig"
+	echo "$HOME/.gitmessage"
+	echo "$HOME/.tmux"
+	echo "$HOME/.tmux.conf"
+	echo "$HOME/.vim"
+	echo "$HOME/.vimrc"
 	echo "will be deleted !!!"
 	read -n 1 -p "    Do you really want to install custom dot-files? (y/[a]): " AMSURE
 	[ "$AMSURE" = "y" ] || exit
@@ -55,31 +55,31 @@ dev)
 	;;
 esac
 
-/bin/rm -rf ~/.bash                         2> /dev/null
-/bin/rm -rf ~/.bash_profile                 2> /dev/null
-/bin/rm -rf ~/.profile                      2> /dev/null
-/bin/rm -rf ~/.bashrc                       2> /dev/null
-/bin/rm -rf ~/.bin                          2> /dev/null
-/bin/rm -rf ~/.gemrc                        2> /dev/null
-/bin/rm -rf ~/.gitconfig                    2> /dev/null
-/bin/rm -rf ~/.gitmessage                   2> /dev/null
-/bin/rm -rf ~/.tmux                         2> /dev/null
-/bin/rm -rf ~/.tmux.conf                    2> /dev/null
-/bin/rm -rf ~/.vim                          2> /dev/null
-/bin/rm -rf ~/.vimrc                        2> /dev/null
+/bin/rm -rf $HOME/.bash                         2> /dev/null
+/bin/rm -rf $HOME/.bash_profile                 2> /dev/null
+/bin/rm -rf $HOME/.profile                      2> /dev/null
+/bin/rm -rf $HOME/.bashrc                       2> /dev/null
+/bin/rm -rf $HOME/.bin                          2> /dev/null
+/bin/rm -rf $HOME/.gemrc                        2> /dev/null
+/bin/rm -rf $HOME/.gitconfig                    2> /dev/null
+/bin/rm -rf $HOME/.gitmessage                   2> /dev/null
+/bin/rm -rf $HOME/.tmux                         2> /dev/null
+/bin/rm -rf $HOME/.tmux.conf                    2> /dev/null
+/bin/rm -rf $HOME/.vim                          2> /dev/null
+/bin/rm -rf $HOME/.vimrc                        2> /dev/null
 
-/bin/ln -sf $DOTFILES_DIR/bash              ~/.bash
-/bin/ln -sf $DOTFILES_DIR/bash_profile      ~/.bash_profile
-/bin/ln -sf $DOTFILES_DIR/bash_profile      ~/.profile
-/bin/ln -sf $DOTFILES_DIR/bashrc            ~/.bashrc
-/bin/ln -sf $DOTFILES_DIR/bin-wsl           ~/bin
-/bin/ln -sf $DOTFILES_DIR/gemrc             ~/.gemrc
-/bin/ln -sf $DOTFILES_DIR/.gitconfig        ~/.gitconfig
-/bin/ln -sf $DOTFILES_DIR/.gitmessage       ~/.gitmessage
-/bin/ln -sf $DOTFILES_DIR/tmux              ~/.tmux
-/bin/ln -sf $DOTFILES_DIR/tmux.conf         ~/.tmux.conf
-/bin/ln -sf $DOTFILES_DIR/vim               ~/.vim
-/bin/ln -sf $DOTFILES_DIR/vimrc             ~/.vimrc
+/bin/ln -sf $DOTFILES_DIR/bash              $HOME/.bash
+/bin/ln -sf $DOTFILES_DIR/bash_profile      $HOME/.bash_profile
+/bin/ln -sf $DOTFILES_DIR/bash_profile      $HOME/.profile
+/bin/ln -sf $DOTFILES_DIR/bashrc            $HOME/.bashrc
+/bin/ln -sf $DOTFILES_DIR/bin-wsl           $HOME/bin
+/bin/ln -sf $DOTFILES_DIR/gemrc             $HOME/.gemrc
+/bin/ln -sf $DOTFILES_DIR/.gitconfig        $HOME/.gitconfig
+/bin/ln -sf $DOTFILES_DIR/.gitmessage       $HOME/.gitmessage
+/bin/ln -sf $DOTFILES_DIR/tmux              $HOME/.tmux
+/bin/ln -sf $DOTFILES_DIR/tmux.conf         $HOME/.tmux.conf
+/bin/ln -sf $DOTFILES_DIR/vim               $HOME/.vim
+/bin/ln -sf $DOTFILES_DIR/vimrc             $HOME/.vimrc
 
 touch $HOME/.localenv
 mkdir -p $HOME/.local/bin
