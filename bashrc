@@ -1,4 +1,4 @@
-
+#!/usr/bin/env bash
 # Test for interactiveness
 [[ $- == *i* ]] || return
 
