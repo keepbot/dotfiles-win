@@ -82,5 +82,5 @@ esac
 /bin/ln -sf $DOTFILES_DIR/vimrc             ~/.vimrc
 
 touch $HOME/.localenv
-mkdir $HOME/.local/bin
+mkdir -p $HOME/.local/bin
 
