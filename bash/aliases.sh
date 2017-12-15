@@ -5,7 +5,7 @@ alias reload='source ~/.bashrc && echo "Bash profile reloaded"'
 alias disp='source ~/.data/displayvar.sh'
 
 # Bash as a login shell:
-alias bash='bash -l'
+alias bash='bash -l '
 
 alias ls='ls --color=auto'
 alias l='ls -CFh --group-directories-first'
@@ -126,7 +126,7 @@ alias gammf="gamm --no-verify"
 alias gba="git rebase --abort"
 alias gbc="git add -A && git rebase --continue"
 alias gbm="git fetch origin master && git rebase origin/master"
-alias gfr="git fetch --all && git reset --hard origin/master" 
+alias gfr="git fetch --all && git reset --hard origin/master"
 alias GClean="git reset --hard && git clean -d -x -f"
 
 # Chef
