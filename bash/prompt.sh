@@ -56,7 +56,7 @@ bash_prompt() {
 	local ZZ="\[\033[0m\]"      # Reset
 
 	local ENVRM="`cat ~/.bash/var.env`"
-	local PROMPT="`cat ~/.bash/var.PROMPT`"
+	local PROMPT="`cat ~/.bash/var.prompt`"
 
 	# Environment:
 	if [ -n "$SSH_CLIENT" ]; then
