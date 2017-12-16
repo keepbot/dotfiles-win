@@ -39,7 +39,7 @@
     whitespace = nowarn
 [branch]
   # set up 'git pull' to rebase instead of merge
-	autosetuprebase = always
+  autosetuprebase = always
 [branch "master"]
   merge = master
 [core]
@@ -56,20 +56,20 @@
   status = auto
   ui = auto
 [color "branch"]
-    current = green bold
-    local = green
-    remote = red bold
+  current = green bold
+  local = green
+  remote = red bold
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
 [color "status"]
-    added = green bold
-    changed = yellow bold
-    untracked = red
+  added = green bold
+  changed = yellow bold
+  untracked = red
 [color "sh"]
-    branch = yellow
+  branch = yellow
 [commit]
   template = ~/.gitmessage
 [credential]
@@ -79,17 +79,17 @@
   mnemonicprefix = true
   renames = copies
 [difftool]
-    prompt = false
+  prompt = false
 [gist]
   private = yes
   extension = rb
 [github]
-        user = keepbot
+  user = keepbot
 [gitsh]
-    defaultCommand = s
+  defaultCommand = s
 [grep]
-    extendRegexp = true
-    lineNumber = true
+  extendRegexp = true
+  lineNumber = true
 [merge]
   tool = vimdiff
 [mergetool "vimdiff"]
@@ -101,7 +101,7 @@
 [rebase]
   instructionFormat = "[%an - %ar] %s"
 [rerere]
-    enabled = true
+  enabled = true
 [user]
   name = Dmitriy Ivanov
   email = d.k.ivanov@live.com
