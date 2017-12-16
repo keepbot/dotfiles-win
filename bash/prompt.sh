@@ -67,21 +67,20 @@ bash_prompt() {
 	fi
 
 	case $PROMPT in
-	COMPLEX)
-		if [ $ENVRM == "PRODUCTION" ]; then
-			PS1="${R}[${Y}\${?}${R}] [ ${B}\w ${R}] ${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$R\t \u (at) \H ${ZZ}\$ "
-		else
-			PS1="${G}[${Y}\${?}${G}] [ ${B}\w ${G}] ${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$G\t \u (at) \H ${ZZ}\$ "
-		fi
-		CNT=1
-		;;
-	SIMPLE)
-		if [ $ENVRM == "PRODUCTION" ]; then
-			PS1="${R}[${Y}\${?}${R}] ${R}\u (at) \h${W}:${B}\w${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
-		else
-			PS1="${G}[${Y}\${?}${G}] ${G}\u (at) \h${W}:${B}\w${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
-		fi
-		;;
+		COMPLEX)
+			if [ $ENVRM == "PRODUCTION" ]; then
+				PS1="${R}[${Y}\${?}${R}] [ ${B}\w ${R}] ${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$R\t \u (at) \H ${ZZ}\$ "
+			else
+				PS1="${G}[${Y}\${?}${G}] [ ${B}\w ${G}] ${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$G\t \u (at) \H ${ZZ}\$ "
+			fi
+			;;
+		SIMPLE)
+			if [ $ENVRM == "PRODUCTION" ]; then
+				PS1="${R}[${Y}\${?}${R}] ${R}\u (at) \h${W}:${B}\w${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
+			else
+				PS1="${G}[${Y}\${?}${G}] ${G}\u (at) \h${W}:${B}\w${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
+			fi
+			;;
   esac
 }
 
