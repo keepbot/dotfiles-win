@@ -1,5 +1,4 @@
 export EDITOR='vim'
-#export OCTOPRESS_EDITOR='vim +'  # Go to last line.
 # No duplicates in history.
 export HISTCONTROL=ignoredups
 # Big history
@@ -26,7 +25,7 @@ fi
 # Colors in Vim and TMUX. Do not set this variables if you not shure why.
 # https://wiki.archlinux.org/index.php/Home_and_End_keys_inot_working
 #export TERM='screen-256color'
-export TERM='xterm-256color'
+#export TERM='xterm-256color'
 
 # Pow shouldn't hide errors in non-ASCII apps:
 # https://github.com/37signals/pow/issues/268
@@ -39,21 +38,49 @@ export LC_CTYPE=$LANG
 export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
 
 export XZ_OPT="--threads=0"
-# export SHLVL=1
-
 # Set PATHs
-[[ -d $HOME/.local/bin ]]         			&& export PATH=$HOME/.local/bin:$PATH
-[[ -d $HOME/bin ]]         					    && export PATH=$HOME/bin:$PATH
-# Ruby
-[[ -s "$HOME/.rvm/scripts/rvm" ]] 			&& source "$HOME/.rvm/scripts/rvm"
-[[ -d "$HOME/.rvm/bin" ]]         			&& export PATH=$HOME/.rvm/bin:$PATH
-# Rust
-[[ -d "$HOME/.cargo/bin" ]]       			&& export PATH=$PATH:$HOME/.cargo/bin
-# Yarn
-[[ -d "$HOME/.yarn/bin" ]]        			&& export PATH=$PATH:$HOME/.yarn/bin
-# Android
-[[ -d "$HOME/Android/Sdk/platform-tools" ]]	&& export PATH=$PATH:$HOME/Android/Sdk/platform-tools
-
+if [[ ${uname} == 'Linux' ]]; then
+	# Local
+	[[ -d $HOME/.local/bin ]]                   && export PATH=$HOME/.local/bin
+	# Root binaries
+	[[ -d /sbin ]]                              && export PATH=$PATH:/sbin
+	[[ -d /usr/sbin ]]                          && export PATH=$PATH:/usr/sbin
+	[[ -d /usr/local/sbin ]]                    && export PATH=$PATH:/usr/local/sbin
+	[[ -d /opt/local/sbin ]]                    && export PATH=$PATH:/opt/local/sbin
+	# User's
+	[[ -d /bin ]]                               && export PATH=$PATH:/bin
+	[[ -d /usr/bin ]]                           && export PATH=$PATH:/usr/bin
+	[[ -d /usr/local/bin ]]                     && export PATH=$PATH:/usr/local/bin
+	[[ -d /opt/local/bin ]]                     && export PATH=$PATH:/opt/local/bin
+	# Ubuntu games
+	[[ -d /usr/games ]]                         && export PATH=$PATH:/usr/games
+	[[ -d /usr/local/games ]]                   && export PATH=$PATH:/usr/local/games
+	# Ruby
+	[[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
+	#[[ -d "$HOME/.rvm/bin" ]]                   && export PATH=$HOME/.rvm/bin:$PATH
+	# Rust
+	[[ -d "$HOME/.cargo/bin" ]]                 && export PATH=$PATH:$HOME/.cargo/bin
+	# Yarn
+	[[ -d "$HOME/.yarn/bin" ]]                  && export PATH=$PATH:$HOME/.yarn/bin
+	# Android
+	[[ -d "$HOME/Android/Sdk/platform-tools" ]] && export PATH=$PATH:$HOME/Android/Sdk/platform-tools
+elif [[ ${uname} == 'MSYS_NT-10.0' ]]; then
+	#/mnt/c/Windows
+	#/mnt/c/Windows/System32
+	#/mnt/c/Windows/System32/wbem
+	#/mnt/c/Windows/System32/WindowsPowerShell/v1.0
+	#/mnt/c/usr/bin
+	#/mnt/c/Python/3.6.3-x64
+	#/mnt/c/Program Files/dotnet
+	#/mnt/c/Program Files/Docker/Docker/resources/bin
+	#/mnt/c/ProgramData/Oracle/Java/javapath_target_40129125
+	#/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn
+	#/mnt/c/Program Files/Git/cmd
+	#/mnt/c/opscode/chefdk/bin
+	#/mnt/c/Program Files/Microsoft VS Code/bin
+	#/mnt/c/Program Files (x86)/Nmap
+	#/mnt/c/Users/dkiva/AppData/Local/Microsoft/WindowsApps
+fi
 
 umask 022
 

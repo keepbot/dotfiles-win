@@ -2,8 +2,6 @@
 # Test for interactiveness
 [[ $- == *i* ]] || return
 
-# Include https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-[[ -f $HOME/.bash/git-prompt.sh ]]          && source ~/.bash/git-prompt.sh
 # Set Prompt
 [[ -f $HOME/.bash/prompt.sh ]]              && source ~/.bash/prompt.sh
 
