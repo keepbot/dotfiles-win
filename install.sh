@@ -57,31 +57,31 @@ esac
 
 mkdir -p $HOME/.local/bin
 
-/bin/rm -rf $HOME/.bash                         2> /dev/null
-/bin/rm -rf $HOME/.bash_profile                 2> /dev/null
-/bin/rm -rf $HOME/.profile                      2> /dev/null
-/bin/rm -rf $HOME/.bashrc                       2> /dev/null
-/bin/rm -rf $HOME/.gemrc                        2> /dev/null
-/bin/rm -rf $HOME/.gitconfig                    2> /dev/null
-/bin/rm -rf $HOME/.gitmessage                   2> /dev/null
-/bin/rm -rf $HOME/.local/bin                    2> /dev/null
-/bin/rm -rf $HOME/.tmux                         2> /dev/null
-/bin/rm -rf $HOME/.tmux.conf                    2> /dev/null
-/bin/rm -rf $HOME/.vim                          2> /dev/null
-/bin/rm -rf $HOME/.vimrc                        2> /dev/null
+rm -rf $HOME/.bash                         2> /dev/null
+rm -rf $HOME/.bash_profile                 2> /dev/null
+rm -rf $HOME/.bashrc                       2> /dev/null
+rm -rf $HOME/.gemrc                        2> /dev/null
+rm -rf $HOME/.gitconfig                    2> /dev/null
+rm -rf $HOME/.gitmessage                   2> /dev/null
+rm -rf $HOME/.local/bin                    2> /dev/null
+rm -rf $HOME/.profile                      2> /dev/null
+rm -rf $HOME/.tmux                         2> /dev/null
+rm -rf $HOME/.tmux.conf                    2> /dev/null
+rm -rf $HOME/.vim                          2> /dev/null
+rm -rf $HOME/.vimrc                        2> /dev/null
 
-/bin/ln -sf $DOTFILES_DIR/bash              $HOME/.bash
-/bin/ln -sf $DOTFILES_DIR/bash_profile      $HOME/.bash_profile
-/bin/ln -sf $DOTFILES_DIR/bash_profile      $HOME/.profile
-/bin/ln -sf $DOTFILES_DIR/bashrc            $HOME/.bashrc
-/bin/ln -sf $DOTFILES_DIR/bin-wsl           $HOME/.local/bin
-/bin/ln -sf $DOTFILES_DIR/gemrc             $HOME/.gemrc
-/bin/ln -sf $DOTFILES_DIR/.gitconfig        $HOME/.gitconfig
-/bin/ln -sf $DOTFILES_DIR/.gitmessage       $HOME/.gitmessage
-/bin/ln -sf $DOTFILES_DIR/tmux              $HOME/.tmux
-/bin/ln -sf $DOTFILES_DIR/tmux.conf         $HOME/.tmux.conf
-/bin/ln -sf $DOTFILES_DIR/vim               $HOME/.vim
-/bin/ln -sf $DOTFILES_DIR/vimrc             $HOME/.vimrc
+ln -sf $DOTFILES_DIR/bash              $HOME/.bash
+ln -sf $DOTFILES_DIR/bash_profile      $HOME/.bash_profile
+ln -sf $DOTFILES_DIR/bash_profile      $HOME/.profile
+ln -sf $DOTFILES_DIR/bashrc            $HOME/.bashrc
+ln -sf $DOTFILES_DIR/bin-wsl           $HOME/.local/bin
+ln -sf $DOTFILES_DIR/gemrc             $HOME/.gemrc
+ln -sf $DOTFILES_DIR/.gitconfig        $HOME/.gitconfig
+ln -sf $DOTFILES_DIR/.gitmessage       $HOME/.gitmessage
+ln -sf $DOTFILES_DIR/tmux              $HOME/.tmux
+ln -sf $DOTFILES_DIR/tmux.conf         $HOME/.tmux.conf
+ln -sf $DOTFILES_DIR/vim               $HOME/.vim
+ln -sf $DOTFILES_DIR/vimrc             $HOME/.vimrc
 
 touch $HOME/.localenv
 
