@@ -131,7 +131,7 @@ function ipif() {
 		return
 	fi
 
-	if grep -P "(([1-9]\d{0,2})\.){3}(?2)" <<< "$1"; then
+	if grep -P "(([1-9]\d{0,2})\.){3}(?2)" < "$1"; then
 		curl ipinfo.io/"$1"
 	else
 		ipawk=($(host "$1" | awk '/address/ { print $NF }'))
@@ -141,6 +141,6 @@ function ipif() {
 	return
 }
 
-calc() {
+function calc() {
 	echo "scale=3;$@" | bc -l
 }
