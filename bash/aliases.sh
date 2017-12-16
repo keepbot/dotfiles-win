@@ -2,7 +2,7 @@
 alias reload='source ~/.bashrc && echo "Bash profile reloaded"'
 
 # Export DISPLAY variable. If local than it exports localhost, if remole it exports SSH Client
-alias disp='source ~/.data/displayvar.sh'
+alias disp='source ~/.local/bin/displayvar.sh'
 
 # Bash as a login shell:
 alias bash='bash -l '
