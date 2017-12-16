@@ -39,48 +39,53 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 export XZ_OPT="--threads=0"
 # Set PATHs
-if [[ ${uname} == 'Linux' ]]; then
-	# Local
-	[[ -d $HOME/.local/bin ]]                   && export PATH=$HOME/.local/bin
-	# Root binaries
-	[[ -d /sbin ]]                              && export PATH=$PATH:/sbin
-	[[ -d /usr/sbin ]]                          && export PATH=$PATH:/usr/sbin
-	[[ -d /usr/local/sbin ]]                    && export PATH=$PATH:/usr/local/sbin
-	[[ -d /opt/local/sbin ]]                    && export PATH=$PATH:/opt/local/sbin
-	# User's
-	[[ -d /bin ]]                               && export PATH=$PATH:/bin
-	[[ -d /usr/bin ]]                           && export PATH=$PATH:/usr/bin
-	[[ -d /usr/local/bin ]]                     && export PATH=$PATH:/usr/local/bin
-	[[ -d /opt/local/bin ]]                     && export PATH=$PATH:/opt/local/bin
-	# Ubuntu games
-	[[ -d /usr/games ]]                         && export PATH=$PATH:/usr/games
-	[[ -d /usr/local/games ]]                   && export PATH=$PATH:/usr/local/games
-	# Ruby
-	[[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
-	#[[ -d "$HOME/.rvm/bin" ]]                   && export PATH=$HOME/.rvm/bin:$PATH
-	# Rust
-	[[ -d "$HOME/.cargo/bin" ]]                 && export PATH=$PATH:$HOME/.cargo/bin
-	# Yarn
-	[[ -d "$HOME/.yarn/bin" ]]                  && export PATH=$PATH:$HOME/.yarn/bin
-	# Android
-	[[ -d "$HOME/Android/Sdk/platform-tools" ]] && export PATH=$PATH:$HOME/Android/Sdk/platform-tools
-elif [[ ${uname} == 'MSYS_NT-10.0' ]]; then
-	#/mnt/c/Windows
-	#/mnt/c/Windows/System32
-	#/mnt/c/Windows/System32/wbem
-	#/mnt/c/Windows/System32/WindowsPowerShell/v1.0
-	#/mnt/c/usr/bin
-	#/mnt/c/Python/3.6.3-x64
-	#/mnt/c/Program Files/dotnet
-	#/mnt/c/Program Files/Docker/Docker/resources/bin
-	#/mnt/c/ProgramData/Oracle/Java/javapath_target_40129125
-	#/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn
-	#/mnt/c/Program Files/Git/cmd
-	#/mnt/c/opscode/chefdk/bin
-	#/mnt/c/Program Files/Microsoft VS Code/bin
-	#/mnt/c/Program Files (x86)/Nmap
-	#/mnt/c/Users/dkiva/AppData/Local/Microsoft/WindowsApps
-fi
+platform=`/bin/uname`
+case $platform in
+	Linux )
+		# Local
+		[[ -d $HOME/.local/bin ]]                   && export PATH=$HOME/.local/bin
+		# Root binaries
+		[[ -d /sbin ]]                              && export PATH=$PATH:/sbin
+		[[ -d /usr/sbin ]]                          && export PATH=$PATH:/usr/sbin
+		[[ -d /usr/local/sbin ]]                    && export PATH=$PATH:/usr/local/sbin
+		[[ -d /opt/local/sbin ]]                    && export PATH=$PATH:/opt/local/sbin
+		# User's
+		[[ -d /bin ]]                               && export PATH=$PATH:/bin
+		[[ -d /usr/bin ]]                           && export PATH=$PATH:/usr/bin
+		[[ -d /usr/local/bin ]]                     && export PATH=$PATH:/usr/local/bin
+		[[ -d /opt/local/bin ]]                     && export PATH=$PATH:/opt/local/bin
+		# Ubuntu games
+		[[ -d /usr/games ]]                         && export PATH=$PATH:/usr/games
+		[[ -d /usr/local/games ]]                   && export PATH=$PATH:/usr/local/games
+		# Ruby
+		[[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
+		#[[ -d "$HOME/.rvm/bin" ]]                   && export PATH=$HOME/.rvm/bin:$PATH
+		# Rust
+		[[ -d "$HOME/.cargo/bin" ]]                 && export PATH=$PATH:$HOME/.cargo/bin
+		# Yarn
+		[[ -d "$HOME/.yarn/bin" ]]                  && export PATH=$PATH:$HOME/.yarn/bin
+		# Android
+		[[ -d "$HOME/Android/Sdk/platform-tools" ]] && export PATH=$PATH:$HOME/Android/Sdk/platform-tools
+		;;
+	MSYS_NT-10.0 )
+		#/mnt/c/Windows
+		#/mnt/c/Windows/System32
+		#/mnt/c/Windows/System32/wbem
+		#/mnt/c/Windows/System32/WindowsPowerShell/v1.0
+		#/mnt/c/usr/bin
+		#/mnt/c/Python/3.6.3-x64
+		#/mnt/c/Program Files/dotnet
+		#/mnt/c/Program Files/Docker/Docker/resources/bin
+		#/mnt/c/ProgramData/Oracle/Java/javapath_target_40129125
+		#/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn
+		#/mnt/c/Program Files/Git/cmd
+		#/mnt/c/opscode/chefdk/bin
+		#/mnt/c/Program Files/Microsoft VS Code/bin
+		#/mnt/c/Program Files (x86)/Nmap
+		#/mnt/c/Users/dkiva/AppData/Local/Microsoft/WindowsApps
+		echo
+		;;
+esac
 
 umask 022
 
