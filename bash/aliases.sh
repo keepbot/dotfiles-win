@@ -84,6 +84,8 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
     alias "$method"="lwp-request -m '$method'"
 done
 
+alias mmn="mount|column -t"
+
 # Git:
 alias ugr='for dir in `ls`; do echo "${dir}"; cd "${dir}"; git pull; cd ..; done' # Update all repos in current directory
 alias ugrs='root=${PWD}; for dir in `ls`; do cd "${root}/${dir}" && ugr; done'    # Update all repos within all sub directories from curent
@@ -135,3 +137,13 @@ alias kd='kitchen destroy'
 alias kl='kitchen list'
 alias klo='kitchen login'
 alias kt='kitchen test -d never'
+
+alias kn='knife node'
+alias kns='knife node show'
+alias knl='knife node list'
+alias kne='knife node edit'
+
+# ruby
+alias bup='bundle update'
+alias be='bundle exec'
+
