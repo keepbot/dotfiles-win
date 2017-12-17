@@ -43,7 +43,8 @@ platform=`/bin/uname`
 case $platform in
 	Linux )
 		# Local
-		[[ -d $HOME/.local/bin ]]                   && export PATH=$HOME/.local/bin
+		[[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin
+		[[ -d $HOME/.local/bin ]]                   && export PATH=$PATH:$HOME/.local/bin
 		# Root binaries
 		[[ -d /sbin ]]                              && export PATH=$PATH:/sbin
 		[[ -d /usr/sbin ]]                          && export PATH=$PATH:/usr/sbin

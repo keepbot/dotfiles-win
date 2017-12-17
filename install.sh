@@ -24,11 +24,11 @@ dev)
 	echo "$HOME/.bash_profile"
   echo "$HOME/.profile"
 	echo "$HOME/.bashrc"
+	echo "$HOME/.bin"
 	echo "$HOME/.fonts.conf"
 	echo "$HOME/.gemrc"
 	echo "$HOME/.gitconfig"
 	echo "$HOME/.gitmessage"
-	echo "$HOME/.local/bin"
 	echo "$HOME/.tmux"
 	echo "$HOME/.tmux.conf"
 	echo "$HOME/.vim"
@@ -60,10 +60,10 @@ mkdir -p $HOME/.local/bin
 rm -rf $HOME/.bash                         2> /dev/null
 rm -rf $HOME/.bash_profile                 2> /dev/null
 rm -rf $HOME/.bashrc                       2> /dev/null
+rm -rf $HOME/.bin                          2> /dev/null
 rm -rf $HOME/.gemrc                        2> /dev/null
 rm -rf $HOME/.gitconfig                    2> /dev/null
 rm -rf $HOME/.gitmessage                   2> /dev/null
-rm -rf $HOME/.local/bin                    2> /dev/null
 rm -rf $HOME/.profile                      2> /dev/null
 rm -rf $HOME/.tmux                         2> /dev/null
 rm -rf $HOME/.tmux.conf                    2> /dev/null
@@ -74,7 +74,7 @@ ln -sf $DOTFILES_DIR/bash              $HOME/.bash
 ln -sf $DOTFILES_DIR/bash_profile      $HOME/.bash_profile
 ln -sf $DOTFILES_DIR/bash_profile      $HOME/.profile
 ln -sf $DOTFILES_DIR/bashrc            $HOME/.bashrc
-ln -sf $DOTFILES_DIR/bin-wsl           $HOME/.local/bin
+ln -sf $DOTFILES_DIR/bin-wsl           $HOME/.bin
 ln -sf $DOTFILES_DIR/gemrc             $HOME/.gemrc
 ln -sf $DOTFILES_DIR/.gitconfig        $HOME/.gitconfig
 ln -sf $DOTFILES_DIR/.gitmessage       $HOME/.gitmessage
