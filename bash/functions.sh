@@ -145,7 +145,7 @@ calc() {
 	echo "scale=3;$@" | bc -l
 }
 
-search-for-text {
+sss() {
 	if [ ! "$1" ]; then
 		echo "ERROR: You should enter path for searching..."
 		echo "Usage: $0 \"<where>\" \"<string>\""

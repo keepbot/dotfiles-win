@@ -7,7 +7,22 @@ alias disp='source ~/.local/bin/displayvar.sh'
 # Bash as a login shell:
 alias bash='bash -l '
 
-alias ls='ls --color=auto'
+platform=`uname`
+case $platform in
+	Linux )
+		alias ls='ls --color=auto'
+		;;
+	Darwin )
+		alias ls='gls --color=auto'
+		;;
+	FreeBSD )
+		alias ls='ls -G'
+		;;
+	MSYS_NT-10.0 )
+		ls='ls --color=auto'
+		;;
+esac
+
 alias l='ls -CFh --group-directories-first'
 alias la='ls -alh --group-directories-first'
 alias ll='ls -alFh --group-directories-first'

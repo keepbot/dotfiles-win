@@ -13,7 +13,7 @@
 [[ -f $HOME/.bash/prompt.sh ]]              && source ~/.bash/prompt.sh
 
 # gruvbox colors
-[[ -f $HOME/.data/gruvbox_256palette.sh ]]  && source ~/.data/gruvbox_256palette.sh
+[[ -f $HOME/.bin/gruvbox_256palette.sh ]]  && source ~/.data/gruvbox_256palette.sh
 
 # Import Functions
 [[ -f $HOME/.bash/functions.sh ]]           && source ~/.bash/functions.sh

@@ -39,7 +39,7 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 export XZ_OPT="--threads=0"
 # Set PATHs
-platform=`/bin/uname`
+platform=`uname`
 case $platform in
 	Linux )
 		# Local
@@ -69,7 +69,10 @@ case $platform in
 		[[ -d "$HOME/Android/Sdk/platform-tools" ]] && export PATH=$PATH:$HOME/Android/Sdk/platform-tools
 		;;
 	Darwin )
-		
+		[[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin:$PATH
+		[[ -d $HOME/.local/bin ]]                   && export PATH=$PATH:$HOME/.local/bin
+		# Ruby
+		[[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
 		;;
 	MSYS_NT-10.0 )
 		#/mnt/c/Windows
