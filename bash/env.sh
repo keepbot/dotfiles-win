@@ -68,6 +68,9 @@ case $platform in
 		# Android
 		[[ -d "$HOME/Android/Sdk/platform-tools" ]] && export PATH=$PATH:$HOME/Android/Sdk/platform-tools
 		;;
+	Darwin )
+		
+		;;
 	MSYS_NT-10.0 )
 		#/mnt/c/Windows
 		#/mnt/c/Windows/System32

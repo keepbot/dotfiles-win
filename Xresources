@@ -1,0 +1,358 @@
+! Defaults --------------------------------------------------------------------
+Xft.dpi:                    192
+Xft.autohint:               0
+Xft.lcdfilter:              lcddefault
+Xft.hintstyle:              hintfull
+Xft.hinting:                1
+Xft.antialias:              1
+Xft.rgba:                   rgb
+Xcursor.theme:              Vanilla-DMZ-AA
+!Xcursor.theme:              ComixCursors-Slim-White
+Xcursor.theme_core:         True
+Xcursor.size:               48
+
+! XTerm -----------------------------------------------------------------------
+! General settings
+XTerm*termName:             xterm-256color
+! Those options have influenceon xTerm menu (aka Ctrl+Mouse)
+!XTerm*geometry:             100x1000
+!XTerm*geometry:             79x43+0+0
+XTerm*saveLines:            1024
+XTerm*scrollBar:            False
+XTerm*loginshell:           False
+XTerm*cursorBlink:          False
+! Fonts and Encoding
+XTerm*utf8:                 True
+XTerm*locale:               True
+XTerm*utf8Title:            True
+XTerm*renderFont:           True
+XTerm*preeditType:          Root
+XTerm*xftAntialias:         True
+! Rehash font list: xset fp rehash
+! Show font list: xlsfonts | grep font
+! For list fonts run: fc-list | cut -f2 -d: | sort -u
+! Default - any codepage:
+!xterm*font:                 -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
+!xterm*wideFont:             -misc-fixed-medium-r-normal-ja-18-120-100-100-c-180-iso10646-1
+!XTerm..faceName: Inconsolata:size=20:antialias=false
+
+*font:                      -xos4-terminus-medium-r-normal--28-280-72-72-c-140-iso10646-1
+!*font:                      -xos4-terminus-medium-r-normal--24-240-72-72-c-120-iso10646-1
+!*font:                      -xos4-terminus-bold-r-normal--24-240-72-72-c-120-iso10646-1
+*wideFont:                  -misc-takaomincho-medium-r-normal--28-0-0-0-p-0-iso10646-1
+
+! Trim trailing spaces
+XTerm*trimSelection:        True
+! Fix alt-key inputting
+XTerm*eightBitInput:        False
+XTerm*metaSendsEscape:      True
+! Copy and paste with clipboard
+XTerm*translations:         #override \
+	Ctrl Shift <KeyPress> C:  copy-selection(CLIPBOARD) \n\
+	Ctrl Shift <KeyPress> V:  insert-selection(CLIPBOARD)
+! Allow selecting email/url by double-click
+XTerm*charClass:            33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
+
+
+! Xterm Gruvbox theme ---------------------------------------------------------
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! -----------------------------------------------------------------------------
+! gruvbox-light.xresources
+! hard contrast: *background: #f9f5d7
+!#define                     _background   #f9f5d7
+!#define                     _background   #fbf1c7
+! soft contrast: *background: #f2e5bc
+!#define                     _foreground   #f2e5bc
+!#define                     _foreground   #3c3836
+! Black + Dark Grey
+!#define                     _color0       #fdf4c1
+!#define                     _color8       #928374
+! DarkRed + Red
+!#define                     _color1       #cc241d
+!#define                     _color9       #9d0006
+! DarkGreen + Green
+!#define                     _color2       #98971a
+!#define                     _color10      #79740e
+! DarkYellow + Yellow
+!#define                     _color3       #d79921
+!#define                     _color11      #b57614
+! DarkBlue + Blue
+!#define                     _color4       #458588
+!#define                     _color12      #076678
+! DarkMagenta + Magenta
+!#define                     _color5       #b16286
+!#define                     _color13      #8f3f71
+! DarkCyan + Cyan
+!#define                     _color6       #689d6a
+!#define                     _color14      #427b58
+! LightGrey + White
+!#define                     _color7       #7c6f64
+!#define                     _color15      #3c3836
+
+! -----------------------------------------------------------------------------
+! gruvbox-light.xresources
+! hard contrast: *background: #1d2021
+!#define                     _background   #1d2021
+#define                     _background   #282828
+! soft contrast: *background: #32302f
+!#define                     _foreground   #32302f
+#define                     _foreground   #ebdbb2
+! Black + Dark Grey
+#define                     _color0       #282828
+#define                     _color8       #928374
+! DarkRed + Red
+#define                     _color1       #cc241d
+#define                     _color9       #fb4934
+! DarkGreen + Green
+#define                     _color2       #98971a
+#define                     _color10      #b8bb26
+! DarkYellow + Yellow
+#define                     _color3       #d79921
+#define                     _color11      #fabd2f
+! DarkBlue + Blue
+#define                     _color4       #458588
+#define                     _color12      #83a598
+!#define                     _color12      #458588
+! DarkMagenta + Magenta
+#define                     _color5       #b16286
+#define                     _color13      #d3869b
+! DarkCyan + Cyan
+#define                     _color6       #689d6a
+#define                     _color14      #8ec07c
+! LightGrey + White
+!#define                     _color7       #a89984
+#define                     _color7       #a89984
+#define                     _color15      #ebdbb2
+
+#define                     _cursorColor  #928374
+
+*background:                _background
+*foreground:                _foreground
+*cursorColor:               _cursorColor
+*color0:                    _color0
+*color8:                    _color8
+*color1:                    _color1
+*color9:                    _color9
+*color2:                    _color2
+*color10:                   _color10
+*color3:                    _color3
+*color11:                   _color11
+*color4:                    _color4
+*color12:                   _color12
+*color5:                    _color5
+*color13:                   _color13
+*color6:                    _color6
+*color14:                   _color14
+*color7:                    _color7
+*color15:                   _color15
+
+! URxvt -----------------------------------------------------------------------
+! General settings
+URxvt.title:                rxvt-unicode
+URxvt.saveLines: 						2000
+URxvt.scrollBar: 						False
+URxvt.scrollstyle: 					rxvt
+URxvt.termName: 						xterm-256color
+!URxvt.visualBell:           False
+URxvt.urgentOnBell: 				True
+URxvt.cursorBlink: 					False
+! Extensions
+!URxvt.perl-ext-common: 			default,clipboard,keyboard-select,url-select
+URxvt.urlLauncher: 					xdg-open
+URxvt.urlButton: 						1
+URxvt.underlineURLs: 				True
+! Clipboard
+URxvt.copyCommand:  				xclip -i -selection clipboard
+URxvt.pasteCommand: 				xclip -o -selection clipboard
+! Keybindings
+URxvt.keysym.Mod4-c: 				perl:clipboard:copy
+URxvt.keysym.Mod4-v: 				perl:clipboard:paste
+URxvt.keysym.Mod4-C-v: 			perl:clipboard:paste_escaped
+URxvt.keysym.M-c: 					perl:clipboard:copy
+URxvt.keysym.M-v: 					perl:clipboard:paste
+URxvt.keysym.M-C-v: 				perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape:			perl:keyboard-select:activate
+URxvt.keysym.C-Escape: 			perl:keyboard-select:activate
+URxvt.keysym.M-u: 					perl:url-select:select_next
+! Font
+!URxvt.font:                 xft:Inconsolata:pixelsize=12
+!URxvt.boldFont:             xft:Inconsolata:bold:pixelsize=12
+!URxvt.italicFont:           xft:Inconsolata:italic:pixelsize=12
+!URxvt.boldItalicFont:       xft:Inconsolata:bold:italic:pixelsize=12
+URxvt.letterSpace:          -1
+
+! URxvt Gruvbox theme ---------------------------------------------------------
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+
+URxvt.color24:  #076678
+URxvt.color66:  #427b58
+URxvt.color88:  #9d0006
+URxvt.color96:  #8f3f71
+URxvt.color100: #79740e
+URxvt.color108: #8ec07c
+URxvt.color109: #83a598
+URxvt.color130: #af3a03
+URxvt.color136: #b57614
+URxvt.color142: #b8bb26
+URxvt.color167: #fb4934
+URxvt.color175: #d3869b
+URxvt.color208: #fe8019
+URxvt.color214: #fabd2f
+URxvt.color223: #ebdbb2
+URxvt.color228: #f2e5bc
+URxvt.color229: #fbf1c7
+URxvt.color230: #f9f5d7
+URxvt.color234: #1d2021
+URxvt.color235: #282828
+URxvt.color236: #32302f
+URxvt.color237: #3c3836
+URxvt.color239: #504945
+URxvt.color241: #665c54
+URxvt.color243: #7c6f64
+URxvt.color244: #928374
+URxvt.color245: #928374
+URxvt.color246: #a89984
+URxvt.color248: #bdae93
+URxvt.color250: #d5c4a1
+
+! Xclock ----------------------------------------------------------------------
+xclock*analog:              True
+xclock*majorColor:          #9a875f
+xclock*minorColor:          #9a875f
+xclock*minuteColor:         #9a875f
+xclock*hourColor:           #9a875f
+xclock*secondColor:         #9a875f
+
+! Xpdf ------------------------------------------------------------------------
+xpdf*enableFreetype:    		yes
+xpdf*antialias:         		yes
+xpdf*foreground:        		black
+xpdf*background:        		white
+xpdf*urlCommand:        		firefox %s
+
+! Xscreensaver ----------------------------------------------------------------
+!xscreensaver.mode:                      binaryring -root -growth-delay 7500 -ring-radius 250 -particles-number 2775
+! Font
+xscreensaver.Dialog.headingFont:        -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1 
+xscreensaver.Dialog.bodyFont:           -xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1
+xscreensaver.Dialog.labelFont:          -xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1
+xscreensaver.Dialog.unameFont:          -xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1
+xscreensaver.Dialog.buttonFont:         -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
+xscreensaver.Dialog.dateFont:           -xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1
+xscreensaver.passwd.passwdFont:         -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
+! Dialog box (hostname, username, password)
+xscreensaver.Dialog.foreground:         #ffffff
+xscreensaver.Dialog.background:         #111111
+xscreensaver.Dialog.topShadowColor:     #111111
+xscreensaver.Dialog.bottomShadowColor:  #111111
+xscreensaver.Dialog.Button.foreground:  #666666
+xscreensaver.Dialog.Button.background:  #ffffff
+xscreensaver.Dialog.text.foreground:    #666666
+xscreensaver.Dialog.text.background:    #ffffff
+xscreensaver.Dialog.internalBorderWidth:58
+xscreensaver.Dialog.borderWidth:        20
+xscreensaver.Dialog.shadowThickness:    2
+! TimerBar
+xscreensaver.passwd.thermometer.foreground:   #ff0000
+xscreensaver.passwd.thermometer.background:   #000000
+xscreensaver.passwd.thermometer.width:        8
+! Timestamp
+xscreensaver.dateFormat:                      %I:%M%P %a %b %d, %Y
+
+!! Xcalc ----------------------------------------------------------------
+!xcalc*geometry:                         900x1375
+!xcalc*font:                             -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
+!xcalc.ti.bevel.background:              #111111
+!xcalc.ti.bevel.screen.background:       #000000
+!xcalc.ti.bevel.screen.DEG.background:   #000000
+!xcalc.ti.bevel.screen.DEG.foreground:   LightSeaGreen
+!xcalc.ti.bevel.screen.GRAD.background:  #000000
+!xcalc.ti.bevel.screen.GRAD.foreground:  LightSeaGreen
+!xcalc.ti.bevel.screen.RAD.background:   #000000
+!xcalc.ti.bevel.screen.RAD.foreground:   LightSeaGreen
+!xcalc.ti.bevel.screen.INV.background:   #000000
+!xcalc.ti.bevel.screen.INV.foreground:   Red
+!xcalc.ti.bevel.screen.LCD.background:   #000000
+!xcalc.ti.bevel.screen.LCD.foreground:   LightSeaGreen
+!xcalc.ti.bevel.screen.LCD.shadowWidth:  0
+!xcalc.ti.bevel.screen.M.background:     #000000
+!xcalc.ti.bevel.screen.M.foreground:     LightSeaGreen
+!xcalc.ti.bevel.screen.P.background:     #000000
+!xcalc.ti.bevel.screen.P.foreground:     Yellow
+!xcalc.ti.Command.foreground:            White
+!xcalc.ti.Command.background:            #777777
+!xcalc.ti.button3.label:                 SQRT
+!xcalc.ti.button5.background:            Orange3
+!xcalc.ti.button19.background:           #611161
+!xcalc.ti.button18.background:           #611161
+!xcalc.ti.button20.background:           #611111
+!xcalc.ti.button20.label:                /
+!xcalc.ti.button25.background:           #722222
+!xcalc.ti.button30.background:           #833333
+!xcalc.ti.button35.background:           #944444
+!xcalc.ti.button40.background:           #a55555
+!xcalc.ti.button22.background:           #222262
+!xcalc.ti.button23.background:           #222262
+!xcalc.ti.button24.background:           #222272
+!xcalc.ti.button27.background:           #333373
+!xcalc.ti.button28.background:           #333373
+!xcalc.ti.button29.background:           #333373
+!xcalc.ti.button32.background:           #444484
+!xcalc.ti.button33.background:           #444484
+!xcalc.ti.button34.background:           #444484
+!xcalc.ti.button37.background:           #555595
+!xcalc.ti.button38.background:           #555595
+!xcalc.ti.button39.background:           #555595
+!XCalc*Cursor:                           hand2
+!XCalc*ShapeStyle:                       rectangle
+! -----------------------------------------------------------------------------
+
+!xcalc*font:                             -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
+xcalc*font:                             -xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1
+xcalc*ti.button1.vertDistance:          4
+xcalc*ti.button2.vertDistance:          4
+xcalc*ti.button3.vertDistance:          4
+xcalc*ti.button4.vertDistance:          4
+xcalc*ti.button5.vertDistance:          4
+xcalc*ti.background:                    gray90
+xcalc*ti.bevel.borderColor:             gray65
+xcalc*ti.bevel.borderWidth:             1
+xcalc*ti.bevel.vertDistance:            4
+xcalc*ti.bevel.defaultDistance:         0
+xcalc*ti.bevel.background:              rgb:b/c/b
+xcalc*ti.bevel.screen*background:       rgb:b/c/b
+xcalc*ti.bevel.screen.borderColor:      rgb:b/c/b
+xcalc*ti.bevel.screen.vertDistance:     10
+xcalc*ti.bevel.screen.horizDistance:    10
+xcalc*ti.bevel.screen*left:             chainLeft
+xcalc*ti.bevel.screen*right:            chainRight
+xcalc*ti.bevel.screen*top:              chainTop
+xcalc*ti.bevel.screen*bottom:           chainBottom
+xcalc*ti.bevel.screen*LCD.foreground:   gray10
+xcalc*ti.bevel.screen*INV.vertDistance: 0
+xcalc*ti.Command.borderColor:           gray65
+xcalc*ti.Command.background:            gray85
+xcalc*ti.Command.foreground:            gray30
+xcalc*ti.button5.background:            rgb:e/b/b
+xcalc*ti.button20.background:           rgb:e/d/c
+xcalc*ti.button25.background:           rgb:e/d/c
+xcalc*ti.button30.background:           rgb:e/d/c
+xcalc*ti.button35.background:           rgb:e/d/c
+xcalc*ti.button40.background:           rgb:b/b/e
+xcalc*ti.button22.background:           gray95
+xcalc*ti.button23.background:           gray95
+xcalc*ti.button24.background:           gray95
+xcalc*ti.button27.background:           gray95
+xcalc*ti.button28.background:           gray95
+xcalc*ti.button29.background:           gray95
+xcalc*ti.button32.background:           gray95
+xcalc*ti.button33.background:           gray95
+xcalc*ti.button34.background:           gray95
+xcalc*ti.button37.background:           gray95
+xcalc*ti.button38.background:           gray95
+xcalc*ti.button39.background:           gray95
+
+! -----------------------------------------------------------------------------
+!
