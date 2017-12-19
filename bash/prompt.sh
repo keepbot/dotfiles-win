@@ -69,16 +69,16 @@ bash_prompt() {
 	case $PROMPT in
 		COMPLEX)
 			if [ $ENVRM == "PRODUCTION" ]; then
-				PS1="${R}[${Y}\${?}${R}] [ ${B}\w ${R}] ${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$R\t \u (at) \H ${ZZ}\$ "
+				PS1="${R}[${BY}\${?}${R}] [ ${B}\w ${R}] ${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$R\t \u (at) \H ${ZZ}\$ "
 			else
-				PS1="${G}[${Y}\${?}${G}] [ ${B}\w ${G}] ${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$G\t \u (at) \H ${ZZ}\$ "
+				PS1="${G}[${BY}\${?}${G}] [ ${B}\w ${G}] ${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$G\t \u (at) \H ${ZZ}\$ "
 			fi
 			;;
 		SIMPLE)
 			if [ $ENVRM == "PRODUCTION" ]; then
-				PS1="${R}[${Y}\${?}${R}] ${R}\u (at) \h${W}:${B}\w${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
+				PS1="${R}[${BY}\${?}${R}] ${R}\u (at) \h${W}:${B}\w${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
 			else
-				PS1="${G}[${Y}\${?}${G}] ${G}\u (at) \h${W}:${B}\w${BC}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
+				PS1="${G}[${BY}\${?}${G}] ${G}\u (at) \h${W}:${B}\w${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
 			fi
 			;;
   esac
