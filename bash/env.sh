@@ -75,6 +75,7 @@ case $platform in
 		[[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
 		;;
 	MSYS_NT-10.0 )
+		[[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin:$PATH
 		#/mnt/c/Windows
 		#/mnt/c/Windows/System32
 		#/mnt/c/Windows/System32/wbem
