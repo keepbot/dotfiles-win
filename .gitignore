@@ -31,6 +31,9 @@ Icon
 .Spotlight-V100
 .Trashes
 
+# Vim
+.swp
+*~
 
 processmeter.ini
 replicator.ini
