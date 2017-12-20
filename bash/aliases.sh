@@ -57,6 +57,9 @@ alias tcopy="tmux show-buffer | pbcopy"
 # sudo (do not forget _ at the end (for alias))
 alias sudo="sudo -E "
 
+# Mignight commander
+alias mc="mc -a -b"
+
 # Straight into console-in-screen.
 # Assumes there is only one screen running.
 #alias prodc="ssh srv -t screen -RD"
