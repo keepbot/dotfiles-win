@@ -73,6 +73,9 @@ case $platform in
 		[[ -d $HOME/.local/bin ]]                   && export PATH=$PATH:$HOME/.local/bin
 		# Ruby
 		[[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
+		# VS Code
+		[[ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]] && \
+			export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 		;;
 	MSYS_NT-10.0 )
 		[[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin:$PATH
