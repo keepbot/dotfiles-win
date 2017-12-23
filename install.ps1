@@ -33,7 +33,7 @@ cmd /c mklink    ( Join-Path $HOME ".gitmessage"   ) ( Join-Path $PSScriptRoot "
 cmd /c mklink /d ( Join-Path $HOME ".tmux"         ) ( Join-Path $PSScriptRoot "tmux"         )
 cmd /c mklink    ( Join-Path $HOME ".tmux.conf"    ) ( Join-Path $PSScriptRoot "tmux.conf"    )
 cmd /c mklink /d ( Join-Path $HOME ".vim"          ) ( Join-Path $PSScriptRoot "vim"          )
-cmd /c mklink    ( Join-Path $HOME ".vimrc"        ) ( Join-Path $PSScriptRoot "vimrc"        )
+cmd /c mklink    ( Join-Path $HOME ".vimrc"        ) ( Join-Path $PSScriptRoot "vimrc-win"    )
 
 
 
