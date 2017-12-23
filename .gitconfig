@@ -70,9 +70,8 @@
   untracked = red
 [color "sh"]
   branch = yellow
-# No more big commit messages
-#[commit]
-#  template = ~/.gitmessage
+[commit]
+  template = ~/.gitmessage
 [credential]
   helper = cache
 [diff]
