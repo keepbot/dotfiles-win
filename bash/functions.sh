@@ -167,3 +167,6 @@ sss() {
 	grep -rnw $1 -e $2
 }
 
+sIP() {
+	list=`find . -name "$1"`; grep -E "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" -h -o $list
+}
