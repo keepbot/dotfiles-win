@@ -170,3 +170,11 @@ sss() {
 sIP() {
 	list=`find . -name "$1"`; grep -E "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" -h -o $list
 }
+
+# List files in current directory and replace spaces with underscores
+lsD() {
+	IFS=''
+	for str in `find . -maxdepth 1 -type f -name "* *" |sed 's#.*/##'`; do
+		echo ${str// /_}
+	done
+}
