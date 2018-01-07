@@ -54,6 +54,19 @@ get_user_repos () {
 	return 0
 }
 
+
+# Function to recursive clone repo from souurce URL to target direcrtory formated as <<repo_name>>-<<username>> (".git" - removed from path)
+gcsr () {
+	if [ -z "$1" ] || [ $2 ]; then
+		echo "You should enter repo URI."
+		echo "Usage: $0 <repo_url>"
+		echo
+	else
+		target=`python -c "from urlparse import urlparse; import os.path; uri='$1';result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0])),"`
+		git clone --recurse-submodules "${1}" "${target}"
+	fi
+}
+
 # print available colors and their numbers
 colours() {
 	for i in {0..255}; do
