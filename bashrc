@@ -17,6 +17,7 @@
 
 # Import Functions
 [[ -f $HOME/.bash/functions.sh ]]           && source ~/.bash/functions.sh
+[[ -f $HOME/.bash/functions_align.sh ]]     && source ~/.bash/functions_align.sh
 
 # Include https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 [[ -f $HOME/.bash/git-completion.bash ]]    && source ~/.bash/git-completion.bash
