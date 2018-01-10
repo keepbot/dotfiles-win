@@ -108,3 +108,5 @@
   email = divanov@aligntech.com
 [web]
   browser = open
+[winUpdater]
+	recentlySeenVersion = 2.15.1.windows.2
