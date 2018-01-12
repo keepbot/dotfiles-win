@@ -209,7 +209,7 @@ set sidescroll=5
 set lbr
 
 " Hide conceal chars
-set conceallevel=2
+set conceallevel=0
 
 " Show the filename in the window titlebar
 set title
