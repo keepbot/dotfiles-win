@@ -138,18 +138,13 @@ exit_code() {
 }
 
 ipif() {
+	echo "Informarion about IP: ${1}"
 	if [ ! $1 ]; then
 		curl ipinfo.io
 		echo
 		return
 	fi
-
-	if grep -P "(([1-9]\d{0,2})\.){3}(?2)" < "$1"; then
-		curl ipinfo.io/"$1"
-	else
-		ipawk=($(host "$1" | awk '/address/ { print $NF }'))
-		curl ipinfo.io/${ipawk[1]}
-	fi
+		curl ipinfo.io/"${1}"
 	echo
 	return
 }
@@ -181,7 +176,7 @@ sss() {
 }
 
 sIP() {
-	list=`find . -name "$1"`; grep -E "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" -h -o $list
+	list=$(find . -name "$1"); grep -E "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" -h -o $list
 }
 
 # List files in current directory and replace spaces with underscores
