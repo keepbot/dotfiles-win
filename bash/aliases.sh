@@ -115,6 +115,9 @@ alias gs="git status"
 alias gw="git show"
 alias gw^="git show HEAD^"
 alias gw^^="git show HEAD^^"
+alias gw^^^="git show HEAD^^^"
+alias gw^^^^="git show HEAD^^^^"
+alias gw^^^^^="git show HEAD^^^^^"
 alias gd="git diff HEAD"  # What's changed? Both staged and unstaged.
 alias gdo="git diff --cached"  # What's changed? Only staged (added) changes.
 # for gco ("git commit only") and gca ("git commit all"), see functions.sh.
@@ -164,4 +167,14 @@ alias kne='knife node edit'
 # ruby
 alias bup='bundle update'
 alias be='bundle exec'
+
+################################################################################
+### >> Align:
+################################################################################
+#Git
+alias ginfo='ssh gitolite@git info'
+
+# Greps with status
+alias gHS='grep -e "status" -e "health"'
+
 
