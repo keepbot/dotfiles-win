@@ -19,5 +19,5 @@ foreach ($module in $list_of_modules) {
     Import-Module $module
 }
 
-Set-Location ~
+# Set-Location ~
 Write-Host "Welcome Home: %USERNAME%"

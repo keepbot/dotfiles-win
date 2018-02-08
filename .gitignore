@@ -39,3 +39,5 @@ processmeter.ini
 replicator.ini
 SpIp.bin
 SpIp.txt
+*.history
+*.bash_history
