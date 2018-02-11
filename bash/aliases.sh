@@ -37,7 +37,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Python
-alias ve='virtualenv -p python3.6 ./venv' # init py36 venv in curent dir
+alias ve='virtualenv -p python3 ./venv' # init py36 venv in curent dir
 alias va='source ./venv/bin/activate'
 alias vd='deactivate'
 alias vr='rm -rf ./venv'
