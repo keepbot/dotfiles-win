@@ -33,15 +33,21 @@ alias pg='ps aux | head -n1; ps aux | grep -i'
 alias tf='tail -F -n200'
 alias top='top -o%CPU'
 alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
+alias       ...='cd ../..'
+alias     .....='cd ../../..'
+alias    ......='cd ../../../..'
+alias   .......='cd ../../../../..'
+alias  ........='cd ../../../../../..'
+alias .........='cd ../../../../../../..'
 
 # Python
-alias ve='virtualenv -p python3 ./venv' # init py36 venv in curent dir
+alias vc2='python2 -m virtualenv -p python2 ./venv' # init py2 venv in curent dir
+alias vc3='python3 -m virtualenv -p python3 ./venv' # init py3 venv in curent dir
 alias va='source ./venv/bin/activate'
 alias vd='deactivate'
 alias vr='rm -rf ./venv'
 alias req='va && pip freeze > requirements.txt'
+
 
 # tmux aliases
 alias tmux="tmux -2"

@@ -52,6 +52,7 @@
   ignorecase = false
   pager = less -FXRS -x2
   untrackedCache = true
+	autocrlf = true
 [color]
   branch = auto
   diff = auto
