@@ -1,10 +1,15 @@
 #!/usr/bin/env powershell
+# Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 
 $profileDir         = Split-Path -Parent $profile
 $dotfilesProfileDir = Join-Path $PSScriptRoot "powershell"
 
 "DEVELOPMENT" | Out-File ( Join-Path $PSScriptRoot "bash/var.env"    )
 "COMPLEX"     | Out-File ( Join-Path $PSScriptRoot "bash/var.prompt" )
+
+If (-Not (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe")) {
+  Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+}
 
 # Making Symlinks
 # Remove-Item -Force -Confirm:$false -Recurse $profileDir
@@ -43,6 +48,27 @@ C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".tmux.conf"    ) ( J
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".vimrc"        ) ( Join-Path $PSScriptRoot "vimrc-win"         )
 
 C:\Windows\System32\cmd.exe /c mklink      "C:\sr\config.yaml"               ( Join-Path $PSScriptRoot "stack\config.yaml" )
+
+$list_of_modules = @(
+  "posh-git"
+  "posh-docker"
+  "PSReadline"
+)
+Write-Host ""
+Write-Host "Initialization of PowerShell profile. Be patient. It's hurt only first time..."
+Write-Host ""
+
+foreach ($module in $list_of_modules) {
+  if (Get-Module -ListAvailable -Name $module ) {
+    Write-Host "Module $module already exist"
+  } else {
+    Install-Module -Scope CurrentUser $module
+    Write-Host "Module $module succesfully installed"
+  }
+
+  Import-Module $module
+}
+
 
 # Cleanup
 #Remove-Variable $profileDir

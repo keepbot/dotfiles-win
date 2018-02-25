@@ -1,22 +1,16 @@
 #!/usr/bin/env powershell
-Set-ExecutionPolicy RemoteSigned
+$profileDir         = Split-Path -Parent $profile
 
-$list_of_modules = @(
-    "posh-git"
-    "posh-docker"
-)
+# Loading Cmder Profile
+If (Test-Path (Join-Path $HOME ".bin\cmder\vendor\profile.ps1"))  { . (Join-Path $HOME ".bin\cmder\vendor\profile.ps1") }
 
-Write-Host "Initialization of PowerShell profile. Be patient. It's hurt only first time..."
+# Set Colors
+If (Test-Path (Join-Path $profileDir "colors.ps1"             ))  { . (Join-Path $profileDir "colors.ps1"             ) }
 
-foreach ($module in $list_of_modules) {
-	if (Get-Module -ListAvailable -Name $module ) {
-        Write-Host "Module $module already exist"
-    } else {
-        Install-Module -Scope CurrentUser $module
-        Write-Host "Module $module succesfully installed"
-    }
-
-    Import-Module $module
+# Chocolatey profile
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
 }
 
 # Set-Location ~
