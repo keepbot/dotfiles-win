@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Digital converter: d - decimal h - hexadecimal b - binary
 h2d() {
 	echo "ibase=16; $@"|bc

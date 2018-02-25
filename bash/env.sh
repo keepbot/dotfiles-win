@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 export EDITOR='vim'
 # No duplicates in history.
 export HISTCONTROL=ignoredups

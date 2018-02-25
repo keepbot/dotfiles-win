@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Management
 alias reload='source ~/.bashrc && echo "Bash profile reloaded"'
 
