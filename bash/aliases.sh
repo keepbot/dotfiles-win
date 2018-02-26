@@ -47,10 +47,8 @@ alias vc3='python3 -m virtualenv -p python3 venv' # init py3 venv in curent dir
 alias va='source ./venv/bin/activate'
 alias vd='deactivate'
 alias vr='rm -rf ./venv'
-alias vins='if [ -d venv ]; then vc; fi; va; python -m pip install -r requirements.txt'
+alias vins='va && pip install -r requirements.txt'
 alias vgen='va && pip freeze > requirements.txt'
-
-
 
 # tmux aliases
 alias tmux="tmux -2"
