@@ -15,8 +15,8 @@ $m = $m -bor 4 # undocumented flag to enable ansi/vt100
 $success = [win32.nativemethods]::setconsolemode($h, $m)
 
 ### Set Main Colors
-[console]::ForegroundColor          = "White"
-[console]::BackgroundColor          = "Black"
+#[console]::ForegroundColor          = "White"
+#[console]::BackgroundColor          = "Black"
 
 ### Set Foreground Colors
 $Host.PrivateData.ErrorForegroundColor = 'Red'
@@ -26,10 +26,10 @@ $Host.PrivateData.VerboseForegroundColor = 'DarkGray'
 $Host.PrivateData.ProgressForegroundColor = 'Gray'
 
 ### Set Background Colors
-$Host.PrivateData.ErrorBackgroundColor = 'Black'
-$Host.PrivateData.WarningBackgroundColor = 'Black'
-$Host.PrivateData.DebugBackgroundColor = 'Black'
-$Host.PrivateData.VerboseBackgroundColor = 'Black'
+$Host.PrivateData.ErrorBackgroundColor = 'DarkMagenta'
+$Host.PrivateData.WarningBackgroundColor = 'DarkMagenta'
+$Host.PrivateData.DebugBackgroundColor = 'DarkMagenta'
+$Host.PrivateData.VerboseBackgroundColor = 'DarkMagenta'
 $Host.PrivateData.ProgressBackgroundColor = 'DarkCyan'
 
 ### Show current console colors
