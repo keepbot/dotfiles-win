@@ -7,6 +7,9 @@ $profileDir         = Split-Path -Parent $profile
 # Set Colors
 If (Test-Path (Join-Path $profileDir "colors.ps1"             ))  { . (Join-Path $profileDir "colors.ps1"             ) }
 
+# Set Environmet
+If (Test-Path (Join-Path $profileDir "environment.ps1"        ))  { . (Join-Path $profileDir "environment.ps1"        ) }
+
 # Set Aliases
 If (Test-Path (Join-Path $profileDir "aliases.ps1"            ))  { . (Join-Path $profileDir "aliases.ps1"            ) }
 
