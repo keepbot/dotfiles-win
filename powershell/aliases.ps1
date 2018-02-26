@@ -144,10 +144,10 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:gcoc} = { gco Cleanup. @args }
   ${function:gcaw} = { gca Whitespace. @args }
   ${function:gcow} = { gco Whitespace. @args }
-  rm alias:gp -ErrorAction SilentlyContinue
-  ${function:gp} = { git.exe push -u @args }  # Comment if you use Pari Calculator and use gppp insted
-  ${function:gpp} = { (git.exe pull --rebase) -and (git.exe push @args) }
-  ${function:gppp} = { git.exe push -u @args }  # Can't pull because you forgot to track? Run this.
+  # ${function:gip} = { git.exe push -u @args }  # Comment if you use Get-Property and use gppp insted
+  ${function:gpl} = { git.exe pull @args }
+  ${function:gpp} = { git.exe push -u @args }  # Can't pull because you forgot to track? Run this.
+  ${function:gppp} = { git.exe pull --rebase; git.exe push @args }
   ${function:gck} = { git.exe checkout @args }
   ${function:gb} = { git.exe checkout -b @args }
   ${function:got} = { git.exe checkout - @args }
@@ -158,12 +158,12 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:gcp} = { git.exe cherry-pick @args }
   ${function:gam} = { git.exe commit --amend @args }
   ${function:gamne} = { git.exe commit --amend --no-edit @args }
-  ${function:gamm} = { (git.exe add --all) -and (git.exe commit --amend -C HEAD @args) }
+  ${function:gamm} = { git.exe add --all; git.exe commit --amend -C HEAD @args }
   ${function:gammf} = { gamm --no-verify @args }
   ${function:gba} = { git.exe rebase --abort @args }
-  ${function:gbc} = { (git.exe add -A) -and (git.exe rebase --continue @args) }
-  ${function:gbm} = { (git.exe fetch origin master) -and (git.exe rebase origin/master @args) }
-  ${function:gfr} = { (git.exe fetch --all) -and (git.exe reset --hard origin/master @args) }
+  ${function:gbc} = { git.exe add -A; git.exe rebase --continue @args }
+  ${function:gbm} = { git.exe fetch origin master; git.exe rebase origin/master @args }
+  ${function:gfr} = { git.exe fetch --all; git.exe reset --hard origin/master @args }
   ${function:GClean} = { while ((git diff-index HEAD --)) {git.exe reset --hard HEAD}; git.exe clean -d -x -f @args }
 }
 
