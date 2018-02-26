@@ -33,13 +33,13 @@ alias cdd='cd -'  # back to last directory
 alias pg='ps aux | head -n1; ps aux | grep -i'
 alias tf='tail -F -n200'
 alias top='top -o%CPU'
-alias ..='cd ..'
+alias        ..='cd ..'
 alias       ...='cd ../..'
-alias     .....='cd ../../..'
-alias    ......='cd ../../../..'
-alias   .......='cd ../../../../..'
-alias  ........='cd ../../../../../..'
-alias .........='cd ../../../../../../..'
+alias      ....='cd ../../..'
+alias     .....='cd ../../../..'
+alias    ......='cd ../../../../..'
+alias   .......='cd ../../../../../..'
+alias  ........='cd ../../../../../../..'
 
 # Python
 alias vc2='python2 -m virtualenv -p python2 ./venv' # init py2 venv in curent dir
@@ -47,7 +47,9 @@ alias vc3='python3 -m virtualenv -p python3 ./venv' # init py3 venv in curent di
 alias va='source ./venv/bin/activate'
 alias vd='deactivate'
 alias vr='rm -rf ./venv'
-alias req='va && pip freeze > requirements.txt'
+alias vins='if [ -d venv ]; then vc; fi; va; python.exe -m pip install -r .\requirements.txt'
+alias vgen='va && pip freeze > requirements.txt'
+
 
 
 # tmux aliases
@@ -93,7 +95,7 @@ alias fs="stat -c \"%s bytes\""
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 
 # URL-encode strings
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+alias urlencode='python -c "import sys, urllib.parse; print(urllib.parse.quote(str(sys.argv[1])));"'
 
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
@@ -170,6 +172,9 @@ alias kn='knife node'
 alias kns='knife node show'
 alias knl='knife node list'
 alias kne='knife node edit'
+
+alias kbl='knife block list'
+alias kbu='knife block use'
 
 # ruby
 alias bup='bundle update'
