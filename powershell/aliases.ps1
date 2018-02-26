@@ -144,6 +144,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:gcoc} = { gco Cleanup. @args }
   ${function:gcaw} = { gca Whitespace. @args }
   ${function:gcow} = { gco Whitespace. @args }
+  rm alias:gp -ErrorAction SilentlyContinue
   ${function:gp} = { git.exe push -u @args }  # Comment if you use Pari Calculator and use gppp insted
   ${function:gpp} = { (git.exe pull --rebase) -and (git.exe push @args) }
   ${function:gppp} = { git.exe push -u @args }  # Can't pull because you forgot to track? Run this.
