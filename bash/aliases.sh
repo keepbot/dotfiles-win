@@ -47,7 +47,7 @@ alias vc3='python3 -m virtualenv -p python3 ./venv' # init py3 venv in curent di
 alias va='source ./venv/bin/activate'
 alias vd='deactivate'
 alias vr='rm -rf ./venv'
-alias vins='if [ -d venv ]; then vc; fi; va; python.exe -m pip install -r .\requirements.txt'
+alias vins='if [ -d venv ]; then vc; fi; va; python -m pip install -r .\requirements.txt'
 alias vgen='va && pip freeze > requirements.txt'
 
 
