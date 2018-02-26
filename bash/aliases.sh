@@ -42,12 +42,16 @@ alias   .......='cd ../../../../../..'
 alias  ........='cd ../../../../../../..'
 
 # Python
-alias vc2='python2 -m virtualenv -p python2 ./venv' # init py2 venv in curent dir
-alias vc3='python3 -m virtualenv -p python3 ./venv' # init py3 venv in curent dir
+alias vc2='python2 -m virtualenv -p python2 venv' # init py2 venv in curent dir
+alias vc3='python3 -m virtualenv -p python3 venv' # init py3 venv in curent dir
 alias va='source ./venv/bin/activate'
 alias vd='deactivate'
 alias vr='rm -rf ./venv'
+<<<<<<< HEAD
 alias vins='if [ -d venv ]; then vc; fi; va; python -m pip install -r .\requirements.txt'
+=======
+alias vins='if [ -d venv ]; then vc; fi; va; python -m pip install -r requirements.txt'
+>>>>>>> fix(bash): python command with .exe (mistake from windows)
 alias vgen='va && pip freeze > requirements.txt'
 
 
