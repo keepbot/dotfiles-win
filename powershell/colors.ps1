@@ -19,18 +19,18 @@ $success = [win32.nativemethods]::setconsolemode($h, $m)
 #[console]::BackgroundColor          = "Black"
 
 ### Set Foreground Colors
-$Host.PrivateData.ErrorForegroundColor = 'Red'
-$Host.PrivateData.WarningForegroundColor = 'Yellow'
-$Host.PrivateData.DebugForegroundColor = 'DarkGreen'
-$Host.PrivateData.VerboseForegroundColor = 'DarkGray'
-$Host.PrivateData.ProgressForegroundColor = 'Gray'
+#$Host.PrivateData.ErrorForegroundColor = 'Red'
+#$Host.PrivateData.WarningForegroundColor = 'Yellow'
+#$Host.PrivateData.DebugForegroundColor = 'DarkGreen'
+#$Host.PrivateData.VerboseForegroundColor = 'DarkGray'
+#$Host.PrivateData.ProgressForegroundColor = 'Gray'
 
 ### Set Background Colors
-$Host.PrivateData.ErrorBackgroundColor = 'DarkMagenta'
-$Host.PrivateData.WarningBackgroundColor = 'DarkMagenta'
-$Host.PrivateData.DebugBackgroundColor = 'DarkMagenta'
-$Host.PrivateData.VerboseBackgroundColor = 'DarkMagenta'
-$Host.PrivateData.ProgressBackgroundColor = 'DarkCyan'
+#$Host.PrivateData.ErrorBackgroundColor = 'DarkMagenta'
+#$Host.PrivateData.WarningBackgroundColor = 'DarkMagenta'
+#$Host.PrivateData.DebugBackgroundColor = 'DarkMagenta'
+#$Host.PrivateData.VerboseBackgroundColor = 'DarkMagenta'
+#$Host.PrivateData.ProgressBackgroundColor = 'DarkCyan'
 
 ### Show current console colors
 function Show-Colors-Current {
