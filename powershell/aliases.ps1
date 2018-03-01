@@ -14,8 +14,8 @@ ${function:drop} = { Set-Location ~\Documents\Dropbox }
 ${function:desk} = { Set-Location ~\Desktop }
 ${function:docs} = { Set-Location ~\OneDrive\Documents }
 ${function:down} = { Set-Location ~\Downloads }
-${function:ws} = { Set-Location c:\workspace }
-${function:ws-tmp} = { Set-Location c:\workspace\tmp }
+${function:ws} = { Set-Location ~\workspace }
+${function:ws-tmp} = { Set-Location ~\workspace\tmp }
 
 # Missing Bash aliases
 Set-Alias time Measure-Command
