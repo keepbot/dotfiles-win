@@ -180,10 +180,15 @@ New-Item -ItemType File -Path $CmderUserProfilePath -Value $UserProfileTemplate 
 }
 
 # Once Created these code blocks cannot be overwritten
-Set-Item -Path function:\PrePrompt   -Value $PrePrompt   -Options Constant
-Set-Item -Path function:\CmderPrompt -Value $CmderPrompt -Options Constant
-Set-Item -Path function:\PostPrompt  -Value $PostPrompt  -Options Constant
+#Set-Item -Path function:\PrePrompt   -Value $PrePrompt   -Options Constant
+#Set-Item -Path function:\CmderPrompt -Value $CmderPrompt -Options Constant
+#Set-Item -Path function:\PostPrompt  -Value $PostPrompt  -Options Constant
+
+Set-Item -Path function:\PrePrompt   -Value $PrePrompt
+Set-Item -Path function:\CmderPrompt -Value $CmderPrompt
+Set-Item -Path function:\PostPrompt  -Value $PostPrompt
 
 # Functions can be made constant only at creation time
 # ReadOnly at least requires `-force` to be overwritten
-Set-Item -Path function:\prompt  -Value $Prompt  -Options ReadOnly
+#Set-Item -Path function:\prompt  -Value $Prompt  -Options ReadOnly
+Set-Item -Path function:\prompt  -Value $Prompt

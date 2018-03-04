@@ -2,7 +2,7 @@
 $profileDir         = Split-Path -Parent $profile
 
 # Loading Cmder Profile
-#If (Test-Path (Join-Path $HOME ".bin\cmder\vendor\profile.ps1"))  { . (Join-Path $HOME ".bin\cmder\vendor\profile.ps1") }
+If (Test-Path (Join-Path $HOME ".bin\cmder\vendor\profile.ps1"))  { . (Join-Path $HOME ".bin\cmder\vendor\profile.ps1") }
 
 # Set Colors
 If (Test-Path (Join-Path $profileDir "colors.ps1"             ))  { . (Join-Path $profileDir "colors.ps1"             ) }
@@ -20,4 +20,4 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # Set-Location ~
-Write-Host "Welcome Home: %USERNAME%"
+Write-Host "Welcome Home:"(Get-WmiObject -Class Win32_UserAccount -Filter "Name = '$env:USERNAME'").FullName
