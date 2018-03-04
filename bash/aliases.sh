@@ -113,6 +113,7 @@ alias mmn="mount|column -t"
 
 # Git:
 alias ugr='for dir in `ls`; do echo "${dir}"; cd "${dir}"; git pull; cd ..; done' # Update all repos in current directory
+alias ugrm='for dir in `ls`; do echo "${dir}"; cd "${dir}"; git checkout master; git pull; cd ..; done' # Check out to master and update all repos in current directory
 alias ugrs='root=${PWD}; for dir in `ls`; do cd "${root}/${dir}" && ugr; done'    # Update all repos within all sub directories from curent
 alias gsu='git submodule update --recursive --remote'
 alias gll='git log --pretty=format:"%h - %an, %ar : %s"'

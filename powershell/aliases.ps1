@@ -126,6 +126,7 @@ if (Get-Command bundle -ErrorAction SilentlyContinue | Test-Path) {
 # Git:
 if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:ugr} = { $dir = Get-Location; Get-ChildItem $dir -Directory | ForEach-Object { Write-Host $_.FullName; cd $_.FullName; git.exe pull }; cd $dir }
+  ${function:ugrm} = { $dir = Get-Location; Get-ChildItem $dir -Directory | ForEach-Object { Write-Host $_.FullName; cd $_.FullName; git.exe checkout master; git.exe pull }; cd $dir }
   ${function:ugrs} = { $dir = Get-Location; Get-ChildItem @args -Directory | ForEach-Object { cd $_.FullName; ugr }; cd $dir }
   ${function:gsu} = { git.exe submodule update --recursive --remote @args }
   ${function:gll} = { git.exe log --pretty=format:"%h - %an, %ar : %s" @args }
