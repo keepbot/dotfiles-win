@@ -15,6 +15,7 @@ ${function:desk} = { Set-Location ~\Desktop }
 ${function:docs} = { Set-Location ~\OneDrive\Documents }
 ${function:down} = { Set-Location ~\Downloads }
 ${function:ws} = { Set-Location ~\workspace }
+${function:ws-df} = { Set-Location ~\workspace\my\dotfiles }
 ${function:ws-tmp} = { Set-Location ~\workspace\tmp }
 
 # Missing Bash aliases
@@ -84,7 +85,6 @@ ${function:rmrf} = { Remove-Item -Recurse -Force @args }
 # curl: Use `curl.exe` if available
 if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path) {
   rm alias:curl -ErrorAction SilentlyContinue
-  # Set `ls` to call `ls.exe` and always use --color
   ${function:curl} = { curl.exe @args }
   # Gzip-enabled `curl`
   ${function:gurl} = { curl --compressed @args }
@@ -138,9 +138,10 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:gw^^^} = { git.exe show HEAD^^^ @args }
   ${function:gw^^^^} = { git.exe show HEAD^^^^ @args }
   ${function:gw^^^^^} = { git.exe show HEAD^^^^^ @args }
-  ${function:gd} = { git.exe diff HEAD @args }  # What's changed? Both staged and unstaged.
-  ${function:gdo} = { git.exe diff --cached @args }  # What's changed? Only staged (added) changes.
-  # for gco ("git.exe commit only") and gca ("git.exe commit all"), see functions.sh.
+  ${function:gd} = { git.exe diff HEAD @args } # What's changed? Both staged and unstaged.
+  ${function:gdo} = { git.exe diff --cached @args } # What's changed? Only staged (added) changes.
+  ${function:gco} = { if ($args) {git.exe commit -m @args} else {git.exe commit -v}} # "git commit only"
+  ${function:gca} = { git.exe add --all; gco @args} # "git commit all"
   # for gget (git.exe clone and cd), see functions.sh.
   ${function:ga} = { git.exe add @args }
   ${function:gc} = { git.exe commit -v @args }
@@ -150,7 +151,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:gcoc} = { gco Cleanup. @args }
   ${function:gcaw} = { gca Whitespace. @args }
   ${function:gcow} = { gco Whitespace. @args }
-  # ${function:gip} = { git.exe push -u @args }  # Comment if you use Get-Property and use gppp insted
+  # ${function:gp} = { git.exe push -u @args }  # Comment if you use Get-Property and use gppp insted
   ${function:gpl} = { git.exe pull @args }
   ${function:gplp} = { git.exe pull --rebase; git.exe push @args }
   ${function:gpp} = { git.exe push -u @args }  # Can't pull because you forgot to track? Run this.
@@ -171,6 +172,15 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:gbm} = { git.exe fetch origin master; git.exe rebase origin/master @args }
   ${function:gfr} = { git.exe fetch --all; git.exe reset --hard origin/master @args }
   ${function:GClean} = { while ((git diff-index HEAD --)) {git.exe reset --hard HEAD}; git.exe clean -d -x -f @args }
+  # GitHub
+  ${function:get_gh_user_repos} = {
+    Write-Host "Clonning all GH repos of $($args[0])"
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    $repoList = Invoke-WebRequest -Uri "https://api.github.com/users/$($args[0])/repos?per_page=1000" | ConvertFrom-Json
+    foreach( $repo in $repoList.clone_url){
+      git.exe clone $repo
+    }
+  }
 }
 
 # Chef
