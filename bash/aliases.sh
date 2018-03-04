@@ -176,8 +176,11 @@ alias kbl='knife block list'
 alias kbu='knife block use'
 
 # ruby
-alias bup='bundle update'
-alias be='bundle exec'
+alias rre='ruby exec'
+alias rgi='gem install'
+alias rbi='gem bundle install'
+alias rbu='bundle update'
+alias rbe='bundle exec'
 
 ################################################################################
 ### >> Align:

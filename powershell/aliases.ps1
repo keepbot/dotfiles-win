@@ -109,13 +109,19 @@ if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:vgen} = { va; python.exe -m pip freeze > .\requirements.txt }
 }
 
-# ruby TODO: ruby aliases
-#   ${function:rre} = { ruby exec @args }
-#   ${function:rgi} = { gem install @args }
-#   ${function:rbi} = { gem bundle install @args }
-#   ${function:rbu} = { gem bundle update @args }
-#   ${function:rbe} = { gem bundle exec @args }
+# Ruby aliases
+if (Get-Command ruby.exe -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:rre} = { ruby.exe exec @args }
+}
+if (Get-Command gem -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:rgi} = { gem install @args }
+  ${function:rbi} = { gem bundle install @args }
 
+}
+if (Get-Command bundle -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:rbu} = { bundle update @args }
+  ${function:rbe} = { bundle exec @args }
+}
 
 # Git:
 if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
