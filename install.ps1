@@ -67,24 +67,7 @@ foreach ($module in $list_of_modules) {
     Install-Module -Scope CurrentUser $module
     Write-Host "Module $module succesfully installed"
   }
-
-  Import-Module $module
 }
-
-
-# Cleanup
-#Remove-Variable $profileDir
-#Remove-Variable $dotfilesProfileDir
-
-#Write-Host "mklink $profileDir ./powershell"
-#cmd /c mklink c:\path\to\symlink c:\target\file
-# if (!(Verify-Elevated)) {
-#   $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-#   $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-#   $newProcess.Verb = "runas";
-#   [System.Diagnostics.Process]::Start($newProcess);
-#   exit
-# }
 
 
 
