@@ -13,6 +13,20 @@ If (Test-Path (Join-Path $profileDir "environment.ps1"        ))  { . (Join-Path
 # Set Aliases
 If (Test-Path (Join-Path $profileDir "aliases.ps1"            ))  { . (Join-Path $profileDir "aliases.ps1"            ) }
 
+# Load functions
+If (Test-Path (Join-Path $profileDir "functions.ps1"          ))  { . (Join-Path $profileDir "functions.ps1"          ) }
+
+$list_of_modules = @(
+"OData"
+"posh-docker"
+"posh-git"
+"PSReadline"
+)
+
+foreach ($module in $list_of_modules) {
+  Import-Module $module
+}
+
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {

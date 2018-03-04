@@ -47,7 +47,7 @@ Set-Alias update System-Update
 # Set-Alias vim gvim
 
 # Which and where
-New-Alias which Get-Command
+New-Alias which1 Get-Command
 ${function:which2} = { Get-Command @args -All | Format-Table CommandType, Name, Definition }
 
 # Correct PowerShell Aliases if tools are available (aliases win if set)
@@ -142,7 +142,6 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:gdo} = { git.exe diff --cached @args } # What's changed? Only staged (added) changes.
   ${function:gco} = { if ($args) {git.exe commit -m @args} else {git.exe commit -v}} # "git commit only"
   ${function:gca} = { git.exe add --all; gco @args} # "git commit all"
-  # for gget (git.exe clone and cd), see functions.sh.
   ${function:ga} = { git.exe add @args }
   ${function:gc} = { git.exe commit -v @args }
   ${function:gcof} = { git.exe commit --no-verify -m @args }
@@ -181,6 +180,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
       git.exe clone $repo
     }
   }
+  # Align Git
+  ${function:gsu} = { if (Test-Path "~/workspace/Chef/cookbooks"){ cd "~/workspace/Chef/cookbooks"; git clone "gitolite@git.aligntech.com:chef/cookbooks/$($args[0].ToString()).git"; cd "$($args[0].ToString())" } }
 }
 
 # Chef
@@ -195,16 +196,48 @@ if (Get-Command knife.bat -ErrorAction SilentlyContinue | Test-Path) {
   ${function:kn} = { knife node @args }
   ${function:kns} = { knife node show @args }
   ${function:knl} = { knife node list @args }
-  ${function:kne} = { knife node edit @args }
+  ${function:kne} = { knife node edit $($args[0].ToString()) -a }
   ${function:kbl} = { knife block list @args }
   ${function:kbu} = { knife block use @args }
+  ${function:ksn} = {
+    if ($args.Count -eq 1){
+      $recipe_term = ""
+    }
+    else {
+      $recipe_term = "AND recipe:*$($args[1].ToString())*"
+    }
+    knife search node "chef_env*:$($args[0].ToString().ToUpper()) ${recipe_term}" -i
+  }
+  ${function:ksni} = {
+    if ($args.Count -ne 1) {
+      Write-Host "Usage: ksni <ip_address>"
+    }
+    else {
+      knife search node "ipaddress:$($args[0].ToString())" -i
+    }
+  }
+
+  # Align chef
+  ${function:wso2creds} = {
+    if ($args.Count -ne 2) {
+      Write-Host "Usage: wso2creds <environment> <username>"
+    }
+    else {
+      kbu itio-vault
+      $wso2db = knife vault show wso2creds "$($args[0].ToString().ToUpper())" --mode client --format json | ConvertFrom-Json
+      Write-Host $wso2db.users.$($args[1].ToString())
+      kbu itio
+    }
+  }
 }
 
 # Network
 # IP addresses: TODO: network functions
 if (Get-Command dig.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:myip} = { dig.exe +short myip.opendns.com `@resolver1.opendns.com }
+  ${function:digga} = { dig.exe +nocmd "$($args[0].ToString())" any +multiline +noall +answer }
 }
+${function:ipif} = {if ($($args[0])) {curl ipinfo.io/"$($args[0].ToString())"} else {curl ipinfo.io}}
 
 # Fun
 ${function:urlencode} = { python.exe -c "import sys, urllib.parse; print(urllib.parse.quote(str(sys.argv[1])));" @args }

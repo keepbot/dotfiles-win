@@ -559,14 +559,14 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="&lt;Startup&gt;" modified="2018-03-04 15:47:07" build="171025">
+				<key name="&lt;Startup&gt;" modified="2018-03-04 20:00:18" build="171025">
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data="* -cur_console:f -cur_console:d:C:\Users\dkiva\workspace -cur_console:t:PowerShell -cur_console:C:C:\cmder\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command &quot;Invoke-Expression '. ''%ConEmuDir%\..\profile.ps1'''&quot;"/>
-					<value name="Cmd2" type="string" data="* -cur_console:f -cur_console:d:C:\Users\dkiva\workspace -cur_console:t:PowerShell -cur_console:C:C:\cmder\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command &quot;Invoke-Expression '. ''%ConEmuDir%\..\profile.ps1'''&quot;"/>
-					<value name="Active" type="long" data="4"/>
-					<value name="Count" type="long" data="5"/>
-					<value name="Cmd3" type="string" data="* -cur_console:b -cur_console:d:C:\Users\dkiva\workspace -cur_console:t:PowerShell -cur_console:C:C:\cmder\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command &quot;Invoke-Expression '. ''%ConEmuDir%\..\profile.ps1'''&quot;"/>
-					<value name="Cmd4" type="string" data="&gt;* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:CMD -cur_console:C:C:\cmder\icons\cmder.ico cmd /k &quot;%ConEmuDir%\..\init.bat&quot;"/>
+					<value name="Cmd1" type="string" data="&gt;* -cur_console:f -cur_console:d:C:\Users\dkiva\workspace -cur_console:t:PowerShell -cur_console:C:C:\cmder\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command &quot;Invoke-Expression '. ''%ConEmuDir%\..\profile.ps1'''&quot;"/>
+					<value name="Cmd2" type="string" data="* -cur_console:b -cur_console:d:C:\Users\dkiva\workspace -cur_console:t:PowerShell -cur_console:C:C:\cmder\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command &quot;Invoke-Expression '. ''%ConEmuDir%\..\profile.ps1'''&quot;"/>
+					<value name="Active" type="long" data="1"/>
+					<value name="Count" type="long" data="4"/>
+					<value name="Cmd3" type="string" data="* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:CMD -cur_console:C:C:\cmder\icons\cmder.ico cmd /k &quot;%ConEmuDir%\..\init.bat&quot;"/>
+					<value name="Cmd4" type="string" data="* -cur_console:fn -cur_console:d:C:\Users\dkiva\workspace -cur_console:t:Ubuntu -cur_console:C:C:\cmder\icons\cmder.ico cmd /c &quot;C:\Windows\System32\bash.exe&quot; --login -i"/>
 					<value name="Cmd5" type="string" data="* -cur_console:fn -cur_console:d:C:\Users\dkiva\workspace -cur_console:t:Ubuntu -cur_console:C:C:\cmder\icons\cmder.ico cmd /c &quot;C:\Windows\System32\bash.exe&quot; --login -i"/>
 				</key>
 				<key name="Task9" modified="2018-03-01 03:17:41" build="171025">

@@ -50,8 +50,9 @@ C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".vimrc"        ) ( J
 C:\Windows\System32\cmd.exe /c mklink      "C:\sr\config.yaml"               ( Join-Path $PSScriptRoot "stack\config.yaml" )
 
 $list_of_modules = @(
-  "posh-git"
+  "OData"
   "posh-docker"
+  "posh-git"
   "PSReadline"
 )
 Write-Host ""
@@ -61,6 +62,7 @@ Write-Host ""
 foreach ($module in $list_of_modules) {
   if (Get-Module -ListAvailable -Name $module ) {
     Write-Host "Module $module already exist"
+    #Update-Module $module
   } else {
     Install-Module -Scope CurrentUser $module
     Write-Host "Module $module succesfully installed"
