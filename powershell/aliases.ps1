@@ -146,8 +146,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:gcow} = { gco Whitespace. @args }
   # ${function:gip} = { git.exe push -u @args }  # Comment if you use Get-Property and use gppp insted
   ${function:gpl} = { git.exe pull @args }
+  ${function:gplp} = { git.exe pull --rebase; git.exe push @args }
   ${function:gpp} = { git.exe push -u @args }  # Can't pull because you forgot to track? Run this.
-  ${function:gppp} = { git.exe pull --rebase; git.exe push @args }
   ${function:gck} = { git.exe checkout @args }
   ${function:gb} = { git.exe checkout -b @args }
   ${function:got} = { git.exe checkout - @args }
