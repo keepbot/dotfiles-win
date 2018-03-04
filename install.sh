@@ -63,7 +63,9 @@ ln -sf "$DOTFILES_DIR/bashrc"               "$HOME/.bashrc"
 ln -sf "$DOTFILES_DIR/gemrc"                "$HOME/.gemrc"
 ln -sf "$DOTFILES_DIR/.gitconfig"           "$HOME/.gitconfig"
 ln -sf "$DOTFILES_DIR/.gitmessage"          "$HOME/.gitmessage"
-mkdir "$HOME/.stack"
+if [ ! -d "$HOME/.stack" ]; then
+	mkdir "$HOME/.stack"
+fi
 ln -sf "$DOTFILES_DIR/stack/config.yaml"    "$HOME/.stack/config.yaml"
 ln -sf "$DOTFILES_DIR/tmux"                 "$HOME/.tmux"
 ln -sf "$DOTFILES_DIR/tmux.conf"            "$HOME/.tmux.conf"
