@@ -61,7 +61,6 @@ ln -sf "$DOTFILES_DIR/bash_profile"         "$HOME/.bash_profile"
 ln -sf "$DOTFILES_DIR/bash_profile"         "$HOME/.profile"
 ln -sf "$DOTFILES_DIR/bashrc"               "$HOME/.bashrc"
 ln -sf "$DOTFILES_DIR/gemrc"                "$HOME/.gemrc"
-ln -sf "$DOTFILES_DIR/.gitconfig"           "$HOME/.gitconfig"
 ln -sf "$DOTFILES_DIR/.gitmessage"          "$HOME/.gitmessage"
 if [ ! -d "$HOME/.stack" ]; then
 	mkdir "$HOME/.stack"
@@ -79,6 +78,7 @@ case $platform in
 		rm -rf "$HOME/.Xresources"               2> /dev/null
 		rm -rf "$HOME/.config/alacritty"         2> /dev/null
 
+		ln -sf "$DOTFILES_DIR/.gitconfig-nix"    "$HOME/.gitconfig"
 		ln -sf "$DOTFILES_DIR/bin-wsl"           "$HOME/.bin"
 		ln -sf "$DOTFILES_DIR/Xresources"        "$HOME/.Xresources"
 		ln -sf "$DOTFILES_DIR/config/alacritty"  "$HOME/.config/alacritty"
@@ -87,10 +87,12 @@ case $platform in
 		mkdir -p "$HOME/.config"
 		rm -rf "$HOME/.config/alacritty"         2> /dev/null
 
+		ln -sf "$DOTFILES_DIR/.gitconfig-mac"    "$HOME/.gitconfig"
 		ln -sf "$DOTFILES_DIR/bin-mac"           "$HOME/.bin"
 		ln -sf "$DOTFILES_DIR/config/alacritty"  "$HOME/.config/alacritty"
 		;;
 	MSYS_NT-10.0 )
+		ln -sf "$DOTFILES_DIR/.gitconfig-win"    "$HOME/.gitconfig"
 		ln -sf "$DOTFILES_DIR/bin-win"           "$HOME/.bin"
 		;;
 esac
