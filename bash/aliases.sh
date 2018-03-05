@@ -113,6 +113,7 @@ alias mmn="mount|column -t"
 
 # Git:
 alias ugr='for dir in `ls`; do echo "${dir}"; cd "${dir}"; git pull; cd ..; done' # Update all repos in current directory
+alias ugrm='for dir in `ls`; do echo "${dir}"; cd "${dir}"; git checkout master; git pull; cd ..; done' # Check out to master and update all repos in current directory
 alias ugrs='root=${PWD}; for dir in `ls`; do cd "${root}/${dir}" && ugr; done'    # Update all repos within all sub directories from curent
 alias gsu='git submodule update --recursive --remote'
 alias gll='git log --pretty=format:"%h - %an, %ar : %s"'
@@ -138,7 +139,8 @@ alias gcoc="gco Cleanup."
 alias gcaw="gca Whitespace."
 alias gcow="gco Whitespace."
 alias gp='git push -u'  # Comment if you use Pari Calculator and use gpp instead
-alias gpp="git push -u"  # Can't pull because you forgot to track? Run this.
+alias gpp="git push"  # Can't pull because you forgot to track? Run this.
+alias gppp="git push -u"  # Can't pull because you forgot to track? Run this.
 alias gpl='git pull'
 alias gplp='git pull --rebase && git push'
 alias gps='(git stash --include-untracked | grep -v "No local changes to save") && gpp && git stash pop || echo "Fail!"'
