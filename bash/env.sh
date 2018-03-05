@@ -70,7 +70,13 @@ case $platform in
 		[[ -d "$HOME/Android/Sdk/platform-tools" ]] && export PATH=$PATH:$HOME/Android/Sdk/platform-tools
 		;;
 	Darwin )
-		[[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin:$PATH
+		[[ -d /usr/local/opt/python3/bin ]]         && export PATH=/usr/local/opt/python3/bin/:$PATH
+		[[ -d $HOME/Library/Python/3.6/bin ]]       && export PATH=Library/Python/3.6/bin:$PATH
+		[[ -d /usr/local/opt/python2/bin ]]         && export PATH=/usr/local/opt/python2/bin/:$PATH
+		[[ -d $HOME/Library/Python/2.7/bin ]]       && export PATH=Library/Python/2.7/bin:$PATH
+		[[ -d /usr/local/bin ]]                     && export PATH=$PATH:/usr/local/bin
+		[[ -d /usr/local/sbin ]]                    && export PATH=$PATH:/usr/local/sbin
+		[[ -d $HOME/.bin ]]                         && export PATH=$PATH:$HOME/.bin
 		[[ -d $HOME/.local/bin ]]                   && export PATH=$PATH:$HOME/.local/bin
 		# Ruby
 		[[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
