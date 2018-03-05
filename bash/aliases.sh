@@ -41,6 +41,10 @@ alias    ......='cd ../../../../..'
 alias   .......='cd ../../../../../..'
 alias  ........='cd ../../../../../../..'
 
+alias crlf_fix='find ./ -type f -exec dos2unix {} \;'
+alias dir_fix='find ./ -type d -print -exec chmod 755 {} \;'
+alias files_fix='find ./ -type f -print -exec chmod 644 {} \;'
+
 # Python
 alias vc2='python2 -m virtualenv -p python2 venv' # init py2 venv in curent dir
 alias vc3='python3 -m virtualenv -p python3 venv' # init py3 venv in curent dir
