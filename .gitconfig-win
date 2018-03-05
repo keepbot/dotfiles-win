@@ -52,7 +52,7 @@
   ignorecase = false
   pager = less -FXRS -x2
   untrackedCache = true
-	autocrlf = true
+  autocrlf = true
 [color]
   branch = auto
   diff = auto
@@ -113,4 +113,4 @@
 [web]
   browser = open
 [winUpdater]
-	recentlySeenVersion = 2.15.1.windows.2
+  recentlySeenVersion = 2.15.1.windows.2

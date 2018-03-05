@@ -52,7 +52,7 @@
   ignorecase = false
   pager = less -FXRS -x2
   untrackedCache = true
-	autocrlf = input
+  autocrlf = input
 [color]
   branch = auto
   diff = auto
@@ -112,5 +112,3 @@
   email = divanov@aligntech.com
 [web]
   browser = open
-[winUpdater]
-	recentlySeenVersion = 2.15.1.windows.2

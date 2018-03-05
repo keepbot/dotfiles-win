@@ -52,7 +52,7 @@
   ignorecase = false
   pager = less -FXRS -x2
   untrackedCache = true
-	autocrlf = input
+  autocrlf = input
 [color]
   branch = auto
   diff = auto
