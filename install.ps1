@@ -1,4 +1,4 @@
-#!/usr/bin/env powershell
+#requires -version 3
 # Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 
 $profileDir         = Split-Path -Parent $profile
@@ -6,10 +6,6 @@ $dotfilesProfileDir = Join-Path $PSScriptRoot "powershell"
 
 "DEVELOPMENT" | Out-File ( Join-Path $PSScriptRoot "bash/var.env"    )
 "COMPLEX"     | Out-File ( Join-Path $PSScriptRoot "bash/var.prompt" )
-
-If (-Not (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe")) {
-  Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-}
 
 # Making Symlinks
 # Remove-Item -Force -Confirm:$false -Recurse $profileDir
@@ -36,7 +32,7 @@ C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".bash"         ) ( J
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".bin"          ) ( Join-Path $PSScriptRoot "bin-win"           )
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".tmux"         ) ( Join-Path $PSScriptRoot "tmux"              )
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".vim"          ) ( Join-Path $PSScriptRoot "vim"               )
-C:\Windows\System32\cmd.exe /c mklink /d   "c:\cmder\"                       ( Join-Path $HOME          ".bin\cmder"       )
+C:\Windows\System32\cmd.exe /c mklink /d   "c:\cmder\"                       ( Join-Path $HOME         ".bin\cmder"        )
 
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".bash_profile" ) ( Join-Path $PSScriptRoot "bash_profile"      )
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".profile"      ) ( Join-Path $PSScriptRoot "bash_profile"      )
@@ -62,13 +58,104 @@ Write-Host ""
 foreach ($module in $list_of_modules) {
   if (Get-Module -ListAvailable -Name $module ) {
     Write-Host "Module $module already exist"
-    #Update-Module $module
+    Import-Module $module
   } else {
     Install-Module -Scope CurrentUser $module
     Write-Host "Module $module succesfully installed"
+    Import-Module $module
   }
 }
 
+# Chocolatey
+If (-Not (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe")) {
+  Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+}
+If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
+  $candies = @(
+  "7zip.install"
+  "azure-cli"
+  "awscli"
+  "bind-toolsonly"
+  "chefdk"
+  "cmake"
+  "consul"
+  "curl"
+  "cyberduck"
+  "far"
+  "ftpdmin"
+  "gimp"
+  "git"
+  "gnuwin32-coreutils.install"
+  "golang"
+  "gpg4win"
+  # Haskell
+  "ghc"
+  "cabal"
+  "haskell-stack"
+  ###
+  "imagemagick"
+  "ldapadmin"
+  "meld"
+  "mingw"
+  #"mysql.workbench"
+  "nasm"
+  "nmap"
+  "nodejs-lts"
+  "notepadplusplus"
+  "nomad"
+  "nuget.commandline"
+  "nugetpackageexplorer"
+  "nugetpackagemanager"
+  "nssm"
+  "octopustools"
+  "openssh"
+  "packer"
+  "paket.powershell"
+  "paint.net"
+  "pgadmin3"
+  "pgadmin4"
+  "poshgit"
+  "putty"
+  "python3"
+  "python2"
+  "python"
+  "rdcman"
+  "reshack"
+  "robo3t"
+  "ruby"
+  "ruby2.devkit"
+  "rufus"
+  "strawberryperl"
+  # "studio3t"
+  "superputty"
+  "swissfileknife"
+  "sysinternals"
+  "terraform"
+  "tftpd32"
+  "vagrant"
+  "vagrant-manager"
+  "vcxsrv"
+  "vim"
+  "visualstudiocode"
+  "vlc"
+  "wget"
+  "windirstat"
+  "winscp"
+  "wireshark"
+  "wmiexplorer"
+  "x64dbg.portable"
+  "xpdf-utils"
+  "yarn"
+  "yasm"
+  "zoom"
+  )
 
+  foreach ($mars in $candies) {
+    choco install $mars -y -r
+  }
+}
 
+if (Get-Command chef -ErrorAction SilentlyContinue | Test-Path) {
+  chef gem install knife-block
+}
 

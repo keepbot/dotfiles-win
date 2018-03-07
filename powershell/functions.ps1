@@ -18,14 +18,15 @@ function sudo() {
 
 # System Update - Update RubyGems, NPM, and their installed packages
 function System-Update() {
-    Install-WindowsUpdate -IgnoreUserInput -IgnoreReboot -AcceptAll
-    Update-Module
-    Update-Help -Force
-    scoop update
+    # Install-WindowsUpdate -IgnoreUserInput -IgnoreReboot -AcceptAll
+    # Update-Module
+    # Update-Help -Force
+    # scoop update
     gem update --system
     gem update
     npm install npm -g
     npm update -g
+    cup all -y
 }
 
 # Reload the Shell

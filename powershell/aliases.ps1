@@ -57,10 +57,10 @@ if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
 }
 
 # Directory Listing: Use `ls.exe` if available
-if (Get-Command ls.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
   rm alias:ls -ErrorAction SilentlyContinue
   # Set `ls` to call `ls.exe` and always use --color
-  ${function:ls} = { ls.exe --color --group-directories-first @args }
+  ${function:ls} = { busybox.exe ls --color --group-directories-first @args }
   # List all files in long format
   ${function:l} = { ls -CFh @args }
   # List all files in long format, including hidden files
@@ -94,11 +94,11 @@ if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path) {
 }
 
 # Python aliases
-if (Get-Command C:\Python\2.7.14-x64\python.exe -ErrorAction SilentlyContinue | Test-Path) {
-  ${function:vc2} = { C:\Python\2.7.14-x64\python.exe -m virtualenv -p C:\Python\2.7.14-x64\python.exe venv } # init py2 venv in curent dir
+if (Get-Command C:\Python27\python.exe -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:vc2} = { C:\Python27\python.exe -m virtualenv -p C:\Python27\python.exe venv } # init py2 venv in curent dir
 }
-if (Get-Command C:\Python\3.6.3-x64\python.exe -ErrorAction SilentlyContinue | Test-Path) {
-  ${function:vc3} = { C:\Python\3.6.3-x64\python.exe -m virtualenv -p C:\Python\3.6.3-x64\python.exe venv } # init py3 venv in curent dir
+if (Get-Command C:\Python36\python.exe -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:vc3} = { C:\Python36\python.exe -m virtualenv -p C:\Python36\python.exe venv } # init py3 venv in curent dir
 }
 if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:vc} = { ($python = Get-Command python.exe | Select-Object -ExpandProperty Definition); python.exe -m virtualenv -p $python venv }
