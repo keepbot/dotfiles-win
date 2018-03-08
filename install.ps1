@@ -14,7 +14,7 @@ If (Test-Path (Join-Path $HOME ".bash"        ))  {[System.IO.Directory]::Delete
 If (Test-Path (Join-Path $HOME ".bin"         ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".bin"  ), $true)}
 If (Test-Path (Join-Path $HOME ".tmux"        ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".tmux" ), $true)}
 If (Test-Path (Join-Path $HOME ".vim"         ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".vim"  ), $true)}
-If (Test-Path "c:\cmder\"                      )  {[System.IO.Directory]::Delete(                "c:\cmder\"              , $true)}
+# If (Test-Path "c:\cmder\"                      )  {[System.IO.Directory]::Delete(                "c:\cmder\"              , $true)}
 
 If (Test-Path (Join-Path $HOME ".bash_profile"))  {Remove-Item -Force -Confirm:$false -Recurse ( Join-Path $HOME ".bash_profile" )}
 If (Test-Path (Join-Path $HOME ".bashrc"      ))  {Remove-Item -Force -Confirm:$false -Recurse ( Join-Path $HOME ".bashrc"       )}
@@ -32,7 +32,7 @@ C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".bash"         ) ( J
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".bin"          ) ( Join-Path $PSScriptRoot "bin-win"           )
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".tmux"         ) ( Join-Path $PSScriptRoot "tmux"              )
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".vim"          ) ( Join-Path $PSScriptRoot "vim"               )
-C:\Windows\System32\cmd.exe /c mklink /d   "c:\cmder\"                       ( Join-Path $HOME         ".bin\cmder"        )
+# C:\Windows\System32\cmd.exe /c mklink /d   "c:\cmder\"                       ( Join-Path $HOME         ".bin\cmder"        )
 
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".bash_profile" ) ( Join-Path $PSScriptRoot "bash_profile"      )
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".profile"      ) ( Join-Path $PSScriptRoot "bash_profile"      )
@@ -77,7 +77,8 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "awscli"
   "bind-toolsonly"
   "chefdk"
-  "cmake"
+  "cmdermini"
+  "cmake.portable"
   "consul"
   "curl"
   "cyberduck"
@@ -88,6 +89,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "gnuwin32-coreutils.install"
   "golang"
   "gpg4win"
+  "greenshot"
   # Haskell
   "ghc"
   "cabal"
@@ -95,8 +97,10 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   ###
   "imagemagick"
   "ldapadmin"
+  "jq"
   "meld"
   "mingw"
+  "miktex"
   #"mysql.workbench"
   "nasm"
   "nmap"
@@ -105,7 +109,6 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "nomad"
   "nuget.commandline"
   "nugetpackageexplorer"
-  "nugetpackagemanager"
   "nssm"
   "octopustools"
   "openssh"
@@ -119,6 +122,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "python3"
   "python2"
   "python"
+  "qbittorrent"
   "rdcman"
   "reshack"
   "robo3t"
@@ -128,6 +132,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "strawberryperl"
   # "studio3t"
   "superputty"
+  "svn"
   "swissfileknife"
   "sysinternals"
   "terraform"
@@ -135,7 +140,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "vagrant"
   "vagrant-manager"
   "vcxsrv"
-  "vim"
+  # "vim" - should be installed manually to cover python 3.6 support
   "visualstudiocode"
   "vlc"
   "wget"
@@ -150,12 +155,28 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "zoom"
   )
 
-  foreach ($mars in $candies) {
-    choco install $mars -y -r
+  $tmp = @(
+  )
+
+#  foreach ($mars in $candies) {
+  foreach ($mars in $tmp) {
+    choco install -y -r $mars
   }
 }
 
-if (Get-Command chef -ErrorAction SilentlyContinue | Test-Path) {
-  chef gem install knife-block
+#if (Get-Command chef -ErrorAction SilentlyContinue | Test-Path) {
+#  chef gem install knife-block
+#}
+
+# ConEmu profile
+If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path) {
+  $cmder_home = Get-Command cmder.exe | Select-Object -ExpandProperty Definition | Split-Path
+  Remove-Item -Force -Confirm:$false -Recurse (Join-Path $cmder_home "config\user-ConEmu.xml")
+  Remove-Item -Force -Confirm:$false -Recurse (Join-Path $cmder_home "vendor\profile.ps1")
+  Remove-Item -Force -Confirm:$false -Recurse (Join-Path $cmder_home "vendor\conemu-maximus5\ConEmu.xml")
+
+  C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "config\user-ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\user-ConEmu.xml")
+  C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\profile.ps1") (Join-Path $PSScriptRoot "data\conemu\profile.ps1")
+  C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\conemu-maximus5\ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\ConEmu.xml")
 }
 
