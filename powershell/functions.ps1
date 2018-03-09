@@ -19,8 +19,8 @@ function sudo() {
 # System Update - Update RubyGems, NPM, and their installed packages
 function System-Update() {
     # Install-WindowsUpdate -IgnoreUserInput -IgnoreReboot -AcceptAll
-    # Update-Module
-    # Update-Help -Force
+    Update-Module
+    Update-Help -Force
     # scoop update
     gem update --system
     gem update
@@ -31,9 +31,9 @@ function System-Update() {
 
 # Reload the Shell
 function Reload-Powershell {
-    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-    $newProcess.Arguments = "-nologo";
-    [System.Diagnostics.Process]::Start($newProcess);
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell"
+    $newProcess.Arguments = "-nologo"
+    [System.Diagnostics.Process]::Start($newProcess)
     exit
 }
 

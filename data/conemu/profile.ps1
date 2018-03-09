@@ -5,9 +5,9 @@
 # !!! Use "%CMDER_ROOT%\config\user-profile.ps1" to add your own startup commands
 
 # Compatibility with PS major versions <= 2
-if(!$PSScriptRoot) {
-    $PSScriptRoot = Split-Path $Script:MyInvocation.MyCommand.Path
-}
+#if(!$PSScriptRoot) {
+#    $PSScriptRoot = Split-Path $Script:MyInvocation.MyCommand.Path
+#}
 
 # We do this for Powershell as Admin Sessions because CMDER_ROOT is not beng set.
 if (! $ENV:CMDER_ROOT ) {
@@ -21,56 +21,9 @@ if (! $ENV:CMDER_ROOT ) {
 # Remove trailing '\'
 $ENV:CMDER_ROOT = (($ENV:CMDER_ROOT).trimend("\"))
 
-# do not load bundled psget if a module installer is already available
-# -> recent PowerShell versions include PowerShellGet out of the box
-$moduleInstallerAvailable = [bool](Get-Command -Name 'Install-Module' -ErrorAction SilentlyContinue | Out-Null)
-
-# Add Cmder modules directory to the autoload path.
-$CmderModulePath = Join-path $PSScriptRoot "psmodules/"
-
-if(-not $moduleInstallerAvailable -and -not $env:PSModulePath.Contains($CmderModulePath) ){
-    $env:PSModulePath = $env:PSModulePath.Insert(0, "$CmderModulePath;")
-}
-
-try {
-    Get-command -Name "vim" -ErrorAction Stop >$null
-} catch {
-    # # You could do this but it may be a little drastic and introduce a lot of
-    # # unix tool overlap with powershel unix like aliases
-    # $env:Path += $(";" + $env:CMDER_ROOT + "\vendor\git-for-windows\usr\bin")
-    # set-alias -name "vi" -value "vim"
-    # # I think the below is safer.
-
-    new-alias -name "vim" -value $($ENV:CMDER_ROOT + "\vendor\git-for-windows\usr\bin\vim.exe")
-    new-alias -name "vi" -value vim
-}
-
-try {
-    # Check if git is on PATH, i.e. Git already installed on system
-    Get-command -Name "git" -ErrorAction Stop >$null
-} catch {
-    $env:Path += $(";" + $env:CMDER_ROOT + "\vendor\git-for-windows\cmd")
-    # for bash.exe, which in the cmd version is found as <GIT>\usr\bin\bash.exe
-    $env:Path += $(";" + $env:CMDER_ROOT + "\vendor\git-for-windows\bin")
-}
-
-$gitLoaded = $false
-function Import-Git($Loaded){
-    if($Loaded) { return }
-    $GitModule = Get-Module -Name Posh-Git -ListAvailable
-    if($GitModule | select version | where version -le ([version]"0.6.1.20160330")){
-        Import-Module Posh-Git > $null
-    }
-    if(-not ($GitModule) ) {
-        Write-Warning "Missing git support, install posh-git with 'Install-Module posh-git' and restart cmder."
-    }
-    # Make sure we only run once by alawys returning true
-    return $true
-}
-
 function checkGit($Path) {
     if (Test-Path -Path (Join-Path $Path '.git') ) {
-        $gitLoaded = Import-Git $gitLoaded
+#        $gitLoaded = Import-Git $gitLoaded
         Write-VcsStatus
         return
     }
@@ -124,71 +77,7 @@ Custom prompt functions are loaded in as constants to get the same behaviour
     return " "
 }
 
-# Drop *.ps1 files into "$ENV:CMDER_ROOT\config\profile.d"
-# to source them at startup.
-if (-not (test-path "$ENV:CMDER_ROOT\config\profile.d")) {
-  mkdir "$ENV:CMDER_ROOT\config\profile.d"
-}
-
-pushd $ENV:CMDER_ROOT\config\profile.d
-foreach ($x in Get-ChildItem *.ps1) {
-  # write-host write-host Sourcing $x
-  . $x
-}
-popd
-
-$CmderUserProfilePath = Join-Path $env:CMDER_ROOT "config\user-profile.ps1"
-if(Test-Path $CmderUserProfilePath) {
-    # Create this file and place your own command in there.
-    . "$CmderUserProfilePath"
-} else {
-# This multiline string cannot be indented, for this reason I've not indented the whole block
-
-Write-Host -BackgroundColor Darkgreen -ForegroundColor White "First Run: Creating user startup file: $CmderUserProfilePath"
-
-$UserProfileTemplate = @'
-# Use this file to run your own startup commands
-
-## Prompt Customization
-<#
-.SYNTAX
-    <PrePrompt><CMDER DEFAULT>
-    λ <PostPrompt> <repl input>
-.EXAMPLE
-    <PrePrompt>N:\Documents\src\cmder [master]
-    λ <PostPrompt> |
-#>
-
-[ScriptBlock]$PrePrompt = {
-
-}
-
-# Replace the cmder prompt entirely with this.
-# [ScriptBlock]$CmderPrompt = {}
-
-[ScriptBlock]$PostPrompt = {
-
-}
-
-## <Continue to add your own>
-
-
-'@
-
-New-Item -ItemType File -Path $CmderUserProfilePath -Value $UserProfileTemplate > $null
-
-}
-
-# Once Created these code blocks cannot be overwritten
-#Set-Item -Path function:\PrePrompt   -Value $PrePrompt   -Options Constant
-#Set-Item -Path function:\CmderPrompt -Value $CmderPrompt -Options Constant
-#Set-Item -Path function:\PostPrompt  -Value $PostPrompt  -Options Constant
-
 Set-Item -Path function:\PrePrompt   -Value $PrePrompt
 Set-Item -Path function:\CmderPrompt -Value $CmderPrompt
 Set-Item -Path function:\PostPrompt  -Value $PostPrompt
-
-# Functions can be made constant only at creation time
-# ReadOnly at least requires `-force` to be overwritten
-#Set-Item -Path function:\prompt  -Value $Prompt  -Options ReadOnly
 Set-Item -Path function:\prompt  -Value $Prompt

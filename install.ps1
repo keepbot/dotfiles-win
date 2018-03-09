@@ -3,18 +3,19 @@
 
 $profileDir         = Split-Path -Parent $profile
 $dotfilesProfileDir = Join-Path $PSScriptRoot "powershell"
+$dotfilesModulesDir = Join-Path $dotfilesProfileDir "Modules"
+$dotfilesScriptsDir = Join-Path $dotfilesProfileDir "Scripts"
+
 
 "DEVELOPMENT" | Out-File ( Join-Path $PSScriptRoot "bash/var.env"    )
 "COMPLEX"     | Out-File ( Join-Path $PSScriptRoot "bash/var.prompt" )
 
 # Making Symlinks
-# Remove-Item -Force -Confirm:$false -Recurse $profileDir
 If (Test-Path $profileDir                      )  {[System.IO.Directory]::Delete(                $profileDir              , $true)}
 If (Test-Path (Join-Path $HOME ".bash"        ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".bash" ), $true)}
 If (Test-Path (Join-Path $HOME ".bin"         ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".bin"  ), $true)}
 If (Test-Path (Join-Path $HOME ".tmux"        ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".tmux" ), $true)}
 If (Test-Path (Join-Path $HOME ".vim"         ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".vim"  ), $true)}
-# If (Test-Path "c:\cmder\"                      )  {[System.IO.Directory]::Delete(                "c:\cmder\"              , $true)}
 
 If (Test-Path (Join-Path $HOME ".bash_profile"))  {Remove-Item -Force -Confirm:$false -Recurse ( Join-Path $HOME ".bash_profile" )}
 If (Test-Path (Join-Path $HOME ".bashrc"      ))  {Remove-Item -Force -Confirm:$false -Recurse ( Join-Path $HOME ".bashrc"       )}
@@ -32,39 +33,32 @@ C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".bash"         ) ( J
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".bin"          ) ( Join-Path $PSScriptRoot "bin-win"           )
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".tmux"         ) ( Join-Path $PSScriptRoot "tmux"              )
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".vim"          ) ( Join-Path $PSScriptRoot "vim"               )
-# C:\Windows\System32\cmd.exe /c mklink /d   "c:\cmder\"                       ( Join-Path $HOME         ".bin\cmder"        )
 
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".bash_profile" ) ( Join-Path $PSScriptRoot "bash_profile"      )
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".profile"      ) ( Join-Path $PSScriptRoot "bash_profile"      )
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".bashrc"       ) ( Join-Path $PSScriptRoot "bashrc"            )
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".gemrc"        ) ( Join-Path $PSScriptRoot "gemrc"             )
-C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".gitconfig"    ) ( Join-Path $PSScriptRoot ".gitconfig-win"        )
+C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".gitconfig"    ) ( Join-Path $PSScriptRoot ".gitconfig-win"    )
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".gitmessage"   ) ( Join-Path $PSScriptRoot ".gitmessage"       )
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".tmux.conf"    ) ( Join-Path $PSScriptRoot "tmux.conf"         )
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".vimrc"        ) ( Join-Path $PSScriptRoot "vimrc"             )
 
 C:\Windows\System32\cmd.exe /c mklink      "C:\sr\config.yaml"               ( Join-Path $PSScriptRoot "stack\config.yaml" )
 
-$list_of_modules = @(
-  "OData"
-  "posh-docker"
-  "posh-git"
-  "PSReadline"
-)
+
 Write-Host ""
-Write-Host "Initialization of PowerShell profile. Be patient. It's hurt only first time..."
+Write-Host "Initialization of PowerShell profile and installing applications. Be patient. It's hurt only first time..."
 Write-Host ""
 
-foreach ($module in $list_of_modules) {
-  if (Get-Module -ListAvailable -Name $module ) {
-    Write-Host "Module $module already exist"
-    Import-Module $module
-  } else {
-    Install-Module -Scope CurrentUser $module
-    Write-Host "Module $module succesfully installed"
-    Import-Module $module
-  }
+$NormalizationPath = Join-Path $dotfilesProfileDir "normalization-done"
+if(![System.IO.File]::Exists($NormalizationPath)) {
+  . (Join-Path $dotfilesScriptsDir "Normalilze-Manually-Installed-Modules.ps1") -force
+  Normalilze-Manually-Installed-Modules
+  New-Item (Join-Path $dotfilesProfileDir "normalization-done") -ItemType file
 }
+
+# Load Modules
+If (Test-Path (Join-Path $dotfilesProfileDir "modules.ps1"            ))  { . (Join-Path $dotfilesProfileDir "modules.ps1"            ) }
 
 # Chocolatey
 If (-Not (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe")) {
@@ -117,7 +111,6 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "paint.net"
   "pgadmin3"
   "pgadmin4"
-  "poshgit"
   "putty"
   "python3"
   "python2"
@@ -155,11 +148,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "zoom"
   )
 
-  $tmp = @(
-  )
-
-#  foreach ($mars in $candies) {
-  foreach ($mars in $tmp) {
+  foreach ($mars in $candies) {
     choco install -y -r $mars
   }
 }
@@ -172,11 +161,15 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
 If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path) {
   $cmder_home = Get-Command cmder.exe | Select-Object -ExpandProperty Definition | Split-Path
   Remove-Item -Force -Confirm:$false -Recurse (Join-Path $cmder_home "config\user-ConEmu.xml")
+  Remove-Item -Force -Confirm:$false -Recurse (Join-Path $cmder_home "vendor\init.bat")
   Remove-Item -Force -Confirm:$false -Recurse (Join-Path $cmder_home "vendor\profile.ps1")
   Remove-Item -Force -Confirm:$false -Recurse (Join-Path $cmder_home "vendor\conemu-maximus5\ConEmu.xml")
 
   C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "config\user-ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\user-ConEmu.xml")
+  C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\init.bat") (Join-Path $PSScriptRoot "data\conemu\init.bat")
   C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\profile.ps1") (Join-Path $PSScriptRoot "data\conemu\profile.ps1")
   C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\conemu-maximus5\ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\ConEmu.xml")
+
+  Set-ApplicationCompatibility -CurrentUser -ApplicationLocation (Get-Command cmder.exe | Select-Object -ExpandProperty Definition) -PrivilegeLevel
 }
 

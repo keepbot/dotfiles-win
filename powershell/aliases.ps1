@@ -244,6 +244,10 @@ ${function:ipif} = {if ($($args[0])) {curl ipinfo.io/"$($args[0].ToString())"} e
 # Fun
 ${function:urlencode} = { python.exe -c "import sys, urllib.parse; print(urllib.parse.quote(str(sys.argv[1])));" @args }
 
+if (Get-Command $Env:ProgramFiles\Docker\Docker\DockerCli.exe -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:dokkaSD} = { & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon }
+}
+
 ################################################################################
 ### >> Align:
 ################################################################################
