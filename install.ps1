@@ -71,7 +71,6 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "awscli"
   "bind-toolsonly"
   "chefdk"
-  "clink"
   "cmdermini"
   "cmake.portable"
   "consul"
