@@ -63,7 +63,7 @@ gcsr () {
 		echo "Usage: $0 <repo_url>"
 		echo
 	else
-		target=`python -c "from urlparse import urlparse; import os.path; uri='$1';result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0])),"`
+		target=`python -c "from urlparse import urlparse; import os.path; uri='$1';result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))"`
 		git clone --recurse-submodules "${1}" "${target}"
 	fi
 }

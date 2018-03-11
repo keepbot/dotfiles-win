@@ -182,8 +182,23 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
       git.exe clone $repo
     }
   }
+  ${function:get_repo_with_target} = {
+    if (-Not $args[0]){
+      Write-Host "You should enter repo URI."
+      Write-Host ( "Usage: {0} <repo_url>"  -f $MyInvocation.MyCommand )
+      Write-Host
+    } else {
+      $scheme = python.exe -c "from urllib.parse import urlparse; uri='$($args[0])'; result = urlparse(uri); print(result.scheme)"
+      if ($scheme -eq "https") {
+        $target = python.exe -c "from urllib.parse import urlparse; import os.path; uri='$($args[0])'; result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))"
+      } else {
+        $target = python.exe -c "from urllib.parse import urlparse; import os.path; uri='$($args[0])'; result = urlparse(uri); path = os.path.splitext(result.path.split(':', 1)[-1]); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))"
+      }
+      git clone --recurse-submodules "$($args[0])" "$target"
+    }
+  }
   # Align Git
-  ${function:gsu} = { if (Test-Path "~/workspace/Chef/cookbooks"){ cd "~/workspace/Chef/cookbooks"; git clone "gitolite@git.aligntech.com:chef/cookbooks/$($args[0].ToString()).git"; cd "$($args[0].ToString())" } }
+  ${function:get_cbk} = { if (Test-Path "~/workspace/Chef/cookbooks"){ cd "~/workspace/Chef/cookbooks"; git clone "gitolite@git.aligntech.com:chef/cookbooks/$($args[0].ToString()).git"; cd "$($args[0].ToString())" } }
 }
 
 # Chef
