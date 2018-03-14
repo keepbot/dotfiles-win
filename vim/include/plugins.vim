@@ -343,13 +343,21 @@ let g:ycm_key_list_previous_completion=['Up']
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 " Python with virtualenv support
-py3 << EOF
+if has("python3")
+    command! -nargs=1 Py py3 <args>
+else
+    command! -nargs=1 Py py <args>
+endif
+Py << EOF
 import os
 import sys
 if 'VIRTUAL_ENV' in os.environ:
   project_base_dir = os.environ['VIRTUAL_ENV']
   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
+  if sys.version_info >= (3, 0):
+    exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
+  else:
+    execfile(activate_this, dict(__file__=activate_this))
 EOF
 let python_highlight_all=1
 command! Python2Completer :YcmCompleter RestartServer /usr/bin/python2
