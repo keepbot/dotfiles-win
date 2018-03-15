@@ -558,10 +558,10 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="&lt;Startup&gt;" modified="2018-03-11 15:04:34" build="180206">
+				<key name="&lt;Startup&gt;" modified="2018-03-13 21:59:35" build="180206">
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data='&gt;* -cur_console:d:C:\Users\dkiva\workspace -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
-					<value name="Cmd2" type="string" data='* -cur_console:f -cur_console:d:C:\Users\dkiva\workspace -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
+					<value name="Cmd1" type="string" data='&gt;* -cur_console:f -cur_console:d:C:\Users\dkiva\workspace -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
+					<value name="Cmd2" type="string" data='* -cur_console:f -cur_console:d:C:\Users\dkiva\workspace\_libs\glew -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
 					<value name="Active" type="long" data="1"/>
 					<value name="Count" type="long" data="4"/>
 					<value name="Cmd3" type="string" data='* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:CMD -cur_console:C:C:\cmder\icons\cmder.ico "C:\WINDOWS\SYSTEM32\cmd.exe"    /k "%ConEmuDir%\..\init.bat"'/>
