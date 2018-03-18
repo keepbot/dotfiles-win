@@ -91,8 +91,10 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "haskell-stack"
   ###
   "imagemagick"
+  "itunes"
   "ldapadmin"
   "jq"
+  "llvm"
   "make"
   "meld"
   "mingw"
