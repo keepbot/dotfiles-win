@@ -121,6 +121,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "python2"
   "python"
   "qbittorrent"
+  # "qtcreator"
   "rdcman"
   "reshack"
   "robo3t"
