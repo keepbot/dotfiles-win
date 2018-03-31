@@ -23,7 +23,9 @@ function prompt_rvm {
 	# preserve exit status
 	local exit=$?
 	local PROMPT="`cat ~/.bash/var.prompt`"
-	rbv=$(rvm-prompt)
+	if [ `command -v rvm-prompt` ]; then
+		rbv=$(rvm-prompt)
+	fi
 	[[ -z ${rbv} ]] && exit
 	rbv=${rbv#ruby-}
 	[[ $rbv == *"@"* ]] || rbv="${rbv}@default"
