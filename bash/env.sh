@@ -61,7 +61,7 @@ case $platform in
 		[[ -d /usr/local/games ]]                   && export PATH=$PATH:/usr/local/games
 		# Ruby
 		[[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
-		#[[ -d "$HOME/.rvm/bin" ]]                   && export PATH=$HOME/.rvm/bin:$PATH
+		[[ -d "$HOME/.rvm/bin" ]]                   && export PATH=$PATH:$HOME/.rvm/bin
 		# Rust
 		[[ -d "$HOME/.cargo/bin" ]]                 && export PATH=$PATH:$HOME/.cargo/bin
 		# Yarn
