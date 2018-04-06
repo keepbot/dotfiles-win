@@ -144,7 +144,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:gco} = { if ($args) {git.exe commit -m @args} else {git.exe commit -v}} # "git commit only"
   ${function:gca} = { git.exe add --all; gco @args} # "git commit all"
   ${function:ga} = { git.exe add @args }
-  ${function:gc} = { git.exe commit -v @args }
+  ${function:gcv} = { git.exe commit -v @args }
   ${function:gcof} = { git.exe commit --no-verify -m @args }
   ${function:gcaf} = { (git.exe add --all) -and (gcof @args) }
   ${function:gcac} = { gca Cleanup. @args }
