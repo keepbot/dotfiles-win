@@ -353,7 +353,10 @@ import os
 import sys
 if 'VIRTUAL_ENV' in os.environ:
   project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  if os.name == 'nt':
+    activate_this = os.path.join(project_base_dir, 'Scripts\\activate_this.py')
+  else:
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
   if sys.version_info >= (3, 0):
     exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
   else:
