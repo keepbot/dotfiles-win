@@ -44,7 +44,7 @@ Set-Alias unmute Set-SoundUnmute
 Set-Alias update System-Update
 
 # Set GVim as default vim
-# Set-Alias vim gvim
+Set-Alias vim gvim
 
 # Which and where
 New-Alias which1 Get-Command
@@ -74,6 +74,17 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:la} = { ls -Force @args }
   # List only directories
   ${function:lsd} = { Get-ChildItem -Directory -Force @args }
+}
+
+# Greps with status
+if (Get-Command grep.exe -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:grep} = { grep.exe --color=auto @args }
+  ${function:gerp} = { grep @args }
+  ${function:gHS} = { grep -e "status" -e "health" @args }
+} else {
+  Set-Alias -Name grep -Value Select-String
+  Set-Alias -Name gerp -Value grep
+  Set-Alias -Name greo -Value grep
 }
 
 #if (Get-Command rm.exe -ErrorAction SilentlyContinue | Test-Path) {
@@ -269,8 +280,4 @@ if (Get-Command $Env:ProgramFiles\Docker\Docker\DockerCli.exe -ErrorAction Silen
 #Git
 if (Get-Command ssh.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:ginfo} = { ssh.exe gitolite@git info @args }
-}
-# Greps with status
-if (Get-Command grep.exe -ErrorAction SilentlyContinue | Test-Path) {
-  ${function:gHS} = { grep.exe -e "status" -e "health" @args }
 }

@@ -95,6 +95,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "ldapadmin"
   "jq"
   "llvm"
+  "lockhunter"
   "make"
   "meld"
   "mingw"
