@@ -89,6 +89,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "ghc"
   "cabal"
   "haskell-stack"
+  "hg"
   ###
   "imagemagick"
   "itunes"
