@@ -98,6 +98,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "llvm"
   "lockhunter"
   "make"
+  "maven"
   "meld"
   "mingw"
   "miktex"
