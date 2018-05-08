@@ -95,6 +95,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "itunes"
   "ldapadmin"
   "jq"
+  "kubernetes-cli"
   "llvm"
   "lockhunter"
   "make"
