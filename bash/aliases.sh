@@ -165,6 +165,7 @@ alias gbc="git add -A && git rebase --continue"
 alias gbm="git fetch origin master && git rebase origin/master"
 alias gfr="git fetch --all && git reset --hard origin/master"
 alias GClean="git reset --hard && git clean -d -x -f"
+alias grw="git-review"
 
 # Chef
 alias kc='kitchen converge'
