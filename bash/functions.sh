@@ -205,7 +205,8 @@ kb() {
 	cd - >/dev/null || return 1
 }
 
-kne() {
+# Here keyword 'function' used to avoid some king of tricky bug which breaks loading bash functions!
+function kne() {
 	cd ~ || return 1
 	knife node edit "${1}" -a
 	cd - >/dev/null || return 1
