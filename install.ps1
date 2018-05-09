@@ -102,6 +102,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "maven"
   "meld"
   "mingw"
+  "minikube"
   "miktex"
   #"mysql.workbench"
   "nasm"
