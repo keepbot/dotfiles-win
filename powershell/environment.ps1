@@ -49,7 +49,6 @@ function Reload-Paths {
   "C:\tools\ruby25\bin"
   "C:\Program Files\Sublime Text 3"
   "C:\Program Files\Mercurial"
-
   )
 
   $final_path = "C:\Users\dkiva\workspace\my\dotfiles\bin-win"
