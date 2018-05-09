@@ -276,6 +276,8 @@ if (Get-Command $Env:ProgramFiles\Docker\Docker\DockerCli.exe -ErrorAction Silen
   ${function:dokkaSD} = { & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon }
 }
 
+${function:List-Paths} = { $Env:Path.Split(';') }
+
 ################################################################################
 ### >> Align:
 ################################################################################

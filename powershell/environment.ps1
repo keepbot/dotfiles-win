@@ -15,7 +15,7 @@ Set-PSReadlineKeyHandler -Key Ctrl+d -Function DeleteCharOrExit
 Set-PSReadlineKeyHandler -Key Ctrl+e -Function DeleteWord
 Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
 
-function Reload-Paths {
+function Reload-Paths-My {
   $paths = @(
   "C:\Program Files\Docker\Docker\Resources\bin"
   "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin"
@@ -57,5 +57,41 @@ function Reload-Paths {
     $final_path += ";$path"
   }
 
-  [Environment]::SetEnvironmentVariable("MyPaths", "$final_path", "Machine")
+  [Environment]::SetEnvironmentVariable("PathsMy", "$final_path", "Machine")
+}
+
+function Reload-Paths-Orig {
+  $paths = @(
+  "C:\WINDOWS"
+  "C:\WINDOWS\System32\Wbem"
+  "C:\WINDOWS\System32\WindowsPowerShell\v1.0\"
+  "C:\WINDOWS\System32\OpenSSH\"
+  "C:\Program Files (x86)\Common Files\Oracle\Java\javapath"
+  "C:\ProgramData\Oracle\Java\javapath"
+  "C:\Program Files\Docker\Docker\Resources\bin"
+  "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.1\bin"
+  "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.1\libnvvp"
+  "C:\Program Files\Microsoft MPI\Bin\"
+  "C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\"
+  "C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\"
+  "C:\Program Files\dotnet\"
+  "C:\Program Files\Microsoft SQL Server\130\Tools\Binn\"
+  "C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL"
+  "C:\Program Files\Intel\Intel(R) Management Engine Components\DAL"
+  "C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT"
+  "C:\Program Files\Intel\Intel(R) Management Engine Components\IPT"
+  "C:\Program Files\Intel\WiFi\bin\"
+  "C:\Program Files\Common Files\Intel\WirelessCommon\"
+  "C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common"
+  "C:\Program Files (x86)\Xoreax\IncrediBuild"
+  "C:\VulkanSDK\1.1.70.1\Bin"
+  )
+
+  $final_path = "C:\WINDOWS\system32"
+
+  foreach ($path in $paths) {
+    $final_path += ";$path"
+  }
+
+  [Environment]::SetEnvironmentVariable("PathsOrig", "$final_path", "Machine")
 }
