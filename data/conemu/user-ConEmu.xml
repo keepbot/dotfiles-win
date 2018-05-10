@@ -558,14 +558,15 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="&lt;Startup&gt;" modified="2018-05-09 01:29:11" build="180206">
+				<key name="&lt;Startup&gt;" modified="2018-05-10 16:14:15" build="180206">
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data='* -cur_console:f -cur_console:d:C:\Users\dkiva\.vim\include -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
+					<value name="Cmd1" type="string" data='&gt;* -cur_console:f -cur_console:d:C:\Users\dkiva\.vim\include -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
 					<value name="Cmd2" type="string" data='* -cur_console:f -cur_console:d:C:\Users\dkiva\workspace\my\docs -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
-					<value name="Active" type="long" data="4"/>
-					<value name="Count" type="long" data="4"/>
+					<value name="Active" type="long" data="1"/>
+					<value name="Count" type="long" data="5"/>
 					<value name="Cmd3" type="string" data='* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:CMD -cur_console:C:C:\cmder\icons\cmder.ico "C:\WINDOWS\SYSTEM32\cmd.exe"    /k "%ConEmuDir%\..\init.bat"'/>
-					<value name="Cmd4" type="string" data='&gt;* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:Ubuntu "ubuntu.exe"'/>
+					<value name="Cmd4" type="string" data='* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:Ubuntu "ubuntu.exe"'/>
+					<value name="Cmd5" type="string" data='* -cur_console:d:C:\Users\dkiva -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
 				</key>
 				<key name="Task9" modified="2018-03-01 03:17:41" build="171025">
 					<value name="Name" type="string" data="{bash::bash}"/>
