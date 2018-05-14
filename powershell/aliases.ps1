@@ -278,6 +278,18 @@ if (Get-Command $Env:ProgramFiles\Docker\Docker\DockerCli.exe -ErrorAction Silen
 
 ${function:List-Paths} = { $Env:Path.Split(';') }
 
+# Tail
+${function:tail} = {
+  if ($args.Count -ne 2) {
+    Write-Host "Usage: tail <-N or -f> <path_to_file>"
+  } else {
+    switch ($args[0]) {
+      "-f" {Get-Content $args[1] -Wait}
+      default {Get-Content $args[1] -Tail $($args[0] -replace '\D+(\d+)','$1')}
+    }
+  }
+}
+
 ################################################################################
 ### >> Align:
 ################################################################################
