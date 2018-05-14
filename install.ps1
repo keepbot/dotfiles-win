@@ -116,9 +116,10 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "nssm"
   "octopustools"
   "openssh"
-  "packer"
   "paket.powershell"
+  "packer"
   "paint.net"
+  "pandoc"
   "pdfsam"
   "pgadmin3"
   "pgadmin4"
@@ -157,6 +158,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "xpdf-utils"
   "yarn"
   "yasm"
+  "yed"
   "zoom"
   )
 
