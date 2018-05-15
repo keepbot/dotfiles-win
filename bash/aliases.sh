@@ -42,13 +42,11 @@ alias   .......='cd ../../../../../..'
 alias  ........='cd ../../../../../../..'
 
 # Navigation Shortcuts
-alias drop='cd ~\Documents\Dropbox'
-alias desk='cd ~\Desktop'
-alias docs='cd ~\OneDrive\Documents'
-alias down='cd ~\Downloads'
-alias ws='cd ~\workspace'
-alias ws-df='cd ~\workspace\my\dotfiles'
-alias ws-tmp='cd ~\workspace\tmp'
+alias ws='cd ~/workspace'
+alias ws_c='cd /c/Users/dkiva/workspace'
+alias ws_d='cd /d/work'
+alias ws-df='cd ~/workspace/my/dotfiles'
+alias ws-tmp='cd ~/workspace/tmp'
 
 alias crlf_fix='find ./ -type f -exec dos2unix {} \;'
 alias dir_fix='find ./ -type d -print -exec chmod 755 {} \;'
