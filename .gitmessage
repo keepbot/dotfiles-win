@@ -1,7 +1,9 @@
 
-# Sctucture: 
+# Sctucture:
 # :icon: <type>(<scope>): <subject>
+#   !!! Second line should be empty !!!
 # <body>
+#
 # <footer>
 #
 # ** TYPES and EMOJI **
@@ -9,7 +11,7 @@
 # :new:heavy_plus_sign:       - new, add, feat, create
 # :leaves:                    - mongodb
 # :hammer:wrench:             - fix
-# :bug:ant:beetle:honeybee:   - bugs 
+# :bug:ant:beetle:honeybee:   - bugs
 # :closed_book:book:pencil:   - docs, readme
 # :art:                       - art, style
 # :recycle:                   - refactoring
@@ -21,8 +23,8 @@
 # :key:lock:                  - security
 # :twisted_rightwards_arrows: - move
 # :x:fire:                    - remove, delete, clean
-# :apple:                     - apple 
-# :penguin:                   - linux 
+# :apple:                     - apple
+# :penguin:                   - linux
 # :white_medium_square:       - windows
 # :arrows_clockwise:          - chore, routine
 # :whale:whale2               - docker
@@ -43,5 +45,5 @@
 # ** FOOTERS **
 #   References #1, #4, and #2.
 #   Fix #1.
-#   Closes #1 and #2. 
+#   Closes #1 and #2.
 #   Or links: https://github.com/keepbot/dotfiles-win/issues/XXX

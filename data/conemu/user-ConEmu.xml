@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2018-05-09 01:29:11" build="180206">
+		<key name=".Vanilla" modified="2018-05-16 11:06:02" build="180206">
 			<value name="ColorTable00" type="dword" data="00282828"/>
 			<value name="ColorTable01" type="dword" data="00758392"/>
 			<value name="ColorTable02" type="dword" data="001a9798"/>
@@ -17,7 +17,7 @@
 			<value name="ColorTable12" type="dword" data="003c4bf8"/>
 			<value name="ColorTable13" type="dword" data="009b87d2"/>
 			<value name="ColorTable14" type="dword" data="0041bcf9"/>
-			<value name="ColorTable15" type="dword" data="009b87d2"/>
+			<value name="ColorTable15" type="dword" data="00dffdff"/>
 			<value name="ColorTable16" type="dword" data="00000000"/>
 			<value name="ColorTable17" type="dword" data="00800000"/>
 			<value name="ColorTable18" type="dword" data="00008000"/>
@@ -558,14 +558,15 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="&lt;Startup&gt;" modified="2018-05-15 02:34:12" build="180206">
+				<key name="&lt;Startup&gt;" modified="2018-05-16 11:09:28" build="180206">
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data='* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:Ubuntu "ubuntu.exe"'/>
+					<value name="Cmd1" type="string" data='* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:Ubuntu -cur_console:P:gruvbox-dark "ubuntu.exe"'/>
 					<value name="Cmd2" type="string" data='* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:CMD -cur_console:C:C:\cmder\icons\cmder.ico "C:\WINDOWS\SYSTEM32\cmd.exe"    /k "%ConEmuDir%\..\init.bat"'/>
 					<value name="Active" type="long" data="4"/>
-					<value name="Count" type="long" data="4"/>
+					<value name="Count" type="long" data="5"/>
 					<value name="Cmd3" type="string" data='* -cur_console:d:C:\Users\dkiva -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
 					<value name="Cmd4" type="string" data='&gt;* -cur_console:f -cur_console:d:C:\Users\dkiva\workspace\my\bigdata-dev-infra\hardware -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
+					<value name="Cmd5" type="string" data='* -cur_console:d:C:\Users\dkiva -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
 				</key>
 				<key name="Task9" modified="2018-03-01 03:17:41" build="171025">
 					<value name="Name" type="string" data="{bash::bash}"/>
