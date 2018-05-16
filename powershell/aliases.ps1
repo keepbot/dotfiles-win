@@ -269,6 +269,8 @@ if (Get-Command dig.exe -ErrorAction SilentlyContinue | Test-Path) {
 }
 ${function:ipif} = {if ($($args[0])) {curl ipinfo.io/"$($args[0].ToString())"} else {curl ipinfo.io}}
 
+${function:localip} = { Get-NetIPAddress | Format-Table }
+
 # Fun
 ${function:urlencode} = { python.exe -c "import sys, urllib.parse; print(urllib.parse.quote(str(sys.argv[1])));" @args }
 
