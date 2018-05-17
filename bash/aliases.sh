@@ -197,7 +197,7 @@ alias rbu='bundle update'
 alias rbe='bundle exec'
 
 # Docker
-alias di='dooker images'
+alias di='docker images'
 alias dca='docker ps -a'
 alias dcl='docker rm $(docker ps -aqf status=exited)'
 alias dcla='docker rm $(docker ps -aqf status=exited) && docker rmi $(docker images -qf dangling=true) && docker volume rm $(docker volume ls -qf dangling=true)'
