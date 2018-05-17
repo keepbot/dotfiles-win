@@ -196,6 +196,12 @@ alias rbi='gem bundle install'
 alias rbu='bundle update'
 alias rbe='bundle exec'
 
+# Docker
+alias di='dcoker images'
+alias dca='docker ps -a'
+alias dcl='docker rm $(docker ps -aqf status=exited)'
+alias dcla='docker rm $(docker ps -aqf status=exited) && docker rmi $(docker images -qf dangling=true) && docker volume rm $(docker volume ls -qf dangling=true)'
+
 ################################################################################
 ### >> Align:
 ################################################################################

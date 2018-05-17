@@ -294,6 +294,19 @@ ${function:tail} = {
 
 ${function:List-Env} = { Get-ChildItem Env: }
 
+# Docker
+if (Get-Command docker.exe -ErrorAction SilentlyContinue | Test-Path)
+{
+  ${function:di} = { docker.exe images }
+  ${function:dca} = { docker.exe ps -a }
+  ${function:dcl} = { docker.exe rm $(docker ps -aqf status=exited) }
+  ${function:dcla} = {
+    docker.exe rm $(docker ps -aqf status=exited)
+    docker.exe rmi $(docker images -qf dangling=true)
+    docker.exe volume rm $(docker volume ls -qf dangling=true)
+  }
+}
+
 ################################################################################
 ### >> Align:
 ################################################################################
