@@ -1,11 +1,7 @@
 
-# Sctucture:
-# :icon: <type>(<scope>): <subject>
-#   !!! Second line should be empty !!!
-# <body>
-#   Useful text. What had been changed
-# <footer>
-#   References #1, #4, and #2.
-#   Fix #1.
-#   Closes #1 and #2.
-#   Or links: https://github.com/keepbot/dotfiles-win/issues/XXX
+# Structure (50/72):
+# >> Subject (50):  <type>(<scope>): <subject>
+# >> ... Empty line ...
+# >> Body of git message (72-75)
+# >> Footer: References: #1, #4, and #2 || Fix: #1 || Closes: #1 and #2
+# >> Footer: Links: https://github.com/keepbot/dotfiles/issues/XXX
