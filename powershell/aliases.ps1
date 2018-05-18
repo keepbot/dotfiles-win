@@ -298,7 +298,7 @@ ${function:List-Env} = { Get-ChildItem Env: }
 if (Get-Command docker.exe -ErrorAction SilentlyContinue | Test-Path)
 {
   ${function:di} = { docker.exe images }
-  ${function:dca} = { docker.exe ps -a }
+  ${function:dc} = { docker.exe ps -a }
   ${function:dcl} = { docker.exe rm $(docker ps -aqf status=exited) }
   ${function:dcla} = {
     docker.exe rm $(docker ps -aqf status=exited)
