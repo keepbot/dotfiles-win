@@ -85,6 +85,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "golang"
   "gpg4win"
   "greenshot"
+  "grepwin"
   # Haskell
   "ghc"
   "cabal"

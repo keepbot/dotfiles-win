@@ -17,6 +17,7 @@ Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
 
 function Reload-Paths-My {
   $paths = @(
+  "C:\Program Files\grepWin"
   "C:\Program Files\Docker\Docker\Resources\bin"
   "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin"
   "C:\Python36\"
