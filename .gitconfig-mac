@@ -108,7 +108,7 @@
   enabled = true
 [user]
   name = Dmitriy Ivanov
-  #email = d.k.ivanov@live.com
-  email = divanov@aligntech.com
+  email = d.k.ivanov@live.com
+  #email = dmitrii_ivanov1@epam.com
 [web]
   browser = open
