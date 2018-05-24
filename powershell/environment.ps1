@@ -6,6 +6,7 @@ $Env:GIT_EDITOR = $Env:EDITOR
 
 # Language
 $Env:LANG = "en"
+$Env:LC_ALL = "C.UTF-8"
 
 # Virtual Env Fix (if prompt in ReadOnly mode)
 # $env:VIRTUAL_ENV_DISABLE_PROMPT = 1

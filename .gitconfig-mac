@@ -10,7 +10,7 @@
   delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '\\*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
   deleted = "!git log --diff-filter=D --summary | grep delete"
   diff = diff --ignore-space-at-eol -b -w --ignore-blank-lines
-  # clean up all 
+  # clean up all
   forget = "!git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"
   l = log --graph --pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   la = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
