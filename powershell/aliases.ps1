@@ -51,6 +51,8 @@ ${function:time} = {
 #   $sw.Elapsed
 # }
 
+${function:env} = {Get-ChildItem Env:}
+
 # Create a new directory and enter it
 Set-Alias mkd CreateAndSet-Directory
 
