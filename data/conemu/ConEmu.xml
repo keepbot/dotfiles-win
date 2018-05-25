@@ -482,8 +482,8 @@
 			<value name="DndLKey" type="hex" data="00"/>
 			<value name="DndRKey" type="hex" data="a2"/>
 			<value name="WndDragKey" type="dword" data="00121101"/>
-			<key name="Tasks" modified="2018-05-16 16:54:23" build="180206">
-				<value name="Count" type="long" data="10"/>
+			<key name="Tasks" modified="2018-05-25 15:53:03" build="180206">
+				<value name="Count" type="long" data="8"/>
 				<key name="Task1" modified="2018-03-09 05:17:58" build="180206">
 					<value name="Name" type="string" data="{Powershell::Powershell}"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
@@ -502,26 +502,35 @@
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="Flags" type="dword" data="00000000"/>
 				</key>
-				<key name="Task3" modified="2018-05-25 13:13:32" build="180206">
-					<value name="Name" type="string" data="{Ununtu}"/>
+				<key name="Task3" modified="2018-05-25 15:53:03" build="180206">
+					<value name="Name" type="string" data="{bash::Ununtu}"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data='*powershell "ubuntu.exe"'/>
+					<value name="Cmd1" type="string" data="ubuntu.exe"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Flags" type="dword" data="00000004"/>
 				</key>
-				<key name="Task4" modified="2018-05-16 16:54:23" build="180206">
-					<value name="Name" type="string" data="{BashForWindows}"/>
+				<key name="Task4" modified="2018-05-25 15:50:03" build="180206">
+					<value name="Name" type="string" data="{bash::bash}"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data='*cmd /c "c:\windows\system32\bash.exe" --login -i -new_console'/>
+					<value name="Cmd1" type="string" data='cmd /c "C:\Program Files\Git\bin\bash.exe" --login -i -new_console'/>
 					<value name="Cmd2" type="string" data="%CMDER_ROOT%\vendor\git-for-windows\git-bash.exe"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Flags" type="dword" data="00000004"/>
+					<value name="Flags" type="dword" data="00000000"/>
 				</key>
-				<key name="Task5" modified="2018-05-16 16:54:23" build="180206">
+				<key name="Task5" modified="2018-05-25 15:53:03" build="180206">
+					<value name="Name" type="string" data="{bash::WSL}"/>
+					<value name="Flags" type="dword" data="00000004"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
+					<value name="Cmd1" type="string" data='*cmd /c "c:\windows\system32\bash.exe" --login -i -new_console'/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+				</key>
+				<key name="Task6" modified="2018-05-25 15:53:03" build="180206">
 					<value name="Name" type="string" data="{Powershell::PowerShell as Admin}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -529,60 +538,33 @@
 					<value name="Cmd1" type="string" data='*PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;" -new_console'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
+					<value name="Cmd2" type="string" data="%CMDER_ROOT%vendor\git-for-windows\usr\bin\mintty.exe /bin/bash -l -new_console"/>
 				</key>
-				<key name="Task6" modified="2018-05-16 16:54:23" build="180206">
+				<key name="Task7" modified="2018-05-25 15:53:03" build="180206">
 					<value name="Name" type="string" data="{cmd::Cmder as Admin}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
 					<value name="Cmd1" type="string" data='*cmd /k "%ConEmuDir%\..\init.bat"  -new_console'/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="1"/>
-					<value name="Cmd2" type="string" data="%CMDER_ROOT%vendor\git-for-windows\usr\bin\mintty.exe /bin/bash -l -new_console"/>
 				</key>
-				<key name="Task7" modified="2018-05-16 16:54:23" build="180206">
-					<value name="Name" type="string" data="{bash::mintty as Admin}"/>
-					<value name="Flags" type="dword" data="00000000"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data='/icon "%ConEmuDir%\..\git-for-windows\usr\share\git\git-for-windows.ico"'/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data="*%ConEmuDir%\..\git-for-windows\usr\bin\mintty.exe /bin/bash -l -new_console"/>
-				</key>
-				<key name="Task8" modified="2018-05-16 16:54:23" build="180206">
-					<value name="Name" type="string" data="{bash::mintty}"/>
-					<value name="Flags" type="dword" data="00000000"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data='/icon "%ConEmuDir%\..\git-for-windows\usr\share\git\git-for-windows.ico"'/>
-					<value name="Cmd1" type="string" data="%ConEmuDir%\..\git-for-windows\usr\bin\mintty.exe /bin/bash -l -new_console"/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="1"/>
-				</key>
-				<key name="&lt;Startup&gt;" modified="2018-05-25 00:59:10" build="180206">
-					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data='* -cur_console:f -cur_console:d:C:\Users\dkiva -cur_console:t:Ubuntu -cur_console:C:C:\tools\cmdermini\icons\cmder.ico cmd /c "ubuntu.exe"'/>
-					<value name="Cmd2" type="string" data='&gt;* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
-					<value name="Active" type="long" data="2"/>
-					<value name="Count" type="long" data="3"/>
-					<value name="Cmd3" type="string" data='* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
-				</key>
-				<key name="Task9" modified="2018-05-16 16:54:23" build="180206">
+				<key name="Task8" modified="2018-05-25 15:53:03" build="180206">
 					<value name="Name" type="string" data="{bash::bash as Admin}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data='*cmd /c "%ConEmuDir%\..\git-for-windows\bin\bash" --login -i -new_console'/>
+					<value name="Cmd1" type="string" data='*cmd /c "C:\Program Files\Git\bin\mintty.exe" --login -i -new_console'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task10" modified="2018-05-16 16:54:23" build="180206">
-					<value name="Name" type="string" data="{bash::bash}"/>
-					<value name="Flags" type="dword" data="00000000"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='cmd /c "%ConEmuDir%\..\git-for-windows\bin\bash" --login -i -new_console'/>
+				<key name="&lt;Startup&gt;" modified="2018-05-25 15:24:34" build="180206">
+					<value name="GuiArgs" type="string" data=""/>
+					<value name="Cmd1" type="string" data='&gt;* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
+					<value name="Cmd2" type="string" data='* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
+					<value name="Active" type="long" data="1"/>
+					<value name="Count" type="long" data="3"/>
+					<value name="Cmd3" type="string" data='* -cur_console:f -cur_console:d:C:\Users\dkiva -cur_console:t:PowerShell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
 				</key>
 			</key>
 			<key name="Apps" modified="2018-03-01 03:17:41" build="171025">
