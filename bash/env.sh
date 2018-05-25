@@ -68,6 +68,8 @@ case $platform in
 		[[ -d "$HOME/.yarn/bin" ]]                  && export PATH=$PATH:$HOME/.yarn/bin
 		# Android
 		[[ -d "$HOME/Android/Sdk/platform-tools" ]] && export PATH=$PATH:$HOME/Android/Sdk/platform-tools
+		# Maestro CLI
+		[[ -d "$HOME/.local/bin/maestro-cli" ]]     && export PATH=$PATH:$HOME/.local/bin/maestro-cli/bin
 		;;
 	Darwin )
 		[[ -d /usr/local/opt/python3/bin ]]         && export PATH=/usr/local/opt/python3/bin/:$PATH
@@ -83,6 +85,8 @@ case $platform in
 		# VS Code
 		[[ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]] && \
 			export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+		# Maestro CLI
+		[[ -d "$HOME/.local/bin/maestro-cli" ]]     && export PATH=$PATH:$HOME/.local/bin/maestro-cli/bin
 		;;
 	MSYS_NT-10.0 )
 		[[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin:$PATH
