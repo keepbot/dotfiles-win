@@ -89,6 +89,7 @@ function Reload-Paths-Orig {
   "C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common"
   "C:\Program Files (x86)\Xoreax\IncrediBuild"
   "C:\VulkanSDK\1.1.70.1\Bin"
+  "C:\Program Files (x86)\Skype\Phone\"
   )
 
   $final_path = "C:\WINDOWS\system32"
