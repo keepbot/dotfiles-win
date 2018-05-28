@@ -15,6 +15,7 @@ $Env:LC_ALL = "C.UTF-8"
 Set-PSReadlineKeyHandler -Key Ctrl+d -Function DeleteCharOrExit
 Set-PSReadlineKeyHandler -Key Ctrl+e -Function DeleteWord
 Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
+Set-PSReadLineKeyHandler -Key Tab -Function Complete
 
 function Reload-Paths-My {
   $paths = @(
