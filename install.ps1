@@ -81,7 +81,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "ftpdmin"
   "gimp"
   "git"
-  "gnuwin32-coreutils.install"
+  # "gnuwin32-coreutils.install"
   "golang"
   "gpg4win"
   "greenshot"
