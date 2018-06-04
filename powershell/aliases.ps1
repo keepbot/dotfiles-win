@@ -337,6 +337,18 @@ if (Get-Command docker.exe -ErrorAction SilentlyContinue | Test-Path)
     docker.exe rmi $(docker images -qf dangling=true)
     docker.exe volume rm $(docker volume ls -qf dangling=true)
   }
+  # inspect docker images
+  ${function:dc_trace_cmd} = {
+    ${parent}= $(docker.exe inspect -f '{{ .Parent }}' $args[0])
+    [int]${level}=$args[1]
+    Write-Host ${level}: $(docker inspect -f '{{ .ContainerConfig.Cmd }}' $args[0])
+    ${level}=${level}+1
+    if (${parent})
+    {
+      Write-Host ${level}: ${parent}
+      dc_trace_cmd ${parent} ${level}
+    }
+  }
 }
 
 ################################################################################
