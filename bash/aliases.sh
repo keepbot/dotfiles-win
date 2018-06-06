@@ -63,6 +63,7 @@ alias vgen='va && pip freeze > requirements.txt'
 
 # tmux aliases
 alias tmux="tmux -2"
+alias t='tmux'
 alias ta='tmux attach'
 alias tls='tmux ls'
 alias tat='tmux attach -t'
