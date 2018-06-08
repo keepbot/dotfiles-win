@@ -111,6 +111,7 @@
 [user]
   name = Dmitriy Ivanov
   email = d.k.ivanov@live.com
+	signingkey = 21788557EE03EA8E
   #email = dmitrii_ivanov1@epam.com
 [web]
   browser = open
