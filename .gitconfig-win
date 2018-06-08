@@ -116,3 +116,5 @@
   browser = open
 [winUpdater]
   recentlySeenVersion = 2.15.1.windows.2
+[gpg]
+	program = C:\\Program Files (x86)\\Gpg4win\\..\\GnuPG\\bin\\gpg.exe
