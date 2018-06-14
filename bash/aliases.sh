@@ -173,7 +173,8 @@ alias gbc="git add -A && git rebase --continue"
 alias gbm="git fetch origin master && git rebase origin/master"
 alias gfr="git fetch --all && git reset --hard origin/master"
 alias GClean="git reset --hard && git clean -d -x -f"
-alias grw="git-review"
+alias grw="git review $1"
+alias grb="git push origin HEAD:refs/for/$1"
 
 # Chef
 alias kc='kitchen converge'
