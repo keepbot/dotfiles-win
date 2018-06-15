@@ -27,6 +27,7 @@ function Reload-Paths-My {
   "C:\Python27\"
   "C:\Python27\Scripts"
   "C:\ProgramData\chocolatey\bin"
+  "C:\Program Files\OpenSSL\bin"
   #"C:\Program Files (x86)\vim80"
   "C:\Program Files (x86)\vim\vim81"
   "C:\usr\bin"

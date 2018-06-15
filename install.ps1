@@ -117,6 +117,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "nssm"
   "octopustools"
   "openssh"
+  "openssl.light"
   "paket.powershell"
   "packer"
   "paint.net"
