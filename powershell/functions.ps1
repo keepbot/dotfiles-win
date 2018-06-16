@@ -252,5 +252,6 @@ function Bamboo-Get-AMI {
 }
 
 function Stop-Beeper {
+  # sc config beep start= disabled
   net stop beep
 }
