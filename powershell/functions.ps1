@@ -250,3 +250,7 @@ function Bamboo-Get-AMI {
     Write-Host "REMEMBER: Use the Image from the appropriate region!"
   }
 }
+
+function Stop-Beeper {
+  net stop beep
+}
