@@ -85,12 +85,12 @@ ${function:which2} = { Get-Command @args -All | Format-Table CommandType, Name, 
 # Correct PowerShell Aliases if tools are available (aliases win if set)
 # WGet: Use `ls.exe` if available
 if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
-  rm alias:wget -ErrorAction SilentlyContinue
+  Remove-Item alias:wget -ErrorAction SilentlyContinue
 }
 
 # Directory Listing: Use `ls.exe` if available
 if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
-  rm alias:ls -ErrorAction SilentlyContinue
+  Remove-Item alias:ls -ErrorAction SilentlyContinue
   # Set `ls` to call `ls.exe` and always use --color
   ${function:ls} = { busybox.exe ls --color --group-directories-first @args }
   # List all files in long format
@@ -103,7 +103,7 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:lsd} = { Get-ChildItem -Directory -Force @args }
 } else {
   # List all files, including hidden files
-  ${function:la} = { ls -Force @args }
+  ${function:la} = { Get-ChildItem-Force @args }
   # List only directories
   ${function:lsd} = { Get-ChildItem -Directory -Force @args }
 }
@@ -127,13 +127,13 @@ ${function:rmrf} = { Remove-Item -Recurse -Force @args }
 
 # curl: Use `curl.exe` if available
 if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path) {
-  rm alias:curl -ErrorAction SilentlyContinue
+  Remove-Item alias:curl -ErrorAction SilentlyContinue
   ${function:curl} = { curl.exe @args }
   # Gzip-enabled `curl`
-  ${function:gurl} = { curl --compressed @args }
+  ${function:gurl} = { curl.exe --compressed @args }
 } else {
   # Gzip-enabled `curl`
-  ${function:gurl} = { curl -TransferEncoding GZip }
+  ${function:gurl} = { Invoke-WebRequest -TransferEncoding GZip }
 }
 
 # Python aliases
@@ -168,9 +168,9 @@ if (Get-Command bundle -ErrorAction SilentlyContinue | Test-Path) {
 
 # Git:
 if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
-  ${function:ugr} = { $dir = Get-Location; Get-ChildItem $dir -Directory | ForEach-Object { Write-Host $_.FullName; cd $_.FullName; git.exe pull }; cd $dir }
-  ${function:ugrm} = { $dir = Get-Location; Get-ChildItem $dir -Directory | ForEach-Object { Write-Host $_.FullName; cd $_.FullName; git.exe checkout master; git.exe pull }; cd $dir }
-  ${function:ugrs} = { $dir = Get-Location; Get-ChildItem @args -Directory | ForEach-Object { cd $_.FullName; ugr }; cd $dir }
+  ${function:ugr} = { $dir = Get-Location; Get-ChildItem $dir -Directory | ForEach-Object { Write-Host $_.FullName; Set-Location $_.FullName; git.exe pull }; Set-Location $dir }
+  ${function:ugrm} = { $dir = Get-Location; Get-ChildItem $dir -Directory | ForEach-Object { Write-Host $_.FullName; Set-Location $_.FullName; git.exe checkout master; git.exe pull }; cd $dir }
+  ${function:ugrs} = { $dir = Get-Location; Get-ChildItem @args -Directory | ForEach-Object { Set-Location $_.FullName; ugr }; Set-Location $dir }
   ${function:gsu} = { git.exe submodule update --recursive --remote @args }
   ${function:gll} = { git.exe log --pretty=format:"%h - %an, %ar : %s" @args }
   ${function:glL} = { git.exe log --pretty=format:"%H - %an, %ar : %s" @args }
@@ -243,7 +243,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     }
   }
   # Align Git
-  ${function:get_cbk} = { if (Test-Path "~/workspace/Chef/cookbooks"){ cd "~/workspace/Chef/cookbooks"; git clone "gitolite@git.aligntech.com:chef/cookbooks/$($args[0].ToString()).git"; cd "$($args[0].ToString())" } }
+  ${function:get_cbk} = { if (Test-Path "~/workspace/Chef/cookbooks"){ Set-Location "~/workspace/Chef/cookbooks"; git clone "gitolite@git.aligntech.com:chef/cookbooks/$($args[0].ToString()).git"; Set-Location "$($args[0].ToString())" } }
 }
 
 # Chef
