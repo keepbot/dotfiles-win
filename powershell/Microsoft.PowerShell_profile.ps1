@@ -1,14 +1,14 @@
 #!/usr/bin/env powershell
 $profileDir         = Split-Path -Parent $profile
 
-If (-Not ($env:ConEmuANSI) -And -Not ($env:RELOADED_TRUE)) {
-  #Write-Host "$PID.pid"
-  $env:RELOADED_TRUE = 1
-  $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell"
-  $newProcess.Arguments = "-nologo"
-  [System.Diagnostics.Process]::Start($newProcess)
-  Stop-Process -Id $PID
-}
+# If (-Not ($env:ConEmuANSI) -And -Not ($env:RELOADED_TRUE)) {
+#   #Write-Host "$PID.pid"
+#   $env:RELOADED_TRUE = 1
+#   $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell"
+#   $newProcess.Arguments = "-nologo"
+#   [System.Diagnostics.Process]::Start($newProcess)
+#   Stop-Process -Id $PID
+# }
 
 # Load Functions
 If (Test-Path (Join-Path $profileDir "functions.ps1"          ))  { . (Join-Path $profileDir "functions.ps1"          ) }
