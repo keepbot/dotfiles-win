@@ -70,6 +70,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "azure-cli"
   "awscli"
   "bind-toolsonly"
+  "ccleaner"
   "chefdk"
   "cmdermini"
   "cmake.portable"
