@@ -55,6 +55,7 @@ function Reload-Paths-My {
   "C:\Program Files\Sublime Text 3"
   "C:\Program Files\Mercurial"
   "C:\tools\maestro-cli\bin\"
+  "C:\Program Files (x86)\Android\android-sdk\platform-tools\"
   )
 
   $final_path = "C:\Users\dkiva\workspace\my\dotfiles\bin-win"
@@ -92,6 +93,7 @@ function Reload-Paths-Orig {
   "C:\Program Files (x86)\Xoreax\IncrediBuild"
   "C:\VulkanSDK\1.1.70.1\Bin"
   "C:\Program Files (x86)\Skype\Phone\"
+  "C:\Program Files (x86)\Microsoft Emulator Manager\1.0\"
   )
 
   $final_path = "C:\WINDOWS\system32"
