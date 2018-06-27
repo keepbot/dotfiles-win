@@ -34,7 +34,7 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
-Get-ChildItem "$(Join-Path $profileDir "Scripts\Autoload")\*.ps1" | %{.$_}
+Get-ChildItem "$(Join-Path $profileDir "Scripts\Autoload")\*.ps1" | ForEach-Object{.$_}
 
 #Set-Location "~/workspace/my/dotfiles/"
 Write-Host "Welcome Home:"(Get-WmiObject -Class Win32_UserAccount -Filter "Name = '$env:USERNAME'").FullName
