@@ -74,7 +74,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "chefdk"
   "cmdermini"
   "cmake.portable"
-  "consul"
+  # "consul"
   "curl"
   "cyberduck"
   "du"
