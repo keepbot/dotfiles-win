@@ -58,11 +58,11 @@ if(![System.IO.File]::Exists($NormalizationPath)) {
 }
 
 # Load Modules
-If (Test-Path (Join-Path $dotfilesProfileDir "modules.ps1"            ))  { . (Join-Path $dotfilesProfileDir "modules.ps1"            ) }
+If (Test-Path (Join-Path $dotfilesProfileDir "modules.ps1"))  { . (Join-Path $dotfilesProfileDir "modules.ps1"            ) }
 
 # Chocolatey
 If (-Not (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe")) {
-  Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+  Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
 If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   $candies = @(
