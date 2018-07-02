@@ -43,8 +43,8 @@ alias  ........='cd ../../../../../../..'
 
 # Navigation Shortcuts
 alias ws='cd ~/workspace'
-alias ws_c='cd /c/Users/dkiva/workspace'
-alias ws_d='cd /d/work'
+alias ws_c='cd /mnt/c/Users/dkiva/workspace'
+alias ws_d='cd /mnt/d/work'
 alias ws-df='cd ~/workspace/my/dotfiles'
 alias ws-tmp='cd ~/workspace/tmp'
 
