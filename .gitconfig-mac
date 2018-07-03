@@ -1,6 +1,7 @@
 [alias]
   br = branch -v
   cbr = rev-parse --abbrev-ref HEAD
+  change-commits = "!f() { VAR1=$1; VAR='$'$1; OLD=$2; NEW=$3; echo \"Are you sure for replace $VAR $OLD => $NEW ?(Y/N)\";read OK;if [ \"$OK\" = 'Y' ] ; then shift 3; git filter-branch --env-filter \"if [ \\\"${VAR}\\\" = '$OLD' ]; then export $VAR1='$NEW';echo 'to $NEW'; fi\" $@; fi;}; f "
   # order files by number of commits, ascending
   churn = "!f() { git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
   cleanup = "!git remote prune origin && git gc && git clean -df && git stash clear"
@@ -16,6 +17,7 @@
   la = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
   ll = log --stat --abbrev-commit
   llg = log --color --graph --pretty=format:'%C(bold white)%H %d%Creset%n%s%n%+b%C(bold blue)%an <%ae>%Creset %C(bold green)%cr (%ci)' --abbrev-commit
+  llf = log --format=full
   # list all aliases
   lsa = "!git config -l | grep alias | cut -c 7-"
   # check out a local copy of a PR. https://gist.github.com/gnarf/5406589

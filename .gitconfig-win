@@ -17,6 +17,7 @@
   la = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
   ll = log --stat --abbrev-commit
   llg = log --color --graph --pretty=format:'%C(bold white)%H %d%Creset%n%s%n%+b%C(bold blue)%an <%ae>%Creset %C(bold green)%cr (%ci)' --abbrev-commit
+  llf = log --format=full
   # list all aliases
   lsa = "!git config -l | grep alias | cut -c 7-"
   # check out a local copy of a PR. https://gist.github.com/gnarf/5406589
