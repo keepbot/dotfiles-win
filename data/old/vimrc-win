@@ -901,7 +901,7 @@ command! Python3Completer :YcmCompleter RestartServer /usr/bin/python3
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:snips_author = "Dmitriy Ivanov"
-let g:snips_company = "Aligh Technology"
+let g:snips_company = "Ormco"
 
 " imap \... …
 
