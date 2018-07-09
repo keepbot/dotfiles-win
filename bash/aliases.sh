@@ -131,6 +131,7 @@ alias gsu='git submodule update --recursive --remote'
 alias gll='git log --pretty=format:"%h - %an, %ar : %s"'
 alias glL='git log --pretty=format:"%H - %an, %ar : %s"'
 alias g="git"
+alias gcr="git clone --recurse-submodules"
 alias gs="git status"
 alias gw="git show"
 alias gw^="git show HEAD^"

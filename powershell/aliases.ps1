@@ -175,6 +175,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:gll} = { git.exe log --pretty=format:"%h - %an, %ar : %s" @args }
   ${function:glL} = { git.exe log --pretty=format:"%H - %an, %ar : %s" @args }
   ${function:g} = { git.exe @args }
+  ${function:gcr} = { git.exe clone --recurse-submodules @args }
   ${function:gs} = { git.exe status @args }
   ${function:gw} = { git.exe show @args }
   ${function:gw^} = { git.exe show HEAD^ @args }
