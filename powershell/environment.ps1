@@ -55,6 +55,8 @@ function Reload-Paths-My {
   "C:\Program Files\Sublime Text 3"
   "C:\Program Files\Mercurial"
   "C:\Program Files (x86)\Android\android-sdk\platform-tools\"
+  "C:\Program Files\ImageMagick-7.0.7-Q16"
+  "C:\Program Files\Calibre2\"
   )
 
   $final_path = "C:\Users\dkiva\workspace\my\dotfiles\bin-win"
