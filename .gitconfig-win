@@ -112,9 +112,8 @@
   enabled = true
 [user]
   name = Dmitriy Ivanov
-  email = d.k.ivanov@live.com
-	signingkey = 21788557EE03EA8E
-  #email = dmitrii_ivanov1@epam.com
+  #email = d.k.ivanov@live.com
+  email = dmitriy.ivanov@ormco.com
 [web]
   browser = open
 [winUpdater]
