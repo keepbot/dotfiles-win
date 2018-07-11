@@ -81,7 +81,7 @@
 [commit]
   template = ~/.gitmessage
 [credential]
-  helper = cache
+	helper = manager
 [diff]
   compactionHeuristic = true
   mnemonicprefix = true
