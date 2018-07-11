@@ -6,15 +6,15 @@ $local_modules = @(
 
 $modules = @(
 # "PowerShellGet"
-# "AWSPowerShell" -- SLOW
+# "AWSPowerShell" # -- SLOW
 # "CredentialManager"
-# "dbatools" -- SLOW
+# "dbatools" # -- SLOW
 # "OData"
 # "OpenSSHUtils"
 "Posh-Docker"
 "Posh-Git"
-# "Posh-SSH" - SLOW
-"powershell-yaml"
+# "Posh-SSH" # - SLOW
+# "powershell-yaml"
 "PSReadline"
 )
 
