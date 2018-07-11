@@ -94,6 +94,8 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "hg"
   ###
   "imagemagick"
+  "irfanview"
+  "irfanviewplugins"
   "itunes"
   "ldapadmin"
   "jq"
