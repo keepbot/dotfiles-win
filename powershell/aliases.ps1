@@ -98,7 +98,7 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
   # List all files in long format, including hidden files
   ${function:la} = { ls -alh @args }
   ${function:ll} = { ls -alFh @args }
-  ${function:lld} = { ls -l | grep.exe ^d }
+  ${function:lld} = { ls -l | busybox.exe grep ^d }
   # List only directories
   ${function:lsd} = { Get-ChildItem -Directory -Force @args }
 } else {
@@ -109,8 +109,8 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
 }
 
 # Greps with status
-if (Get-Command grep.exe -ErrorAction SilentlyContinue | Test-Path) {
-  ${function:grep} = { grep.exe --color=auto @args }
+if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:grep} = { busybox.exe grep @args }
   ${function:gerp} = { grep @args }
   ${function:gHS} = { grep -e "status" -e "health" @args }
 } else {
@@ -351,6 +351,11 @@ if (Get-Command docker.exe -ErrorAction SilentlyContinue | Test-Path)
     }
   }
 }
+
+# Power
+${function:Set-Power-Max} = { powercfg.exe /SETACTIVE SCHEME_MIN }
+${function:Set-Power-Balanced} = { powercfg.exe /SETACTIVE SCHEME_BALANCED }
+${function:Set-Power-Min} = { powercfg.exe /SETACTIVE SCHEME_MAX }
 
 ################################################################################
 ### >> Align:
