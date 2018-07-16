@@ -128,6 +128,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "pdfsam"
   "pgadmin3"
   "pgadmin4"
+  "pgina"
   "putty"
   "python3"
   "python2"
