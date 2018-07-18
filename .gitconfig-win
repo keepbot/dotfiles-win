@@ -125,3 +125,5 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[lfs "customtransfer.bitbucket-media-api"]
+	path = C:\\tools\\GitLfsBitbucketAdapter\\git-lfs-bitbucket-media-api.exe
