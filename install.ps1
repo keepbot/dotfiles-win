@@ -169,9 +169,9 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "zoom"
   )
 
-  foreach ($mars in $candies) {
-    choco install -y -r $mars
-  }
+  # foreach ($mars in $candies) {
+  #   choco install -y -r $mars
+  # }
 }
 
 #if (Get-Command chef -ErrorAction SilentlyContinue | Test-Path) {
