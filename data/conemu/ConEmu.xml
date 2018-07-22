@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2018-07-17 23:19:26" build="180206">
+		<key name=".Vanilla" modified="2018-07-22 04:22:13" build="180206">
 			<value name="ColorTable00" type="dword" data="00282828"/>
 			<value name="ColorTable01" type="dword" data="00758392"/>
 			<value name="ColorTable02" type="dword" data="001a9798"/>
@@ -69,10 +69,10 @@
 			<value name="DefaultTerminalApps" type="string" data="explorer.exe"/>
 			<value name="ProcessAnsi" type="hex" data="01"/>
 			<value name="UseClink" type="hex" data="01"/>
-			<value name="StartType" type="hex" data="03"/>
+			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
-			<value name="StartTasksName" type="string" data="{cmd::Cmder}"/>
+			<value name="StartTasksName" type="string" data="{Powershell::Powershell}"/>
 			<value name="StartFarFolders" type="hex" data="00"/>
 			<value name="StartFarEditors" type="hex" data="00"/>
 			<value name="StoreTaskbarkTasks" type="hex" data="00"/>
@@ -123,10 +123,10 @@
 			<value name="ColorKeyValue" type="dword" data="00010101"/>
 			<value name="UseCurrentSizePos" type="hex" data="01"/>
 			<value name="WindowMode" type="dword" data="0000051f"/>
-			<value name="ConWnd Width" type="dword" data="00000092"/>
-			<value name="ConWnd Height" type="dword" data="00000047"/>
+			<value name="ConWnd Width" type="dword" data="0000004d"/>
+			<value name="ConWnd Height" type="dword" data="0000002c"/>
 			<value name="Cascaded" type="hex" data="00"/>
-			<value name="ConWnd X" type="long" data="10"/>
+			<value name="ConWnd X" type="long" data="638"/>
 			<value name="ConWnd Y" type="long" data="0"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="AutoSaveSizePos" type="hex" data="01"/>
@@ -558,14 +558,11 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="&lt;Startup&gt;" modified="2018-07-18 11:41:17" build="180206">
+				<key name="&lt;Startup&gt;" modified="2018-07-22 04:21:13" build="180206">
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data='* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:Ubuntu -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
-					<value name="Cmd2" type="string" data='* -cur_console:b -cur_console:d:C:\Users\dkiva\workspace\tmp\aligner -cur_console:t:Powershell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
-					<value name="Active" type="long" data="4"/>
-					<value name="Count" type="long" data="4"/>
-					<value name="Cmd3" type="string" data='* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:t:Powershell -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
-					<value name="Cmd4" type="string" data='&gt;* -cur_console:b -cur_console:d:C:\Users\dkiva -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
+					<value name="Cmd1" type="string" data='&gt;* -cur_console:d:C:\Users\Аня -cur_console:C:C:\tools\cmdermini\icons\cmder.ico PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;"'/>
+					<value name="Active" type="long" data="1"/>
+					<value name="Count" type="long" data="1"/>
 				</key>
 			</key>
 			<key name="Apps" modified="2018-03-01 03:17:41" build="171025">
@@ -911,7 +908,7 @@
 			</key>
 			<value name="StartCreateDelay" type="ulong" data="100"/>
 			<value name="DefaultTerminalDebugLog" type="hex" data="00"/>
-			<value name="LastMonitor" type="string" data="0,0,3840,2108"/>
+			<value name="LastMonitor" type="string" data="0,0,1280,770"/>
 			<value name="Restore2ActiveMon" type="hex" data="00"/>
 			<value name="DownShowExOnTopMessage" type="hex" data="00"/>
 			<value name="EnvironmentSet" type="multi">
