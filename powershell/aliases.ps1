@@ -119,6 +119,8 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
   Set-Alias -Name greo -Value grep
 }
 
+${function:lsf} = { Get-ChildItem . | ForEach-Object{ $_.Name } }
+
 #if (Get-Command rm.exe -ErrorAction SilentlyContinue | Test-Path) {
 # ${function:rmrf} = { rm.exe -rf @args }
 #} else {
