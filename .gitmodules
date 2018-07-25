@@ -93,11 +93,6 @@
 	url = https://github.com/nvie/vim-flake8.git
 	ignore = dirty
 	branch = master
-[submodule "vim/bundle/ultisnips"]
-	path = vim/bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
-	ignore = dirty
-	branch = master
 [submodule "vim/bundle/a.vim"]
 	path = vim/bundle/a.vim
 	url = https://github.com/vim-scripts/a.vim
