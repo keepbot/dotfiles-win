@@ -88,11 +88,6 @@
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
 	ignore = dirty
 	branch = master
-[submodule "vim/bundle/YouCompleteMe"]
-	path = vim/bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
-	ignore = dirty
-	branch = master
 [submodule "vim/bundle/vim-flake8"]
 	path = vim/bundle/vim-flake8
 	url = https://github.com/nvie/vim-flake8.git
