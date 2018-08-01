@@ -83,7 +83,7 @@ case $platform in
 		# VS Code
 		[[ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]] && \
 			export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-		[[ -f "/usr/libexec/java_home" ]]           && export JAVA_HOME="$(/usr/libexec/java_home)"
+		[[ -f "/usr/libexec/java_home" ]]           && export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 		;;
 	MSYS_NT-10.0 )
 		[[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin:$PATH
