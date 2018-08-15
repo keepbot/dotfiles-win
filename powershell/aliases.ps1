@@ -15,9 +15,11 @@ ${function:desk} = { Set-Location ~\Desktop }
 ${function:docs} = { Set-Location ~\Documents }
 ${function:down} = { Set-Location ~\Downloads }
 ${function:ws} = { Set-Location ~\workspace }
-${function:ws-df} = { Set-Location ~\workspace\my\dotfiles }
+${function:wsmy} = { Set-Location ~\workspace\my }
+${function:wsdf} = { Set-Location ~\workspace\my\dotfiles }
 ${function:wso} = { Set-Location ~\workspace\ormco}
-${function:ws-tmp} = { Set-Location ~\workspace\tmp }
+${function:wsod} = { Set-Location ~\workspace\ormco\devops}
+${function:wst} = { Set-Location ~\workspace\tmp }
 
 # Missing Bash aliases
 # Set-Alias time Measure-Command

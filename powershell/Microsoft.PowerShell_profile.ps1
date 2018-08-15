@@ -26,7 +26,7 @@ If (Test-Path (Join-Path $profileDir "aliases.ps1"            ))  { . (Join-Path
 If (Test-Path (Join-Path $profileDir "modules.ps1"            ))  { . (Join-Path $profileDir "modules.ps1"            ) }
 
 # Loading Cmder Profile
-If (Test-Path "c:\tools\cmdermini\vendor\profile.ps1"          )  {. "c:\tools\cmdermini\vendor\profile.ps1"            }
+If (Test-Path "c:\tools\cmdermini\vendor\profile.ps1"          )  { .  "c:\tools\cmdermini\vendor\profile.ps1"          }
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
