@@ -224,6 +224,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:GClean} = { while ((git diff-index HEAD --)) {git.exe reset --hard HEAD}; git.exe clean -d -x -f @args }
   ${function:git-review} = { if ($args[0] -and -Not $args[1]) {git.exe push origin HEAD:refs/for/@args[0]} else {Write-Host "Wrong command!`nUsage: git-review <branch_name>"}}
   ${function:grw} = { git-review }
+  ${function:git-home} = { git config --local user.email "d.k.ivanov@live.com" }
+  ${function:git-work} = { git config --local user.email "dmitriy.ivanov@ormco.com" }
   # GitHub
   ${function:get_gh_user_repos} = {
     Write-Host "Clonning all GH repos of $($args[0])"

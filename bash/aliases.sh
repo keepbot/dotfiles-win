@@ -176,6 +176,8 @@ alias gfr="git fetch --all && git reset --hard origin/master"
 alias GClean="git reset --hard && git clean -d -x -f"
 alias grw="git review $1"
 alias grb="git push origin HEAD:refs/for/$1"
+alias git-home="git config --local user.email 'd.k.ivanov@live.com'"
+alias git-work="git config --local user.email 'dmitriy.ivanov@ormco.com'"
 
 # Chef
 alias kc='kitchen converge'
