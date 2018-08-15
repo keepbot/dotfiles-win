@@ -10,12 +10,13 @@ ${function:......} = { Set-Location ..\..\..\..\.. }
 ${function:.......} = { Set-Location ..\..\..\..\..\.. }
 
 # Navigation Shortcuts
-${function:drop} = { Set-Location ~\Documents\Dropbox }
+${function:drop} = { Set-Location D:\Dropbox }
 ${function:desk} = { Set-Location ~\Desktop }
-${function:docs} = { Set-Location ~\OneDrive\Documents }
+${function:docs} = { Set-Location ~\Documents }
 ${function:down} = { Set-Location ~\Downloads }
 ${function:ws} = { Set-Location ~\workspace }
 ${function:ws-df} = { Set-Location ~\workspace\my\dotfiles }
+${function:wso} = { Set-Location ~\workspace\ormco}
 ${function:ws-tmp} = { Set-Location ~\workspace\tmp }
 
 # Missing Bash aliases
@@ -83,7 +84,7 @@ New-Alias which1 Get-Command
 ${function:which2} = { Get-Command @args -All | Format-Table CommandType, Name, Definition }
 
 # Correct PowerShell Aliases if tools are available (aliases win if set)
-# WGet: Use `ls.exe` if available
+# WGet: Use `wget.exe` if available
 if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
   Remove-Item alias:wget -ErrorAction SilentlyContinue
 }
