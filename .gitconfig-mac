@@ -110,8 +110,8 @@
   enabled = true
 [user]
   name = Dmitriy Ivanov
-  #email = d.k.ivanov@live.com
-  email = dmitriy.ivanov@ormco.com
+  email = d.k.ivanov@live.com
+  #email = dmitriy.ivanov@ormco.com
 [web]
   browser = open
 [filter "lfs"]
