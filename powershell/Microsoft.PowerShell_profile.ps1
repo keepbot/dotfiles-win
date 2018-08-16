@@ -25,9 +25,6 @@ If (Test-Path (Join-Path $profileDir "aliases.ps1"            ))  { . (Join-Path
 # Load Modules
 If (Test-Path (Join-Path $profileDir "modules.ps1"            ))  { . (Join-Path $profileDir "modules.ps1"            ) }
 
-# Loading Cmder Profile
-If (Test-Path "c:\tools\cmdermini\vendor\profile.ps1"          )  { .  "c:\tools\cmdermini\vendor\profile.ps1"          }
-
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
@@ -35,6 +32,12 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 Get-ChildItem "$(Join-Path $profileDir "Scripts\Autoload")\*.ps1" | ForEach-Object{.$_}
+
+# Loading Cmder Profile
+If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path) {
+  $cmder_home = Get-Command cmder.exe | Select-Object -ExpandProperty Definition | Split-Path
+  If (Test-Path (Join-Path $cmder_home "vendor\profile.ps1"   ))  { . (Join-Path $cmder_home "vendor\profile.ps1")      }
+}
 
 #Set-Location "~/workspace/my/dotfiles/"
 Write-Host "Welcome Home:"(Get-WmiObject -Class Win32_UserAccount -Filter "Name = '$env:USERNAME'").FullName

@@ -45,7 +45,6 @@ C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".vimrc"        ) ( J
 
 C:\Windows\System32\cmd.exe /c mklink      "C:\sr\config.yaml"               ( Join-Path $PSScriptRoot "stack\config.yaml" )
 
-
 Write-Host ""
 Write-Host "Initialization of PowerShell profile and installing applications. Be patient. It's hurt only first time..."
 Write-Host ""

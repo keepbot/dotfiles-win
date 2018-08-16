@@ -53,6 +53,7 @@ function Reload-Paths-My {
   "C:\Program Files\Git\cmd"
   "C:\Program Files\Git LFS"
   "C:\tools\ruby25\bin"
+  "C:\tools\cmdermini"
   "C:\Program Files\Sublime Text 3"
   "C:\Program Files\Mercurial"
   "C:\Program Files (x86)\Android\android-sdk\platform-tools\"
@@ -113,7 +114,7 @@ function Reload-Paths-Orig {
 function Set-Envs {
   Reload-Paths-My
   Reload-Paths-Orig
-  [Environment]::SetEnvironmentVariable("PATH", "%PathsMy%;%PathsOrig%", "Machine")
+  # [Environment]::SetEnvironmentVariable("PATH", "%PathsMy%;%PathsOrig%", "Machine")
 
   [Environment]::SetEnvironmentVariable("LANG", "en_US", "Machine")
   [Environment]::SetEnvironmentVariable("GIT_LFS_PATH", "C:\Program Files\Git LFS", "Machine")
