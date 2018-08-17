@@ -21,6 +21,8 @@ ${function:wso} = { Set-Location ~\workspace\ormco}
 ${function:wsod} = { Set-Location ~\workspace\ormco\devops}
 ${function:wst} = { Set-Location ~\workspace\tmp }
 
+${function:mountW} = { subst.exe W: ( Join-Path $HOME "workspace" ) }
+
 # Missing Bash aliases
 # Set-Alias time Measure-Command
 # ${function:time} = { Measure-Command { @args }}
