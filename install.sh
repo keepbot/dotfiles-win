@@ -62,7 +62,7 @@ ln -sf "$DOTFILES_DIR/bash_profile"         "$HOME/.bash_profile"
 ln -sf "$DOTFILES_DIR/bash_profile"         "$HOME/.profile"
 ln -sf "$DOTFILES_DIR/bashrc"               "$HOME/.bashrc"
 ln -sf "$DOTFILES_DIR/gemrc"                "$HOME/.gemrc"
-ln -sf "$DOTFILES_DIR/.git.d"               "$HOME/.git.d"
+ln -sf "$DOTFILES_DIR/git.d"                "$HOME/.git.d"
 ln -sf "$DOTFILES_DIR/.gitmessage"          "$HOME/.gitmessage"
 if [ ! -d "$HOME/.stack" ]; then
 	mkdir "$HOME/.stack"
