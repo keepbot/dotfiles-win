@@ -192,10 +192,12 @@ sIP() {
 
 # List files in current directory and replace spaces with underscores
 lsD() {
+  origIFS="${IFS}"
 	IFS=''
 	for str in `find . -maxdepth 1 -type f -name "* *" |sed 's#.*/##'`; do
 		echo ${str// /_}
 	done
+  IFS="${origIFS}"
 }
 
 # Knife Aliases
@@ -244,4 +246,19 @@ bamboo-get-ami() {
 
   curl -v --silent https://maven.atlassian.com/content/groups/public/com/atlassian/bamboo/atlassian-bamboo-elastic-image/$ELASTIC_VERSION/atlassian-bamboo-elastic-image-$ELASTIC_VERSION.ami 2>&1 | grep image. | grep $2 | sort
   echo "REMEMBER: Use the image from the appropriate region!"
+}
+
+# Get help from cheat.sh
+cht() {
+  origIFS="${IFS}"
+  IFS='-'
+  if [ $# -eq 0 ]; then
+    echo "Usage: `basename $0` <langiage> <search string>"
+    exit 0
+  fi
+  lang = "$1"
+  shift
+  $site = "cheat.sh/${lang}/$*"
+  curl "${site}"
+  IFS="${origIFS}"
 }
