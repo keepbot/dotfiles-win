@@ -47,6 +47,7 @@ rm -rf "$HOME/.bash_profile"                2> /dev/null
 rm -rf "$HOME/.bashrc"                      2> /dev/null
 rm -rf "$HOME/.bin"                         2> /dev/null
 rm -rf "$HOME/.gemrc"                       2> /dev/null
+rm -rf "$HOME/.git.d"                       2> /dev/null
 rm -rf "$HOME/.gitconfig"                   2> /dev/null
 rm -rf "$HOME/.gitmessage"                  2> /dev/null
 rm -rf "$HOME/.profile"                     2> /dev/null
@@ -61,6 +62,7 @@ ln -sf "$DOTFILES_DIR/bash_profile"         "$HOME/.bash_profile"
 ln -sf "$DOTFILES_DIR/bash_profile"         "$HOME/.profile"
 ln -sf "$DOTFILES_DIR/bashrc"               "$HOME/.bashrc"
 ln -sf "$DOTFILES_DIR/gemrc"                "$HOME/.gemrc"
+ln -sf "$DOTFILES_DIR/.git.d"               "$HOME/.git.d"
 ln -sf "$DOTFILES_DIR/.gitmessage"          "$HOME/.gitmessage"
 if [ ! -d "$HOME/.stack" ]; then
 	mkdir "$HOME/.stack"
@@ -87,7 +89,7 @@ case $platform in
 		mkdir -p "$HOME/.config"
 		rm -rf "$HOME/.config/alacritty"         2> /dev/null
 
-		ln -sf "$DOTFILES_DIR/.gitconfig-mac"    "$HOME/.gitconfig"
+		ln -sf "$DOTFILES_DIR/.gitconfig-nix"    "$HOME/.gitconfig"
 		ln -sf "$DOTFILES_DIR/bin-mac"           "$HOME/.bin"
 		ln -sf "$DOTFILES_DIR/config/alacritty"  "$HOME/.config/alacritty"
 		;;

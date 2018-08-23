@@ -14,6 +14,7 @@ $dotfilesScriptsDir = Join-Path $dotfilesProfileDir "Scripts"
 If (Test-Path $profileDir                      )  {[System.IO.Directory]::Delete(                $profileDir              , $true)}
 If (Test-Path (Join-Path $HOME ".bash"        ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".bash" ), $true)}
 If (Test-Path (Join-Path $HOME ".bin"         ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".bin"  ), $true)}
+If (Test-Path (Join-Path $HOME ".git.d"       ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".git.d"  ), $true)}
 If (Test-Path (Join-Path $HOME ".tmux"        ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".tmux" ), $true)}
 If (Test-Path (Join-Path $HOME ".vim"         ))  {[System.IO.Directory]::Delete(              ( Join-Path $HOME ".vim"  ), $true)}
 
@@ -31,6 +32,7 @@ If (Test-Path "C:\sr\config.yaml"              )  {Remove-Item -Force -Confirm:$
 C:\Windows\System32\cmd.exe /c mklink /d $profileDir $dotfilesProfileDir
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".bash"         ) ( Join-Path $PSScriptRoot "bash"              )
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".bin"          ) ( Join-Path $PSScriptRoot "bin-win"           )
+C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".git.d"          ) ( Join-Path $PSScriptRoot "git.d"           )
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".tmux"         ) ( Join-Path $PSScriptRoot "tmux"              )
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $HOME ".vim"          ) ( Join-Path $PSScriptRoot "vim"               )
 

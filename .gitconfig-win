@@ -1,129 +1,18 @@
-[alias]
-  br = branch -v
-  cbr = rev-parse --abbrev-ref HEAD
-  change-commits = "!f() { VAR1=$1; VAR='$'$1; OLD=$2; NEW=$3; echo \"Are you sure for replace $VAR $OLD => $NEW ?(Y/N)\";read OK;if [ \"$OK\" = 'Y' ] ; then shift 3; git filter-branch --env-filter \"if [ \\\"${VAR}\\\" = '$OLD' ]; then export $VAR1='$NEW';echo 'to $NEW'; fi\" $@; fi;}; f "
-  # order files by number of commits, ascending
-  churn = "!f() { git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
-  cleanup = "!git remote prune origin && git gc && git clean -df && git stash clear"
-  # show number of commits per contributer, sorted
-  count = shortlog -sn
-  cont = rebase --continue
-  delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '\\*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
-  deleted = "!git log --diff-filter=D --summary | grep delete"
-  diff = diff --ignore-space-at-eol -b -w --ignore-blank-lines
-  # clean up all
-  forget = "!git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"
-  l = log --graph --pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-  la = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
-  ll = log --stat --abbrev-commit
-  llg = log --color --graph --pretty=format:'%C(bold white)%H %d%Creset%n%s%n%+b%C(bold blue)%an <%ae>%Creset %C(bold green)%cr (%ci)' --abbrev-commit
-  llf = log --format=full
-  # list all aliases
-  lsa = "!git config -l | grep alias | cut -c 7-"
-  # check out a local copy of a PR. https://gist.github.com/gnarf/5406589
-  pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
-  pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
-  hist = for-each-ref --count=5 --sort=-committerdate --format='%(refname:short)' refs/heads/
-  review = "!git log --no-merges --pretty=%an | head -n 100 | sort | uniq -c | sort -nr"
-  s = status --short
-  ss  = status
-  si = submodule init
-  su = submodule update
-  sub = "!git submodule sync && git submodule update"
-  subs = submodule foreach git pull origin master
-  standup = shortlog --since=yesterday
-  today = shortlog --since=midnight
-  uncommit = reset HEAD^
-  undo = reset --soft HEAD~1
-  unamend = reset --soft HEAD@{1}
-   # rebase the current branch with changes from upstream remote
-  update = !git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD`
-  who = shortlog -s -n --no-merges
-[apply]
-    # do not warn about missing whitespace at EOF
-    whitespace = nowarn
-[branch]
-  # set up 'git pull' to rebase instead of merge
-  autosetuprebase = always
-[branch "master"]
-  merge = master
+[include]
+  path = ~/.git.d/aliases.ini
+  path = ~/.git.d/branching.ini
+  path = ~/.git.d/colors.ini
+  path = ~/.git.d/core.ini
+  path = ~/.git.d/diff.ini
+  path = ~/.git.d/user.ini
+
 [core]
-  attributesfile = .gitattributes
-  editor = vim
-  excludesfile = .gitignore
-  ignorecase = false
-  pager = less -FXRS -x2
-  untrackedCache = true
   autocrlf = true
-  quotepath = false
-  #pager = cat|more.com
-[color]
-  branch = auto
-  diff = auto
-  interactive = auto
-  status = auto
-  ui = auto
-[color "branch"]
-  current = green bold
-  local = green
-  remote = red bold
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-[color "status"]
-  added = green bold
-  changed = yellow bold
-  untracked = red
-[color "sh"]
-  branch = yellow
-[commit]
-  template = ~/.gitmessage
 [credential]
 	helper = manager
-[diff]
-  compactionHeuristic = true
-  mnemonicprefix = true
-  renames = copies
-[difftool]
-  prompt = false
-[gist]
-  private = yes
-  extension = rb
-[github]
-  user = keepbot
-[gitsh]
-  defaultCommand = s
-[grep]
-  extendRegexp = true
-  lineNumber = true
-[merge]
-  tool = vimdiff
-[mergetool "vimdiff"]
-  cmd = gvim -d "$LOCAL" "$MERGED" "$REMOTE"
-  trustExitCode = true
-[push]
-  # push will only do the current branch, not all branches
-  default = current
-[rebase]
-  instructionFormat = "[%an - %ar] %s"
-[rerere]
-  enabled = true
-[user]
-  name = Dmitriy Ivanov
-  email = d.k.ivanov@live.com
-  #email = dmitriy.ivanov@ormco.com
-[web]
-  browser = open
-[winUpdater]
-	recentlySeenVersion = 2.18.0.windows.1
 [gpg]
 	program = C:\\Program Files (x86)\\Gpg4win\\..\\GnuPG\\bin\\gpg.exe
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
 [lfs "customtransfer.bitbucket-media-api"]
 	path = C:\\tools\\GitLfsBitbucketAdapter\\git-lfs-bitbucket-media-api.exe
+[winUpdater]
+	recentlySeenVersion = 2.18.0.windows.1
