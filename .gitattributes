@@ -2,16 +2,20 @@
 * text eol=lf
 *.vim eol=lf
 
+*.a binary
 *.aac binary
 *.ai binary
 *.chm binary
+*.class binary
 *.dll binary
-*.hlp binary
+*.exe binary
 *.gif binary
 *.gz binary
-*.exe binary
+*.hlp binary
 *.ico binary
+*.jar binary
 *.jpg binary
+*.lib binary
 *.mp3 binary
 *.msi binary
 *.ogg binary
@@ -19,7 +23,3 @@
 *.psd binary
 *.spl binary
 *.sys binary
-
-
-
-

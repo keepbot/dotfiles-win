@@ -145,11 +145,11 @@ function Start-IISExpress {
 function Unzip-File {
     <#
     .SYNOPSIS
-       Extracts the contents of a zip file.
+        Extracts the contents of a zip file.
 
     .DESCRIPTION
-       Extracts the contents of a zip file specified via the -File parameter to the
-    location specified via the -Destination parameter.
+        Extracts the contents of a zip file specified via the -File parameter to the
+        location specified via the -Destination parameter.
 
     .PARAMETER File
         The zip file to extract. This can be an absolute or relative path.
@@ -267,4 +267,28 @@ function cht {
   )
   $site = "cheat.sh/" + $Language + "/" + ($SearchString -join '+')
   curl $site
+}
+
+function Rename-GitHub-Origin {
+    param (
+        [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+        [string]$NewName
+    )
+    $dir = Get-Location
+    Get-ChildItem $dir -Directory | ForEach-Object {
+        Write-Host $_.FullName
+        Set-Location $_.FullName
+        $oldRemote = git config --get remote.origin.url
+        Write-Host "Old remote:"
+        git remote -v
+        $repo = Split-Path $oldRemote -leaf
+        $newRemote = "git@github.com:${NewName}/${repo}"
+        git remote rm origin
+        git remote add origin ${newRemote}
+        Write-Host "New remote:"
+        # Write-Host $newRemote
+        git remote -v
+        Write-Host "------------------------------------------------------------"
+    }
+    Set-Location $dir
 }
