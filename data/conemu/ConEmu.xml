@@ -711,7 +711,7 @@
 			<value name="StatusBar.Hide.Dpi" type="hex" data="01"/>
 			<value name="TabFlashChanged" type="long" data="8"/>
 			<value name="TabModifiedSuffix" type="string" data="[*]"/>
-			<key name="HotKeys" modified="2018-03-09 05:17:58" build="180206">
+			<key name="HotKeys" modified="2018-08-29 21:49:12" build="180206">
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="00000011"/>
 				<value name="Multi.ArrowsModifier" type="dword" data="0000005b"/>
@@ -733,7 +733,7 @@
 				<value name="Multi.NewAttach" type="dword" data="00000000"/>
 				<value name="Multi.NewSplitV" type="dword" data="00005bdc"/>
 				<value name="Multi.NewSplitH" type="dword" data="00105bdc"/>
-				<value name="Multi.SplitMaximize" type="dword" data="00005d0d"/>
+				<value name="Multi.SplitMaximize" type="dword" data="0000125a"/>
 				<value name="Multi.SplitSizeVU" type="dword" data="00105d26"/>
 				<value name="Multi.SplitSizeVD" type="dword" data="00105d28"/>
 				<value name="Multi.SplitSizeHL" type="dword" data="00105d25"/>
