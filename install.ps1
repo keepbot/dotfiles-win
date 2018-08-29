@@ -86,6 +86,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   # "gnuwin32-coreutils.install"
   "golang"
   "gpg4win"
+  "graphviz"
   "greenshot"
   "grepwin"
   # Haskell
