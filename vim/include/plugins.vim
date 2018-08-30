@@ -344,45 +344,45 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
 " Python with virtualenv support
-" if has("python3")
-"     command! -nargs=1 Py py3 <args>
-" else
-"     command! -nargs=1 Py py <args>
-" endif
-" Py << EOF
-" import os
-" import sys
-" if 'VIRTUAL_ENV' in os.environ:
-"   project_base_dir = os.environ['VIRTUAL_ENV']
-"   if os.name == 'nt':
-"     activate_this = os.path.join(project_base_dir, 'Scripts\\activate_this.py')
-"   else:
-"     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"   if sys.version_info >= (3, 0):
-"     exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
-"   else:
-"     execfile(activate_this, dict(__file__=activate_this))
-" EOF
-" let python_highlight_all=1
-" command! Python2Completer :YcmCompleter RestartServer /usr/bin/python2
-" command! Python3Completer :YcmCompleter RestartServer /usr/bin/python3
+if has("python3")
+    command! -nargs=1 Py py3 <args>
+else
+    command! -nargs=1 Py py <args>
+endif
+Py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  if os.name == 'nt':
+    activate_this = os.path.join(project_base_dir, 'Scripts\\activate_this.py')
+  else:
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  if sys.version_info >= (3, 0):
+    exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
+  else:
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+let python_highlight_all=1
+command! Python2Completer :YcmCompleter RestartServer /usr/bin/python2
+command! Python3Completer :YcmCompleter RestartServer /usr/bin/python3
 
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-" set wildmode=list:longest,list:full
-" function! InsertTabWrapper()
-"     let col = col('.') - 1
-"     if !col || getline('.')[col - 1] !~ '\k'
-"         return "\<tab>"
-"     else
-"         return "\<c-p>"
-"     endif
-" endfunction
-" inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-" inoremap <S-Tab> <c-n>
-" " . scan the current buffer, b scan other loaded buffers that are in the buffer list, u scan the unloaded buffers that
-" " are in the buffer list, w scan buffers from other windows, t tag completion
-" set complete=.,b,u,w,t,]
-" " Keyword list
-" set complete+=k~/.vim/keywords.txt
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
+" . scan the current buffer, b scan other loaded buffers that are in the buffer list, u scan the unloaded buffers that
+" are in the buffer list, w scan buffers from other windows, t tag completion
+set complete=.,b,u,w,t,]
+" Keyword list
+set complete+=k~/.vim/keywords.txt
