@@ -118,11 +118,6 @@
 	url = https://github.com/Raimondi/delimitMate.git
 	ignore = dirty
 	branch = master
-[submodule "vim/bundle/vim-snippets"]
-	path = vim/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
-	ignore = dirty
-	branch = master
 [submodule "vim/bundle/vim-css3-syntax"]
 	path = vim/bundle/vim-css3-syntax
 	url = https://github.com/hail2u/vim-css3-syntax.git
@@ -151,5 +146,20 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+	ignore = dirty
+	branch = master
+[submodule "vim/bundle/vim-snippets"]
+	path = vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+	ignore = dirty
+	branch = master
+[submodule "vim/bundle/ultisnips"]
+	path = vim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+	ignore = dirty
+	branch = master
+[submodule "vim/bundle/YouCompleteMe"]
+	path = vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
 	ignore = dirty
 	branch = master
