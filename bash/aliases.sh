@@ -218,6 +218,16 @@ function dc_trace_cmd() {
   fi
 }
 
+# Terraform
+alias t='terrafrom.exe'
+alias tw='terrafrom.exe workspace'
+alias twd='terrafrom.exe workspace delete'
+alias twn='terrafrom.exe workspace new'
+alias twl='terrafrom.exe workspace list'
+alias tws='terrafrom.exe workspace select'
+alias tp='terrafrom.exe plan -out terraform.plan'
+alias ta='terrafrom.exe apply terraform.plan'
+
 ################################################################################
 ### >> Align:
 ################################################################################

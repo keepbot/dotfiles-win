@@ -366,6 +366,16 @@ ${function:Set-Power-Max} = { powercfg.exe /SETACTIVE SCHEME_MIN }
 ${function:Set-Power-Balanced} = { powercfg.exe /SETACTIVE SCHEME_BALANCED }
 ${function:Set-Power-Min} = { powercfg.exe /SETACTIVE SCHEME_MAX }
 
+# Terraform
+${function:t} = { terrafrom.exe @args }
+${function:tw} = { terrafrom.exe workspace @args }
+${function:twd} = { terrafrom.exe workspace delete @args }
+${function:twn} = { terrafrom.exe workspace new @args }
+${function:twl} = { terrafrom.exe workspace list @args }
+${function:tws} = { terrafrom.exe workspace select @args }
+${function:tp} = { terrafrom.exe plan -out terraform.plan @args }
+${function:ta} = { terrafrom.exe apply terraform.plan @args }
+
 ################################################################################
 ### >> Align:
 ################################################################################
