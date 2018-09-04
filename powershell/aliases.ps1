@@ -367,15 +367,16 @@ ${function:Set-Power-Balanced} = { powercfg.exe /SETACTIVE SCHEME_BALANCED }
 ${function:Set-Power-Min} = { powercfg.exe /SETACTIVE SCHEME_MAX }
 
 # Terraform
-${function:t} = { terrafrom.exe @args }
-${function:ti} = { terrafrom.exe init @args }
-${function:tw} = { terrafrom.exe workspace @args }
-${function:twd} = { terrafrom.exe workspace delete @args }
-${function:twn} = { terrafrom.exe workspace new @args }
-${function:twl} = { terrafrom.exe workspace list @args }
-${function:tws} = { terrafrom.exe workspace select @args }
-${function:tp} = { terrafrom.exe plan -out terraform.plan @args }
-${function:ta} = { terrafrom.exe apply terraform.plan @args }
+${function:terrafrom} = { terraform.exe @args }
+${function:t} = { terraform.exe @args }
+${function:ti} = { terraform.exe init @args }
+${function:tw} = { terraform.exe workspace @args }
+${function:twd} = { terraform.exe workspace delete @args }
+${function:twn} = { terraform.exe workspace new @args }
+${function:twl} = { terraform.exe workspace list @args }
+${function:tws} = { terraform.exe workspace select @args }
+${function:tp} = { terraform.exe plan -out terraform.plan @args }
+${function:ta} = { terraform.exe apply terraform.plan @args }
 
 ################################################################################
 ### >> Align:
