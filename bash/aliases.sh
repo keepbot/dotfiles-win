@@ -220,6 +220,7 @@ function dc_trace_cmd() {
 
 # Terraform
 alias t='terrafrom.exe'
+alias ti='terrafrom.exe init'
 alias tw='terrafrom.exe workspace'
 alias twd='terrafrom.exe workspace delete'
 alias twn='terrafrom.exe workspace new'

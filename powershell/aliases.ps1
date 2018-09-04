@@ -368,6 +368,7 @@ ${function:Set-Power-Min} = { powercfg.exe /SETACTIVE SCHEME_MAX }
 
 # Terraform
 ${function:t} = { terrafrom.exe @args }
+${function:ti} = { terrafrom.exe init @args }
 ${function:tw} = { terrafrom.exe workspace @args }
 ${function:twd} = { terrafrom.exe workspace delete @args }
 ${function:twn} = { terrafrom.exe workspace new @args }
