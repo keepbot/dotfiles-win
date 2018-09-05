@@ -372,8 +372,10 @@ if (Get-Command kitchen.bat -ErrorAction SilentlyContinue | Test-Path) {
     ${function:t}           = { terraform.exe @args }
     ${function:ta}          = { terraform.exe apply terraform.plan @args }
     ${function:ti}          = { terraform.exe init @args }
-    ${function:tp}          = { if ($args[0] -And -Not $args[1]) {terraform.exe plan -out terraform.plan --var-file=$args.tfvars} else {terraform.exe plan -out terraform.plan @args}}
-    ${function:tpd}         = { if ($args[0] -And -Not $args[1]) {terraform.exe plan -destroy -out terraform.plan --var-file=$args.tfvars} else {terraform.exe plan -destroy -out terraform.plan @args}}
+    ${function:tp}          = { terraform.exe plan -out terraform.plan @args}
+    ${function:tpd}         = { terraform.exe plan -destroy -out terraform.plan @args}
+    # ${function:tp}          = { if ($args[0] -And -Not $args[1]) {terraform.exe plan -out terraform.plan --var-file=$args.tfvars} else {terraform.exe plan -out terraform.plan @args}}
+    # ${function:tpd}         = { if ($args[0] -And -Not $args[1]) {terraform.exe plan -destroy -out terraform.plan --var-file=$args.tfvars} else {terraform.exe plan -destroy -out terraform.plan @args}}
     ${function:tw}          = { terraform.exe workspace @args }
     ${function:twd}         = { terraform.exe workspace delete @args }
     ${function:twn}         = { terraform.exe workspace new @args }
