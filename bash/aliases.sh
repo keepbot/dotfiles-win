@@ -221,14 +221,15 @@ function dc_trace_cmd() {
 # Terraform
 alias terrafrom='terraform'
 alias t='terraform'
+alias ta='terraform apply terraform.plan'
 alias ti='terraform init'
+alias tp='terraform plan -out terraform.plan'
+alias tpd='terraform plan -destroy -out terraform.plan'
 alias tw='terraform workspace'
 alias twd='terraform workspace delete'
 alias twn='terraform workspace new'
 alias twl='terraform workspace list'
 alias tws='terraform workspace select'
-alias tp='terraform plan -out terraform.plan'
-alias ta='terraform apply terraform.plan'
 
 ################################################################################
 ### >> Align:
