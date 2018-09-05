@@ -63,11 +63,11 @@ alias vgen='va && pip freeze > requirements.txt'
 
 # tmux aliases
 alias tmux="tmux -2"
-alias t='tmux'
-alias ta='tmux attach'
-alias tls='tmux ls'
-alias tat='tmux attach -t'
-alias tns='tmux new-session -s'
+alias tm='tmux'
+alias tma='tmux attach'
+alias tmls='tmux ls'
+alias tmat='tmux attach -t'
+alias tmns='tmux new-session -s'
 
 # With tmux mouse mode on, just select text in a pane to copy.
 # Then run tcopy to put it in the OS X clipboard (assuming reattach-to-user-namespace).
