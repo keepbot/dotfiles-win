@@ -151,6 +151,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "sysinternals"
   "terraform"
   "tftpd32"
+  "tor-browser"
   "vagrant"
   "vagrant-manager"
   "vcxsrv"
