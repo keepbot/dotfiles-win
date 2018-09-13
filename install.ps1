@@ -160,6 +160,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "vlc"
   "wget"
   "windirstat"
+  "winmerge"
   "winscp"
   "wireshark"
   "wmiexplorer"

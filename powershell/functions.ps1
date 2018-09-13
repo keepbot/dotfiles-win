@@ -75,6 +75,22 @@ function Clean-Disks {
     Start-Process "$(Join-Path $env:WinDir 'system32\cleanmgr.exe')" -ArgumentList "/sagerun:6174" -Verb "runAs"
 }
 
+function Remove-File-Recursively {
+    Param (
+        [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
+        [string]$FileName,
+        [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
+        [string]$PathToFolderTree
+    )
+    Get-ChildItem $PathToFolderTree | ForEach-Object {
+        $targetFile = $(Join-Path $_.FullName $FileName)
+        if(Test-Path $targetFile){
+            Remove-Item -Force $targetFile
+            Write-Host $targetFile " removed"
+        }
+    }
+}
+
 ### Environment functions
 ### ----------------------------
 
