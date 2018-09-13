@@ -78,9 +78,9 @@ function Clean-Disks {
 function Remove-File-Recursively {
     Param (
         [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
-        [string]$FileName,
+        [string]$PathToFolderTree,
         [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
-        [string]$PathToFolderTree
+        [string]$FileName
     )
     Get-ChildItem $PathToFolderTree | ForEach-Object {
         $targetFile = $(Join-Path $_.FullName $FileName)
