@@ -207,7 +207,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:gplp} = { git.exe pull --rebase; git.exe push @args } # Can't pull because you forgot to track? Run this.
   ${function:gpp} = { git.exe push }
   ${function:gppt} = { git.exe push --tags}
-  ${function:gppp} = { git.exe push -u @args }
+  ${function:gppu} = { git.exe push -u @args }
   ${function:gck} = { git.exe checkout @args }
   ${function:gb} = { git.exe checkout -b @args }
   ${function:got} = { git.exe checkout - @args }
