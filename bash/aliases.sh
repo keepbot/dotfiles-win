@@ -153,6 +153,7 @@ alias gcaw="gca Whitespace."
 alias gcow="gco Whitespace."
 alias gp='git push -u'  # Comment if you use Pari Calculator and use gpp instead
 alias gpp="git push"  # Can't pull because you forgot to track? Run this.
+alias gpp="git push --tags"  # Can't pull because you forgot to track? Run this.
 alias gppp="git push -u"  # Can't pull because you forgot to track? Run this.
 alias gpl='git pull'
 alias gplp='git pull --rebase && git push'
