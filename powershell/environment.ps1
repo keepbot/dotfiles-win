@@ -80,6 +80,9 @@ function Reload-Paths-Orig {
     "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp"
     "C:\Program Files\Common Files\Intel\WirelessCommon\"
     "C:\Program Files\Intel\WiFi\bin\"
+    "c:\tools\wsl\wsl-debian\"
+    "c:\tools\wsl\wsl-kali\"
+    "c:\tools\wsl\wsl-ubuntu-1804\"
   )
 
   $final_path = "$env:SystemRoot\system32"
