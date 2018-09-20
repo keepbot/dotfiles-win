@@ -83,6 +83,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "ftpdmin"
   "gimp"
   "git"
+  "git-lfs"
   # "gnuwin32-coreutils.install"
   "golang"
   "gpg4win"
@@ -98,7 +99,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "imagemagick"
   "irfanview"
   "irfanviewplugins"
-  "itunes"
+  # "itunes"
   "ldapadmin"
   "jq"
   # "kubernetes-cli"
@@ -156,7 +157,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "vagrant-manager"
   "vcxsrv"
   # "vim" - should be installed manually to cover python 3.6 support
-  "visualstudiocode"
+  "vscode"
   "vlc"
   "wget"
   "windirstat"
@@ -169,7 +170,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "yarn"
   "yasm"
   "yed"
-  "zoom"
+  # "zoom"
   )
 
   # foreach ($mars in $candies) {
