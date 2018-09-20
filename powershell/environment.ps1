@@ -56,6 +56,7 @@ function Reload-Paths-My {
     "C:\Program Files\Pandoc\"
     "C:\Program Files\grepWin"
     "C:\Program Files\kdiff3"
+    "C:\tools\Atlassian\atlassian-plugin-sdk-6.3.10\bin"
   )
 
   $final_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
