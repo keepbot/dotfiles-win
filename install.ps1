@@ -106,6 +106,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "jdk10"
   "jre10"
   "jq"
+  "kdiff3"
   # "kubernetes-cli"
   # "kubernetes-helm"
   "llvm"

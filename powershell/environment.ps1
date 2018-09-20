@@ -55,9 +55,10 @@ function Reload-Paths-My {
     "C:\Program Files\MiKTeX 2.9\miktex\bin\x64\"
     "C:\Program Files\Pandoc\"
     "C:\Program Files\grepWin"
+    "C:\Program Files\kdiff3"
   )
 
-  $final_path = "%USERPROFILE%\workspace\my\dotfiles\bin-win"
+  $final_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
 
   foreach ($path in $paths) {
     $final_path += ";$path"
@@ -68,15 +69,19 @@ function Reload-Paths-My {
 
 function Reload-Paths-Orig {
   $paths = @(
-    "%SystemRoot%"
-    "%SystemRoot%\System32\Wbem"
-    "%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\"
-    "%SYSTEMROOT%\System32\OpenSSH\"
+    "$env:SystemRoot"
+    "$env:SystemRoot\System32\Wbem"
+    "$env:SYSTEMROOT\System32\WindowsPowerShell\v1.0\"
+    "$env:SYSTEMROOT\System32\OpenSSH\"
     "C:\Program Files (x86)\Common Files\Oracle\Java\javapath"
     "C:\Program Files\Docker\Docker\Resources\bin"
+    "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin"
+    "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp"
+    "C:\Program Files\Common Files\Intel\WirelessCommon\"
+    "C:\Program Files\Intel\WiFi\bin\"
   )
 
-  $final_path = "%SystemRoot%\system32"
+  $final_path = "$env:SystemRoot\system32"
 
   foreach ($path in $paths) {
     $final_path += ";$path"
