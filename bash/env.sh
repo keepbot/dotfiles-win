@@ -87,21 +87,6 @@ case $platform in
 		;;
 	MSYS_NT-10.0 )
 		[[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin:$PATH
-		#/mnt/c/Windows
-		#/mnt/c/Windows/System32
-		#/mnt/c/Windows/System32/wbem
-		#/mnt/c/Windows/System32/WindowsPowerShell/v1.0
-		#/mnt/c/usr/bin
-		#/mnt/c/Python/3.6.3-x64
-		#/mnt/c/Program Files/dotnet
-		#/mnt/c/Program Files/Docker/Docker/resources/bin
-		#/mnt/c/ProgramData/Oracle/Java/javapath_target_40129125
-		#/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn
-		#/mnt/c/Program Files/Git/cmd
-		#/mnt/c/opscode/chefdk/bin
-		#/mnt/c/Program Files/Microsoft VS Code/bin
-		#/mnt/c/Program Files (x86)/Nmap
-		#/mnt/c/Users/dkiva/AppData/Local/Microsoft/WindowsApps
 		echo
 		;;
 esac

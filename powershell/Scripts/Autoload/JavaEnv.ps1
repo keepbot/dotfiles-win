@@ -37,6 +37,7 @@ function Use-Java {
     "x64" {
       $Versions = $((Get-ChildItem 'C:\Program Files\Java\').Name)
       if ($Versions.Contains(${JavaVersion})) {
+        [Environment]::SetEnvironmentVariable("JAVA_HOME", "C:\Program Files\Java\${JavaVersion}", "Machine")
         $env:JAVA_HOME = "C:\Program Files\Java\${JavaVersion}"
         $env:PATH = "${env:JAVA_HOME}\bin;${env:PATH}"
       }
@@ -51,6 +52,7 @@ function Use-Java {
     "x86" {
       $Versions = $((Get-ChildItem 'C:\Program Files (x86)\Java\').Name)
       if ($Versions.Contains(${JavaVersion})) {
+        [Environment]::SetEnvironmentVariable("JAVA_HOME", "C:\Program Files ($Arch)\Java\${JavaVersion}", "Machine")
         $env:JAVA_HOME = "C:\Program Files ($Arch)\Java\${JavaVersion}"
         $env:PATH = "${env:JAVA_HOME}\bin;${env:PATH}"
       }

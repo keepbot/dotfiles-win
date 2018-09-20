@@ -25,7 +25,7 @@ function Reload-Paths-My {
     "C:\tools\python2\Scripts"
     "C:\tools\python2\"
     "C:\usr\bin"
-    "C:\Program Files (x86)\vim\vim81"
+    "C:\tools\vim\vim81"
     "C:\Program Files\OpenSSL\bin"
     "C:\Program Files\OpenSSH-Win64"
     "C:\Program Files\Amazon\AWSCLI\"
@@ -57,7 +57,7 @@ function Reload-Paths-My {
     "C:\Program Files\grepWin"
   )
 
-  $final_path = "C:\Users\dmitriy.ivanov\workspace\my\dotfiles\bin-win"
+  $final_path = "%USERPROFILE%\workspace\my\dotfiles\bin-win"
 
   foreach ($path in $paths) {
     $final_path += ";$path"
@@ -85,13 +85,17 @@ function Reload-Paths-Orig {
   [Environment]::SetEnvironmentVariable("PathsOrig", "$final_path", "Machine")
 }
 
-function Set-Envs {
+function Set-Base-Env {
   Reload-Paths-My
   Reload-Paths-Orig
   # [Environment]::SetEnvironmentVariable("PATH", "%PathsMy%;%PathsOrig%", "Machine")
 
   [Environment]::SetEnvironmentVariable("LANG", "en_US", "Machine")
+}
+
+function Set-Dev-Env {
   [Environment]::SetEnvironmentVariable("GIT_LFS_PATH", "C:\Program Files\Git LFS", "Machine")
   [Environment]::SetEnvironmentVariable("QTDIR", "C:\Qt\Qt5.11.1\5.11.1\msvc2015", "Machine")
   [Environment]::SetEnvironmentVariable("QMAKESPEC", "C:\Qt\Qt5.11.1\5.11.1\msvc2015\mkspecs\win32-msvc", "Machine")
+  [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "%USERPROFILE%\workspace\ormco\aligner\aligner-thirdparty", "Machine")
 }
