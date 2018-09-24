@@ -484,10 +484,10 @@
 			<value name="WndDragKey" type="dword" data="00121101"/>
 			<key name="Tasks" modified="2018-05-25 15:53:03" build="180206">
 				<value name="Count" type="long" data="8"/>
-				<key name="Task1" modified="2018-03-09 05:17:58" build="180206">
+				<key name="Task1" modified="2018-09-20 18:53:02" build="180206">
 					<value name="Name" type="string" data="{Powershell::Powershell}"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data='PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;" -new_console'/>
+					<value name="Cmd1" type="string" data="PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -new_console"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
