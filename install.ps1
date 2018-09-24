@@ -68,6 +68,7 @@ If (-Not (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe")) {
 If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   $candies = @(
   "7zip.install"
+  "adobereader"
   # "azure-cli"
   "awscli"
   "bind-toolsonly"
@@ -140,8 +141,8 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "pgadmin4"
   # "pgina"
   "putty"
-  "python3 --params `"/InstallDir:C:\tools\python3`""
-  "python2 --params `"/InstallDir:C:\tools\python2`""
+  "python3 --params /InstallDir:C:\tools\python3"
+  "python2 --params /InstallDir:C:\tools\python2"
   "qbittorrent"
   # "qtcreator"
   "rdcman"
@@ -169,6 +170,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "vscode"
   "vlc"
   "wget"
+  "windjview"
   "windirstat"
   "winmerge"
   "winscp"
@@ -182,9 +184,9 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   # "zoom"
   )
 
-  # foreach ($mars in $candies) {
-  #   choco install -y -r $mars
-  # }
+#   foreach ($mars in $candies) {
+#     choco install -y -r $mars
+#   }
 }
 
 #if (Get-Command chef -ErrorAction SilentlyContinue | Test-Path) {

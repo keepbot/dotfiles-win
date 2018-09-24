@@ -57,6 +57,7 @@ function Reload-Paths-My {
     "C:\Program Files\grepWin"
     "C:\Program Files\kdiff3"
     "C:\tools\Atlassian\atlassian-plugin-sdk-6.3.10\bin"
+    "C:\Program Files\Calibre2\"
   )
 
   $final_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
@@ -80,9 +81,11 @@ function Reload-Paths-Orig {
     "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp"
     "C:\Program Files\Common Files\Intel\WirelessCommon\"
     "C:\Program Files\Intel\WiFi\bin\"
-    "c:\tools\wsl\wsl-debian\"
-    "c:\tools\wsl\wsl-kali\"
-    "c:\tools\wsl\wsl-ubuntu-1804\"
+    "C:\Program Files\dotnet\"
+    "C:\Program Files\Microsoft SQL Server\130\Tools\Binn\"
+    #"c:\tools\wsl\wsl-debian\"
+    #"c:\tools\wsl\wsl-kali\"
+    #"c:\tools\wsl\wsl-ubuntu-1804\"
   )
 
   $final_path = "$env:SystemRoot\system32"
