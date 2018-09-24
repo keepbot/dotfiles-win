@@ -29,7 +29,7 @@ function Reload-Paths-My {
     "C:\Program Files\OpenSSL\bin"
     "C:\Program Files\OpenSSH-Win64"
     "C:\Program Files\Amazon\AWSCLI\"
-    "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.4.3\bin"
+    "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.1\bin"
     "C:\tools\mingw64\bin"
     "C:\tools\go\bin"
     "C:\Program Files\LLVM\bin"
