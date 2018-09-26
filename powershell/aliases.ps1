@@ -231,6 +231,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:git-work} = { git config --local user.email "dmitriy.ivanov@ormco.com" }
   ${function:git-ssh-bb}={ (Get-Content .gitmodules).replace('https://bitbucket.org/', 'git@bitbucket.org:') | Set-Content .gitmodules }
   ${function:git-ssh-bbr}={ (Get-Content .gitmodules).replace('git@bitbucket.org:', 'https://bitbucket.org/') | Set-Content .gitmodules }
+  ${function:grmt} = { git.exe tag --delete @args }
+  ${function:grmto} = { git.exe tag --delete origin @args }
   # GitHub
   ${function:get_gh_user_repos} = {
     Write-Host "Clonning all GH repos of $($args[0])"
