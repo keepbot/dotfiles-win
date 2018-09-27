@@ -33,7 +33,7 @@ function Reload-Paths-My {
     "C:\tools\mingw64\bin"
     "C:\tools\go\bin"
     "C:\Program Files\LLVM\bin"
-    "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\bin\Hostx64\x64"
+    # "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\bin\Hostx64\x64"
     "C:\HashiCorp\Vagrant\bin"
     "C:\Program Files (x86)\Nmap"
     "C:\opscode\chefdk\bin\"
@@ -75,7 +75,6 @@ function Reload-Paths-Orig {
     "$env:SystemRoot\System32\Wbem"
     "$env:SYSTEMROOT\System32\WindowsPowerShell\v1.0\"
     "$env:SYSTEMROOT\System32\OpenSSH\"
-    "C:\Program Files (x86)\Common Files\Oracle\Java\javapath"
     "C:\Program Files\Docker\Docker\Resources\bin"
     "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin"
     "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp"
@@ -83,6 +82,7 @@ function Reload-Paths-Orig {
     "C:\Program Files\Intel\WiFi\bin\"
     "C:\Program Files\dotnet\"
     "C:\Program Files\Microsoft SQL Server\130\Tools\Binn\"
+    # "C:\Program Files (x86)\Common Files\Oracle\Java\javapath"
     #"c:\tools\wsl\wsl-debian\"
     #"c:\tools\wsl\wsl-kali\"
     #"c:\tools\wsl\wsl-ubuntu-1804\"
@@ -100,8 +100,15 @@ function Reload-Paths-Orig {
 function Set-Base-Env {
   Reload-Paths-My
   Reload-Paths-Orig
-  # [Environment]::SetEnvironmentVariable("PATH", "%PathsMy%;%PathsOrig%", "Machine")
-
+  $system_path += "%PathsMy%"
+  $system_path += ";%PathsOrig%"
+  $system_path += ";%JAVA_HOME%\bin"
+  $system_path += ";%VC_PATH%"
+  # if (Test-Path env:JAVA_HOME) {
+  # }
+  # if (Test-Path env:VC_PATH) {
+  # }
+  [Environment]::SetEnvironmentVariable("PATH", "$system_path", "Machine")
   [Environment]::SetEnvironmentVariable("LANG", "en_US", "Machine")
 }
 

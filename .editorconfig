@@ -27,6 +27,9 @@ max_line_length = 100
 [*.html]
 indent_size = 2
 
+[*.ps1]
+indent_size = 2
+
 [*.py]
 max_line_length = 80
 
