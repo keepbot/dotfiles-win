@@ -163,6 +163,8 @@
 	url = https://github.com/Valloric/YouCompleteMe.git
 	ignore = dirty
 	branch = master
-[submodule ".\\powershell\\Modules\\Win10-Initial-Setup-Script"]
-	path = .\\powershell\\Modules\\Win10-Initial-Setup-Script
+[submodule "powershell/Modules/Win10-Initial-Setup-Script"]
+	path = powershell/Modules/Win10-Initial-Setup-Script
 	url = git@github.com:Disassembler0/Win10-Initial-Setup-Script.git
+    ignore = dirty
+	branch = master
