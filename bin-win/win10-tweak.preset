@@ -17,7 +17,7 @@ DisableAppSuggestions       # EnableAppSuggestions
 DisableActivityHistory      # EnableActivityHistory
 DisableBackgroundApps       # EnableBackgroundApps
 # DisableLocationTracking   # EnableLocationTracking
-# DisableMapUpdates         # EnableMapUpdates
+DisableMapUpdates         # EnableMapUpdates
 DisableFeedback             # EnableFeedback
 DisableTailoredExperiences  # EnableTailoredExperiences
 DisableAdvertisingID        # EnableAdvertisingID
@@ -33,41 +33,41 @@ DisableWAPPush              # EnableWAPPush
 # SetUACLow                 # SetUACHigh
 # EnableSharingMappedDrives # DisableSharingMappedDrives
 DisableAdminShares          # EnableAdminShares
-# DisableSMB1               # EnableSMB1
+DisableSMB1                 # EnableSMB1
 # DisableSMBServer          # EnableSMBServer
 # DisableLLMNR              # EnableLLMNR
 # DisableNCSIProbe          # EnableNCSIProbe
 SetCurrentNetworkPrivate    # SetCurrentNetworkPublic
 # SetUnknownNetworksPrivate # SetUnknownNetworksPublic
 # DisableNetDevicesAutoInst # EnableNetDevicesAutoInst
-# DisableFirewall           # EnableFirewall
-# DisableDefender           # EnableDefender
-# DisableDefenderCloud      # EnableDefenderCloud
+DisableFirewall             # EnableFirewall
+DisableDefender             # EnableDefender
+DisableDefenderCloud        # EnableDefenderCloud
 # EnableCtrldFolderAccess   # DisableCtrldFolderAccess
 # EnableCIMemoryIntegrity   # DisableCIMemoryIntegrity
 DisableScriptHost           # EnableScriptHost
 EnableDotNetStrongCrypto    # DisableDotNetStrongCrypto
 # EnableMeltdownCompatFlag  # DisableMeltdownCompatFlag
 EnableF8BootMenu            # DisableF8BootMenu
-# DisableBootRecovery       # EnableBootRecovery
-# DisableRecoveryAndReset   # EnableRecoveryAndReset
+DisableBootRecovery       # EnableBootRecovery
+DisableRecoveryAndReset   # EnableRecoveryAndReset
 SetDEPOptOut                # SetDEPOptIn
 
 ### Service Tweaks ###
 # DisableUpdateMSRT         # EnableUpdateMSRT
 # DisableUpdateDriver       # EnableUpdateDriver
 DisableUpdateRestart        # EnableUpdateRestart
-# DisableHomeGroups         # EnableHomeGroups
+DisableHomeGroups         # EnableHomeGroups
 DisableSharedExperiences    # EnableSharedExperiences
 DisableRemoteAssistance     # EnableRemoteAssistance
 DisableRemoteDesktop        # EnableRemoteDesktop
 DisableAutoplay             # EnableAutoplay
 DisableAutorun              # EnableAutorun
-# DisableRestorePoints      # EnableRestorePoints
+DisableRestorePoints        # EnableRestorePoints
 # EnableStorageSense        # DisableStorageSense
-# DisableDefragmentation    # EnableDefragmentation
-# DisableSuperfetch         # EnableSuperfetch
-# DisableIndexing           # EnableIndexing
+DisableDefragmentation      # EnableDefragmentation
+DisableSuperfetch           # EnableSuperfetch
+DisableIndexing             # EnableIndexing
 DisableNTFSLastAccess       # EnableNTFSLastAccess
 SetBIOSTimeUTC              # SetBIOSTimeLocal
 # EnableHibernation         # DisableHibernation
@@ -76,7 +76,7 @@ DisableSleepButton          # EnableSleepButton
 # DisableFastStartup        # EnableFastStartup
 
 ### UI Tweaks ###
-DisableActionCenter         # EnableActionCenter
+EnableActionCenter          # DisableActionCenter
 HideAccountProtectionWarn   # ShowAccountProtectionWarn
 # DisableLockScreen         # EnableLockScreen
 # DisableLockScreenRS1      # EnableLockScreenRS1
@@ -114,7 +114,7 @@ HideSyncNotifications       # ShowSyncNotifications
 HideRecentShortcuts         # ShowRecentShortcuts
 SetExplorerThisPC           # SetExplorerQuickAccess
 # HideQuickAccess           # ShowQuickAccess
-ShowThisPCOnDesktop         # HideThisPCFromDesktop
+HideThisPCFromDesktop       # ShowThisPCOnDesktop
 # ShowUserFolderOnDesktop   # HideUserFolderFromDesktop
 HideDesktopFromThisPC       # ShowDesktopInThisPC
 # HideDesktopFromExplorer   # ShowDesktopInExplorer
@@ -137,7 +137,7 @@ DisableThumbsDBOnNetwork    # EnableThumbsDBOnNetwork
 ### Application Tweaks ###
 # DisableOneDrive           # EnableOneDrive
 # UninstallOneDrive         # InstallOneDrive
-# UninstallMsftBloat        # InstallMsftBloat
+UninstallMsftBloat          # InstallMsftBloat
 UninstallThirdPartyBloat    # InstallThirdPartyBloat
 # UninstallWindowsStore     # InstallWindowsStore
 DisableXboxFeatures         # EnableXboxFeatures
@@ -148,7 +148,7 @@ DisableEdgeShortcutCreation # EnableEdgeShortcutCreation
 # UninstallWorkFolders      # InstallWorkFolders
 InstallLinuxSubsystem       # UninstallLinuxSubsystem
 InstallHyperV               # UninstallHyperV
-# SetPhotoViewerAssociation # UnsetPhotoViewerAssociation
+SetPhotoViewerAssociation   # UnsetPhotoViewerAssociation
 AddPhotoViewerOpenWith      # RemovePhotoViewerOpenWith
 # UninstallPDFPrinter       # InstallPDFPrinter
 UninstallXPSPrinter         # InstallXPSPrinter
@@ -156,12 +156,12 @@ RemoveFaxPrinter            # AddFaxPrinter
 # UninstallFaxAndScan       # InstallFaxAndScan
 
 ### Server Specific Tweaks ###
-# HideServerManagerOnLogin   # ShowServerManagerOnLogin
-# DisableShutdownTracker     # EnableShutdownTracker
-# DisablePasswordPolicy      # EnablePasswordPolicy
-# DisableCtrlAltDelLogin     # EnableCtrlAltDelLogin
-# DisableIEEnhancedSecurity  # EnableIEEnhancedSecurity
-# EnableAudio                # DisableAudio
+# HideServerManagerOnLogin  # ShowServerManagerOnLogin
+# DisableShutdownTracker    # EnableShutdownTracker
+# DisablePasswordPolicy     # EnablePasswordPolicy
+# DisableCtrlAltDelLogin    # EnableCtrlAltDelLogin
+# DisableIEEnhancedSecurity # EnableIEEnhancedSecurity
+# EnableAudio               # DisableAudio
 
 ### Unpinning ###
 # UnpinStartMenuTiles
