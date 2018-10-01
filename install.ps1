@@ -104,10 +104,11 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "irfanviewplugins"
   # "itunes"
   "ldapadmin"
-  "jdk8"
-  "jre8"
-  "jdk10"
-  "jre10"
+  # Decided to install java manually: Java-11 latest
+  # "jdk8"
+  # "jre8"
+  # "jdk10"
+  # "jre10"
   "jq"
   "kdiff3"
   "keepass"
@@ -181,7 +182,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "xpdf-utils"
   "yarn"
   "yasm"
-  "yed"
+  # "yed --params /Associate"
   # "zoom"
   )
 

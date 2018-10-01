@@ -82,7 +82,7 @@ function Reload-Paths-Orig {
     "C:\Program Files\Intel\WiFi\bin\"
     "C:\Program Files\dotnet\"
     "C:\Program Files\Microsoft SQL Server\130\Tools\Binn\"
-    # "C:\Program Files (x86)\Common Files\Oracle\Java\javapath"
+    "C:\Program Files (x86)\Common Files\Oracle\Java\javapath"
     "c:\tools\wsl\wsl-arch\"
     "c:\tools\wsl\wsl-debian\"
     "c:\tools\wsl\wsl-kali\"
@@ -101,10 +101,10 @@ function Reload-Paths-Orig {
 function Set-Base-Env {
   Reload-Paths-My
   Reload-Paths-Orig
-  $system_path += "%PathsMy%"
-  $system_path += ";%PathsOrig%"
+  $system_path = "%PathsMy%"
   $system_path += ";%JAVA_HOME%\bin"
   $system_path += ";%VC_PATH%"
+  $system_path += ";%PathsOrig%"
   # if (Test-Path env:JAVA_HOME) {
   # }
   # if (Test-Path env:VC_PATH) {
