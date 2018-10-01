@@ -182,7 +182,7 @@ alias grb="git push origin HEAD:refs/for/$1"
 alias git-home="git config --local user.email 'd.k.ivanov@live.com'"
 alias git-work="git config --local user.email 'dmitriy.ivanov@ormco.com'"
 alias grmt='git tag --delete'
-alias grmto='git tag --delete origin'
+alias grmto='git push --delete origin'
 
 # Chef
 alias kc='kitchen converge'
