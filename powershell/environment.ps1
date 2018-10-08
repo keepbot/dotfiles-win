@@ -101,10 +101,14 @@ function Reload-Paths-Orig {
 function Set-Base-Env {
   Reload-Paths-My
   Reload-Paths-Orig
-  $system_path = "%PathsMy%"
-  $system_path += ";%JAVA_HOME%\bin"
-  $system_path += ";%VC_PATH%"
-  $system_path += ";%PathsOrig%"
+  # $system_path = "%PathsMy%"
+  # $system_path += ";%JAVA_HOME%\bin"
+  # $system_path += ";%VC_PATH%"
+  # $system_path += ";%PathsOrig%"
+  $system_path = "$env:PathsMy"
+  $system_path += ";$env:JAVA_HOME\bin"
+  $system_path += ";$env:VC_PATH"
+  $system_path += ";$env:PathsOrig"
   # if (Test-Path env:JAVA_HOME) {
   # }
   # if (Test-Path env:VC_PATH) {
