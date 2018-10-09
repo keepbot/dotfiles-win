@@ -58,6 +58,9 @@ ${function:time} = {
 
 ${function:env} = {Get-ChildItem Env:}
 
+# Clear screen
+Set-Alias c Clear-Host
+
 # Create a new directory and enter it
 Set-Alias mkd CreateAndSet-Directory
 
@@ -213,8 +216,9 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:got} = { git.exe checkout - @args }
   ${function:gom} = { git.exe checkout master @args }
   ${function:grb} = { git.exe rebase -i origin/master @args }
-  ${function:gr} = { git.exe branch -d @args }
-  ${function:grr} = { git.exe branch -D @args }
+  ${function:gbr} = { git.exe branch -d @args }
+  ${function:gbrf} = { git.exe branch -D @args }
+  ${function:gbrr} = { git.exe push origin --delete @args }
   ${function:gcp} = { git.exe cherry-pick @args }
   ${function:gam} = { git.exe commit --amend @args }
   ${function:gamne} = { git.exe commit --amend --no-edit @args }
@@ -373,7 +377,7 @@ ${function:Set-Power-Balanced} = { powercfg.exe /SETACTIVE SCHEME_BALANCED }
 ${function:Set-Power-Min} = { powercfg.exe /SETACTIVE SCHEME_MAX }
 
 # Terraform
-if (Get-Command kitchen.bat -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command terraform.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:terrafrom}   = { terraform.exe @args }
     ${function:t}           = { terraform.exe @args }
     ${function:ta}          = { terraform.exe apply terraform.plan @args }
@@ -388,6 +392,15 @@ if (Get-Command kitchen.bat -ErrorAction SilentlyContinue | Test-Path) {
     ${function:twl}         = { terraform.exe workspace list @args }
     ${function:tws}         = { terraform.exe workspace select @args }
 }
+
+if (Get-Command openssl.exe -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:genpass}   = { openssl.exe rand -base64 @args }
+}
+
+if (Get-Command shasum.bat -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:sha}  = { shasum.bat -a 256 @args }
+}
+
 
 ################################################################################
 ### >> Align:

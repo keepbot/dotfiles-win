@@ -29,6 +29,8 @@ alias la='ls -alh --group-directories-first'
 alias ll='ls -alFh --group-directories-first'
 alias lld="ls -l | grep ^d"
 
+alias c='clear'
+
 alias cdd='cd -'  # back to last directory
 alias pg='ps aux | head -n1; ps aux | grep -i'
 alias tf='tail -F -n200'
@@ -94,7 +96,7 @@ alias du='du -h -c' # calculate disk usage for a folder
 
 # IP addresses
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias myips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+alias localip="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 
 # View HTTP traffic
 alias sniffe="sudo ngrep -d 'enp0s31f6' -t '^(GET|POST) ' 'tcp and port 80'"
@@ -165,8 +167,9 @@ alias gb="git checkout -b"
 alias got="git checkout -"
 alias gom="git checkout master"
 alias grb="git rebase -i origin/master"
-alias gr="git branch -d"
-alias grr="git branch -D"
+alias gbr="git branch -d"
+alias gbrf="git branch -D"
+alias gbrr="git push origin --delete"
 alias gcp="git cherry-pick"
 alias gam="git commit --amend"
 alias gamne="git commit --amend --no-edit"
@@ -236,6 +239,9 @@ alias twd='terraform workspace delete'
 alias twn='terraform workspace new'
 alias twl='terraform workspace list'
 alias tws='terraform workspace select'
+
+alias genpass='openssl rand -base64'
+alias sha='shasum -a 256'
 
 ################################################################################
 ### >> Align:
