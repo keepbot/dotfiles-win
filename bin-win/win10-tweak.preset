@@ -57,7 +57,7 @@ SetDEPOptOut                # SetDEPOptIn
 # DisableUpdateMSRT         # EnableUpdateMSRT
 # DisableUpdateDriver       # EnableUpdateDriver
 DisableUpdateRestart        # EnableUpdateRestart
-DisableHomeGroups         # EnableHomeGroups
+DisableHomeGroups           # EnableHomeGroups
 DisableSharedExperiences    # EnableSharedExperiences
 DisableRemoteAssistance     # EnableRemoteAssistance
 DisableRemoteDesktop        # EnableRemoteDesktop
@@ -67,7 +67,7 @@ DisableRestorePoints        # EnableRestorePoints
 # EnableStorageSense        # DisableStorageSense
 DisableDefragmentation      # EnableDefragmentation
 DisableSuperfetch           # EnableSuperfetch
-DisableIndexing             # EnableIndexing
+EnableIndexing              # DisableIndexing
 DisableNTFSLastAccess       # EnableNTFSLastAccess
 SetBIOSTimeUTC              # SetBIOSTimeLocal
 # EnableHibernation         # DisableHibernation
