@@ -98,6 +98,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "cabal"
   "haskell-stack"
   "hg"
+  "hxd"
   ###
   "imagemagick"
   "irfanview"
@@ -127,6 +128,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "nmap"
   "nodejs-lts"
   "notepadplusplus"
+  "notepadplusplus-npppluginmanager"
   # "nomad"
   "nuget.commandline"
   "nugetpackageexplorer"
