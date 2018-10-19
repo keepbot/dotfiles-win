@@ -1,13 +1,13 @@
 [include]
-  path = ~/.git.d/aliases.ini
-  path = ~/.git.d/branching.ini
-  path = ~/.git.d/colors.ini
-  path = ~/.git.d/core.ini
-  path = ~/.git.d/diff.ini
-  path = ~/.git.d/user.ini
+    path = ~/.git.d/aliases.ini
+    path = ~/.git.d/branching.ini
+    path = ~/.git.d/colors.ini
+    path = ~/.git.d/core.ini
+    path = ~/.git.d/diff.ini
+    path = ~/.git.d/user.ini
 
 [core]
-  autocrlf = true
+    autocrlf = true
 [credential]
 	helper = manager
 [gpg]
