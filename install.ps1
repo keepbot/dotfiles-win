@@ -174,6 +174,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "vscode"
   "vlc"
   "wget"
+  "wincdemu"
   "windjview"
   "windirstat"
   "winmerge"
