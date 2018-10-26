@@ -4,6 +4,10 @@ $ScriptName         = [io.path]::GetFileNameWithoutExtension($MyInvocation.MyCom
 
 # Write-Host ${profileDir}\Modules\W10Init\Win10.ps1 -include "${profileDir}\Modules\W10Init\Win10.psm1" -preset "${PSScriptRoot}\${ScriptName}.preset"
 # & ${profileDir}\Modules\W10Init\Win10.ps1 -include "${profileDir}\Modules\W10Init\Win10.psm1" -preset "${PSScriptRoot}\${ScriptName}.preset"
+powershell.exe -NoProfile -ExecutionPolicy Bypass     `
+  -File "${profileDir}\Modules\W10Init\Win10.ps1"     `
+  -include "${profileDir}\Modules\W10Init\Win10.psm1" `
+  -preset "${PSScriptRoot}\${ScriptName}.preset"
 
 # Write-Host "${PSScriptRoot}\${ScriptName}.cmd" "${profileDir}\Modules\W10Init\Win10" "${PSScriptRoot}\${ScriptName}.preset"
-& "${PSScriptRoot}\${ScriptName}.cmd" "${profileDir}\Modules\W10Init\Win10" "${PSScriptRoot}\${ScriptName}.preset"
+# & "${PSScriptRoot}\${ScriptName}.cmd" "${profileDir}\Modules\W10Init\Win10" "${PSScriptRoot}\${ScriptName}.preset"
