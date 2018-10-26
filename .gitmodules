@@ -164,7 +164,7 @@
 	ignore = dirty
 	branch = master
 [submodule "powershell/Modules/Win10-Initial-Setup-Script"]
-	path = powershell/Modules/Win10-Initial-Setup-Script
+	path = powershell/Modules/W10Init
 	url = git@github.com:Disassembler0/Win10-Initial-Setup-Script.git
     ignore = dirty
 	branch = master

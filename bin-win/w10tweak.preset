@@ -17,7 +17,7 @@ DisableAppSuggestions       # EnableAppSuggestions
 DisableActivityHistory      # EnableActivityHistory
 DisableBackgroundApps       # EnableBackgroundApps
 # DisableLocationTracking   # EnableLocationTracking
-DisableMapUpdates         # EnableMapUpdates
+DisableMapUpdates           # EnableMapUpdates
 DisableFeedback             # EnableFeedback
 DisableTailoredExperiences  # EnableTailoredExperiences
 DisableAdvertisingID        # EnableAdvertisingID
@@ -40,17 +40,17 @@ DisableSMB1                 # EnableSMB1
 SetCurrentNetworkPrivate    # SetCurrentNetworkPublic
 # SetUnknownNetworksPrivate # SetUnknownNetworksPublic
 # DisableNetDevicesAutoInst # EnableNetDevicesAutoInst
-DisableFirewall             # EnableFirewall
-DisableDefender             # EnableDefender
-DisableDefenderCloud        # EnableDefenderCloud
-# EnableCtrldFolderAccess   # DisableCtrldFolderAccess
-# EnableCIMemoryIntegrity   # DisableCIMemoryIntegrity
+EnableFirewall              # DisableFirewall             # EnableFirewall
+EnableDefender              # DisableDefender             # EnableDefender
+EnableDefenderCloud         # DisableDefenderCloud        # EnableDefenderCloud
+EnableCtrldFolderAccess     # DisableCtrldFolderAccess
+EnableCIMemoryIntegrity     # DisableCIMemoryIntegrity
 DisableScriptHost           # EnableScriptHost
 EnableDotNetStrongCrypto    # DisableDotNetStrongCrypto
 # EnableMeltdownCompatFlag  # DisableMeltdownCompatFlag
 EnableF8BootMenu            # DisableF8BootMenu
-DisableBootRecovery       # EnableBootRecovery
-DisableRecoveryAndReset   # EnableRecoveryAndReset
+DisableBootRecovery         # EnableBootRecovery
+DisableRecoveryAndReset     # EnableRecoveryAndReset
 SetDEPOptOut                # SetDEPOptIn
 
 ### Service Tweaks ###
@@ -169,4 +169,4 @@ RemoveFaxPrinter            # AddFaxPrinter
 
 ### Auxiliary Functions ###
 WaitForKey
-Restart
+# Restart
