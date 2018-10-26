@@ -31,7 +31,7 @@ function Reload-Paths-My {
     "C:\Program Files\Amazon\AWSCLI\"
     "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.1\bin"
     "C:\tools\mingw64\bin"
-    "C:\tools\go\bin"
+    "C:\Go\bin"
     "C:\Program Files\LLVM\bin"
     # "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\bin\Hostx64\x64"
     "C:\HashiCorp\Vagrant\bin"
