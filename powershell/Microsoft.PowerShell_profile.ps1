@@ -1,6 +1,8 @@
 #!/usr/bin/env powershell
 $profileDir         = Split-Path -Parent $profile
 
+$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
+
 # If (-Not ($env:ConEmuANSI) -And -Not ($env:RELOADED_TRUE)) {
 #   #Write-Host "$PID.pid"
 #   $env:RELOADED_TRUE = 1
