@@ -24,7 +24,7 @@ DisableAdvertisingID        # EnableAdvertisingID
 DisableWebLangList          # EnableWebLangList
 DisableCortana              # EnableCortana
 DisableErrorReporting       # EnableErrorReporting
-# SetP2PUpdateLocal         # SetP2PUpdateInternet        # SetP2PUpdateDisable
+# SetP2PUpdateLocal         # SetP2PUpdateInternet              # SetP2PUpdateDisable
 DisableDiagTrack            # EnableDiagTrack
 DisableWAPPush              # EnableWAPPush
 # HideRecentJumplists       # ShowRecentJumplists
@@ -40,12 +40,12 @@ DisableSMB1                     # EnableSMB1
 SetCurrentNetworkPrivate        # SetCurrentNetworkPublic
 # SetUnknownNetworksPrivate     # SetUnknownNetworksPublic
 # DisableNetDevicesAutoInst     # EnableNetDevicesAutoInst
-EnableFirewall                  # DisableFirewall             # EnableFirewall
+EnableFirewall                  # DisableFirewall               # EnableFirewall
 # HideDefenderTrayIcon          # ShowDefenderTrayIcon
-EnableDefender                  # DisableDefender             # EnableDefender
-EnableDefenderCloud             # DisableDefenderCloud        # EnableDefenderCloud
-EnableCtrldFolderAccess         # DisableCtrldFolderAccess
-# EnableCIMemoryIntegrity       # DisableCIMemoryIntegrity
+EnableDefender                  # DisableDefender               # EnableDefender
+EnableDefenderCloud             # DisableDefenderCloud          # EnableDefenderCloud
+DisableCtrldFolderAccess        # EnableCtrldFolderAccess       # DisableCtrldFolderAccess
+DisableCIMemoryIntegrity        # EnableCIMemoryIntegrity       # DisableCIMemoryIntegrity
 # EnableDefenderAppGuard        # DisableDefenderAppGuard
 HideAccountProtectionWarn       # ShowAccountProtectionWarn
 # DisableDownloadBlocking       # EnableDownloadBlocking
@@ -91,16 +91,16 @@ DisableStickyKeys               # EnableStickyKeys
 ShowTaskManagerDetails          # HideTaskManagerDetails
 ShowFileOperationsDetails       # HideFileOperationsDetails
 # EnableFileDeleteConfirm       # DisableFileDeleteConfirm
-HideTaskbarSearch               # ShowTaskbarSearchIcon       # ShowTaskbarSearchBox
+HideTaskbarSearch               # ShowTaskbarSearchIcon         # ShowTaskbarSearchBox
 HideTaskView                    # ShowTaskView
 ShowSmallTaskbarIcons           # ShowLargeTaskbarIcons
-SetTaskbarCombineNever          # SetTaskbarCombineWhenFull   # SetTaskbarCombineAlways
+SetTaskbarCombineNever          # SetTaskbarCombineWhenFull     # SetTaskbarCombineAlways
 HideTaskbarPeopleIcon           # ShowTaskbarPeopleIcon
 ShowTrayIcons                   # HideTrayIcons
 DisableSearchAppInStore         # EnableSearchAppInStore
 DisableNewAppPrompt             # EnableNewAppPrompt
 # HideRecentlyAddedApps         # ShowRecentlyAddedApps
-SetControlPanelSmallIcons       # SetControlPanelLargeIcons   # SetControlPanelCategories
+SetControlPanelSmallIcons       # SetControlPanelLargeIcons     # SetControlPanelCategories
 DisableShortcutInName           # EnableShortcutInName
 # HideShortcutArrow             # ShowShortcutArrow
 SetVisualFXPerformance          # SetVisualFXAppearance
