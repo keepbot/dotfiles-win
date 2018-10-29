@@ -356,7 +356,7 @@ if (Get-Command docker.exe -ErrorAction SilentlyContinue | Test-Path)
     docker.exe rmi $(docker images -qf dangling=true)
     docker.exe volume rm $(docker volume ls -qf dangling=true)
   }
-  ${function:dira} = { docker.exe rmi $(docker images -q) }
+  ${function:dira} = { docker.exe rmi -f $(docker images -q) }
   # inspect docker images
   ${function:dc_trace_cmd} = {
     ${parent}= $(docker.exe inspect -f '{{ .Parent }}' $args[0])
