@@ -114,6 +114,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "jq"
   "kdiff3"
   "keepass"
+  "keystore-explorer.portable"
   "kubernetes-cli"
   "kubernetes-helm"
   "llvm"
