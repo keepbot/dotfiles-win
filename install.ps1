@@ -168,6 +168,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "telegram.install"
   "terraform"
   "tftpd32"
+  "tightvnc"
   "tor-browser"
   "vagrant"
   "vagrant-manager"
