@@ -7,7 +7,7 @@ function ConvertTo-Base64() {
   $bytes  = [System.Text.Encoding]::UTF8.GetBytes($string);
   $encoded = [System.Convert]::ToBase64String($bytes);
 
-  return $encoded;
+  Write-Output $encoded;
 }
 
 function ConvertFrom-Base64() {
@@ -19,5 +19,5 @@ function ConvertFrom-Base64() {
   $bytes  = [System.Convert]::FromBase64String($string);
   $decoded = [System.Text.Encoding]::UTF8.GetString($bytes);
 
-  return $decoded;
+  Write-Output $decoded;
 }
