@@ -40,12 +40,12 @@ DisableSMB1                     # EnableSMB1
 SetCurrentNetworkPrivate        # SetCurrentNetworkPublic
 # SetUnknownNetworksPrivate     # SetUnknownNetworksPublic
 # DisableNetDevicesAutoInst     # EnableNetDevicesAutoInst
-EnableFirewall                  # DisableFirewall               # EnableFirewall
+DisableFirewall                 # EnableFirewall
 # HideDefenderTrayIcon          # ShowDefenderTrayIcon
-EnableDefender                  # DisableDefender               # EnableDefender
-EnableDefenderCloud             # DisableDefenderCloud          # EnableDefenderCloud
-DisableCtrldFolderAccess        # EnableCtrldFolderAccess       # DisableCtrldFolderAccess
-DisableCIMemoryIntegrity        # EnableCIMemoryIntegrity       # DisableCIMemoryIntegrity
+DisableDefender                 # EnableDefender
+DisableDefenderCloud            # EnableDefenderCloud
+# EnableCtrldFolderAccess       # DisableCtrldFolderAccess
+# EnableCIMemoryIntegrity       # DisableCIMemoryIntegrity
 # EnableDefenderAppGuard        # DisableDefenderAppGuard
 HideAccountProtectionWarn       # ShowAccountProtectionWarn
 # DisableDownloadBlocking       # EnableDownloadBlocking
