@@ -9,6 +9,9 @@ ${function:.....} = { Set-Location ..\..\..\.. }
 ${function:......} = { Set-Location ..\..\..\..\.. }
 ${function:.......} = { Set-Location ..\..\..\..\..\.. }
 
+# WSL
+${function:bash-con} = { conemu-cyg-64.exe --wsl -cur_console:h0 }
+
 # Navigation Shortcuts
 ${function:drop} = { Set-Location D:\Dropbox }
 ${function:desk} = { Set-Location ~\Desktop }

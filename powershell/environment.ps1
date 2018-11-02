@@ -47,6 +47,8 @@ function Reload-Paths-My {
     "C:\Program Files (x86)\Subversion\bin"
     "C:\tools\ruby25\bin"
     "C:\tools\cmdermini"
+    "C:\tools\cmdermini\vendor\conemu-maximus5\ConEmu"
+    "C:\tools\cmdermini\vendor\conemu-maximus5\ConEmu\wsl"
     "C:\Strawberry\c\bin"
     "C:\Strawberry\perl\site\bin"
     "C:\Strawberry\perl\bin"
