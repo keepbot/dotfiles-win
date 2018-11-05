@@ -27,7 +27,7 @@ esac
 alias l='ls -CFh --group-directories-first'
 alias la='ls -alh --group-directories-first'
 alias ll='ls -alFh --group-directories-first'
-alias lld="ls -l | grep ^d"
+alias dirs="ls -l | grep ^d"
 
 alias c='clear'
 
