@@ -1,10 +1,14 @@
 
+global !p
+import os
+endglobal
 ###########################################################################
 #                            TextMate Snippets                            #
 ###########################################################################
 snippet hdr "header"
 /*
  * =====================================================================
+ *      Project :  "`!p snip.rv = os.path.basename(os.getcwd())`"
  *      File    :  `!p snip.rv = snip.fn`
  *      Created :  `!v strftime("%x")` `!v strftime("%X")` `!v strftime("%z")`
  *      Author  :  `!v g:snips_author`
@@ -17,6 +21,7 @@ endsnippet
 snippet hdrca "header-cpp-apache"
 /*
 * ---------------------------------------------------------------------------
+*       Project :  "`!p snip.rv = os.path.basename(os.getcwd())`"
 *       File    :  `!p snip.rv = snip.fn`
 *       Created :  `!v strftime("%x")` `!v strftime("%X")` `!v strftime("%z")`
 *       Author  :  `!v g:snips_author`
