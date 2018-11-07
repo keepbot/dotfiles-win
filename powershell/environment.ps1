@@ -60,6 +60,7 @@ function Reload-Paths-My {
     "C:\Program Files\kdiff3"
     "C:\tools\Atlassian\atlassian-plugin-sdk-6.3.10\bin"
     "C:\Program Files\Calibre2\"
+    "C:\Program Files (x86)\Dr. Memory\bin"
   )
 
   $final_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
