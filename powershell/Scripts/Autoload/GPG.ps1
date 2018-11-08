@@ -1,4 +1,3 @@
-
 function DecryptFrom-Base64() {
   [CmdletBinding()]
   param (
@@ -13,6 +12,7 @@ function DecryptFrom-Base64() {
     gpg.exe -d $filename
     Remove-Item $filename
   } else {
-    Write-Error "ERROR! You don't have gpg.exe in your path!"
+    Write-Host "ERROR: gpg.exe not found..." -ForegroundColor Red
+    Write-Host "ERROR: GPG4Win should be installed and gpg.exe added to the %PATH% env" -ForegroundColor Red
   }
 }

@@ -84,6 +84,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "drmemory"
   "etcher"
   "far"
+  "foobar2000"
   "ftpdmin"
   "gimp"
   "git"
