@@ -45,6 +45,14 @@ snippet hdrca "header-cpp-apache"
 
 endsnippet
 
+snippet guards "include guards"
+#ifndef `!p snip.rv = snip.fn.upper().replace('-','_').replace('.','_')`
+#define `!p snip.rv = snip.fn.upper().replace('-','_').replace('.','_')`
+
+#endif //`!p snip.rv = snip.fn.upper().replace('-','_').replace('.','_')`
+
+endsnippet
+
 snippet inc "#include <> (inc)" !
 #include <${1:.h}>
 endsnippet
