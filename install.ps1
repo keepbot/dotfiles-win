@@ -80,6 +80,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   # "consul"
   "curl"
   # "cyberduck"
+  "doublecmd"
   "du"
   "drmemory"
   "etcher"
