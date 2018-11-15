@@ -19,7 +19,6 @@ Set-PSReadLineKeyHandler -Key Tab -Function Complete
 
 function Reload-Paths-My {
   $paths = @(
-    "C:\ProgramData\chocolatey\bin"
     "C:\tools\python3\Scripts\"
     "C:\tools\python3\"
     "C:\tools\python2\Scripts"
@@ -61,7 +60,8 @@ function Reload-Paths-My {
     "C:\tools\Atlassian\atlassian-plugin-sdk-6.3.10\bin"
     "C:\Program Files\Calibre2\"
     "C:\Program Files (x86)\Dr. Memory\bin"
-  )
+    "C:\ProgramData\chocolatey\bin"
+    )
 
   $final_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
 
