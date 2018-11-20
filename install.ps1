@@ -164,6 +164,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "slack"
   "strawberryperl"
   # "studio3t"
+  "sublimetext3"
   # "sumatrapdf"
   "superputty"
   "svn"
