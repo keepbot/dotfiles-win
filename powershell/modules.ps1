@@ -33,3 +33,7 @@ foreach ($module in $modules) {
     Import-Module -Name $module
   }
 }
+
+# Posh git settings
+$GitPromptSettings.EnableFileStatus = $false
+
