@@ -35,5 +35,5 @@ foreach ($module in $modules) {
 }
 
 # Posh git settings
-$GitPromptSettings.EnableFileStatus = $false
-
+# $GitPromptSettings.EnableFileStatus = $false
+$GitPromptSettings.RepositoriesInWhichToDisableFileStatus += 'C:\boost'
