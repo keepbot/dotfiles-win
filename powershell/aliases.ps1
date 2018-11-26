@@ -93,6 +93,9 @@ Set-Alias vim gvim
 New-Alias which1 Get-Command
 ${function:which2} = { Get-Command @args -All | Format-Table CommandType, Name, Definition }
 
+# Show function code
+${function:show-cmd} = { (Get-Command $args[0]).Definition }
+
 # Correct PowerShell Aliases if tools are available (aliases win if set)
 # WGet: Use `wget.exe` if available
 if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
