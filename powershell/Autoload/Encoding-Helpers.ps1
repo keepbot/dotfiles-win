@@ -13,7 +13,7 @@ function Convert-FileEncoding([string]$Include, [string]$Path, [string]$Encoding
   | where {$_.Encoding -ne $Encoding} `
   | % { (Get-Content $_.FullName) `
         | Out-File $_.FullName -Encoding $Encoding; $count++; }
-  
+
   Write-Host "$count $Pattern file(s) converted to $Encoding in $Path."
 }
 
@@ -33,8 +33,8 @@ This command gets ps1 files in current directory where encoding is not ASCII
 .EXAMPLE
 Get-ChildItem  *.ps1 | select FullName, @{n='Encoding';e={Get-FileEncoding $_.FullName}} | where {$_.Encoding -ne 'ASCII'} | foreach {(get-content $_.FullName) | set-content $_.FullName -Encoding ASCII}
 Same as previous example but fixes encoding using set-content
- 
- 
+
+
 # Modified by F.RICHARD August 2010
 # add comment + more BOM
 # http://unicode.org/faq/utf_bom.html
@@ -45,9 +45,9 @@ Same as previous example but fixes encoding using set-content
 #>
 function Get-FileEncoding
 {
-  [CmdletBinding()] 
+  [CmdletBinding()]
   Param (
-    [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)] 
+    [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
     [string]$Path
   )
 

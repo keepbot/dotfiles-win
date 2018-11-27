@@ -12,28 +12,7 @@ $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 #   Stop-Process -Id $PID
 # }
 
-# Load Functions
-If (Test-Path (Join-Path $profileDir "functions.ps1"          ))  { . (Join-Path $profileDir "functions.ps1"          ) }
-
-# Set Colors
-If (Test-Path (Join-Path $profileDir "colors.ps1"             ))  { . (Join-Path $profileDir "colors.ps1"             ) }
-
-# Set Environmet
-If (Test-Path (Join-Path $profileDir "environment.ps1"        ))  { . (Join-Path $profileDir "environment.ps1"        ) }
-
-# Set Aliases
-If (Test-Path (Join-Path $profileDir "aliases.ps1"            ))  { . (Join-Path $profileDir "aliases.ps1"            ) }
-
-# Load Modules
-If (Test-Path (Join-Path $profileDir "modules.ps1"            ))  { . (Join-Path $profileDir "modules.ps1"            ) }
-
-# Chocolatey profile
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
-}
-
-Get-ChildItem "$(Join-Path $profileDir "Scripts\Autoload")\*.ps1" | ForEach-Object{.$_}
+Get-ChildItem "$(Join-Path $profileDir "Autoload")\*.ps1" | ForEach-Object{.$_}
 
 # Loading Cmder Profile
 If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path) {

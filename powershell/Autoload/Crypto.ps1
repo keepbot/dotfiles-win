@@ -1,3 +1,12 @@
+if (Get-Command openssl.exe -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:genpass}   = { openssl.exe rand -base64 @args }
+}
+
+if (Get-Command shasum.bat -ErrorAction SilentlyContinue | Test-Path) {
+  ${function:sha}  = { shasum.bat -a 256 @args }
+}
+
+
 function DecryptFrom-Base64() {
   [CmdletBinding()]
   param (

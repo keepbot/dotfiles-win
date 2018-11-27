@@ -1,4 +1,4 @@
-$ModulesDir = Join-Path $PSScriptRoot "Modules"
+$ModulesDir = Join-Path (Get-Item $PSScriptRoot).Parent.FullName "Modules"
 
 $local_modules = @(
 "ApplicationCompatibility"
@@ -37,3 +37,9 @@ foreach ($module in $modules) {
 # Posh git settings
 # $GitPromptSettings.EnableFileStatus = $false
 $GitPromptSettings.RepositoriesInWhichToDisableFileStatus += 'C:\boost'
+
+# Chocolatey profile
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}

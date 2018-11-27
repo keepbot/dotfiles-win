@@ -3,6 +3,10 @@
 # Make vim the default editor
 $Env:EDITOR = "gvim --nofork"
 $Env:GIT_EDITOR = $Env:EDITOR
+Set-Alias vim gvim
+
+function Edit-Hosts { Invoke-Expression "sudo $(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
+function Edit-Profile { Invoke-Expression "$(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $profile" }
 
 # Language
 $Env:LANG = "en_US"
@@ -127,4 +131,33 @@ function Set-Dev-Env {
   [Environment]::SetEnvironmentVariable("QTDIR", "C:\Qt\Qt5.11.1\5.11.1\msvc2015", "Machine")
   [Environment]::SetEnvironmentVariable("QMAKESPEC", "C:\Qt\Qt5.11.1\5.11.1\msvc2015\mkspecs\win32-msvc", "Machine")
   [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "%USERPROFILE%\workspace\ormco\aligner\aligner-thirdparty", "Machine")
+}
+
+${function:env} = {Get-ChildItem Env:}
+${function:List-Env} = { Get-ChildItem Env: }
+${function:List-Paths} = { $Env:Path.Split(';') }
+
+# Set a permanent Environment variable, and reload it into $env
+function Set-Environment([String] $variable, [String] $value) {
+  Set-ItemProperty "HKCU:\Environment" $variable $value
+  # Manually setting Registry entry. SetEnvironmentVariable is too slow because of blocking HWND_BROADCAST
+  #[System.Environment]::SetEnvironmentVariable("$variable", "$value","User")
+  Invoke-Expression "`$env:${variable} = `"$value`""
+}
+
+# Reload the $env object from the registry
+function Refresh-Environment {
+  $locations = 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment',
+               'HKCU:\Environment'
+
+  $locations | ForEach-Object {
+      $k = Get-Item $_
+      $k.GetValueNames() | ForEach-Object {
+          $name  = $_
+          $value = $k.GetValue($_)
+          Set-Item -Path Env:\$name -Value $value
+      }
+  }
+
+  $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 }
