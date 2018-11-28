@@ -186,6 +186,7 @@ alias git-home="git config --local user.email 'd.k.ivanov@live.com'"
 alias git-work="git config --local user.email 'dmitriy.ivanov@ormco.com'"
 alias grmt='git tag --delete'
 alias grmto='git push --delete origin'
+alias gabr='git branch -r | grep -v "\->" | while read remote; do git branch --track "${remote#origin/}" "$remote"; done'
 
 # Chef
 alias kc='kitchen converge'
