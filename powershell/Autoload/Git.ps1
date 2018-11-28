@@ -72,7 +72,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     # Run garbage collector
     cmd /c "git gc --prune=now"
 
-    # Prune obsotele refs in 3 turn
+    # Prune obsolete refs in 3 turns
     cmd /c "git remote prune origin"
     cmd /c "git fetch --prune"
     cmd /c "git remote prune origin"
