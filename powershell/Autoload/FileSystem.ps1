@@ -1,27 +1,43 @@
+if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
+  Remove-Item alias:cd -ErrorAction SilentlyContinue
+  ${function:cd} = {
+
+    write-host @args
+    if ($args -eq '-') {
+      $tmpLocation = $env:OLDPWD
+      $env:OLDPWD = Get-Location
+      Set-Location $tmpLocation
+    } else {
+      $env:OLDPWD = Get-Location
+      Set-Location @args
+    }
+    $env:PWD = Get-Location
+  }
+}
 # Easier Navigation: .., ..., ...., ....., and ~
-${function:~} = { Set-Location ~ }
+${function:~} = { cd ~ }
 # PoSh won't allow ${function:..} because of an invalid path error, so...
-${function:Set-ParentLocation} = { Set-Location .. }; Set-Alias ".." Set-ParentLocation
-${function:...} = { Set-Location ..\.. }
-${function:....} = { Set-Location ..\..\.. }
-${function:.....} = { Set-Location ..\..\..\.. }
-${function:......} = { Set-Location ..\..\..\..\.. }
-${function:.......} = { Set-Location ..\..\..\..\..\.. }
+${function:Set-ParentLocation} = { cd .. }; Set-Alias ".." Set-ParentLocation
+${function:...} = { cd ..\.. }
+${function:....} = { cd ..\..\.. }
+${function:.....} = { cd ..\..\..\.. }
+${function:......} = { cd ..\..\..\..\.. }
+${function:.......} = { cd ..\..\..\..\..\.. }
 
 # Navigation Shortcuts
-${function:drop} = { Set-Location D:\Dropbox }
-${function:desk} = { Set-Location ~\Desktop }
-${function:docs} = { Set-Location ~\Documents }
-${function:down} = { Set-Location ~\Downloads }
-${function:ws} = { Set-Location ~\workspace }
-${function:wsmy} = { Set-Location ~\workspace\my }
-${function:wsdf} = { Set-Location ~\workspace\my\dotfiles }
-${function:wso} = { Set-Location ~\workspace\ormco}
-${function:wsod} = { Set-Location ~\workspace\ormco\devops}
-${function:wst} = { Set-Location ~\workspace\tmp }
+${function:drop} = { cd D:\Dropbox }
+${function:desk} = { cd ~\Desktop }
+${function:docs} = { cd ~\Documents }
+${function:down} = { cd ~\Downloads }
+${function:ws} = { cd ~\workspace }
+${function:wsmy} = { cd ~\workspace\my }
+${function:wsdf} = { cd ~\workspace\my\dotfiles }
+${function:wso} = { cd ~\workspace\ormco}
+${function:wsod} = { cd ~\workspace\ormco\devops}
+${function:wst} = { cd ~\workspace\tmp }
 
 # Create a new directory and enter it
-function CreateAndSet-Directory([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path}
+function CreateAndSet-Directory([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; cd $path}
 Set-Alias mkd CreateAndSet-Directory
 
 # Determine size of a file or total size of a directory

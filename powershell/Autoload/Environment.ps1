@@ -12,6 +12,10 @@ function Edit-Profile { Invoke-Expression "$(if($env:EDITOR -ne $null)  {$env:ED
 $Env:LANG = "en_US"
 $Env:LC_ALL = "C.UTF-8"
 
+# Init of directory envs:
+$env:PWD = Get-Location
+$env:OLDPWD = Get-Location
+
 # Virtual Env Fix (if prompt in ReadOnly mode)
 # $env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
