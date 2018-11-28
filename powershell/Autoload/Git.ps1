@@ -60,13 +60,31 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:grmt} = { git.exe tag --delete @args }
   ${function:grmto} = { git.exe push --delete origin @args }
   ${function:gprune} = {
-    git pull
-    git gc --prune=now
-    git remote prune origin
-    git fetch --prune
-    git remote prune origin
-    git fetch --prune
-    git pull --prune
+    $CurrentBranch = $(cmd /c "git rev-parse --abbrev-ref HEAD")
+
+    # Stash changes
+    cmd /c "git stash"
+
+    # Checkout master:
+    cmd /c "git checkout master"
+    cmd /c "git fetch"
+
+    # Run garbage collector
+    cmd /c "git gc --prune=now"
+
+    # Prune obsotele refs in 3 turn
+    cmd /c "git remote prune origin"
+    cmd /c "git fetch --prune"
+    cmd /c "git remote prune origin"
+    cmd /c "git fetch --prune"
+    cmd /c "git remote prune origin"
+    cmd /c "git fetch --prune"
+
+    # Return to working branch
+    cmd /c "git checkout $CurrentBranch"
+
+    # Unstash work:
+    cmd /c "git stash pop"
   }
   # GitHub
   ${function:get_gh_user_repos} = {
