@@ -1,8 +1,6 @@
 if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
   Remove-Item alias:cd -ErrorAction SilentlyContinue
   ${function:cd} = {
-
-    write-host @args
     if ($args -eq '-') {
       $tmpLocation = $env:OLDPWD
       $env:OLDPWD = Get-Location
