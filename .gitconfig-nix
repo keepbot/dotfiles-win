@@ -4,6 +4,8 @@
     path = ~/.git.d/colors.ini
     path = ~/.git.d/core.ini
     path = ~/.git.d/diff.ini
+    path = ~/.git.d/lfs.ini
+    path = ~/.git.d/misc.ini
     path = ~/.git.d/user.ini
 
 [core]
