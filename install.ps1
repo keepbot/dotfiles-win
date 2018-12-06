@@ -71,6 +71,8 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "adobereader"
   # "azure-cli"
   "awscli"
+  # echo 'nameserver 8.8.8.8' > $env:SystemRoot\system32\etc\resolv.conf
+  # echo 'nameserver 77.88.8.8' >> $env:SystemRoot\system32\etc\resolv.conf
   "bind-toolsonly"
   "calibre"
   "ccleaner"
