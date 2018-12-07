@@ -17,5 +17,9 @@ function get-wapp {
 }
 
 function re-wapp {
+  Get-AppxPackage *$($args[0].ToString())* | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+}
+
+function re-wapp-all {
   Get-AppxPackage -AllUsers| Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 }
