@@ -13,10 +13,10 @@ DisableTelemetry            # EnableTelemetry
 DisableWiFiSense            # EnableWiFiSense
 # DisableSmartScreen        # EnableSmartScreen
 DisableWebSearch            # EnableWebSearch
-DisableAppSuggestions       # EnableAppSuggestions
+EnableAppSuggestions        # DisableAppSuggestions
 DisableActivityHistory      # EnableActivityHistory
 DisableBackgroundApps       # EnableBackgroundApps
-# DisableLocationTracking   # EnableLocationTracking
+EnableLocationTracking      # DisableLocationTracking
 DisableMapUpdates           # EnableMapUpdates
 DisableFeedback             # EnableFeedback
 DisableTailoredExperiences  # EnableTailoredExperiences
@@ -142,9 +142,9 @@ Hide3DObjectsFromThisPC         # Show3DObjectsInThisPC
 # HideIncludeInLibraryMenu      # ShowIncludeInLibraryMenu
 # HideGiveAccessToMenu          # ShowGiveAccessToMenu
 # HideShareMenu                 # ShowShareMenu
-# DisableThumbnails             # EnableThumbnails
-DisableThumbnailCache           # EnableThumbnailCache
-DisableThumbsDBOnNetwork        # EnableThumbsDBOnNetwork
+EnableThumbnails                # DisableThumbnails
+EnableThumbnailCache            # DisableThumbnailCache
+EnableThumbsDBOnNetwork         # DisableThumbsDBOnNetwork
 
 ### Application Tweaks ###
 # DisableOneDrive               # EnableOneDrive
@@ -154,7 +154,7 @@ UninstallThirdPartyBloat        # InstallThirdPartyBloat
 # UninstallWindowsStore         # InstallWindowsStore
 DisableXboxFeatures             # EnableXboxFeatures
 DisableAdobeFlash               # EnableAdobeFlash
-DisableEdgeShortcutCreation     # EnableEdgeShortcutCreation
+EnableEdgeShortcutCreation      # DisableEdgeShortcutCreation
 # UninstallMediaPlayer          # InstallMediaPlayer
 # UninstallInternetExplorer     # InstallInternetExplorer
 # UninstallWorkFolders          # InstallWorkFolders
