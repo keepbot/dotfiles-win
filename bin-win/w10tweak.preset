@@ -15,7 +15,7 @@ DisableWiFiSense            # EnableWiFiSense
 DisableWebSearch            # EnableWebSearch
 EnableAppSuggestions        # DisableAppSuggestions
 DisableActivityHistory      # EnableActivityHistory
-DisableBackgroundApps       # EnableBackgroundApps
+EnableBackgroundApps        # DisableBackgroundApps
 EnableLocationTracking      # DisableLocationTracking
 DisableMapUpdates           # EnableMapUpdates
 DisableFeedback             # EnableFeedback
