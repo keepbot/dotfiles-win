@@ -134,7 +134,7 @@ function Set-Dev-Env {
   [Environment]::SetEnvironmentVariable("GIT_LFS_PATH", "C:\Program Files\Git LFS", "Machine")
   [Environment]::SetEnvironmentVariable("QTDIR", "C:\Qt\Qt5.11.1\5.11.1\msvc2015", "Machine")
   [Environment]::SetEnvironmentVariable("QMAKESPEC", "C:\Qt\Qt5.11.1\5.11.1\msvc2015\mkspecs\win32-msvc", "Machine")
-  [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "%USERPROFILE%\workspace\ormco\aligner\aligner-thirdparty", "Machine")
+  [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "$env:HOME\workspace\ormco\aligner\aligner-thirdparty", "Machine")
 }
 
 ${function:env} = {Get-ChildItem Env:}
