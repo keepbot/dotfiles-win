@@ -19,11 +19,24 @@ $env:OLDPWD = Get-Location
 # Virtual Env Fix (if prompt in ReadOnly mode)
 # $env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
+# PS Readline:
+$PSReadLineOptions = @{
+  EditMode = "Vi"
+  MaximumHistoryCount = 32767
+  HistoryNoDuplicates = $true
+  HistorySearchCursorMovesToEnd = $true
+  ShowToolTips = $false
+}
+Set-PSReadLineOption @PSReadLineOptions
+
 ### KEYS:
 Set-PSReadlineKeyHandler -Key Ctrl+d -Function DeleteCharOrExit
 Set-PSReadlineKeyHandler -Key Ctrl+e -Function DeleteWord
 Set-PSReadlineKeyHandler -Key Ctrl+w -Function BackwardKillWord
 Set-PSReadLineKeyHandler -Key Tab -Function Complete
+
+#  1..50000 | % {Set-Variable -Name MaximumHistoryCount -Value $_ }
+Set-Variable -Name MaximumHistoryCount -Value 32767
 
 function Reload-Paths-My {
   $paths = @(
