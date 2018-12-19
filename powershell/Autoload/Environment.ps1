@@ -21,7 +21,8 @@ $env:OLDPWD = Get-Location
 
 # PS Readline:
 $PSReadLineOptions = @{
-  EditMode = "Vi"
+  # EditMode = "Vi"
+  EditMode = "Emacs"
   MaximumHistoryCount = 32767
   HistoryNoDuplicates = $true
   HistorySearchCursorMovesToEnd = $true
