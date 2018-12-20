@@ -122,6 +122,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "keystore-explorer.portable"
   "kubernetes-cli"
   "kubernetes-helm"
+  "libreoffice-fresh"
   "llvm"
   "lockhunter"
   "make"
