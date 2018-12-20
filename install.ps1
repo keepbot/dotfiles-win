@@ -144,6 +144,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
   "octopustools"
   "openssh"
   "openssl.light"
+  "outlookaddressbookview --ignore-checksums"
   "paket.powershell"
   "packer"
   "paint.net"
