@@ -71,10 +71,10 @@ DisableRestorePoints            # EnableRestorePoints
 # EnableStorageSense            # DisableStorageSense
 DisableDefragmentation          # EnableDefragmentation
 DisableSuperfetch               # EnableSuperfetch
-DisableIndexing                 # EnableIndexing                  # DisableIndexing
+DisableIndexing                 # EnableIndexing
 DisableNTFSLastAccess           # EnableNTFSLastAccess
 SetBIOSTimeUTC                  # SetBIOSTimeLocal
-# EnableHibernation             # DisableHibernation
+DisableHibernation              # EnableHibernation
 DisableSleepButton              # EnableSleepButton
 # DisableSleepTimeout           # EnableSleepTimeout
 DisableFastStartup              # EnableFastStartup
