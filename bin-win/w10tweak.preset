@@ -71,13 +71,13 @@ DisableRestorePoints            # EnableRestorePoints
 # EnableStorageSense            # DisableStorageSense
 DisableDefragmentation          # EnableDefragmentation
 DisableSuperfetch               # EnableSuperfetch
-EnableIndexing                  # DisableIndexing
+DisableIndexing                 # EnableIndexing                  # DisableIndexing
 DisableNTFSLastAccess           # EnableNTFSLastAccess
 SetBIOSTimeUTC                  # SetBIOSTimeLocal
 # EnableHibernation             # DisableHibernation
 DisableSleepButton              # EnableSleepButton
 # DisableSleepTimeout           # EnableSleepTimeout
-# DisableFastStartup            # EnableFastStartup
+DisableFastStartup              # EnableFastStartup
 # DisableAutoRebootOnCrash      # EnableAutoRebootOnCrash
 
 ### UI Tweaks ###
