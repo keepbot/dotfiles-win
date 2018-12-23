@@ -11,10 +11,11 @@
 [core]
     autocrlf = true
 [credential]
-	helper = manager
+	helper = cache
+	# helper = manager
 [gpg]
 	program = C:\\Program Files (x86)\\Gpg4win\\..\\GnuPG\\bin\\gpg.exe
 [lfs "customtransfer.bitbucket-media-api"]
 	path = C:\\tools\\GitLfsBitbucketAdapter\\git-lfs-bitbucket-media-api.exe
 [winUpdater]
-	recentlySeenVersion = 2.18.0.windows.1
+	recentlySeenVersion = 2.20.1.windows.1
