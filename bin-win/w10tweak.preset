@@ -58,8 +58,8 @@ DisableRecoveryAndReset         # EnableRecoveryAndReset
 SetDEPOptOut                    # SetDEPOptIn
 
 ### Service Tweaks ###
-# DisableUpdateMSRT             # EnableUpdateMSRT
-# DisableUpdateDriver           # EnableUpdateDriver
+EnableUpdateMSRT                # DisableUpdateMSRT
+EnableUpdateDriver              # DisableUpdateDriver
 DisableUpdateRestart            # EnableUpdateRestart
 DisableHomeGroups               # EnableHomeGroups
 DisableSharedExperiences        # EnableSharedExperiences
