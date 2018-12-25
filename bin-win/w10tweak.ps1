@@ -11,3 +11,5 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass     `
 
 # Write-Host "${PSScriptRoot}\${ScriptName}.cmd" "${profileDir}\Modules\W10Init\Win10" "${PSScriptRoot}\${ScriptName}.preset"
 # & "${PSScriptRoot}\${ScriptName}.cmd" "${profileDir}\Modules\W10Init\Win10" "${PSScriptRoot}\${ScriptName}.preset"
+
+Set-Service "CDPUserSvc" -StartupType Automatic
