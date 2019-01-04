@@ -87,6 +87,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     # Unstash work:
     cmd /c "git stash pop"
   }
+
   # GitHub
   ${function:get_gh_user_repos} = {
     Write-Host "Clonning all GH repos of $($args[0])"
@@ -96,6 +97,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
       git.exe clone $repo
     }
   }
+
   ${function:get_repo_with_target} = {
     if (-Not $args[0]){
       Write-Host "You should enter repo URI."
