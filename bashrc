@@ -15,9 +15,6 @@ done
 # gruvbox colors
 [[ -f $HOME/.bin/gruvbox_256palette.sh ]]  && source ~/.data/gruvbox_256palette.sh
 
-# Import Functions
-[[ -f $HOME/.bash/functions.sh ]]           && source ~/.bash/functions.sh
-
 #Import Rust env
 [[ -f $HOME/.cargo/env ]]                   && source $HOME/.cargo/env
 

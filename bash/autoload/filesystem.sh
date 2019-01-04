@@ -10,6 +10,11 @@ alias  ........='cd ../../../../../../..'
 
 alias cdd='cd -'  # back to last directory
 
+# Create a new directory and enter it
+md() {
+	mkdir -p "$@" && cd "$@"
+}
+
 platform=`uname`
 case $platform in
 	Linux )
@@ -52,3 +57,18 @@ alias df='df -h' # disk free, in Gigabytes, not bytes
 alias du='du -h -c' # calculate disk usage for a folder
 
 alias mmn="mount|column -t"
+
+# find shorthand
+f() {
+	find . -name "$1"
+}
+
+# List files in current directory and replace spaces with underscores
+lsD() {
+  origIFS="${IFS}"
+	IFS=''
+	for str in `find . -maxdepth 1 -type f -name "* *" |sed 's#.*/##'`; do
+		echo ${str// /_}
+	done
+  IFS="${origIFS}"
+}
