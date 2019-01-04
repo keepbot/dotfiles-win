@@ -32,7 +32,7 @@ gget() {
 get_user_repos () {
 	if [ -z "$1" ] || [ $2 ]; then
 		echo "You should enter name of GitHub user."
-		echo "Usage: $0 <github_username>"
+		echo "Usage: get_user_repos <github_username>"
 		echo
 	else
 		curl -s https://api.github.com/users/$1/repos?per_page=1000 > repo.list.json
@@ -45,16 +45,16 @@ get_user_repos () {
 get_repo_with_target() {
   if [ -z "$1" ] || [ $2 ]; then
     echo "You should enter repo URI."
-    echo "Usage: $0 <repo_url>"
+    echo "Usage: get_repo_with_targe <repo_url>"
     echo
   else
-    scheme=$(python3 -c "from urllib.parse import urlparse; uri='$(${1})'; result = urlparse(uri); print(result.scheme)")
-    if [ ${scheme} -eq "https" ]; then
-      target=$(python3 -c "from urllib.parse import urlparse; import os.path; uri='$(${1})'; result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
+    scheme=$(python3 -c "from urllib.parse import urlparse; uri='${1}'; result = urlparse(uri); print(result.scheme)")
+    if [[ ${scheme} = "https" ]]; then
+      target=$(python3 -c "from urllib.parse import urlparse; import os.path; uri='${1}'; result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
     else
-      target=$(python3 -c "from urllib.parse import urlparse; import os.path; uri='$(${1})'; result = urlparse(uri); path = os.path.splitext(result.path.split(':', 1)[-1]); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
+      target=$(python3 -c "from urllib.parse import urlparse; import os.path; uri='${1}'; result = urlparse(uri); path = os.path.splitext(result.path.split(':', 1)[-1]); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
     fi
-    git clone --recurse-submodules "$(${1})" "$target"
+    git clone --recurse-submodules "${1}" "$target"
   fi
 	return 0
 }
@@ -72,17 +72,17 @@ gcsr () {
 }
 
 git-review() {
-  if [ -z "$1" ] || [ "$2" ]; then
-  		echo "Wrong command!"
-  		echo "Usage: $0 <branch_name>"
-  		echo
-  	else
-  		git push origin HEAD:refs/for/${1}
-  	fi
+	if [ -z "$1" ] || [ "$2" ]; then
+		echo "Wrong command!"
+		echo "Usage: $0 <branch_name>"
+		echo
+	else
+		git push origin HEAD:refs/for/${1}
+	fi
 }
 
 gprune() {
-  CurrentBranch = $(git rev-parse --abbrev-ref HEAD)
+  CurrentBranch=$(git rev-parse --abbrev-ref HEAD)
 
   # Stash changes
   git stash
