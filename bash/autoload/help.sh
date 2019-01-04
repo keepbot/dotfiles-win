@@ -6,7 +6,7 @@ cht() {
   IFS='+'
   if [ $# -eq 0 ]; then
     echo "Usage: `basename $0` <langiage> <search string>"
-    exit 0
+    return 1
   fi
   lang="$1"
   shift
