@@ -167,3 +167,6 @@ alias git-work="git config --local user.email 'dmitriy.ivanov@ormco.com'"
 alias grmt='git tag --delete'
 alias grmto='git push --delete origin'
 alias gabr='git branch -r | grep -v "\->" | while read remote; do git branch --track "${remote#origin/}" "$remote"; done'
+
+# Gitolite list repos
+alias ginfo='ssh gitolite@git info'

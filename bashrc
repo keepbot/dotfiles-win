@@ -2,15 +2,11 @@
 # Test for interactiveness
 [[ $- == *i* ]] || return
 
+# https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+
 for file in ${HOME}/.bash/autoload/*; do
   source ${file}
 done
-
-# Import ENVIRONMENT
-[[ -f $HOME/.bash/env.sh ]]                 && source ~/.bash/env.sh
-
-# Import Aliases
-[[ -f $HOME/.bash/aliases.sh ]]             && source ~/.bash/aliases.sh
 
 # Set Prompt
 [[ -f $HOME/.bash/git-prompt.sh ]]          && source ~/.bash/git-prompt.sh
@@ -22,14 +18,8 @@ done
 # Import Functions
 [[ -f $HOME/.bash/functions.sh ]]           && source ~/.bash/functions.sh
 
-# Include https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-[[ -f $HOME/.bash/git-completion.bash ]]    && source ~/.bash/git-completion.bash
-
 #Import Rust env
 [[ -f $HOME/.cargo/env ]]                   && source $HOME/.cargo/env
-
-# Include EncFS aliases. For private use only:
-[[ -f $HOME/.bash/encfs.sh ]]               && source ~/.bash/encfs.sh
 
 # Auto .env
 #[[ -f $HOME/.bash/venv.sh ]]                && source ~/.bash/venv.sh
