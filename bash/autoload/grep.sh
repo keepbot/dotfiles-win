@@ -13,19 +13,16 @@ sss() {
 		echo "ERROR: You should enter path for searching..."
 		echo "Usage: $0 \"<where>\" \"<string>\""
 		echo
-		exit 1
 	fi
 	if [ ! "$2" ]; then
 		echo "ERROR: You should enter string for searching..."
 		echo "Usage: $0 \"<where>\" \"<string>\""
 		echo
-		exit 1
 	fi
 	if [ "$3" ]; then
 		echo "ERROR: Too many arguments..."
 		echo "Usage: $0 \"<where>\" \"<string>\""
 		echo
-		exit 1
 	fi
 	grep -rnw $1 -e $2
 }
