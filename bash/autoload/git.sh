@@ -48,11 +48,11 @@ get_repo_with_target() {
     echo "Usage: $0 <repo_url>"
     echo
   else
-    scheme = $(python3 -c "from urllib.parse import urlparse; uri='$(${1})'; result = urlparse(uri); print(result.scheme)")
+    scheme=$(python3 -c "from urllib.parse import urlparse; uri='$(${1})'; result = urlparse(uri); print(result.scheme)")
     if [ ${scheme} -eq "https" ]; then
-      target = $(python3 -c "from urllib.parse import urlparse; import os.path; uri='$(${1})'; result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
+      target=$(python3 -c "from urllib.parse import urlparse; import os.path; uri='$(${1})'; result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
     else
-      target = $(python3 -c "from urllib.parse import urlparse; import os.path; uri='$(${1})'; result = urlparse(uri); path = os.path.splitext(result.path.split(':', 1)[-1]); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
+      target=$(python3 -c "from urllib.parse import urlparse; import os.path; uri='$(${1})'; result = urlparse(uri); path = os.path.splitext(result.path.split(':', 1)[-1]); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
     fi
     git clone --recurse-submodules "$(${1})" "$target"
   fi
