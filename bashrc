@@ -2,6 +2,10 @@
 # Test for interactiveness
 [[ $- == *i* ]] || return
 
+for file in ${HOME}/.bash/autoload/*; do
+  source ${file}
+done
+
 # Import ENVIRONMENT
 [[ -f $HOME/.bash/env.sh ]]                 && source ~/.bash/env.sh
 
