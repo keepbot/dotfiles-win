@@ -8,18 +8,3 @@ alias map="xargs -n1"
 exit_code() {
 	echo -e '\e[1;33m'Exit code: $?'\e[m'
 }
-
-# Get help from cheat.sh
-cht() {
-  origIFS="${IFS}"
-  IFS='+'
-  if [ $# -eq 0 ]; then
-    echo "Usage: `basename $0` <langiage> <search string>"
-    exit 0
-  fi
-  lang="$1"
-  shift
-  site="cheat.sh/${lang}/$*"
-  curl "${site}"
-  IFS="${origIFS}"
-}

@@ -6,7 +6,6 @@ if (Get-Command shasum.bat -ErrorAction SilentlyContinue | Test-Path) {
   ${function:sha}  = { shasum.bat -a 256 @args }
 }
 
-
 if (Get-Command gpg.exe -ErrorAction SilentlyContinue | Test-Path) {
   function DecryptFrom-Base64() {
     [CmdletBinding()]
