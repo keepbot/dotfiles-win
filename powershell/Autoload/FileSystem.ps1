@@ -109,3 +109,14 @@ function touch($file) { "" | Out-File $file -Encoding ASCII }
 
 # Mounts
 ${function:mountW} = { subst.exe W: ( Join-Path $HOME "workspace" ) }
+
+# Find files
+function find {
+  Param (
+    [Parameter(Mandatory = $True)]
+    [string]$Path,
+    [Parameter(Mandatory = $True)]
+    [string]$Expression
+  )
+  Get-ChildItem -Path $Path -Filter $Expression -Recurse -ErrorAction SilentlyContinue -Force | ForEach-Object { Write-Host $_.FullName -ForegroundColor Yellow}
+}
