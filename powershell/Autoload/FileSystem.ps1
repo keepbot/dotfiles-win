@@ -66,7 +66,8 @@ Set-Alias fs Get-DiskUsage
 if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
   Remove-Item alias:ls -ErrorAction SilentlyContinue
   # Set `ls` to call `ls.exe` and always use --color
-  ${function:ls} = { busybox.exe ls --color --group-directories-first @args }
+  # ${function:ls} = { busybox.exe ls --color --group-directories-first @args }
+  ${function:ls} = { busybox.exe ls --group-directories-first @args }
   # List all files in long format
   ${function:l} = { ls -CFh @args }
   # List all files in long format, including hidden files
