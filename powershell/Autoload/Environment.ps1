@@ -54,6 +54,7 @@ function Reload-Paths-My {
     "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
     "C:\Go\bin"
     "C:\Program Files\LLVM\bin"
+    "C:\tools\vcpkg"
     # "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\bin\Hostx64\x64"
     "C:\HashiCorp\Vagrant\bin"
     "C:\Program Files (x86)\Nmap"
@@ -84,6 +85,7 @@ function Reload-Paths-My {
     "C:\Program Files\Calibre2\"
     "C:\Program Files (x86)\Dr. Memory\bin"
     "C:\ProgramData\chocolatey\bin"
+    "C:\Program Files (x86)\IncrediBuild"
     )
 
   $final_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
