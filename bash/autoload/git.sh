@@ -184,8 +184,7 @@ git-verbose() {
   fi
 
   case $1 in
-    On)
-    on)
+    On|on)
       if [${2} == "curl"] || [${2} == "all"];then
         GIT_CURL_VERBOSE=1
         GIT_TRACE_CURL=1
@@ -206,8 +205,7 @@ git-verbose() {
         GIT_TRACE_SETUP=1
       fi
       ;;
-    Off)
-    off)
+    Off|off)
       GIT_CURL_VERBOSE=0
       GIT_TRACE_CURL=0
       GIT_TRACE=0
