@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2018-12-21 13:54:10" build="180528">
+		<key name=".Vanilla" modified="2019-02-01 01:57:48" build="180528">
 			<value name="ColorTable00" type="dword" data="00282828"/>
 			<value name="ColorTable01" type="dword" data="00758392"/>
 			<value name="ColorTable02" type="dword" data="001a9798"/>
@@ -482,8 +482,8 @@
 			<value name="DndLKey" type="hex" data="00"/>
 			<value name="DndRKey" type="hex" data="a2"/>
 			<value name="WndDragKey" type="dword" data="00121101"/>
-			<key name="Tasks" modified="2018-11-13 13:45:54" build="180528">
-				<value name="Count" type="long" data="10"/>
+			<key name="Tasks" modified="2019-02-01 02:04:44" build="180528">
+				<value name="Count" type="long" data="12"/>
 				<key name="Task1" modified="2018-11-13 14:54:54" build="180528">
 					<value name="Name" type="string" data="{Powershell::Powershell}"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
@@ -502,59 +502,59 @@
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="Flags" type="dword" data="00000000"/>
 				</key>
-				<key name="Task3" modified="2018-11-24 18:37:26" build="180528">
+				<key name="Task3" modified="2019-02-01 02:24:09" build="180528">
 					<value name="Name" type="string" data="{Bash::WSL}"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl -C~ -cur_console:h0:p:n:m:"":t:WSL'/>
+					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl -C~ -cur_console:p:n:m:"":t:Ubuntu'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Flags" type="dword" data="00000004"/>
 				</key>
-				<key name="Task4" modified="2018-11-13 14:54:54" build="180528">
-					<value name="Name" type="string" data="{Far Manager::Far 3.0 x86}"/>
+				<key name="Task4" modified="2019-02-01 02:25:30" build="180528">
+					<value name="Name" type="string" data="{Bash::Kali}"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data='set "FARHOME=" &amp; "far.exe" /w /p"%ConEmuDir%\Plugins\ConEmu;%FARHOME%\Plugins;%FARPROFILE%\Plugins" -new_console:h0:t:Far'/>
+					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
+					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl --distro-guid={a005db22-90d9-42ed-801e-32c895adcdb2} -C~ -cur_console:p:n:m:"":t:Kali'/>
 					<value name="Cmd2" type="string" data="%CMDER_ROOT%\vendor\git-for-windows\git-bash.exe"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Flags" type="dword" data="00000004"/>
 				</key>
-				<key name="Task5" modified="2018-11-13 14:54:54" build="180528">
+				<key name="Task5" modified="2019-02-01 02:12:04" build="180528">
+					<value name="Name" type="string" data="{Bash::Debian}"/>
+					<value name="Flags" type="dword" data="00000004"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
+					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl --distro-guid={dc1edbc4-fbfe-4890-b97e-c0b0725995b7} -C~ -cur_console:p:n:m:"":t:Debian'/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+				</key>
+				<key name="Task6" modified="2019-02-01 02:04:44" build="180528">
+					<value name="Name" type="string" data="{Far Manager::Far 3.0 x86}"/>
+					<value name="Flags" type="dword" data="00000004"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data=""/>
+					<value name="Cmd1" type="string" data='set "FARHOME=" &amp; "far.exe" /w /p"%ConEmuDir%\Plugins\ConEmu;%FARHOME%\Plugins;%FARPROFILE%\Plugins" -new_console:h0:t:Far'/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+					<value name="Cmd2" type="string" data="%CMDER_ROOT%vendor\git-for-windows\usr\bin\mintty.exe /bin/bash -l -new_console"/>
+				</key>
+				<key name="Task7" modified="2019-02-01 02:04:44" build="180528">
 					<value name="Name" type="string" data="{Far Manager::Far 3.0 x64}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data='set "FARHOME=" &amp; "%ConEmuDrive%\Program Files\Far Manager\far.exe" /w /p"%ConEmuDir%\Plugins\ConEmu;%FARHOME%\Plugins;%FARPROFILE%\Plugins" -new_console:h0:t:Far'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
+					<value name="Cmd1" type="string" data='set "FARHOME=" &amp; "%ConEmuDrive%\Program Files\Far Manager\far.exe" /w /p"%ConEmuDir%\Plugins\ConEmu;%FARHOME%\Plugins;%FARPROFILE%\Plugins" -new_console:h0:t:Far'/>
 				</key>
-				<key name="Task6" modified="2018-11-13 13:45:54" build="180528">
+				<key name="Task8" modified="2019-02-01 02:04:44" build="180528">
 					<value name="Name" type="string" data="{Bash::Ubuntu}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
 					<value name="Cmd1" type="string" data="ubuntu.exe"/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="1"/>
-					<value name="Cmd2" type="string" data="%CMDER_ROOT%vendor\git-for-windows\usr\bin\mintty.exe /bin/bash -l -new_console"/>
-				</key>
-				<key name="Task7" modified="2018-11-13 14:54:54" build="180528">
-					<value name="Name" type="string" data="{Powershell::PowerShell as Admin}"/>
-					<value name="Flags" type="dword" data="00000000"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;" -new_console:a:t:PowerShell'/>
-				</key>
-				<key name="Task8" modified="2018-11-13 14:54:54" build="180528">
-					<value name="Name" type="string" data="{Cmd::Cmd as Admin}"/>
-					<value name="Flags" type="dword" data="00000000"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat"  -new_console:a:t:Cmd'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
@@ -564,7 +564,25 @@
 					<value name="Active" type="long" data="1"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task9" modified="2018-11-13 14:54:54" build="180528">
+				<key name="Task9" modified="2019-02-01 02:04:44" build="180528">
+					<value name="Name" type="string" data="{Powershell::PowerShell as Admin}"/>
+					<value name="Flags" type="dword" data="00000000"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+					<value name="Cmd1" type="string" data='PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;" -new_console:a:t:PowerShell'/>
+				</key>
+				<key name="Task10" modified="2019-02-01 02:04:44" build="180528">
+					<value name="Name" type="string" data="{Cmd::Cmd as Admin}"/>
+					<value name="Flags" type="dword" data="00000000"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat"  -new_console:a:t:Cmd'/>
+				</key>
+				<key name="Task11" modified="2019-02-01 02:04:44" build="180528">
 					<value name="Name" type="string" data="{Bash::Git bash}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -573,7 +591,7 @@
 					<value name="Count" type="long" data="1"/>
 					<value name="Cmd1" type="string" data='set "PATH=%ConEmuDrive%\Program Files\Git\usr\bin;%PATH%" &amp; "%ConEmuDrive%\Program Files\Git\git-cmd.exe" --no-cd --command=%ConEmuBaseDirShort%\conemu-msys2-64.exe /usr/bin/bash.exe -l -i -new_console:p:t:GitBash'/>
 				</key>
-				<key name="Task10" modified="2018-11-13 14:54:54" build="180528">
+				<key name="Task12" modified="2019-02-01 02:04:44" build="180528">
 					<value name="Name" type="string" data="{Helper::Show ANSI colors}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -969,7 +987,7 @@
 			</key>
 			<value name="StartCreateDelay" type="ulong" data="100"/>
 			<value name="DefaultTerminalDebugLog" type="hex" data="00"/>
-			<value name="LastMonitor" type="string" data="0,0,3840,2114"/>
+			<value name="LastMonitor" type="string" data="0,46,3840,2160"/>
 			<value name="Restore2ActiveMon" type="hex" data="00"/>
 			<value name="DownShowExOnTopMessage" type="hex" data="00"/>
 			<value name="EnvironmentSet" type="multi">
