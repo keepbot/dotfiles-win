@@ -183,7 +183,7 @@ git-verbose() {
     $2="All"
   fi
 
-  case $1 {
+  case $1 in
     On)
     on)
       if [${2} == "curl"] || [${2} == "all"];then
