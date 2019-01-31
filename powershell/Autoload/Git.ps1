@@ -156,6 +156,7 @@ function Git-Verbose {
     ({$PSItem -eq 'On' -Or $PSItem -eq 'on'}) {
       if (($Category -eq 'curl') -Or ($Category -eq 'all')) {
         $Env:GIT_CURL_VERBOSE=1
+        $Env:GIT_TRACE_CURL=1
       }
       if (($Category -eq 'trace') -Or ($Category -eq 'all')) {
         $Env:GIT_TRACE=1
@@ -170,13 +171,13 @@ function Git-Verbose {
         $Env:GIT_TRACE_PERFORMANCE=1
       }
       if (($Category -eq 'setup') -Or ($Category -eq 'all')) {
-        Write-Host $Category
         $Env:GIT_TRACE_SETUP=1
       }
       break
     }
     ({$PSItem -eq 'Off' -Or $PSItem -eq 'off'}){
       $Env:GIT_CURL_VERBOSE=0
+      $Env:GIT_TRACE_CURL=0
       $Env:GIT_TRACE=0
       $Env:GIT_TRACE_PACK_ACCESS=0
       $Env:GIT_TRACE_PACKET=0

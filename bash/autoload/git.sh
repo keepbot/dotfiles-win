@@ -170,3 +170,57 @@ alias gabr='git branch -r | grep -v "\->" | while read remote; do git branch --t
 
 # Gitolite list repos
 alias ginfo='ssh gitolite@git info'
+
+git-verbose() {
+  if [ -z "$1" ] || [ $3 ]; then
+    echo "ERROR: Wrong operation...."
+    echo "Usage: Git-Verbose <On|Off> [Category]"
+    echo "  Categories: curl, trace, pack, packet, perf"
+    echo
+  fi
+
+  if [ -z "$2" ]; then
+    $2="All"
+  fi
+
+  case $1 {
+    On)
+    on)
+      if [${2} == "curl"] || [${2} == "all"];then
+        GIT_CURL_VERBOSE=1
+        GIT_TRACE_CURL=1
+      fi
+      if [${2} == "trace"] || [${2} == "all"];then
+        GIT_TRACE=1
+      fi
+      if [${2} == "pack"] || [${2} == "all"];then
+        GIT_TRACE_PACK_ACCESS=1
+      fi
+      if [${2} == "packet"] || [${2} == "all"];then
+        GIT_TRACE_PACKET=1
+      fi
+      if [${2} == "perf"] || [${2} == "all"];then
+        GIT_TRACE_PERFORMANCE=1
+      fi
+      if [${2} == "setup"] || [${2} == "all"];then
+        GIT_TRACE_SETUP=1
+      fi
+      ;;
+    Off)
+    off)
+      GIT_CURL_VERBOSE=0
+      GIT_TRACE_CURL=0
+      GIT_TRACE=0
+      GIT_TRACE_PACK_ACCESS=0
+      GIT_TRACE_PACKET=0
+      GIT_TRACE_PERFORMANCE=0
+      GIT_TRACE_SETUP=0
+      ;;
+    *)
+      echo "ERROR: Wrong operation...."
+      echo "Usage: Git-Verbose <On|Off> [Category]"
+      echo "  Categories: curl, trace, pack, packet, perf"
+      echo
+      ;;
+  esac
+}
