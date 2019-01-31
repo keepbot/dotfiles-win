@@ -145,3 +145,49 @@ function Rename-GitHub-Origin {
   }
   Set-Location $dir
 }
+
+function Git-Verbose {
+  param (
+      [Parameter(Mandatory=$true)]
+      [string]$Button,
+      [string]$Category='all'
+  )
+  switch ($Button) {
+    ({$PSItem -eq 'On' -Or $PSItem -eq 'on'}) {
+      if (($Category -eq 'curl') -Or ($Category -eq 'all')) {
+        $Env:GIT_CURL_VERBOSE=1
+      }
+      if (($Category -eq 'trace') -Or ($Category -eq 'all')) {
+        $Env:GIT_TRACE=1
+      }
+      if (($Category -eq 'pack') -Or ($Category -eq 'all')) {
+        $Env:GIT_TRACE_PACK_ACCESS=1
+      }
+      if (($Category -eq 'packet') -Or ($Category -eq 'all')) {
+        $Env:GIT_TRACE_PACKET=1
+      }
+      if (($Category -eq 'perf') -Or ($Category -eq 'all')) {
+        $Env:GIT_TRACE_PERFORMANCE=1
+      }
+      if (($Category -eq 'setup') -Or ($Category -eq 'all')) {
+        Write-Host $Category
+        $Env:GIT_TRACE_SETUP=1
+      }
+      break
+    }
+    ({$PSItem -eq 'Off' -Or $PSItem -eq 'off'}){
+      $Env:GIT_CURL_VERBOSE=0
+      $Env:GIT_TRACE=0
+      $Env:GIT_TRACE_PACK_ACCESS=0
+      $Env:GIT_TRACE_PACKET=0
+      $Env:GIT_TRACE_PERFORMANCE=0
+      $Env:GIT_TRACE_SETUP=0
+      break
+    }
+    default {
+      Write-Host "ERROR: Wrong operation..." -ForegroundColor Red
+      Write-Host "Usage: Git-Verbose <On|Off> [Category]" -ForegroundColor Red
+      Write-Host "  Categories: curl, trace, pack, packet, perf" -ForegroundColor Red
+    }
+  }
+}
