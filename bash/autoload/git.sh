@@ -172,47 +172,50 @@ alias gabr='git branch -r | grep -v "\->" | while read remote; do git branch --t
 alias ginfo='ssh gitolite@git info'
 
 git-verbose() {
-  if [ -z "$1" ] || [ $3 ]; then
+  if [ -z "${1}" ] || [ ${3} ]; then
     echo "ERROR: Wrong operation...."
     echo "Usage: Git-Verbose <On|Off> [Category]"
     echo "  Categories: curl, trace, pack, packet, perf"
     echo
+    return 1
   fi
 
-  if [ -z "$2" ]; then
-    $2="All"
+  if [ -z "${2}" ]; then
+    category="all"
+  else
+    category="${2}"
   fi
 
   case $1 in
     On|on)
-      if [${2} == "curl"] || [${2} == "all"];then
-        GIT_CURL_VERBOSE=1
-        GIT_TRACE_CURL=1
+      if [[ "${category}" == "curl" || "${category}" == "all" ]];then
+        export GIT_CURL_VERBOSE=1
+        export GIT_TRACE_CURL=1
       fi
-      if [${2} == "trace"] || [${2} == "all"];then
-        GIT_TRACE=1
+      if [[ "${category}" == "trace" || "${category}" == "all" ]];then
+        export GIT_TRACE=1
       fi
-      if [${2} == "pack"] || [${2} == "all"];then
-        GIT_TRACE_PACK_ACCESS=1
+      if [[ "${category}" == "pack" || "${category}" == "all" ]];then
+        export GIT_TRACE_PACK_ACCESS=1
       fi
-      if [${2} == "packet"] || [${2} == "all"];then
-        GIT_TRACE_PACKET=1
+      if [[ "${category}" == "packet" || "${category}" == "all" ]];then
+        export GIT_TRACE_PACKET=1
       fi
-      if [${2} == "perf"] || [${2} == "all"];then
-        GIT_TRACE_PERFORMANCE=1
+      if [[ "${category}" == "perf" || "${category}" == "all" ]];then
+        export GIT_TRACE_PERFORMANCE=1
       fi
-      if [${2} == "setup"] || [${2} == "all"];then
-        GIT_TRACE_SETUP=1
+      if [[ "${category}" == "setup" || "${category}" == "all" ]];then
+        export GIT_TRACE_SETUP=1
       fi
       ;;
     Off|off)
-      GIT_CURL_VERBOSE=0
-      GIT_TRACE_CURL=0
-      GIT_TRACE=0
-      GIT_TRACE_PACK_ACCESS=0
-      GIT_TRACE_PACKET=0
-      GIT_TRACE_PERFORMANCE=0
-      GIT_TRACE_SETUP=0
+      export GIT_CURL_VERBOSE=0
+      export GIT_TRACE_CURL=0
+      export GIT_TRACE=0
+      export GIT_TRACE_PACK_ACCESS=0
+      export GIT_TRACE_PACKET=0
+      export GIT_TRACE_PERFORMANCE=0
+      export GIT_TRACE_SETUP=0
       ;;
     *)
       echo "ERROR: Wrong operation...."
