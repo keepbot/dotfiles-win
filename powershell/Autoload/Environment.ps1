@@ -49,6 +49,7 @@ function Reload-Paths-My {
     "C:\tools\vim\vim81"
     "C:\Program Files\OpenSSL\bin"
     "C:\Program Files\OpenSSH-Win64"
+    "C:\Program Files\OpenVPN\bin"
     "C:\Program Files\Amazon\AWSCLI\"
     "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.1\bin"
     "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
