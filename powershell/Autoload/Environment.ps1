@@ -41,31 +41,34 @@ Set-Variable -Name MaximumHistoryCount -Value 32767
 
 function Reload-Paths-My {
   $paths = @(
-    "C:\tools\python3\Scripts\"
-    "C:\tools\python3\"
+    "C:\tools\python3\Scripts"
+    "C:\tools\python3"
     "C:\tools\python2\Scripts"
-    "C:\tools\python2\"
+    "C:\tools\python2"
     "C:\usr\bin"
+    "C:\Program Files\KDiff3"
+    "c:\Program Files\KDiff3\bin"
     "C:\tools\vim\vim81"
     "C:\Program Files\OpenSSL\bin"
     "C:\Program Files\OpenSSH-Win64"
     "C:\Program Files\OpenVPN\bin"
-    "C:\Program Files\Amazon\AWSCLI\"
+    "C:\Program Files\TAP-Windows\bin"
+    "C:\Program Files\Amazon\AWSCLI"
     "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.1\bin"
     "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
     "C:\Go\bin"
     "C:\Program Files\CMake\bin"
     "C:\Program Files\LLVM\bin"
     "C:\tools\vcpkg"
-    # "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\bin\Hostx64\x64"
+    "C:\boost\dist\bin"
     "C:\HashiCorp\Vagrant\bin"
     "C:\Program Files (x86)\Nmap"
-    "C:\opscode\chefdk\bin\"
+    "C:\opscode\chefdk\bin"
     "C:\Program Files (x86)\Gpg4win\..\GnuPG\bin"
     "C:\Program Files\Microsoft VS Code\bin"
     "C:\Program Files\Sublime Text 3"
-    "C:\Program Files\nodejs\"
-    "C:\Program Files (x86)\Yarn\bin\"
+    "C:\Program Files\nodejs"
+    "C:\Program Files (x86)\Yarn\bin"
     "C:\Program Files\Git\cmd"
     "C:\Program Files\Git LFS"
     "C:\Program Files\Mercurial"
@@ -77,23 +80,34 @@ function Reload-Paths-My {
     "C:\Strawberry\c\bin"
     "C:\Strawberry\perl\site\bin"
     "C:\Strawberry\perl\bin"
+    "C:\Qt\Qt5.12.1\5.12.1\msvc2017\bin"
     "C:\Qt\Qt5.11.1\5.11.1\msvc2015\bin"
+    "C:\Qt\Qt5.9.5\5.9.5\msvc2015\bin"
     "C:\Program Files\ImageMagick-7.0.8-Q16"
-    "C:\Program Files\MiKTeX 2.9\miktex\bin\x64\"
-    "C:\Program Files\Pandoc\"
+    "C:\Program Files\MiKTeX 2.9\miktex\bin\x64"
+    "C:\Program Files\Pandoc"
     "C:\Program Files\grepWin"
-    "C:\Program Files\kdiff3"
     "C:\tools\Atlassian\atlassian-plugin-sdk-6.3.10\bin"
-    "C:\Program Files\Calibre2\"
-    "C:\Program Files (x86)\Dr. Memory\bin"
+    "C:\Program Files\Calibre2"
+    "C:\Program Files (x86)\Dr. Memory\bin64"
     "C:\ProgramData\chocolatey\bin"
     "C:\Program Files (x86)\IncrediBuild"
+    "C:\tools\CppDepend"
+    "C:\Program Files\MySQL\MySQL Workbench 8.0 CE"
+    "c:\Program Files\NASM"
+    "C:\Program Files\S3 Browser"
+    "C:\Program Files\VcXsrv"
+    "C:\Program Files (x86)\Graphviz2.38\bin\"
+    "C:\Program Files (x86)\pgAdmin 4\v3\runtime"
+    "C:\tools\ProccessHacker"
     )
 
   $final_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
 
   foreach ($path in $paths) {
-    $final_path += ";$path"
+    If (Test-Path $path)  {
+      $final_path += ";$path"
+    }
   }
 
   [Environment]::SetEnvironmentVariable("PathsMy", "$final_path", "Machine")
@@ -103,36 +117,58 @@ function Reload-Paths-Orig {
   $paths = @(
     "$env:SystemRoot"
     "$env:SystemRoot\System32\Wbem"
-    "$env:SYSTEMROOT\System32\WindowsPowerShell\v1.0\"
-    "$env:SYSTEMROOT\System32\OpenSSH\"
+    "$env:SYSTEMROOT\System32\WindowsPowerShell\v1.0"
+    "$env:SYSTEMROOT\System32\OpenSSH"
     "C:\ProgramData\DockerDesktop\version-bin"
     "C:\Program Files\Docker\Docker\Resources\bin"
     "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin"
     "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp"
-    "C:\Program Files\Intel\TXE Components\TCS\"
-    "C:\Program Files (x86)\Intel\TXE Components\TCS\"
-    "C:\Program Files\Intel\TXE Components\DAL\"
-    "C:\Program Files (x86)\Intel\TXE Components\DAL\"
-    "C:\Program Files\Intel\TXE Components\IPT\"
-    "C:\Program Files (x86)\Intel\TXE Components\IPT\"
-    "C:\Program Files\Common Files\Intel\WirelessCommon\"
-    "C:\Program Files\Intel\WiFi\bin\"
-    "C:\Program Files\dotnet\"
-    "C:\Program Files\Microsoft SQL Server\130\Tools\Binn\"
+    "C:\Program Files\Intel\TXE Components\TCS"
+    "C:\Program Files (x86)\Intel\TXE Components\TCS"
+    "C:\Program Files\Intel\TXE Components\DAL"
+    "C:\Program Files (x86)\Intel\TXE Components\DAL"
+    "C:\Program Files\Intel\TXE Components\IPT"
+    "C:\Program Files (x86)\Intel\TXE Components\IPT"
+    "C:\Program Files\Common Files\Intel\WirelessCommon"
+    "C:\Program Files\Intel\WiFi\bin"
+    "C:\Program Files\dotnet"
+    "C:\Program Files\Microsoft SQL Server\130\Tools\Binn"
     "C:\Program Files (x86)\Common Files\Oracle\Java\javapath"
-    "c:\tools\wsl\wsl-arch\"
-    "c:\tools\wsl\wsl-debian\"
-    "c:\tools\wsl\wsl-kali\"
-    "c:\tools\wsl\wsl-ubuntu-1804\"
+    "C:\tools\wsl\wsl-arch"
+    "C:\tools\wsl\wsl-debian"
+    "C:\tools\wsl\wsl-kali"
+    "C:\tools\wsl\wsl-ubuntu-1804"
   )
 
   $final_path = "$env:SystemRoot\system32"
 
   foreach ($path in $paths) {
-    $final_path += ";$path"
+    If (Test-Path $path)  {
+      $final_path += ";$path"
+    }
   }
 
   [Environment]::SetEnvironmentVariable("PathsOrig", "$final_path", "Machine")
+}
+function Reload-Paths-User {
+  $paths = @(
+    "C:\Users\dkiva\AppData\Roaming\local\bin"
+    "$env:GOPATH\bin"
+    "C:\Users\dkiva\AppData\Roaming\npm"
+    "C:\Users\dkiva\AppData\Local\Pandoc"
+    "C:\Users\dkiva\AppData\Local\Yarn\bin"
+  )
+
+  $final_path = "$env:USERPROFILE\AppData\Local\Microsoft\WindowsApps"
+
+  foreach ($path in $paths) {
+    If (Test-Path $path)  {
+      $final_path += ";$path"
+    }
+  }
+
+  [Environment]::SetEnvironmentVariable("PATH", "$final_path", "User")
+
 }
 
 function Set-Base-Env {
@@ -152,13 +188,25 @@ function Set-Base-Env {
   # }
   [Environment]::SetEnvironmentVariable("PATH", "$system_path", "Machine")
   [Environment]::SetEnvironmentVariable("LANG", "en_US", "Machine")
+  Reload-Paths-User
 }
 
 function Set-Dev-Env {
-  [Environment]::SetEnvironmentVariable("GIT_LFS_PATH", "C:\Program Files\Git LFS", "Machine")
-  [Environment]::SetEnvironmentVariable("QTDIR", "C:\Qt\Qt5.11.1\5.11.1\msvc2015", "Machine")
-  [Environment]::SetEnvironmentVariable("QMAKESPEC", "C:\Qt\Qt5.11.1\5.11.1\msvc2015\mkspecs\win32-msvc", "Machine")
-  [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "$env:HOME\workspace\ormco\common\aligner-thirdparty", "Machine")
+  If (Test-Path "C:\Program Files\Git LFS")  {
+    [Environment]::SetEnvironmentVariable("GIT_LFS_PATH", "C:\Program Files\Git LFS", "Machine")
+  }
+  If (Test-Path "C:\Qt\Qt5.11.1\5.11.1\msvc2015")  {
+    [Environment]::SetEnvironmentVariable("QTDIR", "C:\Qt\Qt5.11.1\5.11.1\msvc2015", "Machine")
+  }
+  # If (Test-Path "C:\Qt\Qt5.12.1\5.12.1\msvc2017")  {
+  #   [Environment]::SetEnvironmentVariable("QTDIR", "C:\Qt\Qt5.12.1\5.12.1\msvc2017", "Machine")
+  # }
+  If (Test-Path "C:\Qt\Qt5.11.1\5.11.1\msvc2015\mkspecs\win32-msvc")  {
+    [Environment]::SetEnvironmentVariable("QMAKESPEC", "C:\Qt\Qt5.11.1\5.11.1\msvc2015\mkspecs\win32-msvc", "Machine")
+  }
+  If (Test-Path "$env:HOME\workspace\ormco\common\aligner-thirdparty")  {
+    [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "$env:HOME\workspace\ormco\common\aligner-thirdparty", "Machine")
+  }
 }
 
 ${function:env} = {Get-ChildItem Env:}

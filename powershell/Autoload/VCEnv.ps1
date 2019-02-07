@@ -31,7 +31,6 @@ function Set-VC {
 
   foreach($tool in $tools) {
     if (Test-Path "$tool\VC\Tools\MSVC\") {
-      # "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\bin\Hostx64\x64"
       foreach($ver in $(Get-ChildItem "$tool\VC\Tools\MSVC").Name ) {
         $versions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx86").FullName
         $versions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx64").FullName
