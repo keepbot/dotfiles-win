@@ -1,17 +1,16 @@
-if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
-  Remove-Item alias:cd -ErrorAction SilentlyContinue
-  ${function:cd} = {
-    if ($args -eq '-') {
-      $tmpLocation = $env:OLDPWD
-      $env:OLDPWD = Get-Location
-      Set-Location $tmpLocation
-    } else {
-      $env:OLDPWD = Get-Location
-      Set-Location @args
-    }
-    $env:PWD = Get-Location
+Remove-Item alias:cd -ErrorAction SilentlyContinue
+${function:cd} = {
+  if ($args -eq '-') {
+    $tmpLocation = $env:OLDPWD
+    $env:OLDPWD = Get-Location
+    Set-Location $tmpLocation
+  } else {
+    $env:OLDPWD = Get-Location
+    Set-Location @args
   }
+  $env:PWD = Get-Location
 }
+
 # Easier Navigation: .., ..., ...., ....., and ~
 ${function:~} = { cd ~ }
 # PoSh won't allow ${function:..} because of an invalid path error, so...
