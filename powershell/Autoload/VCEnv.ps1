@@ -25,6 +25,7 @@ function Set-VC {
     'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
     'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
     'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview'
   )
 
   # $versions = ''
@@ -46,13 +47,22 @@ function Set-VC {
       Write-Host "`t[$x]" $ver
     }
 
-    Write-Host
+    # Write-Host
 
-    $regexp = '^['
+    $remainder = 0
+    $regexp = '^(['
     foreach($y in 1..$x){
-      $regexp += $y
+      if ($y -eq 10) {
+        $regexp += ']|1['
+      }
+
+      if (($y -gt 1) -And ($y -ne 10)) {
+        $regexp += ','
+      }
+      $tmp = [System.Math]::DivRem($y, 10, [ref]$remainder)
+      $regexp += $remainder
     }
-    $regexp += ']$'
+    $regexp += '])$'
 
     Write-Host
     $choice = Read-Host -Prompt "`tSelect VC from the list"
@@ -66,8 +76,6 @@ function Set-VC {
       $env:VC_PATH = $versions[$choice - 1]
     }
   } until ( $ok )
-
-
 
 }
 
@@ -94,6 +102,7 @@ function List-VC {
 
   $VS_Comunity = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
   $VS_BuildTools = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
+  $VS_Preview = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview'
   #$VS_Professional = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
   #$VS_Enterprise = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise'
 
@@ -107,6 +116,10 @@ function List-VC {
     $BuildToolsVersions = $((Get-ChildItem "$VS_BuildTools\VC\Tools\MSVC\").Name)
   }
 
+  if (Test-Path "$VS_Preview\VC\Tools\MSVC\") {
+    $PreviewVersions = $((Get-ChildItem "$VS_Preview\VC\Tools\MSVC\").Name)
+  }
+
   Write-Host "List of VC versions on this PC:"
   if ($ComunityVersions) {
     foreach($v in $ComunityVersions) {Write-Host " -" $v " (VS Comunity)"}
@@ -114,6 +127,10 @@ function List-VC {
 
   if ($BuilderVersions) {
     foreach($v in $BuildToolsVersions) {Write-Host " -" $v " (VS BuildTools)"}
+  }
+
+  if ($PreviewVersions) {
+    foreach($v in $PreviewVersions) {Write-Host " -" $v " (VS Preview 2019)"}
   }
 }
 
@@ -188,6 +205,7 @@ function VC-Vars-All {
     'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat'
     'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvarsall.bat'
     'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Auxiliary\Build\vcvarsall.bat'
   )
 
   $cmd_string = "cmd /c "
