@@ -51,6 +51,8 @@ Write-Host ""
 Write-Host "Initialization of PowerShell profile and installing applications. Be patient. It's hurt only first time..."
 Write-Host ""
 
+Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+
 $NormalizationPath = Join-Path $dotfilesProfileDir "normalization-done"
 if(![System.IO.File]::Exists($NormalizationPath)) {
   . (Join-Path $dotfilesScriptsDir "Normalilze-Manually-Installed-Modules.ps1") -force
