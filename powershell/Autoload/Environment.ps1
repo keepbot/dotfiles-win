@@ -1,9 +1,10 @@
 #!/usr/bin/env powershell
 
 # Make vim the default editor
-$Env:EDITOR = "gvim --nofork"
+# $Env:EDITOR = "gvim --nofork"
+$Env:EDITOR = "vim --nofork"
 $Env:GIT_EDITOR = $Env:EDITOR
-Set-Alias vim gvim
+# Set-Alias vim gvim
 
 function Edit-Hosts { Invoke-Expression "sudo $(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
 function Edit-Profile { Invoke-Expression "$(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $profile" }
