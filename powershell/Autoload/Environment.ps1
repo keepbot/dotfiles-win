@@ -155,6 +155,7 @@ function Reload-Paths-Orig {
 }
 function Reload-Paths-User {
   $paths = @(
+    "C:\Users\dkiva\.cargo\bin"
     "C:\Users\dkiva\AppData\Roaming\local\bin"
     "$env:GOPATH\bin"
     "C:\Users\dkiva\AppData\Roaming\npm"

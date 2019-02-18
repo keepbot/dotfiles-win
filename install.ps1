@@ -166,7 +166,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
     "ruby"
     "ruby2.devkit"
     "rufus"
-    "rust-ms"
+    # "rust-ms" - use rustup-init
     "slack"
     "strawberryperl"
     # "studio3t"
