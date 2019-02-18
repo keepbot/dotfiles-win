@@ -101,6 +101,7 @@ function Reload-Paths-My {
     "C:\Program Files (x86)\Graphviz2.38\bin\"
     "C:\Program Files (x86)\pgAdmin 4\v3\runtime"
     "C:\tools\ProccessHacker"
+    "C:\Program Files\Rust stable MSVC 1.32\bin"
     )
 
   $final_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
@@ -122,6 +123,7 @@ function Reload-Paths-Orig {
     "$env:SYSTEMROOT\System32\OpenSSH"
     "C:\ProgramData\DockerDesktop\version-bin"
     "C:\Program Files\Docker\Docker\Resources\bin"
+    "C:\Program Files\Microsoft MPI\Bin\"
     "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin"
     "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp"
     "C:\Program Files\Intel\TXE Components\TCS"
