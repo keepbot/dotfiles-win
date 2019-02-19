@@ -168,3 +168,8 @@
 	url = https://github.com/Disassembler0/Win10-Initial-Setup-Script.git
     ignore = dirty
 	branch = master
+[submodule "vim/bundle/rust.vim"]
+    path = vim/bundle/rust.vim
+    url = git@github.com:rust-lang/rust.vim.git
+    ignore = dirty
+    branch = master
