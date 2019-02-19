@@ -788,7 +788,7 @@
 			<value name="StatusBar.Hide.Dpi" type="hex" data="01"/>
 			<value name="TabFlashChanged" type="long" data="8"/>
 			<value name="TabModifiedSuffix" type="string" data="[*]"/>
-			<key name="HotKeys" modified="2018-11-02 17:14:51" build="180528">
+			<key name="HotKeys" modified="2019-02-19 14:49:15" build="180528">
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="00000011"/>
 				<value name="Multi.ArrowsModifier" type="dword" data="0000005b"/>
@@ -840,7 +840,7 @@
 				<value name="KillAllButShellKey" type="dword" data="00105b2e"/>
 				<value name="DuplicateRootKey" type="dword" data="00000000"/>
 				<value name="CloseConEmuKey" type="dword" data="00001273"/>
-				<value name="Multi.Rename" type="dword" data="00000000"/>
+				<value name="Multi.Rename" type="dword" data="80808071"/>
 				<value name="AffinityPriorityKey" type="dword" data="00005d41"/>
 				<value name="Multi.MoveLeft" type="dword" data="00125b25"/>
 				<value name="Multi.MoveRight" type="dword" data="00125b27"/>
