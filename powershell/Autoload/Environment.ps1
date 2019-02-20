@@ -124,6 +124,7 @@ function Reload-Paths-Orig {
     "C:\ProgramData\DockerDesktop\version-bin"
     "C:\Program Files\Docker\Docker\Resources\bin"
     "C:\Program Files\Microsoft MPI\Bin\"
+    "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Roslyn\"
     "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin"
     "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp"
     "C:\Program Files\Intel\TXE Components\TCS"
