@@ -42,6 +42,7 @@ Set-Variable -Name MaximumHistoryCount -Value 32767
 
 function Reload-Paths-My {
   $paths = @(
+    "C:\tools\bin"
     "C:\tools\python3\Scripts"
     "C:\tools\python3"
     "C:\tools\python2\Scripts"
