@@ -39,7 +39,7 @@ XTerm*xftAntialias:         True
 *font:                      -xos4-terminus-medium-r-normal--28-280-72-72-c-140-iso10646-1
 !*font:                      -xos4-terminus-medium-r-normal--24-240-72-72-c-120-iso10646-1
 !*font:                      -xos4-terminus-bold-r-normal--24-240-72-72-c-120-iso10646-1
-*wideFont:                  -misc-takaomincho-medium-r-normal--28-0-0-0-p-0-iso10646-1
+!*wideFont:                  -misc-takaomincho-medium-r-normal--28-0-0-0-p-0-iso10646-1
 
 ! Trim trailing spaces
 XTerm*trimSelection:        True
@@ -48,8 +48,8 @@ XTerm*eightBitInput:        False
 XTerm*metaSendsEscape:      True
 ! Copy and paste with clipboard
 XTerm*translations:         #override \
-	Ctrl Shift <KeyPress> C:  copy-selection(CLIPBOARD) \n\
-	Ctrl Shift <KeyPress> V:  insert-selection(CLIPBOARD)
+  Ctrl Shift <KeyPress> C:  copy-selection(CLIPBOARD) \n\
+  Ctrl Shift <KeyPress> V:  insert-selection(CLIPBOARD)
 ! Allow selecting email/url by double-click
 XTerm*charClass:            33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
 
