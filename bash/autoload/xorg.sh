@@ -22,8 +22,8 @@ if grep -q Microsoft /proc/version; then
     ln -sf ~/.xinitrc ~/.xsession
     sudo cp ~/.bin/xfce/default.xml /etc/xdg/xfce4/panel/default.xml
     sudo cp ~/.bin/xfce/xfce4-session.xml /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
-    sudo mkdir /etc/xdg/disabled-autostart
-    sudo mv -f /etc/xdg/autostart/nm-applet.desktop /etc/xdg/autostart/disabled-autostart/
+    [[ -f /etc/xdg/autostart/disabled-autostart ]] || sudo mkdir -p /etc/xdg/autostart/disabled-autostart
+    [[ -f /etc/xdg/autostart/nm-applet.desktop  ]] || sudo mv -f /etc/xdg/autostart/nm-applet.desktop /etc/xdg/autostart/disabled-autostart/
   }
   wsl-xfce() {
       export DISPLAY=localhost:0.0
