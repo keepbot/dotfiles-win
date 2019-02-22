@@ -79,6 +79,7 @@ if [[ "${kernel}" =~ "${kernelWSL}" ]]; then
 	sudo rm -rf "/etc/wsl.conf"               2> /dev/null
 	sudo ln -sf "$DOTFILES_DIR/data/wsl.conf" "/etc/wsl.conf"
 fi
+ln -sf "$DOTFILES_DIR/bin-nix"              "$HOME/.bin"
 
 platform=`uname`
 case $platform in
@@ -88,7 +89,6 @@ case $platform in
 		rm -rf "$HOME/.config/alacritty"         2> /dev/null
 
 		ln -sf "$DOTFILES_DIR/.gitconfig-nix"    "$HOME/.gitconfig"
-		ln -sf "$DOTFILES_DIR/bin-wsl"           "$HOME/.bin"
 		ln -sf "$DOTFILES_DIR/Xresources"        "$HOME/.Xresources"
 		ln -sf "$DOTFILES_DIR/config/alacritty"  "$HOME/.config/alacritty"
 		;;
@@ -97,7 +97,6 @@ case $platform in
 		rm -rf "$HOME/.config/alacritty"         2> /dev/null
 
 		ln -sf "$DOTFILES_DIR/.gitconfig-nix"    "$HOME/.gitconfig"
-		ln -sf "$DOTFILES_DIR/bin-mac"           "$HOME/.bin"
 		ln -sf "$DOTFILES_DIR/config/alacritty"  "$HOME/.config/alacritty"
 		;;
 	MSYS_NT-10.0 )
@@ -106,7 +105,4 @@ case $platform in
 		;;
 esac
 
-ln -sf "$DOTFILES_DIR/data/gruvbox/gruvbox-256-palette.sh" "$HOME/.bin/gruvbox-256-palette.sh"
-
 touch "$HOME/.localenv"
-

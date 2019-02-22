@@ -20,6 +20,8 @@ if grep -q Microsoft /proc/version; then
     ' > ~/.xinitrc
     chmod +x ~/.xinitrc
     ln -s ~/.xinitrc ~/.xsession
+    sudo cp ~/.bin/xfce/default.xml /etc/xdg/xfce4/panel/default.xml
+    sudo cp ~/.bin/xfce/xfce4-session.xml /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
     sudo mkdir /etc/xdg/disabled-autostart
     sudo mv /etc/xdg/autostart/nm-applet.desktop /etc/xdg/autostart/disabled-autostart/
   }
