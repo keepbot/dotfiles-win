@@ -75,11 +75,15 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:dirs} = { ls -l | busybox.exe grep ^d }
   # List only directories
   ${function:lsd} = { Get-ChildItem -Directory -Force @args }
+  # List directories recursively
+  ${function:llr} = { lsd | ForEach-Object{ll $_ @args} }
 } else {
   # List all files, including hidden files
   ${function:la} = { Get-ChildItem-Force @args }
   # List only directories
   ${function:lsd} = { Get-ChildItem -Directory -Force @args }
+  # List directories recursively
+  ${function:llr} = { lsd | ForEach-Object{la $_ @args} }
 }
 
 function Remove-File-Recursively {
