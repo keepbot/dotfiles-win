@@ -60,6 +60,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:git-ssh-bbr}={ (Get-Content .gitmodules).replace('git@bitbucket.org:', 'https://bitbucket.org/') | Set-Content .gitmodules }
   ${function:grmt} = { git.exe tag --delete @args }
   ${function:grmto} = { git.exe push --delete origin @args }
+  ${function:gunsec} = { git.exe -c http.sslVerify=false @args }
+
   ${function:gprune} = {
     $CurrentBranch = $(cmd /c "git rev-parse --abbrev-ref HEAD")
 
