@@ -144,6 +144,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
     "nuget.commandline"
     "nugetpackageexplorer"
     "octopustools"
+    "ollydbg"
     "openssh"
     "openssl.light"
     "outlookaddressbookview --ignore-checksums"
