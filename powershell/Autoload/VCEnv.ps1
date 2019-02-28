@@ -26,6 +26,10 @@ function Set-VC {
     'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
     'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise'
     'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise'
   )
 
   # $versions = ''
@@ -100,37 +104,90 @@ function List-VC {
     Written by: Dmitriy Ivanov
   #>
 
-  $VS_Comunity = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
-  $VS_BuildTools = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
-  $VS_Preview = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview'
-  #$VS_Professional = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
-  #$VS_Enterprise = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise'
+  $VS_Community_2017      = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
+  $VS_BuildTools_2017     = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
+  $VS_Professional_2017   = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
+  $VS_Enterprise_2017     = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise'
+  $VS_Preview_2019        = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview'
+  $VS_Community_2019      = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community'
+  $VS_BuildTools_2019     = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools'
+  $VS_Professional_2019   = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional'
+  $VS_Enterprise_2019     = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise'
 
 
 #   if (Test-Path 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\')
-  if (Test-Path "$VS_Comunity\VC\Tools\MSVC\") {
-    $ComunityVersions = $((Get-ChildItem "$VS_Comunity\VC\Tools\MSVC\").Name)
+  if (Test-Path "$VS_Community_2017\VC\Tools\MSVC\") {
+    $CommunityVersions2017 = $((Get-ChildItem "$VS_Community_2017\VC\Tools\MSVC\").Name)
   }
 
-  if (Test-Path "$VS_BuildTools\VC\Tools\MSVC\") {
-    $BuildToolsVersions = $((Get-ChildItem "$VS_BuildTools\VC\Tools\MSVC\").Name)
+  if (Test-Path "$VS_BuildTools_2017\VC\Tools\MSVC\") {
+    $BuildToolsVersions2017 = $((Get-ChildItem "$VS_BuildTools_2017\VC\Tools\MSVC\").Name)
   }
 
-  if (Test-Path "$VS_Preview\VC\Tools\MSVC\") {
-    $PreviewVersions = $((Get-ChildItem "$VS_Preview\VC\Tools\MSVC\").Name)
+  if (Test-Path "$VS_Professional_2017\VC\Tools\MSVC\") {
+    $ProfessionalVersions2017 = $((Get-ChildItem "$VS_Professional_2017\VC\Tools\MSVC\").Name)
   }
+
+  if (Test-Path "$VS_Enterprise_2017\VC\Tools\MSVC\") {
+    $EnterpriseVersions2017 = $((Get-ChildItem "$VS_Enterprise_2017\VC\Tools\MSVC\").Name)
+  }
+
+  if (Test-Path "$VS_Preview_2019\VC\Tools\MSVC\") {
+    $PreviewVersions2019 = $((Get-ChildItem "$VS_Preview_2019\VC\Tools\MSVC\").Name)
+  }
+
+  if (Test-Path "$VS_Community_2019\VC\Tools\MSVC\") {
+    $CommunityVersions2019 = $((Get-ChildItem "$VS_Community_2019\VC\Tools\MSVC\").Name)
+  }
+
+  if (Test-Path "$VS_BuildTools_2019\VC\Tools\MSVC\") {
+    $BuildToolsVersions2019 = $((Get-ChildItem "$VS_BuildTools_2019\VC\Tools\MSVC\").Name)
+  }
+
+  if (Test-Path "$VS_Professional_2019\VC\Tools\MSVC\") {
+    $ProfessionalVersions2019 = $((Get-ChildItem "$VS_Professional_2019\VC\Tools\MSVC\").Name)
+  }
+
+  if (Test-Path "$VS_Enterprise_2019\VC\Tools\MSVC\") {
+    $EnterpriseVersions2019 = $((Get-ChildItem "$VS_Enterprise_2019\VC\Tools\MSVC\").Name)
+  }
+
 
   Write-Host "List of VC versions on this PC:"
-  if ($ComunityVersions) {
-    foreach($v in $ComunityVersions) {Write-Host " -" $v " (VS Comunity)"}
+  if ($CommunityVersions2017) {
+    foreach($v in $CommunityVersions2017) {Write-Host " -" $v " (VS Community 2017)"}
   }
 
-  if ($BuilderVersions) {
-    foreach($v in $BuildToolsVersions) {Write-Host " -" $v " (VS BuildTools)"}
+  if ($BuildToolsVersions2017) {
+    foreach($v in $BuildToolsVersions2017) {Write-Host " -" $v " (VS BuildTools 2017)"}
+  }
+
+  if ($ProfessionalVersions2017) {
+    foreach($v in $ProfessionalVersions2017) {Write-Host " -" $v " (VS Professional 2017)"}
+  }
+
+  if ($EnterpriseVersions2017) {
+    foreach($v in $EnterpriseVersions2017) {Write-Host " -" $v " (VS Enterprise 2017)"}
   }
 
   if ($PreviewVersions) {
     foreach($v in $PreviewVersions) {Write-Host " -" $v " (VS Preview 2019)"}
+  }
+
+  if ($CommunityVersions2019) {
+    foreach($v in $CommunityVersions2019) {Write-Host " -" $v " (VS Community 2019)"}
+  }
+
+  if ($BuildToolsVersions2019) {
+    foreach($v in $BuildToolsVersions2019) {Write-Host " -" $v " (VS BuildTools 2019)"}
+  }
+
+  if ($ProfessionalVersions2019) {
+    foreach($v in $ProfessionalVersions2019) {Write-Host " -" $v " (VS Professional 2019)"}
+  }
+
+  if ($EnterpriseVersions2019) {
+    foreach($v in $EnterpriseVersions2019) {Write-Host " -" $v " (VS Enterprise 2019)"}
   }
 }
 
@@ -206,6 +263,10 @@ function VC-Vars-All {
     'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvarsall.bat'
     'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat'
     'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Auxiliary\Build\vcvarsall.bat'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvarsall.bat'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat'
   )
 
   $cmd_string = "cmd /c "
