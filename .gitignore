@@ -1,5 +1,7 @@
 # IDE
 .idea
+.vs
+.vscode
 
 # Windows image file caches
 Thumbs.db
@@ -41,3 +43,5 @@ SpIp.bin
 SpIp.txt
 *.history
 *.bash_history
+
+**/OOSU10.ini
