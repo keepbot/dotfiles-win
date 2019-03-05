@@ -227,11 +227,11 @@ else
 endif
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project']
-let g:indent_guides_space_guides = 0
+let g:indent_guides_space_guides = 1
 let g:indent_guides_tab_guides = 1
 let g:indent_guides_start_level = 1
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#1c1c1c   ctermbg=234
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  guibg=#262626   ctermbg=235
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#1c1c1c ctermbg=234
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#262626 ctermbg=235
 
 " => vim-javascript
 let g:javascript_plugin_jsdoc        = 1

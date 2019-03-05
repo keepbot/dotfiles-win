@@ -24,13 +24,13 @@ set preserveindent
 set shiftround
 
 " Replace tabs with spaces.
-"set expandtab
+" set expandtab
 
 " Make tabs as wide as two spaces
-set tabstop=2
+set tabstop=4
 
 " Make shift as wide as tabstop
-set shiftwidth=2
+set shiftwidth=4
 
 " Indent for language
 set smartindent
