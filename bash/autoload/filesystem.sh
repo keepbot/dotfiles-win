@@ -36,15 +36,16 @@ alias ll='ls -alFh --group-directories-first'
 alias dirs="ls -l | grep ^d"
 
 # Navigation Shortcuts
-alias ws='cd ~/workspace'
+alias wscd='cd ~/workspace'
 alias wsmy='cd ~/workspace/my'
 alias wsdf='cd ~/workspace/my/dotfiles'
-alias wso='cd ~/workspace/ormco'
+alias wsaw='cd ~/.config/awesome'
+alias wsom='cd ~/workspace/ormco'
 alias wsod='cd ~/workspace/ormco/devops'
-alias wsc='cd /c/Users/dkiva/workspace'
+alias wscw='cd /c/Users/dkiva/workspace'
 alias wsco='cd /c/Users/dkiva/workspace/ormco'
-alias wsd='cd /d/work'
-alias wst='cd ~/workspace/tmp'
+alias wsdw='cd /d/work'
+alias wstp='cd ~/workspace/tmp'
 
 alias crlf_fix='find ./ -type f -exec dos2unix {} \;'
 alias dir_fix='find ./ -type d -print -exec chmod 755 {} \;'
