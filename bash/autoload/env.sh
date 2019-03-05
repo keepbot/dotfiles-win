@@ -57,9 +57,12 @@ case $platform in
 		[[ -d /usr/bin ]]                           && export PATH=$PATH:/usr/bin
 		[[ -d /usr/local/bin ]]                     && export PATH=$PATH:/usr/local/bin
 		[[ -d /opt/local/bin ]]                     && export PATH=$PATH:/opt/local/bin
+		[[ -d /opt/bin ]]                           && export PATH=$PATH:/opt/bin
 		# Ubuntu games
 		[[ -d /usr/games ]]                         && export PATH=$PATH:/usr/games
 		[[ -d /usr/local/games ]]                   && export PATH=$PATH:/usr/local/games
+		# LLVM
+		[[ -d /usr/lib/llvm/6/bin ]]                && export PATH=$PATH:/usr/lib/llvm/6/bin
 		# Ruby
 		[[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
 		[[ -d "$HOME/.rvm/bin" ]]                   && export PATH=$PATH:$HOME/.rvm/bin
