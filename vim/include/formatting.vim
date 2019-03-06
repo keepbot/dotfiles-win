@@ -24,7 +24,7 @@ set preserveindent
 set shiftround
 
 " Replace tabs with spaces.
-" set expandtab
+set expandtab
 
 " Make tabs as wide as two spaces
 set tabstop=4

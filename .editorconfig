@@ -9,21 +9,15 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 [{*.bash,*.sh,bashrc,bash_profile,profile}]
-indent_size = 2
 max_line_length = 80
 
 [*.csv]
 insert_final_newline = false
 
 [*.ftl]
-indent_size = 2
 max_line_length = 80
 
-[*.html]
-indent_size = 2
-
 [*.js]
-indent_size = 2
 max_line_length = 80
 
 [*.java]
@@ -35,14 +29,10 @@ indent_style = tab
 [*.md]
 trim_trailing_whitespace = false
 
-[*.ps1]
-indent_size = 2
-
 [*.py]
 max_line_length = 80
 
 [*.ts]
-indent_size = 2
 max_line_length = 80
 
 [*.gitmodules]

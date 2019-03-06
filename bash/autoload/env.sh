@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+umask 022
+
 export EDITOR='vim'
 # No duplicates in history.
 export HISTCONTROL=ignoredups
@@ -43,57 +45,68 @@ export LIBGL_ALWAYS_INDIRECT=1
 # Set PATHs
 platform=`uname`
 case $platform in
-	Linux )
-		# Local
-		[[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin
-		[[ -d $HOME/.local/bin ]]                   && export PATH=$PATH:$HOME/.local/bin
-		# Root binaries
-		[[ -d /sbin ]]                              && export PATH=$PATH:/sbin
-		[[ -d /usr/sbin ]]                          && export PATH=$PATH:/usr/sbin
-		[[ -d /usr/local/sbin ]]                    && export PATH=$PATH:/usr/local/sbin
-		[[ -d /opt/local/sbin ]]                    && export PATH=$PATH:/opt/local/sbin
-		# User's
-		[[ -d /bin ]]                               && export PATH=$PATH:/bin
-		[[ -d /usr/bin ]]                           && export PATH=$PATH:/usr/bin
-		[[ -d /usr/local/bin ]]                     && export PATH=$PATH:/usr/local/bin
-		[[ -d /opt/local/bin ]]                     && export PATH=$PATH:/opt/local/bin
-		[[ -d /opt/bin ]]                           && export PATH=$PATH:/opt/bin
-		# Ubuntu games
-		[[ -d /usr/games ]]                         && export PATH=$PATH:/usr/games
-		[[ -d /usr/local/games ]]                   && export PATH=$PATH:/usr/local/games
-		# LLVM
-		[[ -d /usr/lib/llvm/6/bin ]]                && export PATH=$PATH:/usr/lib/llvm/6/bin
-		# Ruby
-		[[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
-		[[ -d "$HOME/.rvm/bin" ]]                   && export PATH=$PATH:$HOME/.rvm/bin
-		# Rust
-		[[ -d "$HOME/.cargo/bin" ]]                 && export PATH=$PATH:$HOME/.cargo/bin
-		# Yarn
-		[[ -d "$HOME/.yarn/bin" ]]                  && export PATH=$PATH:$HOME/.yarn/bin
-		# Android
-		[[ -d "$HOME/Android/Sdk/platform-tools" ]] && export PATH=$PATH:$HOME/Android/Sdk/platform-tools
-		;;
-	Darwin )
-		[[ -d /usr/local/opt/python3/bin ]]         && export PATH=/usr/local/opt/python3/bin/:$PATH
-		[[ -d $HOME/Library/Python/3.6/bin ]]       && export PATH=Library/Python/3.6/bin:$PATH
-		[[ -d /usr/local/opt/python2/bin ]]         && export PATH=/usr/local/opt/python2/bin/:$PATH
-		[[ -d $HOME/Library/Python/2.7/bin ]]       && export PATH=Library/Python/2.7/bin:$PATH
-		[[ -d /usr/local/bin ]]                     && export PATH=$PATH:/usr/local/bin
-		[[ -d /usr/local/sbin ]]                    && export PATH=$PATH:/usr/local/sbin
-		[[ -d $HOME/.bin ]]                         && export PATH=$PATH:$HOME/.bin
-		[[ -d $HOME/.local/bin ]]                   && export PATH=$PATH:$HOME/.local/bin
-		# Ruby
-		[[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
-		# VS Code
-		[[ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]] && \
-			export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-		[[ -f "/usr/libexec/java_home" ]]           && export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
-		;;
-	MSYS_NT-10.0 )
-		[[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin:$PATH
-		echo
-		;;
+    Linux )
+        # Local
+        [[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin
+        [[ -d $HOME/.local/bin ]]                   && export PATH=$PATH:$HOME/.local/bin
+        # Root binaries
+        [[ -d /sbin ]]                              && export PATH=$PATH:/sbin
+        [[ -d /usr/sbin ]]                          && export PATH=$PATH:/usr/sbin
+        [[ -d /usr/local/sbin ]]                    && export PATH=$PATH:/usr/local/sbin
+        [[ -d /opt/local/sbin ]]                    && export PATH=$PATH:/opt/local/sbin
+        # User's
+        [[ -d /bin ]]                               && export PATH=$PATH:/bin
+        [[ -d /usr/bin ]]                           && export PATH=$PATH:/usr/bin
+        [[ -d /usr/local/bin ]]                     && export PATH=$PATH:/usr/local/bin
+        [[ -d /opt/local/bin ]]                     && export PATH=$PATH:/opt/local/bin
+        [[ -d /opt/bin ]]                           && export PATH=$PATH:/opt/bin
+        # Ubuntu games
+        [[ -d /usr/games ]]                         && export PATH=$PATH:/usr/games
+        [[ -d /usr/local/games ]]                   && export PATH=$PATH:/usr/local/games
+        # LLVM
+        [[ -d /usr/lib/llvm/6/bin ]]                && export PATH=$PATH:/usr/lib/llvm/6/bin
+        # Ruby
+        [[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
+        [[ -d "$HOME/.rvm/bin" ]]                   && export PATH=$PATH:$HOME/.rvm/bin
+        # Rust
+        [[ -d "$HOME/.cargo/bin" ]]                 && export PATH=$PATH:$HOME/.cargo/bin
+        # Yarn
+        [[ -d "$HOME/.yarn/bin" ]]                  && export PATH=$PATH:$HOME/.yarn/bin
+        # Android
+        [[ -d "$HOME/Android/Sdk/platform-tools" ]] && export PATH=$PATH:$HOME/Android/Sdk/platform-tools
+        ;;
+    Darwin )
+        [[ -d /usr/local/opt/python3/bin ]]         && export PATH=/usr/local/opt/python3/bin/:$PATH
+        [[ -d $HOME/Library/Python/3.6/bin ]]       && export PATH=Library/Python/3.6/bin:$PATH
+        [[ -d /usr/local/opt/python2/bin ]]         && export PATH=/usr/local/opt/python2/bin/:$PATH
+        [[ -d $HOME/Library/Python/2.7/bin ]]       && export PATH=Library/Python/2.7/bin:$PATH
+        [[ -d /usr/local/bin ]]                     && export PATH=$PATH:/usr/local/bin
+        [[ -d /usr/local/sbin ]]                    && export PATH=$PATH:/usr/local/sbin
+        [[ -d $HOME/.bin ]]                         && export PATH=$PATH:$HOME/.bin
+        [[ -d $HOME/.local/bin ]]                   && export PATH=$PATH:$HOME/.local/bin
+        # Ruby
+        [[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
+        # VS Code
+        [[ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]] && \
+        	export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+        [[ -f "/usr/libexec/java_home" ]]           && export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+        ;;
+    MSYS_NT-10.0 )
+        [[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin:$PATH
+        echo
+        ;;
 esac
 
-umask 022
+# Finout linux distro
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    export OS_DISTRIBUTION=$NAME
+elif type lsb_release >/dev/null 2>&1; then
+    export OS_DISTRIBUTION=$(lsb_release -si)
+elif [ -f /etc/lsb-release ]; then
+    . /etc/lsb-release
+    export OS_DISTRIBUTION=$DISTRIB_ID
+else
+    export OS_DISTRIBUTION=$(uname -s)
+fi
 
