@@ -68,12 +68,15 @@ case $platform in
         # Ruby
         [[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
         [[ -d "$HOME/.rvm/bin" ]]                   && export PATH=$PATH:$HOME/.rvm/bin
+        [[ -d "$HOME/.rvm/rubies/ruby-2.6.1" ]]     && rvm use 2.6.1
         # Rust
         [[ -d "$HOME/.cargo/bin" ]]                 && export PATH=$PATH:$HOME/.cargo/bin
         # Yarn
         [[ -d "$HOME/.yarn/bin" ]]                  && export PATH=$PATH:$HOME/.yarn/bin
         # Android
         [[ -d "$HOME/Android/Sdk/platform-tools" ]] && export PATH=$PATH:$HOME/Android/Sdk/platform-tools
+        # Python
+        # [[ -f $HOME/.bash/venv.sh ]]                && source ~/.bash/venv.sh
         ;;
     Darwin )
         [[ -d /usr/local/opt/python3/bin ]]         && export PATH=/usr/local/opt/python3/bin/:$PATH
@@ -97,6 +100,8 @@ case $platform in
         ;;
 esac
 
+[[ -f $HOME/.localenv ]]                            && source ~/.localenv
+
 # Finout linux distro
 if [ -f /etc/os-release ]; then
     . /etc/os-release
@@ -110,3 +115,8 @@ else
     export OS_DISTRIBUTION=$(uname -s)
 fi
 
+list-paths() {
+    for path in $(echo $PATH | tr ":" "\n"); do
+        echo $path
+    done
+}

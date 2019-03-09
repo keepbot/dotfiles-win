@@ -8,11 +8,3 @@
 for file in ${HOME}/.bash/autoload/*; do
   source ${file}
 done
-
-#Import Rust env
-[[ -f $HOME/.cargo/env ]]                   && source $HOME/.cargo/env
-
-# Auto .env
-#[[ -f $HOME/.bash/venv.sh ]]                && source ~/.bash/venv.sh
-
-[[ -f $HOME/.localenv ]]                    && source ~/.localenv
