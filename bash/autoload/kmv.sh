@@ -1,4 +1,4 @@
-iommu-list1() {
+iommu-list() {
     if [[ `dmesg | grep 'IOMMU enabled'` ]]; then
     echo "IOMMU is enabled. List of devices: "
         for d in /sys/kernel/iommu_groups/*/devices/*; do
@@ -37,3 +37,5 @@ vfio-bind() {
         echo $vendor $device > /sys/bus/pci/drivers/vfio-pci/new_id
     done
 }
+
+alias check_iommu='dmesg | grep -e IOMMU -e DMAR'

@@ -29,3 +29,5 @@ digga() {
 sIP() {
 	list=$(find . -name "$1"); grep -E "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" -h -o $list
 }
+
+alias fw_list='sudo iptables -nvL'
