@@ -9,6 +9,9 @@ case $1 in
     hdmi2 )
         xrandr --output eDP1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --panning 3840x2160+0+0 --output HDMI2 --mode 1920x1080 --pos 3840x0 --rotate normal --scale 2x2 --right-of eDP1 --panning 3840x2160+3840+0
         ;;
+    hdmi2-bb )
+        xrandr --output eDP-1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --panning 3840x2160+0+0 --output HDMI-2 --mode 1920x1080 --pos 3840x0 --rotate normal --scale 2x2 --right-of eDP-1 --panning 3840x2160+3840+0
+        ;;
     dp3 )
         xrandr --output eDP1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --panning 3840x2160+0+0 --output DP3 --mode 1920x1080 --pos 3840x0 --rotate normal --scale 2x2 --right-of eDP1 --panning 3840x2160+3840+0
         ;;

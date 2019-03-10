@@ -28,19 +28,6 @@ gget() {
 	git clone "$1" && cd $( basename "$1" .git )
 }
 
-# Clone all users repos in current folder
-get_user_repos () {
-	if [ -z "$1" ] || [ $2 ]; then
-		echo "You should enter name of GitHub user."
-		echo "Usage: get_user_repos <github_username>"
-		echo
-	else
-		curl -s https://api.github.com/users/$1/repos?per_page=1000 > repo.list.json
-		python -c "import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()"
-		rm repo.list.json
-	fi
-	return 0
-}
 
 get_repo_with_target() {
   if [ -z "$1" ] || [ $2 ]; then
