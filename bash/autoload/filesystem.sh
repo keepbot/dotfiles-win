@@ -73,3 +73,15 @@ lsD() {
 	done
   IFS="${origIFS}"
 }
+
+find-rootfs() {
+    sudo find / -path /home/storage -prune -printf '' -o "$@"
+}
+
+find_core_dumps() {
+    sudo find / -path /home/storage -prune -printf '' -o                    \
+        -type f -regextype posix-extended                                   \
+        -regex '^.*core\.([0-9]{1}|[0-9]{2}|[0-9]{3}|[0-9]{4}|[0-9]{5})'    \
+        -print "$@"
+}
+
