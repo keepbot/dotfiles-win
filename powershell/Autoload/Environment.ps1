@@ -204,11 +204,14 @@ function Set-Dev-Env {
   If (Test-Path "C:\Qt\Qt5.11.1\5.11.1\msvc2015")  {
     [Environment]::SetEnvironmentVariable("QTDIR", "C:\Qt\Qt5.11.1\5.11.1\msvc2015", "Machine")
   }
-  # If (Test-Path "C:\Qt\Qt5.12.1\5.12.1\msvc2017")  {
-  #   [Environment]::SetEnvironmentVariable("QTDIR", "C:\Qt\Qt5.12.1\5.12.1\msvc2017", "Machine")
-  # }
+  If (Test-Path "C:\Qt\Qt5.12.1\5.12.1\msvc2017")  {
+    [Environment]::SetEnvironmentVariable("QTDIR", "C:\Qt\Qt5.12.1\5.12.1\msvc2017", "Machine")
+  }
   If (Test-Path "C:\Qt\Qt5.11.1\5.11.1\msvc2015\mkspecs\win32-msvc")  {
     [Environment]::SetEnvironmentVariable("QMAKESPEC", "C:\Qt\Qt5.11.1\5.11.1\msvc2015\mkspecs\win32-msvc", "Machine")
+  }
+  If (Test-Path "C:\Qt\Qt5.12.1\5.12.1\msvc2017\mkspecs\win32-msvc")  {
+    [Environment]::SetEnvironmentVariable("QMAKESPEC", "C:\Qt\Qt5.12.1\5.12.1\msvc2017\mkspecs\win32-msvc", "Machine")
   }
   If (Test-Path "$env:HOME\workspace\ormco\common\aligner-thirdparty")  {
     [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "$env:HOME\workspace\ormco\common\aligner-thirdparty", "Machine")
