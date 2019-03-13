@@ -1,5 +1,5 @@
 ! Defaults --------------------------------------------------------------------
-Xft.dpi:                    192
+Xft.dpi:                    128
 Xft.autohint:               0
 Xft.lcdfilter:              lcddefault
 Xft.hintstyle:              hintfull
@@ -9,7 +9,7 @@ Xft.rgba:                   rgb
 Xcursor.theme:              Vanilla-DMZ-AA
 !Xcursor.theme:              ComixCursors-Slim-White
 Xcursor.theme_core:         True
-Xcursor.size:               48
+Xcursor.size:               32
 
 ! XTerm -----------------------------------------------------------------------
 ! General settings
@@ -235,7 +235,7 @@ xpdf*urlCommand:        		firefox %s
 ! Xscreensaver ----------------------------------------------------------------
 !xscreensaver.mode:                      binaryring -root -growth-delay 7500 -ring-radius 250 -particles-number 2775
 ! Font
-xscreensaver.Dialog.headingFont:        -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1 
+xscreensaver.Dialog.headingFont:        -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
 xscreensaver.Dialog.bodyFont:           -xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1
 xscreensaver.Dialog.labelFont:          -xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1
 xscreensaver.Dialog.unameFont:          -xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1
