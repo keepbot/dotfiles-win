@@ -11,7 +11,7 @@ RequireAdmin
 ### Privacy Tweaks ###
 DisableTelemetry            # EnableTelemetry
 DisableWiFiSense            # EnableWiFiSense
-# DisableSmartScreen        # EnableSmartScreen
+EnableSmartScreen           # DisableSmartScreen        # EnableSmartScreen
 DisableWebSearch            # EnableWebSearch
 EnableAppSuggestions        # DisableAppSuggestions
 DisableActivityHistory      # EnableActivityHistory
