@@ -157,15 +157,15 @@ function Reload-Paths-Orig {
 }
 function Reload-Paths-User {
   $paths = @(
-    "C:\Users\$env:USERPROFILE\.cargo\bin"
-    "C:\Users\$env:USERPROFILE\AppData\Roaming\local\bin"
-    "$env:GOPATH\bin"
-    "C:\Users\$env:USERPROFILE\AppData\Roaming\npm"
-    "C:\Users\$env:USERPROFILE\AppData\Local\Pandoc"
-    "C:\Users\$env:USERPROFILE\AppData\Local\Yarn\bin"
+    "${env:USERPROFILE}\.cargo\bin"
+    "${env:USERPROFILE}\AppData\Roaming\local\bin"
+    "${env:GOPATH}\bin"
+    "${env:USERPROFILE}\AppData\Roaming\npm"
+    "${env:USERPROFILE}\AppData\Local\Pandoc"
+    "${env:USERPROFILE}\AppData\Local\Yarn\bin"
   )
 
-  $final_path = "$env:USERPROFILE\AppData\Local\Microsoft\WindowsApps"
+  $final_path = "${env:USERPROFILE}\AppData\Local\Microsoft\WindowsApps"
 
   foreach ($path in $paths) {
     If (Test-Path $path)  {
