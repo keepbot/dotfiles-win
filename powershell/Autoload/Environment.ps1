@@ -55,7 +55,7 @@ function Reload-Paths-My {
     "C:\Program Files\OpenSSH-Win64"
     "C:\Program Files\OpenVPN\bin"
     "C:\Program Files\TAP-Windows\bin"
-    "C:\Program Files\Amazon\AWSCLI"
+    "C:\Program Files\Amazon\AWSCLI\bin"
     "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.1\bin"
     "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
     "C:\Go\bin"
