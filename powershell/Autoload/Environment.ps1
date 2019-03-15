@@ -139,10 +139,10 @@ function Reload-Paths-Orig {
     "C:\Program Files\dotnet"
     "C:\Program Files\Microsoft SQL Server\130\Tools\Binn"
     "C:\Program Files (x86)\Common Files\Oracle\Java\javapath"
-    "C:\tools\wsl\wsl-arch"
-    "C:\tools\wsl\wsl-debian"
-    "C:\tools\wsl\wsl-kali"
-    "C:\tools\wsl\wsl-ubuntu-1804"
+    "C:\tools\wsl\arch"
+    "C:\tools\wsl\debian"
+    "C:\tools\wsl\kali"
+    "C:\tools\wsl\ubuntu"
   )
 
   $final_path = "$env:SystemRoot\system32"

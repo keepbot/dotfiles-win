@@ -511,22 +511,22 @@
 					<value name="Count" type="long" data="1"/>
 					<value name="Flags" type="dword" data="00000004"/>
 				</key>
-				<key name="Task4" modified="2019-02-01 02:25:30" build="180528">
+				<key name="Task4" modified="2019-03-15 03:20:18" build="180626">
 					<value name="Name" type="string" data="{Bash::Kali}"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl --distro-guid={a005db22-90d9-42ed-801e-32c895adcdb2} -C~ -cur_console:p:n:m:"":t:Kali'/>
+					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl --distro-guid={b5c0c847-216a-4c15-a9b8-5dcfaf92fa4a} -C~ -cur_console:p:n:m:"":t:Kali'/>
 					<value name="Cmd2" type="string" data="%CMDER_ROOT%\vendor\git-for-windows\git-bash.exe"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Flags" type="dword" data="00000004"/>
 				</key>
-				<key name="Task5" modified="2019-02-01 02:12:04" build="180528">
+				<key name="Task5" modified="2019-03-15 03:20:18" build="180626">
 					<value name="Name" type="string" data="{Bash::Debian}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl --distro-guid={dc1edbc4-fbfe-4890-b97e-c0b0725995b7} -C~ -cur_console:p:n:m:"":t:Debian'/>
+					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl --distro-guid={c2e0b363-b6d2-4388-8077-789bad262fd9} -C~ -cur_console:p:n:m:"":t:Debian'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
