@@ -49,7 +49,7 @@ function Reload-Paths-My {
     "C:\tools\python2"
     "C:\usr\bin"
     "C:\Program Files\KDiff3"
-    "c:\Program Files\KDiff3\bin"
+    "C:\Program Files\KDiff3\bin"
     "C:\tools\vim\vim81"
     "C:\Program Files\OpenSSL\bin"
     "C:\Program Files\OpenSSH-Win64"
@@ -103,6 +103,8 @@ function Reload-Paths-My {
     "C:\Program Files (x86)\pgAdmin 4\v3\runtime"
     "C:\tools\ProccessHacker"
     "C:\Program Files\Rust stable MSVC 1.32\bin"
+    "C:\tools\doublecmd"
+    "C:\msys64"
     )
 
   $final_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
