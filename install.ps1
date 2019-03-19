@@ -105,6 +105,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "hg"
         "hxd"
         "imagemagick"
+        "imdisk-toolkit"
         "irfanview"
         "irfanviewplugins"
         # "itunes"
