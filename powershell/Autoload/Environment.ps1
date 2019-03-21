@@ -57,6 +57,7 @@ function Reload-Paths-My {
     "C:\Program Files\TAP-Windows\bin"
     "C:\Program Files\Amazon\AWSCLI\bin"
     "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.1\bin"
+    "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.2\bin"
     "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
     "C:\Go\bin"
     "C:\Program Files\CMake\bin"
