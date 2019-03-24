@@ -219,6 +219,9 @@ function Set-Dev-Env {
   If (Test-Path "$env:HOME\workspace\ormco\common\aligner-thirdparty")  {
     [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "$env:HOME\workspace\ormco\common\aligner-thirdparty", "Machine")
   }
+  If (Test-Path "$env:HOME\workspace\ormco\common\aligner-thirdparty")  {
+    [Environment]::SetEnvironmentVariable("WXWIN", "$env:HOME\wworkspace\_libs\wxWidgets-3.0.4", "Machine")
+  }
 }
 
 ${function:env} = {Get-ChildItem Env:}
