@@ -126,6 +126,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "lockhunter"
         "make"
         "maven"
+        "maxima"
         "meld"
         "miktex"
         "mingw"
