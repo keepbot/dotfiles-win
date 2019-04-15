@@ -202,6 +202,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "yarn"
         # "yed --params /Associate"
         "yasm"
+        "youtube-dl"
         # "zoom"
     )
 
