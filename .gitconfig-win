@@ -1,18 +1,25 @@
 [include]
-    path = ~/.git.d/aliases.ini
-    path = ~/.git.d/branching.ini
-    path = ~/.git.d/colors.ini
-    path = ~/.git.d/core.ini
-    path = ~/.git.d/diff.ini
-    path = ~/.git.d/lfs.ini
-    path = ~/.git.d/misc.ini
-    path = ~/.git.d/user.ini
-
+	path = ~/.git.d/aliases.ini
+	path = ~/.git.d/branching.ini
+	path = ~/.git.d/colors.ini
+	path = ~/.git.d/core.ini
+	path = ~/.git.d/diff.ini
+	path = ~/.git.d/lfs.ini
+	path = ~/.git.d/misc.ini
+	path = ~/.git.d/user.ini
 [core]
-    autocrlf = true
+	autocrlf = true
+	editor = \"C:/Program Files (x86)/GitExtensions/GitExtensions.exe\" fileeditor
+[merge]
+	tool = kdiff3
+[mergetool "kdiff3"]
+	path = C:/Program Files/KDiff3/kdiff3.exe
+[diff]
+	guitool = kdiff3
+[difftool "kdiff3"]
+	path = C:/Program Files/KDiff3/kdiff3.exe
 [credential]
 	helper = cache
-	# helper = manager
 [gpg]
 	program = C:\\Program Files (x86)\\Gpg4win\\..\\GnuPG\\bin\\gpg.exe
 [lfs "customtransfer.bitbucket-media-api"]
