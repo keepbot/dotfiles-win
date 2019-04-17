@@ -94,6 +94,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "gimp"
         "git-lfs"
         "git"
+        "gitextensions"
         # "gnuwin32-coreutils.install"
         "golang"
         "gpg4win"
