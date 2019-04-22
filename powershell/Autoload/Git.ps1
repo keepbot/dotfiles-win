@@ -61,6 +61,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
   ${function:grmt} = { git.exe tag --delete @args }
   ${function:grmto} = { git.exe push --delete origin @args }
   ${function:gunsec} = { git.exe -c http.sslVerify=false @args }
+  ${function:gcb} = { git.exe clone --single-branch --branch @args }
+  ${function:gcrb} = { git.exe clone --recurse-submodules --single-branch --branch @args }
 
   ${function:gprune} = {
     $CurrentBranch = $(cmd /c "git rev-parse --abbrev-ref HEAD")
