@@ -185,3 +185,50 @@ function Convert-ConsoleColor {
     [Array]::Reverse($bytes, 0, 3)
     return [BitConverter]::ToInt32($bytes, 0)
 }
+
+function Select-From-List {
+    [CmdletBinding()]
+
+    param (
+        [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+        [String[]]$List,
+        [ValidateNotNullOrEmpty()]
+        [string]$ListItemName = "Item"
+    )
+
+  do {
+    $x = 0
+    foreach($item in $List) {
+      $x = $x + 1
+      Write-Host "`t[$x]" $item
+    }
+
+    # Write-Host
+
+    $remainder = 0
+    $regexp = '^(['
+    foreach($y in 1..$x){
+      if ($y -eq 10) {
+        $regexp += ']|1['
+      }
+
+      if (($y -gt 1) -And ($y -ne 10)) {
+        $regexp += ','
+      }
+      $tmp = [System.Math]::DivRem($y, 10, [ref]$remainder)
+      $regexp += $remainder
+    }
+    $regexp += '])$'
+
+    Write-Host
+    $choice = Read-Host -Prompt "`tSelect $ListItemName from the list"
+
+    $ok = $choice -match $regexp
+
+    if ( -not $ok) {
+      Write-Host "`tERROR: Invalid selection"
+    } else {
+      return $List[$choice - 1]
+    }
+  } until ( $ok )
+}
