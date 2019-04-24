@@ -84,9 +84,9 @@ function Reload-Paths-My {
     "C:\Strawberry\c\bin"
     "C:\Strawberry\perl\site\bin"
     "C:\Strawberry\perl\bin"
-    "C:\Qt\Qt5.12.1\5.12.1\msvc2017\bin"
-    "C:\Qt\Qt5.11.1\5.11.1\msvc2015\bin"
-    "C:\Qt\Qt5.9.5\5.9.5\msvc2015\bin"
+    # "C:\Qt\Qt5.12.1\5.12.1\msvc2017\bin"
+    # "C:\Qt\Qt5.11.1\5.11.1\msvc2015\bin"
+    # "C:\Qt\Qt5.9.5\5.9.5\msvc2015\bin"
     "C:\Program Files\ImageMagick-7.0.8-Q16"
     "C:\Program Files\MiKTeX 2.9\miktex\bin\x64"
     "C:\Program Files\Pandoc"
@@ -193,7 +193,12 @@ function Set-Base-Env {
   # $system_path += ";%PathsOrig%"
   $system_path = "$env:PathsMy"
   $system_path += ";$env:JAVA_HOME\bin"
-  $system_path += ";$env:VC_PATH"
+  if ($env:VC_PATH) {
+      $system_path += ";$env:VC_PATH"
+  }
+  if ($env:QTDIR) {
+      $system_path += ";$env:QTDIR\bin"
+  }
   $system_path += ";$env:PathsOrig"
   # if (Test-Path env:JAVA_HOME) {
   # }

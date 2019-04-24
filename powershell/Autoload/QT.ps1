@@ -84,3 +84,14 @@ function Set-QT {
     [Environment]::SetEnvironmentVariable("QMAKESPEC", "$CurrentQTPath\$ChoosenQTToolset\mkspecs\win32-msvc", "Machine")
     $env:QMAKESPEC = "$CurrentQTPath\$ChoosenQTToolset\mkspecs\win32-msvc"
 }
+
+function UnSet-QT {
+    [Environment]::SetEnvironmentVariable("QTDIR", $null, "Machine")
+    [Environment]::SetEnvironmentVariable("QMAKESPEC", $null, "Machine")
+    if ($env:QTDIR) {
+        Remove-Item Env:QTDIR
+    }
+    if ($env:QMAKESPEC) {
+        Remove-Item Env:QMAKESPEC
+    }
+}
