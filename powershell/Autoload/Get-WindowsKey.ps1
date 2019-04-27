@@ -27,7 +27,7 @@ function Get-WindowsKey {
                 $productKey = "-" + $productKey
             }
         }
-# Write-host "Here:" + $productKey
+        # Write-host "Here:" + $productKey
         $win32os = Get-WmiObject Win32_OperatingSystem -computer $target
         $obj = New-Object Object
         $obj | Add-Member Noteproperty Computer -value $target

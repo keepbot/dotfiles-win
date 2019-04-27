@@ -1,6 +1,6 @@
 if (Get-Command dig.exe -ErrorAction SilentlyContinue | Test-Path) {
-  ${function:myip} = { dig.exe +short myip.opendns.com `@resolver1.opendns.com }
-  ${function:digga} = { dig.exe +nocmd "$($args[0].ToString())" any +multiline +noall +answer }
+    ${function:myip} = { dig.exe +short myip.opendns.com `@resolver1.opendns.com }
+    ${function:digga} = { dig.exe +nocmd "$($args[0].ToString())" any +multiline +noall +answer }
 }
 ${function:ipif} = {if ($($args[0])) {curl ipinfo.io/"$($args[0].ToString())"} else {curl ipinfo.io}}
 

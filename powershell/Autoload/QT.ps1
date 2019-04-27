@@ -1,31 +1,24 @@
-function List-QT {
+function Find-QT {
     <#
     .SYNOPSIS
-      List QT Framework versions on current PC.
-
+        List QT Framework versions on current PC.
     .DESCRIPTION
-      List QT Framework versions on current PC.
-
+        List QT Framework versions on current PC.
     .EXAMPLE
-      List-QT
-
+        Get-QTVersions
     .INPUTS
-      None
-
+        None
     .OUTPUTS
-      None
-
+        None
     .NOTES
-      Written by: Dmitriy Ivanov
+        Written by: Dmitriy Ivanov
     #>
-
     if (Test-Path "C:\Qt") {
-      $QTVersions = $(((Get-ChildItem "C:\Qt").Name) -replace '\D+(\d+.)','$1')
+        $QTVersions = $(((Get-ChildItem "C:\Qt").Name) -replace '\D+(\d+.)','$1')
     }
-
     Write-Host "List of QT Toolset on this PC:"
     if ($QTVersions) {
-      foreach($v in $QTVersions) {
+        foreach($v in $QTVersions) {
             $CurrentQT = "C:\Qt\Qt" + $v+ "\" + $v
             (Get-ChildItem $CurrentQT).Name | ForEach-Object{
                 If ($_ -match "Src" -Or $_ -match "sha1s.txt"){
@@ -41,19 +34,14 @@ function Set-QT {
     <#
     .SYNOPSIS
       Set QT Framework version on current PC.
-
     .DESCRIPTION
       Set QT Framework version on current PC.
-
     .EXAMPLE
       Set-QT
-
     .INPUTS
       None
-
     .OUTPUTS
       None
-
     .NOTES
       Written by: Dmitriy Ivanov
     #>
@@ -85,7 +73,7 @@ function Set-QT {
     $env:QMAKESPEC = "$CurrentQTPath\$ChoosenQTToolset\mkspecs\win32-msvc"
 }
 
-function UnSet-QT {
+function Clear-QT {
     [Environment]::SetEnvironmentVariable("QTDIR", $null, "Machine")
     [Environment]::SetEnvironmentVariable("QMAKESPEC", $null, "Machine")
     if ($env:QTDIR) {

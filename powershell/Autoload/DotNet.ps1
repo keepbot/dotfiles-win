@@ -1,16 +1,16 @@
 function Get-DotNet-All
 {
-  Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -recurse |
-  Get-ItemProperty -name Version,Release -EA 0 | Where { $_.PSChildName -match '^(?!S)\p{L}'} | Select PSChildName, Version, Release
+    Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -recurse |
+    Get-ItemProperty -name Version,Release -EA 0 | Where-Object { $_.PSChildName -match '^(?!S)\p{L}'} | Select-Object PSChildName, Version, Release
 }
 
 <#
-        Script Name	: Get-NetFrameworkVersion.ps1
-        Description	: This script reports the various .NET Framework versions installed on the local or a remote computer.
-        Author		: Martin Schvartzman
-        Reference   : https://msdn.microsoft.com/en-us/library/hh925568
+    Script Name	: Get-NetFrameworkVersion.ps1
+    Description	: This script reports the various .NET Framework versions installed on the local or a remote computer.
+    Author		: Martin Schvartzman
+    Reference   : https://msdn.microsoft.com/en-us/library/hh925568
 #>
-function Get-DotNetFrameworkVersion
+function Get-DotNet-FrameworkVersion
 {
     param(
         [string]$ComputerName = $env:COMPUTERNAME

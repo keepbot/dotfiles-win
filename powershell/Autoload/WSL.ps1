@@ -1,27 +1,27 @@
-function WSL-List() {
+function Find-WSL() {
     wslconfig.exe /l @args
 }
 
-function WSL-Remove() {
+function Remove-WSL() {
     wslconfig.exe /u @args
 }
 
-function WSL-Set() {
+function Set-WSL() {
     wslconfig.exe /s @args
 }
 
-function WSL-Terminate() {
+function Stop-WSL() {
     wslconfig.exe /t @args
 }
 
-function WSL-Upgrade() {
+function Update-WSL() {
     wslconfig.exe /upgrade @args
 }
 
-function WSL-UUID() {
+function Get-WSL-UUID() {
     Get-ChildItem -Path Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss
 }
 
-function WSL-UUID-Short() {
+function Get-WSL-UUID-Short() {
     (Get-ChildItem -Path Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss).Name
 }

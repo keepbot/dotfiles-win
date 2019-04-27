@@ -1,6 +1,5 @@
 # Utilities to manage PowerShell Consoles
 # Based on code from ConCFG: https://github.com/lukesampson/concfg/
-
 Add-Type -TypeDefinition @'
 using System;
 using System.Runtime.InteropServices;
