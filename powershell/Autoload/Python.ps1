@@ -12,4 +12,11 @@ if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:vr}      = { rmrf venv }
     ${function:vins}    = { If (-Not (Test-Path venv)){vc}; va; python.exe -m pip install -r .\requirements.txt }
     ${function:vgen}    = { va; python.exe -m pip freeze > .\requirements.txt }
+
+    # Update
+    function pyupdate {
+        python.exe -m pip install --upgrade pip
+        python.exe -m pip install --upgrade virtualenv
+        python.exe -m pip install --upgrade ipython
+    }
 }
