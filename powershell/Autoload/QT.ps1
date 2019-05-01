@@ -5,7 +5,7 @@ function Find-QT {
     .DESCRIPTION
         List QT Framework versions on current PC.
     .EXAMPLE
-        Get-QTVersions
+        Find-QT
     .INPUTS
         None
     .OUTPUTS
@@ -68,9 +68,8 @@ function Set-QT {
     $ChoosenQTToolset = Select-From-List $QTToolsets "QT Toolset"
 
     [Environment]::SetEnvironmentVariable("QTDIR", "$CurrentQTPath\$ChoosenQTToolset", "Machine")
-    $env:QTDIR = "$CurrentQTPath\$ChoosenQTToolset"
     [Environment]::SetEnvironmentVariable("QMAKESPEC", "$CurrentQTPath\$ChoosenQTToolset\mkspecs\win32-msvc", "Machine")
-    $env:QMAKESPEC = "$CurrentQTPath\$ChoosenQTToolset\mkspecs\win32-msvc"
+    Set-Env
 }
 
 function Clear-QT {
@@ -82,4 +81,5 @@ function Clear-QT {
     if ($env:QMAKESPEC) {
         Remove-Item Env:QMAKESPEC
     }
+    Set-Env
 }

@@ -15,6 +15,22 @@ function Restart-Powershell {
     [System.Diagnostics.Process]::Start($newProcess)
     exit
 }
+
+function Reload-Powershell {
+    function Invoke-PowerShell {
+        powershell -nologo
+    }
+
+    # $parentProcessId = (Get-WmiObject Win32_Process -Filter "ProcessId=$PID").ParentProcessId
+    # $parentProcessName = (Get-WmiObject Win32_Process -Filter "ProcessId=$parentProcessId").ProcessName
+
+    if ($host.Name -eq 'ConsoleHost') {
+            Invoke-PowerShell
+    } else {
+        Write-Warning 'Only usable while in the PowerShell console host'
+    }
+    exit
+}
 Set-Alias reload Reload-Powershell
 
 # Update installed Ruby Gems, NPM, and their installed packages.

@@ -40,13 +40,12 @@ Set-PSReadLineKeyHandler -Key Tab -Function Complete
 #  1..50000 | % {Set-Variable -Name MaximumHistoryCount -Value $_ }
 Set-Variable -Name MaximumHistoryCount -Value 32767
 
-function Initialize-Paths-My {
+${function:env} = {Get-ChildItem Env:}
+${function:List-Env} = { Get-ChildItem Env: }
+${function:List-Paths} = { $Env:Path.Split(';') }
+
+function Initialize-Paths-APP {
     $paths = @(
-        "C:\tools\bin"
-        "C:\tools\python3\Scripts"
-        "C:\tools\python3"
-        "C:\tools\python2\Scripts"
-        "C:\tools\python2"
         "C:\usr\bin"
         "C:\Program Files\KDiff3"
         "C:\Program Files\KDiff3\bin"
@@ -56,9 +55,9 @@ function Initialize-Paths-My {
         "C:\Program Files\OpenVPN\bin"
         "C:\Program Files\TAP-Windows\bin"
         "C:\Program Files\Amazon\AWSCLI\bin"
-        "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.1\bin"
-        "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.2\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.4\bin"
+        "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.2\bin"
+        "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.1\bin"
         "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
         "C:\Go\bin"
         "C:\Program Files\CMake\bin"
@@ -109,9 +108,13 @@ function Initialize-Paths-My {
         "C:\Program Files\Rust stable MSVC 1.33\bin"
         "C:\tools\doublecmd"
         "C:\msys64"
+        "C:\tools\wsl\arch"
+        "C:\tools\wsl\debian"
+        "C:\tools\wsl\kali"
+        "C:\tools\wsl\ubuntu"
     )
 
-    $final_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
+    $final_path = "C:\tools\bin"
 
     foreach ($path in $paths) {
         If (Test-Path $path)  {
@@ -119,10 +122,10 @@ function Initialize-Paths-My {
         }
     }
 
-    [Environment]::SetEnvironmentVariable("PathsMy", "$final_path", "Machine")
+    [Environment]::SetEnvironmentVariable("PathsApp", "$final_path", "Machine")
 }
 
-function Initialize-Paths-Orig {
+function Initialize-Paths-SYS {
     $paths = @(
         "$env:SystemRoot"
         "$env:SystemRoot\System32\Wbem"
@@ -146,10 +149,6 @@ function Initialize-Paths-Orig {
         "C:\Program Files\Microsoft SQL Server\130\Tools\Binn"
         "C:\Program Files (x86)\Common Files\Oracle\Java\javapath"
         "C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\"
-        "C:\tools\wsl\arch"
-        "C:\tools\wsl\debian"
-        "C:\tools\wsl\kali"
-        "C:\tools\wsl\ubuntu"
     )
 
     $final_path = "$env:SystemRoot\system32"
@@ -160,7 +159,7 @@ function Initialize-Paths-Orig {
         }
     }
 
-    [Environment]::SetEnvironmentVariable("PathsOrig", "$final_path", "Machine")
+    [Environment]::SetEnvironmentVariable("PathsSys", "$final_path", "Machine")
 }
 function Initialize-Paths-User {
     $paths = @(
@@ -184,32 +183,34 @@ function Initialize-Paths-User {
 
 }
 
-function Set-Base-Env {
-    Initialize-Paths-My
-    Initialize-Paths-Orig
-    # $system_path = "%PathsMy%"
-    # $system_path += ";%JAVA_HOME%\bin"
-    # $system_path += ";%VC_PATH%"
-    # $system_path += ";%PathsOrig%"
-    $system_path = "$env:PathsMy"
-    $system_path += ";$env:JAVA_HOME\bin"
+function Set-Env {
+    # PATHs
+    Initialize-Paths-APP
+    Initialize-Paths-SYS
+    Initialize-Paths-User
+    Reset-Environment
+    $system_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
+    if ($env:PYTHON_PATH) {
+        $system_path += ";$env:PYTHON_PATH\Scripts"
+        $system_path += ";$env:PYTHON_PATH"
+    }
+    if ($env:JAVA_HOME) {
+        $system_path += ";$env:JAVA_HOME\bin"
+    }
     if ($env:VC_PATH) {
         $system_path += ";$env:VC_PATH"
     }
     if ($env:QTDIR) {
         $system_path += ";$env:QTDIR\bin"
     }
-    $system_path += ";$env:PathsOrig"
-    # if (Test-Path env:JAVA_HOME) {
-    # }
-    # if (Test-Path env:VC_PATH) {
-    # }
+    $system_path += ";$env:PathsApp"
+    $system_path += ";$env:PathsSys"
     [Environment]::SetEnvironmentVariable("PATH", "$system_path", "Machine")
-    [Environment]::SetEnvironmentVariable("LANG", "en_US", "Machine")
-    Initialize-Paths-User
-}
 
-function Set-Dev-Env {
+    # LANG
+    [Environment]::SetEnvironmentVariable("LANG", "en_US", "Machine")
+
+    # Development Env
     If (Test-Path "C:\Program Files\Git LFS")  {
         [Environment]::SetEnvironmentVariable("GIT_LFS_PATH", "C:\Program Files\Git LFS", "Machine")
     }
@@ -219,11 +220,8 @@ function Set-Dev-Env {
     If (Test-Path "$env:HOME\workspace\ormco\aligner\testdataaligner")  {
         [Environment]::SetEnvironmentVariable("TESTDATA_LOCATION", "$env:HOME\workspace\ormco\aligner\testdataaligner", "Machine")
     }
+    Reset-Environment
 }
-
-${function:env} = {Get-ChildItem Env:}
-${function:List-Env} = { Get-ChildItem Env: }
-${function:List-Paths} = { $Env:Path.Split(';') }
 
 # Set a permanent Environment variable, and reload it into $env
 function Set-Environment([String] $variable, [String] $value) {
@@ -234,7 +232,7 @@ function Set-Environment([String] $variable, [String] $value) {
 }
 
 # Reload the $env object from the registry
-function Restore-Environment {
+function Reset-Environment {
     $locations = 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment',
                  'HKCU:\Environment'
 

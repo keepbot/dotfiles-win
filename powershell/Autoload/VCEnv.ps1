@@ -1,73 +1,4 @@
 #!/usr/env/pwsh
-function Set-VC {
-    <#
-    .SYNOPSIS
-        Enable to use particular version of Visual Compiler.
-    .DESCRIPTION
-        Enable to use particular version of Visual Compiler.
-    .EXAMPLE
-        Set-VC
-    .INPUTS
-        None
-    .OUTPUTS
-        None
-    .NOTES
-        Written by: Dmitriy Ivanov
-    #>
-
-    $tools = @(
-        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise'
-    )
-
-    # $versions = ''
-    foreach($tool in $tools) {
-        if (Test-Path "$tool\VC\Tools\MSVC\") {
-            foreach($ver in $(Get-ChildItem "$tool\VC\Tools\MSVC").Name ) {
-                $versions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx86").FullName
-                $versions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx64").FullName
-            }
-        }
-    }
-
-    do {
-        $x = 0
-        foreach($ver in $versions) {
-            $x = $x + 1
-            Write-Host "`t[$x]" $ver
-        }
-        $remainder = 0
-        $regexp = '^(['
-        foreach($y in 1..$x){
-            if ($y -eq 10) {
-                $regexp += ']|1['
-            }
-            if (($y -gt 1) -And ($y -ne 10)) {
-                $regexp += ','
-            }
-            $null = [System.Math]::DivRem($y, 10, [ref]$remainder)
-            $regexp += $remainder
-        }
-        $regexp += '])$'
-        Write-Host
-        $choice = Read-Host -Prompt "`tSelect VC from the list"
-        $ok = $choice -match $regexp
-        if ( -not $ok) {
-            Write-Host "`tERROR: Invalid selection"
-        } else {
-            [Environment]::SetEnvironmentVariable("VC_PATH", $versions[$choice - 1], "Machine")
-            $env:VC_PATH = $versions[$choice - 1]
-        }
-    } until ( $ok )
-}
-
 function Find-VC {
     <#
     .SYNOPSIS
@@ -150,6 +81,57 @@ function Find-VC {
     if ($EnterpriseVersions2019) {
         foreach($v in $EnterpriseVersions2019) {Write-Host " -" $v " (VS Enterprise 2019)"}
     }
+}
+
+function Set-VC {
+    <#
+    .SYNOPSIS
+        Enable to use particular version of Visual Compiler.
+    .DESCRIPTION
+        Enable to use particular version of Visual Compiler.
+    .EXAMPLE
+        Set-VC
+    .INPUTS
+        None
+    .OUTPUTS
+        None
+    .NOTES
+        Written by: Dmitriy Ivanov
+    #>
+
+    $tools = @(
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise'
+    )
+
+    $VCVersions = @()
+    foreach($tool in $tools) {
+        if (Test-Path "$tool\VC\Tools\MSVC\") {
+            foreach($ver in $(Get-ChildItem "$tool\VC\Tools\MSVC").Name ) {
+                $VCVersions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx86").FullName
+                $VCVersions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx64").FullName
+            }
+        }
+    }
+
+    $ChoosenVCVersion = Select-From-List $VCVersions "Visual Compiler Version"
+    [Environment]::SetEnvironmentVariable("VC_PATH", $ChoosenVCVersion, "Machine")
+    Set-Env
+}
+
+function Clear-VC {
+    [Environment]::SetEnvironmentVariable("VC_PATH", $null, "Machine")
+    if ($env:VC_PATH) {
+        Remove-Item Env:VC_PATH
+    }
+    Set-Env
 }
 
 function Set-VC-Vars-All {
