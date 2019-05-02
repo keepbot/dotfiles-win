@@ -1,5 +1,6 @@
+${function:jpn}      = { jupyter notebook @args }
 
-function jp {
+function jpl {
     <#
     .SYNOPSIS
         Wrapprer for Jupyter notebooks
@@ -37,45 +38,35 @@ function jp {
         [switch]$ReInstall,
         [switch]$KeepEnv
     )
-
     if (-Not (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)) {
         Write-Host "ERROR: Python doesn't found in system Path. Exiting..." -ForegroundColor Red
         break
     }
-
     if (-Not (Get-Command virtualenv.exe -ErrorAction SilentlyContinue | Test-Path)) {
         python.exe -m pip install virtualenv
     }
-
     $jenvDir = Join-Path $env:USERPROFILE .jpenv
-
     If ($ReInstall -And (Test-Path $jenvDir) ) {
         Remove-Item -Recurse -Force $jenvDir
     }
-
     If (-Not (Test-Path $jenvDir)) {
         $python = Get-Command python.exe | Select-Object -ExpandProperty Definition
         python.exe -m virtualenv -p $python $jenvDir
     }
-
     & $jenvDir\Scripts\activate.ps1
-
     If (-Not (Get-Command jupyter.exe -ErrorAction SilentlyContinue | Test-Path)) {
         python.exe -m pip install jupyter
     }
-
     If ($NoteBookPath) {
         jupyter.exe $Command --port $Port $NoteBookPath
     } Else {
         jupyter.exe $Command --port $Port
     }
-
     if (-Not $KeepEnv) {
         deactivate
     }
 }
-
-function jpconf {
+function jpl-conf {
     <#
     .SYNOPSIS
         Jupyter environment configureation.
@@ -97,32 +88,25 @@ function jpconf {
     param (
         [switch]$ReInstall
     )
-
     if (-Not (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)) {
         Write-Host "ERROR: Python doesn't found in system Path. Exiting..." -ForegroundColor Red
         break
     }
-
     if (-Not (Get-Command virtualenv.exe -ErrorAction SilentlyContinue | Test-Path)) {
         python.exe -m pip install virtualenv
     }
-
     $jenvDir = Join-Path $env:USERPROFILE .jpenv
-
     If ($ReInstall -And (Test-Path $jenvDir) ) {
         Remove-Item -Recurse -Force $jenvDir
     }
-
     If (-Not (Test-Path $jenvDir)) {
         $python = Get-Command python.exe | Select-Object -ExpandProperty Definition
         python.exe -m virtualenv -p $python $jenvDir
     }
-
     # Set-Location $jenvDir
     & $jenvDir\Scripts\activate.ps1
 }
-
-function jpall {
+function jpl-all {
     <#
     .SYNOPSIS
         Install or update mine set of modules.
@@ -144,35 +128,27 @@ function jpall {
     param (
         [switch]$ReInstall
     )
-
     if (-Not (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)) {
         Write-Host "ERROR: Python doesn't found in system Path. Exiting..." -ForegroundColor Red
         break
     }
-
     if (-Not (Get-Command virtualenv.exe -ErrorAction SilentlyContinue | Test-Path)) {
         python.exe -m pip install virtualenv
     }
-
     $jenvDir = Join-Path $env:USERPROFILE .jpenv
-
     If ($ReInstall -And (Test-Path $jenvDir) ) {
         Remove-Item -Recurse -Force $jenvDir
     }
-
     If (-Not (Test-Path $jenvDir)) {
         $python = Get-Command python.exe | Select-Object -ExpandProperty Definition
         python.exe -m virtualenv -p $python $jenvDir
     }
-
     # Set-Location $jenvDir
     & $jenvDir\Scripts\activate.ps1
-
     python -m pip install --upgrade jupyter
     python -m pip install --upgrade numpy
     python -m pip install --upgrade matplotlib
     python -m pip install --upgrade powershell_kernel
     python -m powershell_kernel.install
-
     deactivate
 }

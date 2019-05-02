@@ -33,6 +33,11 @@ function Reload-Powershell {
 }
 Set-Alias reload Reload-Powershell
 
+function Refresh-Powershell {
+    . $profile
+}
+Set-Alias refresh Refresh-Powershell
+
 # Update installed Ruby Gems, NPM, and their installed packages.
 function Update-System() {
     # Install-WindowsUpdate -IgnoreUserInput -IgnoreReboot -AcceptAll
