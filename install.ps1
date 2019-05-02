@@ -117,6 +117,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         # "jdk10"
         # "jre10"
         "jq"
+        "julia"
         "kdiff3"
         "keepass"
         "keystore-explorer.portable"
