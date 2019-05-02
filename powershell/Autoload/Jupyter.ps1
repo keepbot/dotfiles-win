@@ -1,6 +1,6 @@
 ${function:jpn}      = { jupyter notebook @args }
 
-function jpl {
+function jp {
     <#
     .SYNOPSIS
         Wrapprer for Jupyter notebooks
@@ -66,7 +66,8 @@ function jpl {
         deactivate
     }
 }
-function jpl-conf {
+
+function jp-conf {
     <#
     .SYNOPSIS
         Jupyter environment configureation.
@@ -106,7 +107,8 @@ function jpl-conf {
     # Set-Location $jenvDir
     & $jenvDir\Scripts\activate.ps1
 }
-function jpl-all {
+
+function jp-install {
     <#
     .SYNOPSIS
         Install or update mine set of modules.

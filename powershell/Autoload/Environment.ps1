@@ -78,6 +78,7 @@ function Initialize-Paths-APP {
         "C:\Program Files (x86)\Subversion\bin"
         "C:\tools\ruby26\bin"
         "C:\tools\cmdermini"
+        "C:\tools\cmdermini\bin"
         "C:\tools\cmdermini\vendor\conemu-maximus5\ConEmu"
         "C:\tools\cmdermini\vendor\conemu-maximus5\ConEmu\wsl"
         "C:\Strawberry\c\bin"
