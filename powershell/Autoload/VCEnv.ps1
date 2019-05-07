@@ -126,9 +126,51 @@ function Set-VC {
     Set-Env
 }
 
+function Set-VC-IDE {
+    <#
+    .SYNOPSIS
+        Enable to use particular version of Visual Compiler.
+    .DESCRIPTION
+        Enable to use particular version of Visual Compiler.
+    .EXAMPLE
+        Set-VC
+    .INPUTS
+        None
+    .OUTPUTS
+        None
+    .NOTES
+        Written by: Dmitriy Ivanov
+    #>
+
+    $ideList = @(
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\IDE'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\Common7\IDE'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE'
+    )
+
+    $VCIDEVersions = @()
+    foreach($ide in $ideList) {
+        if (Test-Path "$ide") {
+            $VCIDEVersions += $ide
+        }
+    }
+
+    $ChoosenVCIDEVersion = Select-From-List $VCIDEVersions "Visual Studio IDE Version: "
+    [Environment]::SetEnvironmentVariable("VC_IDE", $ChoosenVCIDEVersion, "Machine")
+    Set-Env
+}
+
 function Clear-VC {
+    [Environment]::SetEnvironmentVariable("VC_IDE", $null, "Machine")
     [Environment]::SetEnvironmentVariable("VC_PATH", $null, "Machine")
     if ($env:VC_PATH) {
+        Remove-Item Env:VC_IDE
         Remove-Item Env:VC_PATH
     }
     Set-Env

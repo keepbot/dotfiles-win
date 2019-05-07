@@ -105,8 +105,8 @@ function Initialize-Paths-APP {
         "C:\Program Files (x86)\pgAdmin 4\v3\runtime"
         "C:\Program Files (x86)\pgAdmin 4\v4\runtime"
         "C:\tools\ProccessHacker"
-        "C:\Program Files\Rust stable MSVC 1.32\bin"
         "C:\Program Files\Rust stable MSVC 1.33\bin"
+        "C:\Program Files\Rust stable MSVC 1.32\bin"
         "C:\tools\doublecmd"
         "C:\msys64"
         "C:\tools\wsl\arch"
@@ -197,6 +197,9 @@ function Set-Env {
     }
     if ($env:JAVA_HOME) {
         $system_path += ";$env:JAVA_HOME\bin"
+    }
+    if ($env:VC_IDE) {
+        $system_path += ";$env:VC_IDE"
     }
     if ($env:VC_PATH) {
         $system_path += ";$env:VC_PATH"
