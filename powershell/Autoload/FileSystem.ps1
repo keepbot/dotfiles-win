@@ -30,6 +30,7 @@ ${function:ws}      = { Set-Location ~\workspace                }
 ${function:wsmy}    = { Set-Location ~\workspace\my             }
 ${function:wsdf}    = { Set-Location ~\workspace\my\dotfiles    }
 ${function:wso}     = { Set-Location ~\workspace\ormco          }
+${function:wsoc}    = { Set-Location ~\workspace\ormco\common   }
 ${function:wsod}    = { Set-Location ~\workspace\ormco\devops   }
 ${function:wst}     = { Set-Location ~\workspace\tmp            }
 
