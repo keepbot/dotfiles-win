@@ -121,6 +121,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "kdiff3"
         "keepass"
         "keystore-explorer.portable"
+        "krita"
         "kubernetes-cli"
         "kubernetes-helm"
         "ldapadmin"
