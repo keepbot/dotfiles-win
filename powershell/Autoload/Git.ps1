@@ -30,6 +30,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:gcow}        = { gco Whitespace. @args }
     # ${function:gp}        = { git.exe push }  # Comment if you use Get-Property and use gpp insted
     ${function:gpl}         = { git.exe pull @args }
+    ${function:gpls}        = { git.exe pull; git.exe submodule update }
     ${function:gplp}        = { git.exe pull --rebase; git.exe push @args } # Can't pull because you forgot to track? Run this.
     ${function:gpp}         = { git.exe push }
     ${function:gppt}        = { git.exe push --tags}
