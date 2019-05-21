@@ -1,10 +1,5 @@
 # Git:
 if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
-    ${function:ugr}         = { $dir = Get-Location; Get-ChildItem $dir -Directory | ForEach-Object { Write-Host $_.FullName; Set-Location $_.FullName; git.exe pull }; Set-Location $dir }
-    ${function:ugrm}        = { $dir = Get-Location; Get-ChildItem $dir -Directory | ForEach-Object { Write-Host $_.FullName; Set-Location $_.FullName; git.exe checkout master; git.exe pull }; Set-Location $dir }
-    ${function:ugrs}        = { $dir = Get-Location; Get-ChildItem @args -Directory | ForEach-Object { Set-Location $_.FullName; ugr }; Set-Location $dir }
-    ${function:gsu}         = { git.exe submodule update --recursive --remote @args }
-    ${function:gsu2}        = { git.exe submodule foreach git pull origin master @args }
     ${function:gll}         = { git.exe log --pretty=format:"%h - %an, %ar : %s" @args }
     ${function:glL}         = { git.exe log --pretty=format:"%H - %an, %ar : %s" @args }
     ${function:g}           = { git.exe @args }
@@ -84,6 +79,31 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         cmd /c "git checkout $CurrentBranch"
         # Unstash work:
         cmd /c "git stash pop"
+    }
+
+    # Update
+    ${function:gsu}         = { git.exe submodule update --recursive --remote @args }
+    ${function:gsu2}        = { git.exe submodule foreach git pull origin master @args }
+    function ugr {
+        param (
+            [Parameter(ValueFromRemainingArguments = $true)]
+            [string]$Options = ""
+        )
+        $dir = Get-Location
+        Get-ChildItem $dir -Directory | ForEach-Object { Write-Host $_.FullName; Set-Location $_.FullName; cmd /c "git.exe pull $Options" }
+        Set-Location $dir
+    }
+    function ugrm {
+        ugr origin master
+    }
+    function ugrs {
+        param (
+            [Parameter(ValueFromRemainingArguments = $true)]
+            [string]$Options = ""
+        )
+        $dir = Get-Location
+        Get-ChildItem @args -Directory | ForEach-Object { Set-Location $_.FullName; ugr $Options }
+        Set-Location $dir
     }
 
     # GitHub
