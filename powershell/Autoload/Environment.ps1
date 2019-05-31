@@ -170,6 +170,7 @@ function Initialize-Paths-User {
         "${env:USERPROFILE}\AppData\Roaming\npm"
         "${env:USERPROFILE}\AppData\Local\Pandoc"
         "${env:USERPROFILE}\AppData\Local\Yarn\bin"
+        "${env:USERPROFILE}\AppData\Local\Android\Sdk\platform-tools\"
     )
 
     $final_path = "${env:USERPROFILE}\AppData\Local\Microsoft\WindowsApps"
