@@ -62,8 +62,6 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
 
         End {
             Invoke-Expression "busybox.exe grep $Arguments $File"
-            Write-Host $TempFile
-            Pause
             Remove-Item -Force -ErrorAction SilentlyContinue "$TempFile"
         }
     }
