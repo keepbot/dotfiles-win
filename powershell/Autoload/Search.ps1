@@ -21,22 +21,24 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
             [switch]$v,
             [switch]$w,
             [switch]$x,
-            [Parameter(ValueFromPipeline=$true)]
-            $Data = $null,
+            [Parameter(Mandatory=$true,ValueFromPipeline=$true)]
+            $Data,
             [string]$Other = $null
         )
         Begin {
             [string] $SessionID = [System.Guid]::NewGuid()
             [string] $TempFile  = (Join-Path $env:Temp $SessionID'.grep')
+            $File = $null
         }
         Process {
-            if (-Not $Data) { Write-Host "ERROR: File not defined"; return }
-            $File = ""
-            if (Test-Path $Data) {
-                $File = $Data
-            } else {
+            # Check if value came from pipeline
+            if ($PSCmdlet.MyInvocation.ExpectingInput) {
                 Add-Content "$TempFile" $Data
-                $File = $TempFile
+                if(-Not $File){
+                    $File = $TempFile
+                }
+            } else {
+                $File = $Data
             }
             $Arguments = "-e $Pattern"
             if ($c)         {$Arguments += " -c"}
@@ -56,13 +58,13 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
             if ($w)         {$Arguments += " -w"}
             if ($x)         {$Arguments += " -x"}
             if ($Other)     {$Arguments += " $Other"}
-
-            Invoke-Expression "busybox.exe grep $Arguments $File"
         }
 
         End {
+            Invoke-Expression "busybox.exe grep $Arguments $File"
+            Write-Host $TempFile
+            Pause
             Remove-Item -Force -ErrorAction SilentlyContinue "$TempFile"
-
         }
     }
     Set-Alias -Name gerp -Value grep
