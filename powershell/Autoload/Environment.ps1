@@ -171,6 +171,7 @@ function Initialize-Paths-User {
         "${env:USERPROFILE}\AppData\Local\Pandoc"
         "${env:USERPROFILE}\AppData\Local\Yarn\bin"
         "${env:USERPROFILE}\AppData\Local\Android\Sdk\platform-tools\"
+        "${env:USERPROFILE}\AppData\Local\Programs\Microsoft VS Code Insiders\bin"
     )
 
     $final_path = "${env:USERPROFILE}\AppData\Local\Microsoft\WindowsApps"
@@ -252,3 +253,6 @@ function Reset-Environment {
 
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 }
+
+if (Test-Path "${env:USERPROFILE}\AppData\Local\Programs\Microsoft VS Code Insiders\bin") { ${function:code} = {code-insiders.cmd @args} }
+If (Test-Path "C:\Program Files\Microsoft VS Code\bin") { ${function:vscode} = {code.cmd @args} }
