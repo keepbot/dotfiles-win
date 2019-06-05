@@ -113,6 +113,7 @@ function Initialize-Paths-APP {
         "C:\tools\wsl\debian"
         "C:\tools\wsl\kali"
         "C:\tools\wsl\ubuntu"
+        "C:\tools\emsdk"
     )
 
     $final_path = "C:\tools\bin"
