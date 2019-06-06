@@ -38,12 +38,26 @@ ${function:wst}     = { Set-Location ~\workspace\tmp            }
 function New-DirectoryAndSet ([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path}
 Set-Alias mkd New-DirectoryAndSet
 
+function Get-DuList {
+    [CmdletBinding()]
+    param (
+        [ValidateNotNullOrEmpty()]
+        [string]$Path = $(Get-Location),
+        [ValidateNotNullOrEmpty()]
+        [string]$Precision = 5
+    )
+    Get-ChildItem ${Path} -Force | ForEach-Object {
+        "{0} {1:N${Precision}} MB" -f ($_.Name), ((Get-ChildItem $(Join-Path ${Path} ${_}) -Force -Recurse | Measure-Object -Property Length -Sum -ErrorAction Stop).Sum / 1MB)
+    }
+}
+Set-Alias dul Get-DuList
+
 # Determine size of a file or total size of a directory
-function Get-DiskUsage([string] $path=(Get-Location).Path) {
+function Get-DiskUsage([string] $Path=(Get-Location).Path) {
     Convert-ToDiskSize `
         ( `
-            Get-ChildItem .\ -recurse -ErrorAction SilentlyContinue `
-            | Measure-Object -property length -sum -ErrorAction SilentlyContinue
+            Get-ChildItem $Path -Force -Recurse -ErrorAction SilentlyContinue `
+            | Measure-Object -Property length -sum -ErrorAction SilentlyContinue
         ).Sum `
         1
 }
@@ -58,9 +72,7 @@ function Convert-ToDiskSize {
         else { $bytes /= 1KB }
     }
 }
-
-# Determine size of a file or total size of a directory
-Set-Alias fs Get-DiskUsage
+Set-Alias du Get-DiskUsage
 
 # Directory Listing: Use `ls.exe` if available
 if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
