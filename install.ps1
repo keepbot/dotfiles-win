@@ -70,9 +70,9 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "adobereader"
         "awscli"
         # "azure-cli"
-        # mkdir $env:SystemRoot\system32\etc\
-        # echo 'nameserver 8.8.8.8' > $env:SystemRoot\system32\etc\resolv.conf
-        # echo 'nameserver 77.88.8.8' >> $env:SystemRoot\system32\etc\resolv.conf
+        # mkdir $env:SystemRoot\System32\Drivers\etc\
+        # echo 'nameserver 8.8.8.8' > $env:SystemRoot\System32\Drivers\etc\resolv.conf
+        # echo 'nameserver 77.88.8.8' >> $env:SystemRoot\System32\Drivers\etc\resolv.conf
         "bind-toolsonly"
         "buckaroo"
         "cabal"
