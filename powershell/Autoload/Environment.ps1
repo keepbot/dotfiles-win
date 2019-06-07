@@ -47,6 +47,8 @@ ${function:List-Paths} = { $Env:Path.Split(';') }
 function Initialize-Paths-APP {
     $paths = @(
         "C:\usr\bin"
+        "C:\Program Files\Git LFS"
+        "C:\Program Files\Git\cmd"
         "C:\Program Files\KDiff3"
         "C:\Program Files\KDiff3\bin"
         "C:\tools\vim\vim81"
@@ -72,8 +74,6 @@ function Initialize-Paths-APP {
         "C:\Program Files\Sublime Text 3"
         "C:\Program Files\nodejs"
         "C:\Program Files (x86)\Yarn\bin"
-        "C:\Program Files\Git\cmd"
-        "C:\Program Files\Git LFS"
         "C:\Program Files\Mercurial"
         "C:\Program Files (x86)\Subversion\bin"
         "C:\tools\ruby26\bin"
