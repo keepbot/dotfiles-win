@@ -13,3 +13,8 @@ function Get-Bamboo-AMI {
         Write-Host "REMEMBER: Use the Image from the appropriate region!"
     }
 }
+
+function Get-AtlassianCIDRs {
+    $Responce = (Invoke-Webrequest https://ip-ranges.atlassian.com/).Content
+    return ($Responce | ConvertFrom-Json).items.cidr
+}
