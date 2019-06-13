@@ -79,6 +79,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "calibre"
         "ccleaner"
         "chefdk"
+        "choco-cleaner"
         "cmake"
         "cmdermini"
         # "consul"
