@@ -34,11 +34,12 @@ function Invoke-BitbucketAPI {
         [string]$RequestPath,
         [string]$Type           = '/pullrequests',
         [string]$UriSuffix      = 'repositories/ormcornd/orthoplatform',
+        [string]$APIVersion     = '2.0',
         [string]$Method         = 'GET'
     )
     $Token = Get-BitbucketOAuthToken
     Write-Host "Request URI: https://api.bitbucket.org/2.0/$UriSuffix$Type$RequestPath" -ForegroundColor Yellow
-    $Response = Invoke-RestMethod -Headers @{Authorization=("Bearer {0}" -f $Token.access_token)} -Uri "https://api.bitbucket.org/2.0/$UriSuffix$Type$RequestPath" -Method $Method
+    $Response = Invoke-RestMethod -Headers @{Authorization=("Bearer {0}" -f $Token.access_token)} -Uri "https://api.bitbucket.org/$APIVersion/$UriSuffix$Type$RequestPath" -Method $Method
     return $Response
 }
 
@@ -58,5 +59,14 @@ function Get-BitbucketUser {
         [string]$AccountID
     )
     $Response = Invoke-BitbucketAPI -Type "/$AccountID" -UriSuffix 'users'
+    return $Response
+}
+
+function Get-BitbucketWikiPage {
+    [CmdletBinding()]
+    param (
+        [string]$WikiPage = 'Code Reviewers'
+    )
+    $Response = Invoke-BitbucketAPI -RequestPath "/$WikiPage" -Type '/wiki' -APIVersion '1.0'
     return $Response
 }
