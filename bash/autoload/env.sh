@@ -79,12 +79,16 @@ case $platform in
         # [[ -f $HOME/.bash/venv.sh ]]                && source ~/.bash/venv.sh
         ;;
     Darwin )
-        [[ -d /usr/local/opt/python3/bin ]]         && export PATH=/usr/local/opt/python3/bin/:$PATH
-        [[ -d $HOME/Library/Python/3.6/bin ]]       && export PATH=Library/Python/3.6/bin:$PATH
-        [[ -d /usr/local/opt/python2/bin ]]         && export PATH=/usr/local/opt/python2/bin/:$PATH
-        [[ -d $HOME/Library/Python/2.7/bin ]]       && export PATH=Library/Python/2.7/bin:$PATH
-        [[ -d /usr/local/bin ]]                     && export PATH=$PATH:/usr/local/bin
+        [[ -d /usr/local/bin ]]                     && export PATH=/usr/local/bin
         [[ -d /usr/local/sbin ]]                    && export PATH=$PATH:/usr/local/sbin
+        [[ -d /usr/local/opt/python3/bin ]]         && export PATH=$PATH:/usr/local/opt/python3/bin
+        [[ -d $HOME/Library/Python/3.6/bin ]]       && export PATH=$PATH:Library/Python/3.6/bin
+        [[ -d /usr/local/opt/python2/bin ]]         && export PATH=$PATH:/usr/local/opt/python2/bin
+        [[ -d $HOME/Library/Python/2.7/bin ]]       && export PATH=$PATH:Library/Python/2.7/bin
+        [[ -d /usr/bin ]]                           && export PATH=$PATH:/usr/bin
+        [[ -d /bin ]]                               && export PATH=$PATH:/bin
+        [[ -d /usr/sbin ]]                          && export PATH=$PATH:/usr/sbin
+        [[ -d /sbin ]]                              && export PATH=$PATH:/sbin
         [[ -d $HOME/.bin ]]                         && export PATH=$PATH:$HOME/.bin
         [[ -d $HOME/.local/bin ]]                   && export PATH=$PATH:$HOME/.local/bin
         # Ruby
