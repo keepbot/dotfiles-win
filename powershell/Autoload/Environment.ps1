@@ -91,6 +91,7 @@ function Initialize-Paths-APP {
         "C:\Program Files\MiKTeX 2.9\miktex\bin\x64"
         "C:\Program Files\Pandoc"
         "C:\Program Files\grepWin"
+        "C:\tools\Atlassian\atlassian-plugin-sdk-8.0.16\bin"
         "C:\tools\Atlassian\atlassian-plugin-sdk-6.3.10\bin"
         "C:\Program Files\Calibre2"
         "C:\Program Files (x86)\Dr. Memory\bin64"
