@@ -192,6 +192,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "vcxsrv"
         "vlc"
         "vscode"
+        "vscode-insiders"
         # "vim" - should be installed manually to cover python 3.6 support
         "wget"
         "wincdemu"
