@@ -37,6 +37,8 @@ function Get-DotNet-FrameworkVersion
         '461310' = @{ Version = [System.Version]'4.7.1'   ; Comment = '(NON Windows 10)'                  }
         '461808' = @{ Version = [System.Version]'4.7.2'   ; Comment = '(Windows 10 1803)'                 }
         '461814' = @{ Version = [System.Version]'4.7.2'   ; Comment = '(NON Windows 10)'                  }
+        '528040' = @{ Version = [System.Version]'4.7.2'   ; Comment = '(Windows 10 1905)'                 }
+        '528049' = @{ Version = [System.Version]'4.7.2'   ; Comment = '(NON Windows 10)'                  }
     }
 
     foreach($computer in $ComputerName)
