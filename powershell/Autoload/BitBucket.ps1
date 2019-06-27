@@ -28,6 +28,25 @@ function Get-BitbucketOAuthToken {
     Invoke-RestMethod -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Uri $UriToken -Method Post -Body @{grant_type='client_credentials'}
 }
 
+function Invoke-BitbucketAPI-Simple {
+    [CmdletBinding()]
+    param (
+        [string]$Request,
+        [string]$Body           = $Null,
+        [string]$APIVersion     = '2.0',
+        [string]$Method         = 'GET'
+    )
+    $Token = Get-BitbucketOAuthToken
+    $Headers = @{
+        'Authorization'=("Bearer {0}" -f $Token.access_token)
+        'Content-Type'=('application/json')
+
+    };
+    Write-Host "Request URI: https://api.bitbucket.org/$APIVersion/$Request" -ForegroundColor Yellow
+    $Response = Invoke-RestMethod -Headers $Headers -Uri "https://api.bitbucket.org/$APIVersion/$Request" -Method $Method
+    return $Response
+}
+
 function Invoke-BitbucketAPI {
     [CmdletBinding()]
     param (
@@ -38,7 +57,7 @@ function Invoke-BitbucketAPI {
         [string]$Method         = 'GET'
     )
     $Token = Get-BitbucketOAuthToken
-    Write-Host "Request URI: https://api.bitbucket.org/2.0/$UriSuffix$Type$RequestPath" -ForegroundColor Yellow
+    Write-Host "Request URI: https://api.bitbucket.org/$APIVersion/$UriSuffix$Type$RequestPath" -ForegroundColor Yellow
     $Response = Invoke-RestMethod -Headers @{Authorization=("Bearer {0}" -f $Token.access_token)} -Uri "https://api.bitbucket.org/$APIVersion/$UriSuffix$Type$RequestPath" -Method $Method
     return $Response
 }
@@ -63,10 +82,12 @@ function Get-BitbucketUser {
 }
 
 function Get-BitbucketWikiPage {
+    # DEPRECATED API
     [CmdletBinding()]
     param (
         [string]$WikiPage = 'Code Reviewers'
     )
+    # https://bitbucket.org/ormcornd/orthoplatform/wiki/Protected_branches
     $Response = Invoke-BitbucketAPI -RequestPath "/$WikiPage" -Type '/wiki' -APIVersion '1.0'
     return $Response
 }
