@@ -214,9 +214,8 @@ function Set-VC-Vars-All {
 
     param (
         [ValidateNotNullOrEmpty()]
-        [string]$Arch = "x86",
-        [ValidateNotNullOrEmpty()]
-        [string]$SDK = "8.1",
+        [string]$Arch = "x64",
+        [string]$SDK,
         [string]$Platform,
         [string]$VC,
         [switch]$Spectre,
@@ -266,7 +265,9 @@ function Set-VC-Vars-All {
         $cmd_string += " " + $Platform
     }
 
-    $cmd_string += " " + $SDK
+    if ($SDK) {
+        $cmd_string += " " + $SDK
+    }
 
     if ($VC) {
         $cmd_string += " -vcvars_ver=" + $VC
