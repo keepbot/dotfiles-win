@@ -261,6 +261,10 @@ function Set-VC-Vars-All {
         }
     }
 
+    If ($Arch -eq "x64" -Or $Arch -eq "x64_x86"){
+        Set-Item -Path Env:PreferredToolArchitecture -Value "x64"
+    }
+
     if ($Platform) {
         $cmd_string += " " + $Platform
     }

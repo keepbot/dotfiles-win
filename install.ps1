@@ -104,6 +104,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "graphviz"
         "greenshot"
         "grepwin"
+        "gyazo"
         "haskell-stack"
         "hg"
         "hxd"
