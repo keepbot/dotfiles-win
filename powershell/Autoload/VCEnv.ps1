@@ -1,4 +1,27 @@
 #!/usr/env/pwsh
+function VSToolArchx64 {
+    [CmdletBinding()]
+
+    param (
+        [switch]$On,
+        [switch]$Off
+    )
+    if ($On) {
+        Set-Item -Path Env:PreferredToolArchitecture -Value "x64"
+        Write-Host "Preferred Tool Architecture for MSBuild is set to x64" -ForegroundColor Yellow
+    } elseif ($Off) {
+        Set-Item -Path Env:PreferredToolArchitecture -Value "x86"
+        Remove-Item -Path Env:PreferredToolArchitecture
+        Write-Host "Preferred Tool Architecture for MSBuild is set to x86" -ForegroundColor Yellow
+    } else {
+        if ($Env:PreferredToolArchitecture -eq "x64") {
+            Write-Host "Preferred Tool Architecture for MSBuild is set to x64" -ForegroundColor Yellow
+        } else {
+            Write-Host "Preferred Tool Architecture for MSBuild is set to x86" -ForegroundColor Yellow
+        }
+    }
+}
+
 function Find-VC {
     <#
     .SYNOPSIS
@@ -214,8 +237,8 @@ function Set-VC-Vars-All {
 
     param (
         [ValidateNotNullOrEmpty()]
-        [string]$Arch = "x64",
-        [string]$SDK,
+        [string]$Arch   = "x64",
+        [string]$SDK    = "8.1",
         [string]$Platform,
         [string]$VC,
         [switch]$Spectre,
@@ -241,22 +264,23 @@ function Set-VC-Vars-All {
     }
 
     $VC_Distros = @(
-        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvarsall.bat'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Auxiliary\Build\vcvarsall.bat'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvarsall.bat'
-        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise'
     )
 
     $cmd_string = "cmd /c "
 
     foreach($distro in $VC_Distros) {
-        if (Test-Path "$distro") {
-            $cmd_string += "`'`"" + $distro + "`" " + $Arch
+        $vars_file = $distro + "\VC\Auxiliary\Build\vcvarsall.bat"
+        if (Test-Path "$vars_file") {
+            $cmd_string += "`'`"" + $vars_file + "`" " + $Arch
             break
         }
     }

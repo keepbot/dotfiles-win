@@ -104,7 +104,6 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "graphviz"
         "greenshot"
         "grepwin"
-        "gyazo"
         "haskell-stack"
         "hg"
         "hxd"
@@ -175,6 +174,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "rufus"
         # "rust-ms" - use rustup-init
         "slack"
+        "screentogif"
         "strawberryperl"
         # "studio3t"
         "sublimetext3"
