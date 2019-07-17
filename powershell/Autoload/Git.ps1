@@ -220,3 +220,10 @@ function Set-GitVerbosity {
         }
     }
 }
+
+
+if (Get-Command putty.exe -ErrorAction SilentlyContinue | Test-Path) {
+    ## Export to Desktop
+    ${function:Export-Putty-Config}     = { reg export HKCU\Software\SimonTatham ([Environment]::GetFolderPath("Desktop") + "\putty.reg") }
+    ${function:Export-Putty-Sessions}   = { reg export HKCU\Software\SimonTatham\PuTTY\Sessions ([Environment]::GetFolderPath("Desktop") + "\putty-sessions.reg") }
+}
