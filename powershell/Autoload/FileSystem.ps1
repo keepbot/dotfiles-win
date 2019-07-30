@@ -92,11 +92,30 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:llr} = { lsd | ForEach-Object{ll $_ @args} }
 } else {
     # List all files, including hidden files
-    ${function:la} = { Get-ChildItem-Force @args }
+    ${function:la} = { Get-ChildItem -Force @args }
     # List only directories
     ${function:lsd} = { Get-ChildItem -Directory -Force @args }
     # List directories recursively
     ${function:llr} = { lsd | ForEach-Object{la $_ @args} }
+}
+
+function  llf() {
+    if ($Args[0]) {
+        $path = $Args[0]
+    } else {
+        $path = "."
+    }
+
+    if ($Args[1]) {
+        $pattern = ".*$($Args[1]).*"
+    } else {
+        $pattern = ''
+    }
+    Get-ChildItem "$path" | ForEach-Object{
+        if ($_.Name -match "$pattern") {
+            $_.FullName
+        }
+    }
 }
 
 function Remove-File-Recursively {
@@ -118,7 +137,7 @@ function Remove-File-Recursively {
 #if (Get-Command rm.exe -ErrorAction SilentlyContinue | Test-Path) {
 #   ${function:rmrf} = { rm.exe -rf @args }
 #} else {
-    ${function:rmrf} = { Remove-Item -Recurse -Force @args }
+    ${function:rmrf} = { Remove-Item -Recurse -Force  }
 #}
 
 function touch($file) { "" | Out-File $file -Encoding ASCII }

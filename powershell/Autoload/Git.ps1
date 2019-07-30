@@ -38,6 +38,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:gbr}         = { git.exe branch -d @args }
     ${function:gbrf}        = { git.exe branch -D @args }
     ${function:gbrr}        = { git.exe push origin --delete @args }
+    ${function:gbrrm}       = { git.exe branch -D @args; git.exe push origin --delete @args }
     ${function:gcp}         = { git.exe cherry-pick @args }
     ${function:gam}         = { git.exe commit --amend @args }
     ${function:gamne}       = { git.exe commit --amend --no-edit @args }
@@ -218,4 +219,11 @@ function Set-GitVerbosity {
             Write-Host "  Categories: curl, trace, pack, packet, perf" -ForegroundColor Red
         }
     }
+}
+
+
+if (Get-Command putty.exe -ErrorAction SilentlyContinue | Test-Path) {
+    ## Export to Desktop
+    ${function:Export-Putty-Config}     = { reg export HKCU\Software\SimonTatham ([Environment]::GetFolderPath("Desktop") + "\putty.reg") }
+    ${function:Export-Putty-Sessions}   = { reg export HKCU\Software\SimonTatham\PuTTY\Sessions ([Environment]::GetFolderPath("Desktop") + "\putty-sessions.reg") }
 }

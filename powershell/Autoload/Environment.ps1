@@ -174,6 +174,7 @@ function Initialize-Paths-User {
         "${env:USERPROFILE}\AppData\Local\Yarn\bin"
         "${env:USERPROFILE}\AppData\Local\Android\Sdk\platform-tools\"
         "${env:USERPROFILE}\AppData\Local\Programs\Microsoft VS Code Insiders\bin"
+        "${env:USERPROFILE}\.dotnet\tools"
     )
 
     $final_path = "${env:USERPROFILE}\AppData\Local\Microsoft\WindowsApps"
@@ -214,6 +215,8 @@ function Set-Env {
     $system_path += ";$env:PathsApp"
     $system_path += ";$env:PathsSys"
     [Environment]::SetEnvironmentVariable("PATH", "$system_path", "Machine")
+    [Environment]::SetEnvironmentVariable("PathsSys", $null, "Machine")
+    [Environment]::SetEnvironmentVariable("PathsApp", $null, "Machine")
 
     # LANG
     [Environment]::SetEnvironmentVariable("LANG", "en_US", "Machine")
