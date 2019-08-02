@@ -238,7 +238,7 @@ function Set-VC-Vars-All {
     param (
         [ValidateNotNullOrEmpty()]
         [string]$Arch   = "x64",
-        [string]$SDK    = "8.1",
+        [string]$SDK,
         [string]$Platform,
         [string]$VC,
         [switch]$Spectre,
