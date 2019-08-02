@@ -95,8 +95,13 @@ case $platform in
         [[ -s "$HOME/.rvm/scripts/rvm" ]]           && source "$HOME/.rvm/scripts/rvm"
         # VS Code
         [[ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]] && \
-        	export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+            export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
         [[ -f "/usr/libexec/java_home" ]]           && export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+        
+        # Work
+        [[ -d $HOME/thirdparty ]]                   && export THIRDPARTY_LOCATION=$HOME/thirdparty
+        [[ -d $HOME/testdata ]]                     && export TESTDATA_LOCATION=$HOME/testdata
+
         ;;
     MSYS_NT-10.0 )
         [[ -d $HOME/.bin ]]                         && export PATH=$HOME/.bin:$PATH
