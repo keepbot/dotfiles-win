@@ -137,7 +137,7 @@ function Remove-File-Recursively {
 #if (Get-Command rm.exe -ErrorAction SilentlyContinue | Test-Path) {
 #   ${function:rmrf} = { rm.exe -rf @args }
 #} else {
-    ${function:rmrf} = { Remove-Item -Recurse -Force  }
+    ${function:rmrf} = { Remove-Item -Recurse -Force @args }
 #}
 
 function touch($file) { "" | Out-File $file -Encoding ASCII }
