@@ -316,3 +316,10 @@ function Set-VC-Vars-All {
         }
     }
 }
+
+${function:vs}              = { Set-VC-Vars-All; devenv.exe @args }
+${function:vssafe}          = { vs /SafeMode @args }
+${function:vsix}            = { Set-VC-Vars-All; VSIXInstaller.exe @args }
+# color picker: 11559f0c-c44f-4a26-98e7-f5015f07d691
+${function:vsix_remove}     = { Set-VC-Vars-All; VSIXInstaller.exe /u:@args }
+
