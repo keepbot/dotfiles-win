@@ -23,21 +23,6 @@ function VSToolArchx64 {
 }
 
 function Find-VC {
-    <#
-    .SYNOPSIS
-        Find Visual Compiler versions on current PC.
-    .DESCRIPTION
-        Find Visual Compiler versions on current PC.
-    .EXAMPLE
-        Find-VC
-    .INPUTS
-        None
-    .OUTPUTS
-        String Array
-    .NOTES
-        Written by: Dmitriy Ivanov
-    #>
-
     $VS_Community_2017      = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
     $VS_BuildTools_2017     = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
     $VS_Professional_2017   = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
@@ -107,21 +92,6 @@ function Find-VC {
 }
 
 function Set-VC {
-    <#
-    .SYNOPSIS
-        Enable to use particular version of Visual Compiler.
-    .DESCRIPTION
-        Enable to use particular version of Visual Compiler.
-    .EXAMPLE
-        Set-VC
-    .INPUTS
-        None
-    .OUTPUTS
-        None
-    .NOTES
-        Written by: Dmitriy Ivanov
-    #>
-
     $tools = @(
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
@@ -150,21 +120,6 @@ function Set-VC {
 }
 
 function Set-VC-IDE {
-    <#
-    .SYNOPSIS
-        Enable to use particular version of Visual Compiler.
-    .DESCRIPTION
-        Enable to use particular version of Visual Compiler.
-    .EXAMPLE
-        Set-VC
-    .INPUTS
-        None
-    .OUTPUTS
-        None
-    .NOTES
-        Written by: Dmitriy Ivanov
-    #>
-
     $ideList = @(
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE'
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\IDE'
@@ -197,6 +152,25 @@ function Clear-VC {
         Remove-Item Env:VC_PATH
     }
     Set-Env
+}
+
+function Get-VS {
+    $ideList = @(
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\devenv.exe'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\devenv.exe'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\devenv.exe'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\Common7\IDE\devenv.exe'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Preview\Common7\IDE\devenv.exe'
+
+    )
+    foreach($ide in $ideList) {
+        if (Test-Path "$ide") {
+            return $ide
+        }
+    }
 }
 
 function Set-VC-Vars-All {
@@ -317,7 +291,7 @@ function Set-VC-Vars-All {
     }
 }
 
-${function:vs}              = { Set-VC-Vars-All; devenv.exe @args }
+${function:vs}              = { & $(Get-VS) @args }
 ${function:vssafe}          = { vs /SafeMode @args }
 ${function:vsix}            = { Set-VC-Vars-All; VSIXInstaller.exe @args }
 # color picker: 11559f0c-c44f-4a26-98e7-f5015f07d691
