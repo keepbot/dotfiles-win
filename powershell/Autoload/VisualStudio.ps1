@@ -291,9 +291,18 @@ function Set-VC-Vars-All {
     }
 }
 
-${function:vs}              = { & $(Get-VS) @args }
+
+# ${function:vs}              = { & $(Get-VS) @args }
+# ${function:vs}              = { Set-VC-Vars-All; devenv @args }
+function vs() {
+    $command = {
+        Set-VC-Vars-All
+        devenv @args
+    }
+    PowerShell.exe -NoLogo -NoProfile -NonInteractive ${command}
+}
+
 ${function:vssafe}          = { vs /SafeMode @args }
 ${function:vsix}            = { Set-VC-Vars-All; VSIXInstaller.exe @args }
 # color picker: 11559f0c-c44f-4a26-98e7-f5015f07d691
 ${function:vsix_remove}     = { Set-VC-Vars-All; VSIXInstaller.exe /u:@args }
-
