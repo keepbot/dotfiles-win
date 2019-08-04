@@ -206,9 +206,9 @@ function Set-Env {
     if ($env:VC_IDE) {
         $system_path += ";$env:VC_IDE"
     }
-    if ($env:VC_PATH) {
-        $system_path += ";$env:VC_PATH"
-    }
+    # if ($env:VC_PATH) {
+    #     $system_path += ";$env:VC_PATH"
+    # }
     if ($env:QTDIR) {
         $system_path += ";$env:QTDIR\bin"
     }
