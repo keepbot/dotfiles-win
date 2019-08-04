@@ -206,6 +206,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "wixtoolset"
         "wmiexplorer"
         "x64dbg.portable"
+        "XnView"
         "xpdf-utils"
         "yarn"
         # "yed --params /Associate"
