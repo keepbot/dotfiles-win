@@ -43,3 +43,27 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
 }
+
+$InstallPaths = @(
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
+    'C:\Program Files (x86)\Microsoft Visual Studio\2017\Preview'
+)
+
+foreach($InstallPath in $InstallPaths) {
+    $DevShell = (Join-Path "$InstallPath" 'Common7\Tools\vsdevshell\Microsoft.VisualStudio.DevShell.dll')
+    if (Test-Path "$DevShell") {
+        Import-Module "$DevShell"
+        ${function:vsdevenv}  = { Enter-VsDevShell -VsInstallPath "$InstallPath" }
+        ${function:dev}  = { Enter-VsDevShell -VsInstallPath "$InstallPath" }
+        $ENV:VSDevEnv = "True"
+        break
+    }
+}
