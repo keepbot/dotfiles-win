@@ -66,154 +66,154 @@ If (-Not (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe")) {
 }
 If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
     $candies = @(
-        "7zip.install"
-        "adobereader"
-        "awscli"
-        # "azure-cli"
+        "7zip.install"                      # Archive manager
+        "adobereader"                       # PDF reader
+        "awscli"                            # Command line tools for AWS
+        # "azure-cli"                       # Command line tools for Azure
         # mkdir $env:SystemRoot\System32\Drivers\etc\
         # echo 'nameserver 8.8.8.8' > $env:SystemRoot\System32\Drivers\etc\resolv.conf
         # echo 'nameserver 77.88.8.8' >> $env:SystemRoot\System32\Drivers\etc\resolv.conf
-        "bind-toolsonly"
-        "buckaroo"
-        "cabal"
-        "calibre"
-        "ccleaner"
-        "chefdk"
-        "choco-cleaner"
-        "cmake"
-        "cmdermini"
-        # "consul"
-        "curl"
-        # "cyberduck"
-        "dependencywalker"
-        "doublecmd"
-        "drmemory"
-        "du"
-        "etcher"
-        "far"
-        "foobar2000"
-        "ftpdmin"
-        "ghc"
-        "gimp"
-        "git-lfs"
-        "git"
-        "gitextensions"
-        # "gnuwin32-coreutils.install"
-        "golang"
-        "gpg4win"
-        "gradle"
-        "graphviz"
-        "greenshot"
-        "grepwin"
-        "haskell-stack"
-        "hg"
-        "hxd"
-        "imagemagick"
-        "imdisk-toolkit"
-        "inkscape"
-        "irfanview"
-        "irfanviewplugins"
-        # "itunes"
-        # Decided to install java manually: Java-11 latest
-        # "jdk8"
-        # "jre8"
-        # "jdk10"
-        # "jre10"
-        "jq"
-        "julia"
-        "kdiff3"
-        "keepass"
-        "keystore-explorer.portable"
-        "krita"
-        "kubernetes-cli"
-        "kubernetes-helm"
-        "ldapadmin"
-        "libreoffice-fresh"
-        "llvm"
-        "lockhunter"
-        "make"
-        "maven"
-        "maxima"
-        "meld"
-        "miktex"
-        "mingw"
-        "minikube"
-        "mremoteng"
-        "mysql.workbench"
-        "nasm"
-        "ninja"
-        "nmap"
-        "nodejs-lts"
-        # "nomad"
-        "notepadplusplus-npppluginmanager"
-        "notepadplusplus"
-        "nssm"
-        "nuget.commandline"
-        "nugetpackageexplorer"
-        "octopustools"
-        "ollydbg"
-        "openssh"
-        "openssl.light"
-        "openvpn"
-        "packer"
-        "paint.net"
-        "paket.powershell"
-        "pandoc"
-        "pdfsam"
-        # "pgadmin3"
-        "pgadmin4"
-        # "pgina"
-        "putty"
-        #"python2 --params /InstallDir:C:\tools\python2"
-        #"python3 --params /InstallDir:C:\tools\python3"
-        "qbittorrent"
-        # "qtcreator"
-        "rdcman"
-        "reshack"
-        "robo3t"
-        "ruby"
-        "ruby2.devkit"
-        "rufus"
-        # "rust-ms" - use rustup-init
-        "slack"
-        "screentogif"
-        "strawberryperl"
-        # "studio3t"
-        "sublimetext3"
-        # "sumatrapdf"
-        "superputty"
-        "svn"
-        "swissfileknife"
-        "sysinternals"
-        "telegram.install"
-        "terraform"
-        "tftpd32"
-        "tightvnc"
-        "tor-browser"
-        "vagrant-manager"
-        "vagrant"
-        "vcxsrv"
-        "vlc"
-        "vscode"
-        "vscode-insiders"
-        # "vim" - should be installed manually to cover python 3.6 support
-        "wget"
-        "wincdemu"
-        "windirstat"
-        "windjview"
-        "winmerge"
-        "winscp"
-        "wireshark"
-        "wixtoolset"
-        "wmiexplorer"
-        "x64dbg.portable"
-        "XnView"
-        "xpdf-utils"
-        "yarn"
-        # "yed --params /Associate"
-        "yasm"
-        "youtube-dl"
-        # "zoom"
+        "bind-toolsonly"                    # DIG and other DNS tools
+        "buckaroo"                          # The decentralized package manager for C++ and friends
+        "cabal"                             # Haskell package manager
+        "calibre"                           # Book manager and reader
+        "ccleaner"                          # Garbage Collection for Windows
+        "chefdk"                            # Chef SDK
+        "choco-cleaner"                     # Garbage Collection for Chocolatey
+        "cmake"                             # Build tools generator
+        "cmdermini"                         # CoolTerminal manager for Windows
+        # "consul"                          # Service networking solution to connect and secure services across any runtime
+        "curl"                              # HTTP/WEB Tool
+        # "cyberduck"                       # Multi-protocol, remote connections manager
+        "dependencywalker"                  # Dependency viewer
+        "doublecmd"                         # Two-Panel File Manager
+        "drmemory"                          # Memory Debugger
+        "du"                                # Disk Usage tool
+        "etcher"                            # Boot ISO creator (Rapspberry)
+        "far"                               # Two-Panel File Manager
+        "foobar2000"                        # Music player
+        "ftpdmin"                           # FTP explorer
+        "ghc"                               # Haskell compiler
+        "gimp"                              # Image manipulation program
+        "git-lfs"                           # Git plugin for Large File Storage
+        "git"                               # Git SCM
+        "gitextensions"                     # Git repository explorer
+        # "gnuwin32-coreutils.install"      # GNU Utils
+        "golang"                            # Go programming language
+        "gpg4win"                           # GPG for Windows
+        "gradle"                            # Build Tools for Java (mostly)
+        "graphviz"                          # Graph visualizer
+        "greenshot"                         # Screenshot creator
+        "grepwin"                           # Grep for Windows (GUI)
+        "haskell-stack"                     # Haskell programming language
+        "hg"                                # Mercurial SCM
+        "hxd"                               # HEX editor
+        "imagemagick"                       # Image manipulation tools
+        "imdisk-toolkit"                    # Mount image files of hard drive, cd-rom or floppy, and create one or several ramdisks with various parameters
+        "inkscape"                          # Vector graphics software
+        "irfanview"                         # Image viewer
+        "irfanviewplugins"                  # Image viewer
+        # "itunes"                          # Music manager
+        # "jdk8"                            # Java 8
+        # "jre8"                            # Java 8
+        # "jdk10"                           # Java 10
+        # "jre10"                           # Java 10
+        "jq"                                # JSON parser
+        "julia"                             # Julia programming lanuage
+        "kdiff3"                            # File comparison
+        "keepass"                           # Password Manager
+        "keystore-explorer.portable"        # JKS Explorer
+        "krita"                             # Painting program
+        "kubernetes-cli"                    # Kubernetes command line tools
+        "kubernetes-helm"                   # The package manager for Kubernetes
+        "ldapadmin"                         # LDAP Explorer
+        "libreoffice-fresh"                 # Office package
+        "llvm"                              # LLVM compiler collection
+        "lockhunter"                        # Unlock ocupied files and folders
+        "make"                              # Build Tools
+        "maven"                             # Java Package Manager
+        "maxima"                            # Math software
+        "meld"                              # File comparison
+        "miktex"                            # TeX tools
+        "mingw"                             # GCC for windows
+        "minikube"                          # Mini Kuberneted for Dev
+        "mremoteng"                         # Open source, tabbed, multi-protocol, remote connections manager
+        "mysql.workbench"                   # MySQL Admin and Explorer
+        "nasm"                              # Assebler
+        "ninja"                             # Small build system with a focus on speed
+        "nmap"                              # Network Scanner
+        "nodejs-lts"                        # JavaScript interpreter
+        # "nomad"                           # Deploy and Manage Any Containerized, Legacy, or Batch Application
+        "notepadplusplus-npppluginmanager"  # Notepad++ Text Editor
+        "notepadplusplus"                   # Notepad++ Text Editor
+        "nssm"                              # Non-Sucking Service Manager for windows
+        "nuget.commandline"                 # NuGet command line tools
+        "nugetpackageexplorer"              # NuGet Package Explorer
+        "octopustools"                      # Automated release management tool
+        "ollydbg"                           # Olly Debugger
+        "openssh"                           # OpenSSH
+        "openssl.light"                     # OpenSSL
+        "openvpn"                           # VPN Client
+        "packer"                            # VM, Docker, Cloud Image creator
+        "paint.net"                         # Image Editor
+        "paket.powershell"                  # A dependency manager for .NET with support for NuGet packages and git repositories.
+        "pandoc"                            # MarkDown document converter
+        "pdfsam"                            # PDF Tools
+        # "pgadmin3"                        # PostgreSQL Administrator
+        "pgadmin4"                          # PostgreSQL Administrator
+        # "pgina"                           # Pluggable, open source credential provider (and GINA) replacement
+        "putty"                             # SSH Client
+        #"python2"                          # Use with '--params /InstallDir:C:\tools\python2"'
+        #"python3"                          # Use with '--params /InstallDir:C:\tools\python3"'
+        "qbittorrent"                       # Torrent Downloader
+        # "qtcreator"                       # Use Native QT installer instead
+        "rdcman"                            # Remote Desktop Connection Manager
+        "reshack"                           # Resource Hacker
+        "robo3t"                            # MongoDB exprlorer
+        "ruby"                              # Ruby
+        "ruby2.devkit"                      # Ruby
+        "rufus"                             # Boot USB creation
+        # "rust-ms"                         # Use rustup-init instead
+        "sandboxie"                         # Isolation technology to separate programs from your underlying OS
+        "slack"                             # Slack messanger
+        "screentogif"                       # Converts Screenshot secries to GIF
+        "strawberryperl"                    # Perl
+        # "studio3t"                        # MongoDB exprlorer
+        "sublimetext3"                      # Text editor
+        # "sumatrapdf"                      # PDF viewer
+        "superputty"                        # SSH Client (wrapper on PuTTY)
+        "svn"                               # Subversion VCS
+        "swissfileknife"                    # The Swiss File Knife
+        "sysinternals"                      # Windows Sysinternals
+        "telegram.install"                  # Telegram messanger
+        "terraform"                         # Cloud orchestration
+        "tftpd32"                           # TFTP server
+        "tightvnc"                          # VNC server and client
+        "tor-browser"                       # TOR
+        "vagrant-manager"                   # VM Manager
+        "vagrant"                           # VM and CLoud Creator
+        "vcxsrv"                            # X server for Windows
+        "vlc"                               # VLC player
+        "vscode"                            # Text editor
+        "vscode-insiders"                   # Text editor
+        # "vim"                             # Text editor: should be installed manually to cover python 3.6 support
+        "wget"                              # HTTP/WEB Downloader
+        "wincdemu"                          # Virtual CD
+        "windirstat"                        # Files and Forlders statistics
+        "windjview"                         # DJVU viewer
+        "winmerge"                          # File comparison
+        "winscp"                            # SCP Client
+        "wireshark"                         # Network Analyzer
+        "wixtoolset"                        # WIX Tolset
+        "wmiexplorer"                       # WMI Explorer
+        "x64dbg.portable"                   # X Debugger
+        "XnView"                            # Image Viewer
+        "xpdf-utils"                        # PDF utils
+        "yarn"                              # JS Fast, reliable, and secure dependency management.
+        # "yed"                             # Diagram editor: use with '--params /Associate"'
+        "yasm"                              # Assembler
+        "youtube-dl"                        # YouTube Downloader
+        # "zoom"                            # Zoom conference client
     )
 
     # foreach ($mars in $candies) {
