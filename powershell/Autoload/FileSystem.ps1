@@ -155,3 +155,28 @@ function find {
     )
     Get-ChildItem -Path $Path -Filter $Expression -Recurse -ErrorAction SilentlyContinue -Force | ForEach-Object { Write-Host $_.FullName -ForegroundColor Yellow}
 }
+
+# Copy files with directory structure.
+# Input: Array of Strings
+# Output: Folder with copied files
+function Copy-FilesWithFolderStructure {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String]$Destination,
+        [Parameter(Mandatory = $True,ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True)]
+        [String[]]$Items
+    )
+
+    if(-Not (Test-Path $Destination)) {
+        New-Item -ItemType Directory -Path "$Destination" -Force
+    }
+
+    foreach ($item in $Items) {
+        if(Test-Path $item) {
+            $Dir = Split-Path -Path $item
+            New-Item -Path "$(Join-Path $Destination $Dir)" -ItemType Directory -Force
+            Copy-Item "$item" -Destination "$(Join-Path $Destination $Dir)" -Force
+        }
+    }
+}
