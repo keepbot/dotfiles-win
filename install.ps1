@@ -238,6 +238,8 @@ If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path) {
     C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\profile.ps1") (Join-Path $PSScriptRoot "data\conemu\profile.ps1")
     C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\conemu-maximus5\ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\ConEmu.xml")
 
+    $dep_modules                     = @("ApplicationCompatibility")
+    foreach($module in $dep_modules)    { Import-Module (Join-Path $dotfilesModulesDir $module) }
     Set-ApplicationCompatibility -CurrentUser -ApplicationLocation (Get-Command cmder.exe | Select-Object -ExpandProperty Definition) -PrivilegeLevel
 }
 
