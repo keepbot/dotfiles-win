@@ -6,9 +6,15 @@ if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
 # curl: Use `curl.exe` if available
 if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path) {
     Remove-Item alias:curl -ErrorAction SilentlyContinue
-    ${function:curl} = { curl.exe @args }
+    ${function:curl}    = { curl.exe @args }
     # Gzip-enabled `curl`
-    ${function:gurl} = { curl.exe --compressed @args }
+    ${function:gurl}    = { curl.exe --compressed @args }
+
+    # Weather
+    ${function:wet}     = { curl.exe http://wttr.in/@args }
+    ${function:wet2}    = { curl.exe http://v2.wttr.in/@args }
+    ${function:wetM}    = { wet Moscow }
+    ${function:wetM2}   = { wet2 Moscow }
 } else {
     # Gzip-enabled `curl`
     ${function:gurl} = { Invoke-WebRequest -TransferEncoding GZip }
