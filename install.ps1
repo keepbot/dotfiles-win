@@ -159,6 +159,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "paket.powershell"                  # A dependency manager for .NET with support for NuGet packages and git repositories.
         "pandoc"                            # MarkDown document converter
         "pdfsam"                            # PDF Tools
+        "pencil"                            # Pencil Project - UI prototyping tool
         # "pgadmin3"                        # PostgreSQL Administrator
         "pgadmin4"                          # PostgreSQL Administrator
         # "pgina"                           # Pluggable, open source credential provider (and GINA) replacement
