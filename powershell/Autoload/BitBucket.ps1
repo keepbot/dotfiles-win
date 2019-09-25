@@ -1,3 +1,6 @@
+${function:git-ssh-bb}  = { (Get-Content .gitmodules).replace('https://bitbucket.org/', 'git@bitbucket.org:') | Set-Content .gitmodules }
+${function:git-ssh-bbr} = { (Get-Content .gitmodules).replace('git@bitbucket.org:', 'https://bitbucket.org/') | Set-Content .gitmodules }
+
 function Set-BitbucketOAuthCreds {
     [CmdletBinding()]
     param (
@@ -62,6 +65,18 @@ function Invoke-BitbucketAPI {
     return $Response
 }
 
+function Invoke-BitbucketURI {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$URI,
+        [string]$Method = 'GET'
+    )
+    $Token = Get-BitbucketOAuthToken
+    $Response = Invoke-RestMethod -Headers @{Authorization=("Bearer {0}" -f $Token.access_token)} -Uri "$URI" -Method $Method
+    return $Response
+}
+
 function Get-BitbucketPR {
     [CmdletBinding()]
     param (
@@ -90,4 +105,40 @@ function Get-BitbucketWikiPage {
     # https://bitbucket.org/ormcornd/orthoplatform/wiki/Protected_branches
     $Response = Invoke-BitbucketAPI -RequestPath "/$WikiPage" -Type '/wiki' -APIVersion '1.0'
     return $Response
+}
+
+if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
+    ${function:list_bb_user_repos_https} = {
+        Write-Host "Listing all Bitbucket repos of $($args[0])"
+        $repoList = Invoke-BitbucketURI "https://api.bitbucket.org/2.0/repositories/$($args[0])?pagelen=100"
+        $count = 0
+        do {
+            foreach($repo in $repoList.values){
+                $count += 1
+                Write-Output "$count. $($repo.full_name)"
+            }
+        } while ($repoList.next -And ($repoList = Invoke-BitbucketURI "$($repoList.next)"))
+    }
+
+    ${function:get_bb_user_repos_https} = {
+        Write-Host "Get all Bitbucket repos of $($args[0]) via HTTPS"
+        $repoList = Invoke-BitbucketURI "https://api.bitbucket.org/2.0/repositories/$($args[0])?pagelen=100"
+        do {
+            foreach($repo in $repoList.values){
+                $response = Invoke-BitbucketURI "https://api.bitbucket.org/2.0/repositories/$($repo.full_name)"
+                git.exe clone --recurse-submodules $(($response.links.clone | Where-Object {$_.name -eq 'https'}).href)
+            }
+        } while ($repoList.next -And ($repoList = Invoke-BitbucketURI "$($repoList.next)"))
+    }
+
+    ${function:get_bb_user_repos_ssh} = {
+        Write-Host "Get all Bitbucket repos of $($args[0]) via SSH"
+        $repoList = Invoke-BitbucketURI "https://api.bitbucket.org/2.0/repositories/$($args[0])?pagelen=100"
+        do {
+            foreach($repo in $repoList.values){
+                $response = Invoke-BitbucketURI "https://api.bitbucket.org/2.0/repositories/$($repo.full_name)"
+                git.exe clone --recurse-submodules $(($response.links.clone | Where-Object {$_.name -eq 'ssh'}).href)
+            }
+        } while ($repoList.next -And ($repoList = Invoke-BitbucketURI "$($repoList.next)"))
+    }
 }
