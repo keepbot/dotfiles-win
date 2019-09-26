@@ -15,8 +15,8 @@ DisableSmartScreen          # EnableSmartScreen
 DisableWebSearch            # EnableWebSearch
 DisableAppSuggestions       # EnableAppSuggestions
 DisableActivityHistory      # EnableActivityHistory
-# DisableSensors            # EnableSensors
 DisableBackgroundApps       # EnableBackgroundApps
+# DisableSensors            # EnableSensors
 DisableLocation             # EnableLocation
 DisableMapUpdates           # EnableMapUpdates
 DisableFeedback             # EnableFeedback
@@ -26,6 +26,7 @@ DisableWebLangList          # EnableWebLangList
 DisableCortana              # EnableCortana
 # DisableBiometrics             # EnableBiometrics
 # DisableCamera                 # EnableCamera
+# DisableMicrophone             # EnableMicrophone
 DisableErrorReporting       # EnableErrorReporting
 # SetP2PUpdateLocal         # SetP2PUpdateInternet              # SetP2PUpdateDisable
 DisableDiagTrack            # EnableDiagTrack
@@ -37,15 +38,6 @@ DisableWAPPush              # EnableWAPPush
 # SetUACLow                     # SetUACHigh
 # EnableSharingMappedDrives     # DisableSharingMappedDrives
 DisableAdminShares              # EnableAdminShares
-DisableSMB1                     # EnableSMB1
-# DisableSMBServer              # EnableSMBServer
-# DisableNetBIOS                # EnableNetBIOS
-# DisableLLMNR                  # EnableLLMNR
-# DisableNCSIProbe              # EnableNCSIProbe
-SetCurrentNetworkPrivate        # SetCurrentNetworkPublic
-# SetUnknownNetworksPrivate     # SetUnknownNetworksPublic
-# DisableConnectionSharing      # EnableConnectionSharing
-# DisableNetDevicesAutoInst     # EnableNetDevicesAutoInst
 DisableFirewall                 # EnableFirewall
 # HideDefenderTrayIcon          # ShowDefenderTrayIcon
 DisableDefender                 # EnableDefender
@@ -63,17 +55,35 @@ DisableBootRecovery             # EnableBootRecovery
 DisableRecoveryAndReset         # EnableRecoveryAndReset
 SetDEPOptOut                    # SetDEPOptIn
 
+### Network Tweaks ###
+SetCurrentNetworkPrivate        # SetCurrentNetworkPublic
+# SetUnknownNetworksPrivate     # SetUnknownNetworksPublic
+# DisableNetDevicesAutoInst     # EnableNetDevicesAutoInst
+# DisableHomeGroups             # EnableHomeGroups
+DisableSMB1                   # EnableSMB1
+# DisableSMBServer              # EnableSMBServer
+# DisableNetBIOS                # EnableNetBIOS
+# DisableLLMNR                  # EnableLLMNR
+# DisableLLDP                   # EnableLLDP
+# DisableLLTD                   # EnableLLTD
+# DisableMSNetClient            # EnableMSNetClient
+# DisableQoS                    # EnableQoS
+# DisableIPv4                   # EnableIPv4
+# DisableIPv6                   # EnableIPv6
+# DisableNCSIProbe              # EnableNCSIProbe
+# DisableConnectionSharing      # EnableConnectionSharing
+DisableRemoteAssistance         # EnableRemoteAssistance
+# EnableRemoteDesktop           # DisableRemoteDesktop
+
 ### Service Tweaks ###
 EnableUpdateMSRT                # DisableUpdateMSRT
 EnableUpdateDriver              # DisableUpdateDriver
 EnableUpdateMSProducts          # DisableUpdateMSProducts
 # DisableUpdateAutoDownload     # EnableUpdateAutoDownload
+DisableUpdateRestart            # EnableUpdateRestart
 DisableMaintenanceWakeUp        # EnableMaintenanceWakeUp
-DisableHomeGroups               # EnableHomeGroups
 DisableSharedExperiences        # EnableSharedExperiences
 # EnableClipboardHistory        # DisableClipboardHistory
-DisableRemoteAssistance         # EnableRemoteAssistance
-DisableRemoteDesktop            # EnableRemoteDesktop
 DisableAutoplay                 # EnableAutoplay
 DisableAutorun                  # EnableAutorun
 DisableRestorePoints            # EnableRestorePoints
@@ -82,6 +92,7 @@ DisableDefragmentation          # EnableDefragmentation
 DisableSuperfetch               # EnableSuperfetch
 DisableIndexing                 # EnableIndexing
 # DisableSwapFile               # EnableSwapFile
+# DisableRecycleBin             # EnableRecycleBin
 EnableNTFSLongPaths             # DisableNTFSLongPaths
 DisableNTFSLastAccess           # EnableNTFSLastAccess
 SetBIOSTimeUTC                  # SetBIOSTimeLocal
@@ -109,6 +120,7 @@ ShowSmallTaskbarIcons           # ShowLargeTaskbarIcons
 SetTaskbarCombineNever          # SetTaskbarCombineWhenFull     # SetTaskbarCombineAlways
 HideTaskbarPeopleIcon           # ShowTaskbarPeopleIcon
 ShowTrayIcons                   # HideTrayIcons
+# ShowSecondsInTaskbar          # HideSecondsFromTaskbar
 DisableSearchAppInStore         # EnableSearchAppInStore
 DisableNewAppPrompt             # EnableNewAppPrompt
 # HideRecentlyAddedApps         # ShowRecentlyAddedApps
@@ -151,6 +163,7 @@ HideThisPCFromDesktop           # ShowThisPCOnDesktop
 # ShowUserFolderOnDesktop       # HideUserFolderFromDesktop
 # ShowControlPanelOnDesktop     # HideControlPanelFromDesktop
 # ShowNetworkOnDesktop          # HideNetworkFromDesktop
+# ShowBuildNumberOnDesktop      # HideBuildNumberFromDesktop
 HideDesktopFromThisPC           # ShowDesktopInThisPC
 # HideDesktopFromExplorer       # ShowDesktopInExplorer
 HideDocumentsFromThisPC         # ShowDocumentsInThisPC
