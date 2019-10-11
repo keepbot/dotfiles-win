@@ -29,10 +29,13 @@ ${function:down}    = { Set-Location ~\Downloads                }
 ${function:ws}      = { Set-Location ~\workspace                }
 ${function:wsmy}    = { Set-Location ~\workspace\my             }
 ${function:wsdf}    = { Set-Location ~\workspace\my\dotfiles    }
-${function:wso}     = { Set-Location ~\workspace\ormco          }
-${function:wsoc}    = { Set-Location ~\workspace\ormco\common   }
-${function:wsod}    = { Set-Location ~\workspace\ormco\devops   }
 ${function:wst}     = { Set-Location ~\workspace\tmp            }
+
+# Ormco Shortcuts
+${function:wso}     = { Set-Location ~\workspace\ormco                      }
+${function:wsoc}    = { Set-Location ~\workspace\ormco\common               }
+${function:wsoo}    = { Set-Location ~\workspace\ormco\common\orthoplatfrom }
+${function:wsod}    = { Set-Location ~\workspace\ormco\devops               }
 
 # Create a new directory and enter it
 function New-DirectoryAndSet ([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path}
