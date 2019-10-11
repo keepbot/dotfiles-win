@@ -34,7 +34,7 @@ ${function:wst}     = { Set-Location ~\workspace\tmp            }
 # Ormco Shortcuts
 ${function:wso}     = { Set-Location ~\workspace\ormco                      }
 ${function:wsoc}    = { Set-Location ~\workspace\ormco\common               }
-${function:wsoo}    = { Set-Location ~\workspace\ormco\common\orthoplatfrom }
+${function:wsoo}    = { Set-Location ~\workspace\ormco\common\orthoplatform }
 ${function:wsod}    = { Set-Location ~\workspace\ormco\devops               }
 
 # Create a new directory and enter it
