@@ -83,6 +83,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     # Update
     ${function:gsu}         = { git.exe submodule update --recursive --remote @args }
     ${function:gsu2}        = { git.exe submodule foreach git pull origin master @args }
+
     function ugr {
         param (
             [Parameter(ValueFromRemainingArguments = $true)]
@@ -92,9 +93,11 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         Get-ChildItem $dir -Directory | ForEach-Object { Write-Host $_.FullName; Set-Location $_.FullName; cmd /c "git.exe pull $Options" }
         Set-Location $dir
     }
+
     function ugrm {
         ugr origin master
     }
+
     function ugrs {
         param (
             [Parameter(ValueFromRemainingArguments = $true)]
@@ -121,36 +124,26 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         }
     }
 
-    # Align Git
-    ${function:get_cbk} = { if (Test-Path "~/workspace/Chef/cookbooks"){ Set-Location "~/workspace/Chef/cookbooks"; git clone "gitolite@git.aligntech.com:chef/cookbooks/$($args[0].ToString()).git"; Set-Location "$($args[0].ToString())" } }
-}
+    function Move-GitRepo {
+        [CmdletBinding()]
+        Param (
+            [Parameter(Mandatory=$true)]
+            [string]$From,
+            [Parameter(Mandatory=$true)]
+            [string]$To
+        )
+        [string] $SessionID = [System.Guid]::NewGuid()
 
-if (Get-Command ssh.exe -ErrorAction SilentlyContinue | Test-Path) {
-    ${function:ginfo} = { ssh.exe gitolite@git info @args }
-}
-
-function Rename-GitHub-Origin {
-    param (
-        [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
-        [string]$NewName
-    )
-    $dir = Get-Location
-    Get-ChildItem $dir -Directory | ForEach-Object {
-        Write-Host $_.FullName
-        Set-Location $_.FullName
-        $oldRemote = git config --get remote.origin.url
-        Write-Host "Old remote:"
-        git remote -v
-        $repo = Split-Path $oldRemote -leaf
-        $newRemote = "git@github.com:${NewName}/${repo}"
-        git remote rm origin
-        git remote add origin ${newRemote}
-        Write-Host "New remote:"
-        # Write-Host $newRemote
-        git remote -v
-        Write-Host "------------------------------------------------------------"
+        Invoke-Expression "git.exe clone --mirror $From $SessionID"
+        $RepoDir  = (Join-Path $env:Temp $SessionID)
+        Set-Location $RepoDir
+        Invoke-Expression "git.exe push  --mirror $To"
+        Set-Location $env:Temp
+        Remove-Item -Force -ErrorAction SilentlyContinue "$TempDir"
     }
-    Set-Location $dir
+
+    # TMP Get Chef cookbook
+    # ${function:get_cbk} = { if (Test-Path "~/workspace/Chef/cookbooks"){ Set-Location "~/workspace/Chef/cookbooks"; git clone "gitolite@git.domain.com:chef/cookbooks/$($args[0].ToString()).git"; Set-Location "$($args[0].ToString())" } }
 }
 
 function Set-GitVerbosity {
@@ -200,9 +193,6 @@ function Set-GitVerbosity {
     }
 }
 
-
-if (Get-Command putty.exe -ErrorAction SilentlyContinue | Test-Path) {
-    ## Export to Desktop
-    ${function:Export-Putty-Config}     = { reg export HKCU\Software\SimonTatham ([Environment]::GetFolderPath("Desktop") + "\putty.reg") }
-    ${function:Export-Putty-Sessions}   = { reg export HKCU\Software\SimonTatham\PuTTY\Sessions ([Environment]::GetFolderPath("Desktop") + "\putty-sessions.reg") }
+if (Get-Command ssh.exe -ErrorAction SilentlyContinue | Test-Path) {
+    ${function:ginfo} = { ssh.exe gitolite@git info @args }
 }

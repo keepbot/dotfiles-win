@@ -16,4 +16,28 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
             git.exe clone $repo
         }
     }
+
+    function Rename-GitHub-Origin {
+        param (
+            [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+            [string]$NewName
+        )
+        $dir = Get-Location
+        Get-ChildItem $dir -Directory | ForEach-Object {
+            Write-Host $_.FullName
+            Set-Location $_.FullName
+            $oldRemote = git config --get remote.origin.url
+            Write-Host "Old remote:"
+            git remote -v
+            $repo = Split-Path $oldRemote -leaf
+            $newRemote = "git@github.com:${NewName}/${repo}"
+            git remote rm origin
+            git remote add origin ${newRemote}
+            Write-Host "New remote:"
+            # Write-Host $newRemote
+            git remote -v
+            Write-Host "------------------------------------------------------------"
+        }
+        Set-Location $dir
+    }
 }
