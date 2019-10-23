@@ -23,23 +23,25 @@ if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path) {
 
 function Get-PyList {
     $serpents = @(
-        'C:\tools\python2'
         'C:\tools\python3'
-        'C:\tools\miniconda2'
+        'C:\tools\python2'
         'C:\tools\miniconda3'
-        'C:\Python25'
-        'C:\Python26'
-        'C:\Python27'
-        'C:\Python34'
-        'C:\Python35'
-        'C:\Python36'
+        'C:\tools\miniconda2'
+        'C:\Python38'
         'C:\Python37'
-        "$env:LOCALAPPDATA\Programs\Python\Python25"
-        "$env:LOCALAPPDATA\Programs\Python\Python26"
-        "$env:LOCALAPPDATA\Programs\Python\Python27"
-        "$env:LOCALAPPDATA\Programs\Python\Python35"
-        "$env:LOCALAPPDATA\Programs\Python\Python36"
+        'C:\Python36'
+        'C:\Python35'
+        'C:\Python34'
+        'C:\Python27'
+        'C:\Python26'
+        'C:\Python25'
+        "$env:LOCALAPPDATA\Programs\Python\Python38"
         "$env:LOCALAPPDATA\Programs\Python\Python37"
+        "$env:LOCALAPPDATA\Programs\Python\Python36"
+        "$env:LOCALAPPDATA\Programs\Python\Python35"
+        "$env:LOCALAPPDATA\Programs\Python\Python27"
+        "$env:LOCALAPPDATA\Programs\Python\Python26"
+        "$env:LOCALAPPDATA\Programs\Python\Python25"
     )
     return $serpents
 }
