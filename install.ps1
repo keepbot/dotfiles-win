@@ -75,10 +75,10 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         # echo 'nameserver 77.88.8.8' >> $env:SystemRoot\System32\Drivers\etc\resolv.conf
         "bind-toolsonly"                    # DIG and other DNS tools
         "buckaroo"                          # The decentralized package manager for C++ and friends
-        "cabal"                             # Haskell package manager
+        # "cabal"                             # Haskell package manager comes with ghc package
         "calibre"                           # Book manager and reader
         "ccleaner"                          # Garbage Collection for Windows
-        "chefdk"                            # Chef SDK
+        # "chefdk"                            # Chef SDK
         "choco-cleaner"                     # Garbage Collection for Chocolatey
         "cmake"                             # Build tools generator
         "cmdermini"                         # CoolTerminal manager for Windows
@@ -89,10 +89,12 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "doublecmd"                         # Two-Panel File Manager
         "drmemory"                          # Memory Debugger
         "du"                                # Disk Usage tool
-        "etcher"                            # Boot ISO creator (Rapspberry)
+        # "etcher"                            # Boot ISO creator (Rapspberry)
         "far"                               # Two-Panel File Manager
         "foobar2000"                        # Music player
+        # "foxitreader"                       # PDF Reader alternative
         "ftpdmin"                           # FTP explorer
+        "fsviewer"                          # FastStone Image viewer
         "ghc"                               # Haskell compiler
         "gimp"                              # Image manipulation program
         "git-lfs"                           # Git plugin for Large File Storage
@@ -105,7 +107,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "graphviz"                          # Graph visualizer
         "greenshot"                         # Screenshot creator
         "grepwin"                           # Grep for Windows (GUI)
-        "haskell-stack"                     # Haskell programming language
+        # "haskell-stack"                     # Haskell programming language
         "hg"                                # Mercurial SCM
         "hxd"                               # HEX editor
         "imagemagick"                       # Image manipulation tools
@@ -136,7 +138,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "maxima"                            # Math software
         "meld"                              # File comparison
         "miktex"                            # TeX tools
-        "mingw"                             # GCC for windows
+        # "mingw"                             # GCC for windows
         "minikube"                          # Mini Kuberneted for Dev
         "mremoteng"                         # Open source, tabbed, multi-protocol, remote connections manager
         "mysql.workbench"                   # MySQL Admin and Explorer
@@ -172,8 +174,8 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "rdcman"                            # Remote Desktop Connection Manager
         "reshack"                           # Resource Hacker
         "robo3t"                            # MongoDB exprlorer
-        "ruby"                              # Ruby
-        "ruby2.devkit"                      # Ruby
+        "ruby"                              # Ruby: cinst msys2 --params "/NoUpdate"; Update-SessionEnvironment; ridk install 2 3
+        # "ruby2.devkit"                      # Ruby
         "rufus"                             # Boot USB creation
         # "rust-ms"                         # Use rustup-init instead
         "sandboxie"                         # Isolation technology to separate programs from your underlying OS
