@@ -521,12 +521,12 @@
 					<value name="Count" type="long" data="1"/>
 					<value name="Flags" type="dword" data="00000004"/>
 				</key>
-				<key name="Task5" modified="2019-10-23 16:44:29" build="180626">
+				<key name="Task5" modified="2019-10-23 16:52:21" build="180626">
 					<value name="Name" type="string" data="{Bash::MINGW32}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data='set MSYSTEM=MINGW32 &amp; set MSYSCON=conemu64.exe &amp; "c:\tools\msys64\usr\bin\bash.exe" --login -i -new_console:C:"c:\tools\msys64\mingw32.exe":t:"mingw64"'/>
+					<value name="Cmd1" type="string" data='set MSYSTEM=MINGW32 &amp; set MSYSCON=conemu64.exe &amp; "c:\tools\msys64\usr\bin\bash.exe" --login -i -new_console:C:"c:\tools\msys64\mingw32.exe":t:"mingw32"'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
