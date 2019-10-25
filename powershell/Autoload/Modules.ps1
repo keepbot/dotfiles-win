@@ -36,7 +36,8 @@ foreach($module in $modules) {
 
 # Posh git settings
 # $GitPromptSettings.EnableFileStatus = $false
-$GitPromptSettings.RepositoriesInWhichToDisableFileStatus += 'C:\boost'
+$GitPromptSettings.RepositoriesInWhichToDisableFileStatus += 'C:\a'         # Dev folder for big repos
+$GitPromptSettings.RepositoriesInWhichToDisableFileStatus += 'C:\boost'     # Boost libs
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"

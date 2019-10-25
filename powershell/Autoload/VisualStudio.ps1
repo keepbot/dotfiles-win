@@ -119,6 +119,33 @@ function Set-VC {
     Set-Env
 }
 
+function Set-VC-Session {
+    $tools = @(
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise'
+    )
+
+    $VCVersions = @()
+    foreach($tool in $tools) {
+        if (Test-Path "$tool\VC\Tools\MSVC\") {
+            foreach($ver in $(Get-ChildItem "$tool\VC\Tools\MSVC").Name ) {
+                $VCVersions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx86").FullName
+                $VCVersions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx64").FullName
+            }
+        }
+    }
+
+    $ChoosenVCVersion = Select-From-List $VCVersions "Visual Compiler Version"
+    Set-Item -Path Env:PATH -Value "$ChoosenVCVersion;$Env:PATH"
+}
+
 function Set-VC-IDE {
     $ideList = @(
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE'

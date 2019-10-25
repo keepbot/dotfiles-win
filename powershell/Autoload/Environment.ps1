@@ -74,6 +74,7 @@ function Initialize-Paths-APP {
         "C:\Strawberry\perl\site\bin"
         "C:\Strawberry\perl\bin"
         "C:\tools\msys64"
+        "C:\tools\swig"
         "C:\Program Files\Microsoft VS Code\bin"
         "C:\HashiCorp\Vagrant\bin"
         "C:\Program Files (x86)\Nmap"
