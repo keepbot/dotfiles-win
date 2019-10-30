@@ -91,3 +91,12 @@ find_core_dumps() {
         -print "$@"
 }
 
+get-file-vars() {
+    filename=$(basename -- "$1")
+    extension="${filename##*.}"
+    filename="${filename%.*}"
+
+    echo "Basename:     ${filename}"
+    echo "Filename:     ${filename%.*}"
+    echo "Extention:    ${filename##*.}"
+}
