@@ -80,6 +80,8 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "ccleaner"                          # Garbage Collection for Windows
         # "chefdk"                            # Chef SDK
         "choco-cleaner"                     # Garbage Collection for Chocolatey
+        "chocolatey-visualstudio.extension" # Extension for VS
+        "chocolateygui"                     # GUI for Chocolate
         "cmake"                             # Build tools generator
         "cmdermini"                         # CoolTerminal manager for Windows
         # "consul"                          # Service networking solution to connect and secure services across any runtime
@@ -96,6 +98,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "ftpdmin"                           # FTP explorer
         "fsviewer"                          # FastStone Image viewer
         "ghc"                               # Haskell compiler
+        "Ghostscript.app"                   # GhostScript
         "gimp"                              # Image manipulation program
         "git-lfs"                           # Git plugin for Large File Storage
         "git"                               # Git SCM

@@ -25,4 +25,4 @@
 [lfs "customtransfer.bitbucket-media-api"]
 	path = C:\\tools\\GitLfsBitbucketAdapter\\git-lfs-bitbucket-media-api.exe
 [winUpdater]
-	recentlySeenVersion = 2.23.0.windows.13
+	recentlySeenVersion = 2.23.0.windows.1
