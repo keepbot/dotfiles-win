@@ -9,28 +9,28 @@
 RequireAdmin
 
 ### Privacy Tweaks ###
-DisableTelemetry            # EnableTelemetry
-DisableWiFiSense            # EnableWiFiSense
-DisableSmartScreen          # EnableSmartScreen
-DisableWebSearch            # EnableWebSearch
-DisableAppSuggestions       # EnableAppSuggestions
-DisableActivityHistory      # EnableActivityHistory
-DisableBackgroundApps       # EnableBackgroundApps
-# DisableSensors            # EnableSensors
-DisableLocation             # EnableLocation
-DisableMapUpdates           # EnableMapUpdates
-DisableFeedback             # EnableFeedback
-DisableTailoredExperiences  # EnableTailoredExperiences
-DisableAdvertisingID        # EnableAdvertisingID
-DisableWebLangList          # EnableWebLangList
-DisableCortana              # EnableCortana
+DisableTelemetry                # EnableTelemetry
+DisableWiFiSense                # EnableWiFiSense
+DisableSmartScreen              # EnableSmartScreen
+DisableWebSearch                # EnableWebSearch
+DisableAppSuggestions           # EnableAppSuggestions
+DisableActivityHistory          # EnableActivityHistory
+DisableBackgroundApps           # EnableBackgroundApps
+# DisableSensors                # EnableSensors
+DisableLocation                 # EnableLocation
+DisableMapUpdates               # EnableMapUpdates
+DisableFeedback                 # EnableFeedback
+DisableTailoredExperiences      # EnableTailoredExperiences
+DisableAdvertisingID            # EnableAdvertisingID
+DisableWebLangList              # EnableWebLangList
+DisableCortana                  # EnableCortana
 # DisableBiometrics             # EnableBiometrics
 # DisableCamera                 # EnableCamera
 # DisableMicrophone             # EnableMicrophone
-DisableErrorReporting       # EnableErrorReporting
-# SetP2PUpdateLocal         # SetP2PUpdateInternet              # SetP2PUpdateDisable
-DisableDiagTrack            # EnableDiagTrack
-DisableWAPPush              # EnableWAPPush
+DisableErrorReporting           # EnableErrorReporting
+# SetP2PUpdateLocal             # SetP2PUpdateInternet              # SetP2PUpdateDisable
+DisableDiagTrack                # EnableDiagTrack
+DisableWAPPush                  # EnableWAPPush
 # EnableClearRecentFiles        # DisableClearRecentFiles
 # DisableRecentFiles            # EnableRecentFiles
 
