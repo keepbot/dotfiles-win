@@ -80,7 +80,6 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "ccleaner"                          # Garbage Collection for Windows
         # "chefdk"                            # Chef SDK
         "choco-cleaner"                     # Garbage Collection for Chocolatey
-        "chocolatey-visualstudio.extension" # Extension for VS
         "chocolateygui"                     # GUI for Chocolate
         "cmake"                             # Build tools generator
         "cmdermini"                         # CoolTerminal manager for Windows
