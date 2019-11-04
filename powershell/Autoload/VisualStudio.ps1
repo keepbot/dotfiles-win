@@ -116,7 +116,7 @@ function Set-VC {
 
     $ChoosenVCVersion = Select-From-List $VCVersions "Visual Compiler Version"
     [Environment]::SetEnvironmentVariable("VC_PATH", $ChoosenVCVersion, "Machine")
-    Set-Env
+    # Set-Env
 }
 
 function Set-VC-Session {
@@ -168,7 +168,7 @@ function Set-VC-IDE {
 
     $ChoosenVCIDEVersion = Select-From-List $VCIDEVersions "Visual Studio IDE Version: "
     [Environment]::SetEnvironmentVariable("VC_IDE", $ChoosenVCIDEVersion, "Machine")
-    Set-Env
+    # Set-Env
 }
 
 function Clear-VC {
@@ -178,7 +178,7 @@ function Clear-VC {
         Remove-Item Env:VC_IDE
         Remove-Item Env:VC_PATH
     }
-    Set-Env
+    # Set-Env
 }
 
 function Get-VS {

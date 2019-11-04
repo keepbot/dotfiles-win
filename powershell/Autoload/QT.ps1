@@ -68,7 +68,7 @@ function Set-QT {
 
     [Environment]::SetEnvironmentVariable("QTDIR", "$CurrentQTPath\$ChoosenQTToolset", "Machine")
     [Environment]::SetEnvironmentVariable("QMAKESPEC", "$CurrentQTPath\$ChoosenQTToolset\mkspecs\win32-msvc", "Machine")
-    Set-Env
+    # Set-Env
 }
 
 function Set-QTShort {
@@ -110,5 +110,5 @@ function Clear-QT {
     if ($env:QMAKESPEC) {
         Remove-Item Env:QMAKESPEC
     }
-    Set-Env
+    # Set-Env
 }

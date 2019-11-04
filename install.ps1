@@ -132,10 +132,11 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "kubernetes-cli"                    # Kubernetes command line tools
         "kubernetes-helm"                   # The package manager for Kubernetes
         "ldapadmin"                         # LDAP Explorer
-        "librecad"
+        "librecad"                          # CAD software
         "libreoffice-fresh"                 # Office package
         "llvm"                              # LLVM compiler collection
         "lockhunter"                        # Unlock ocupied files and folders
+        "lunacy"                            # Native Windows app that works offline and supports .sketch files
         "make"                              # Build Tools
         "maven"                             # Java Package Manager
         "maxima"                            # Math software
@@ -204,6 +205,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "vscode"                            # Text editor
         "vscode-insiders"                   # Text editor
         # "vim"                             # Text editor: should be installed manually to cover python 3.6 support
+        "whatsapp"                          # Messanger
         "wget"                              # HTTP/WEB Downloader
         "wincdemu"                          # Virtual CD
         "windirstat"                        # Files and Forlders statistics

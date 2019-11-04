@@ -107,7 +107,7 @@ function Set-Py {
     }
     $ChoosenPyVersion = Select-From-List $PyVersions "Python Version"
     [Environment]::SetEnvironmentVariable("PYTHON_PATH", $ChoosenPyVersion, "Machine")
-    Set-Env
+    # Set-Env
 }
 
 function Clear-Py {
@@ -115,5 +115,5 @@ function Clear-Py {
     if ($env:PYTHON_PATH) {
         Remove-Item Env:PYTHON_PATH
     }
-    Set-Env
+    # Set-Env
 }

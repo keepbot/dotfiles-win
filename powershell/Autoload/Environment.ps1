@@ -50,6 +50,7 @@ function Initialize-Paths-APP {
         "C:\usr\bin"
         "C:\Program Files\Git LFS"
         "C:\Program Files\Git\cmd"
+        "C:\Program Files (x86)\GitExtensions\"
         "C:\Program Files\KDiff3"
         "C:\Program Files\KDiff3\bin"
         "C:\tools\vim\vim81"
@@ -60,6 +61,8 @@ function Initialize-Paths-APP {
         "C:\Program Files\Amazon\AWSCLI\bin"
         "C:\Program Files\CMake\bin"
         "C:\Program Files\LLVM\bin"
+        "C:\Program Files\BinDiff\bin"
+        "${Env:M2_HOME}/bin"
         "C:\tools\vcpkg"
         "C:\boost\dist\bin"
         "C:\Go\bin"
@@ -76,10 +79,12 @@ function Initialize-Paths-APP {
         "C:\tools\msys64"
         "C:\tools\swig"
         "C:\Program Files\Microsoft VS Code\bin"
+        "C:\Program Files\Microsoft VS Code Insiders\bin"
         "C:\HashiCorp\Vagrant\bin"
         "C:\Program Files (x86)\Nmap"
         "C:\opscode\chefdk\bin"
         "C:\Program Files (x86)\Gpg4win\..\GnuPG\bin"
+        "C:\Program Files (x86)\GNU\GnuPG\pub"
         "C:\Program Files\Sublime Text 3"
         "C:\Program Files\nodejs"
         "C:\Program Files (x86)\Yarn\bin"
@@ -156,7 +161,8 @@ function Initialize-Paths-SYS {
         "C:\Program Files\Common Files\Intel\WirelessCommon"
         "C:\Program Files\Intel\WiFi\bin"
         "C:\Program Files\dotnet"
-        "C:\Program Files\Microsoft SQL Server\130\Tools\Binn"
+        "C:\Program Files\Microsoft SQL Server\130\Tools\Binn\"
+        "C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\"
         "C:\Program Files (x86)\Common Files\Oracle\Java\javapath"
         "C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\"
     )
@@ -269,4 +275,5 @@ function Reset-Environment {
 }
 
 if (Test-Path "${env:USERPROFILE}\AppData\Local\Programs\Microsoft VS Code Insiders\bin") { ${function:icode} = {code-insiders.cmd @args} }
+if (Test-Path "C:\Program Files\Microsoft VS Code Insiders\bin") { ${function:icode} = {code-insiders.cmd @args} }
 If (Test-Path "C:\Program Files\Microsoft VS Code\bin") { ${function:vscode} = {code.cmd @args} }
