@@ -100,6 +100,6 @@ function Find-Java {
             break
         }
     }
-    Write-Host "List of JAVA installef for ${Arch} on this PC:"
+    Write-Host "List of JAVA installed for ${Arch} on this PC:"
     foreach($v in $Versions) {Write-Host " -" $v}
 }
