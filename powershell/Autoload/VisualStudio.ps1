@@ -1,5 +1,5 @@
 #!/usr/env/pwsh
-function VSToolArchx64 {
+function Set-VCToolsArchx64 {
     [CmdletBinding()]
 
     param (
@@ -8,10 +8,13 @@ function VSToolArchx64 {
     )
     if ($On) {
         Set-Item -Path Env:PreferredToolArchitecture -Value "x64"
+        [Environment]::SetEnvironmentVariable("PreferredToolArchitecture", "x64", "Machine")
         Write-Host "Preferred Tool Architecture for MSBuild is set to x64" -ForegroundColor Yellow
     } elseif ($Off) {
         Set-Item -Path Env:PreferredToolArchitecture -Value "x86"
+        [Environment]::SetEnvironmentVariable("PreferredToolArchitecture", "x86", "Machine")
         Remove-Item -Path Env:PreferredToolArchitecture
+        [Environment]::SetEnvironmentVariable("PreferredToolArchitecture", $null, "Machine")
         Write-Host "Preferred Tool Architecture for MSBuild is set to x86" -ForegroundColor Yellow
     } else {
         if ($Env:PreferredToolArchitecture -eq "x64") {
