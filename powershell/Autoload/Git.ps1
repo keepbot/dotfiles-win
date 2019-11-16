@@ -193,6 +193,21 @@ function Set-GitVerbosity {
     }
 }
 
+function Git-DiffBranches {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory=$true)]
+        [string]$Branch1,
+        [Parameter(Mandatory=$true)]
+        [string]$Branch2
+    )
+
+    git checkout Branch1
+    git checkout Branch2
+
+    git diff Branch1..Branch2
+}
+
 if (Get-Command ssh.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:ginfo} = { ssh.exe gitolite@git info @args }
 }
