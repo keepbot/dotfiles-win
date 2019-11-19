@@ -122,6 +122,43 @@ function Set-VC {
     # Set-Env
 }
 
+function Set-VSINSTALLDIRS {
+    $tools = @(
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional'
+        'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise'
+    )
+
+    $VSVersions = @()
+    foreach($tool in $tools) {
+        if (Test-Path "$tool\VC\Tools\MSVC\") {
+            $VSVersions += $tool
+        }
+    }
+
+    $ChoosenVCVersion = Select-From-List $VSVersions "Visual Studio Version"
+    [Environment]::SetEnvironmentVariable("VSINSTALLDIR", $ChoosenVCVersion, "Machine")
+    [Environment]::SetEnvironmentVariable("VCINSTALLDIR", "$ChoosenVCVersion\VC\", "Machine")
+    # Set-Env
+}
+
+function Clear-VSINSTALLDIRS {
+    [Environment]::SetEnvironmentVariable("VSINSTALLDIR", $null, "Machine")
+    [Environment]::SetEnvironmentVariable("VCINSTALLDIR", $null, "Machine")
+    if ($env:VSINSTALLDIR) {
+        Remove-Item Env:VSINSTALLDIR
+    }
+    if ($env:VCINSTALLDIR) {
+        Remove-Item Env:VCINSTALLDIR
+    }
+}
+
 function Set-VC-Session {
     $tools = @(
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
