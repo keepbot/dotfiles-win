@@ -59,7 +59,7 @@ $InstallPaths = @(
 )
 
 foreach($InstallPath in $InstallPaths) {
-    $DevShell = (Join-Path "$InstallPath" 'Common7\Tools\vsdevshell\Microsoft.VisualStudio.DevShell.dll')
+    $DevShell = (Join-Path "$InstallPath" 'Common7\Tools\Microsoft.VisualStudio.DevShell.dll')
     if (Test-Path "$DevShell") {
         Import-Module "$DevShell"
         ${function:vsdevenv}    = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" @args }
