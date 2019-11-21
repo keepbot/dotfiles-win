@@ -30,9 +30,9 @@ case $platform in
 		ls='ls --color=auto'
 		;;
 esac
-alias l='ls -CFh --group-directories-first'
-alias la='ls -alh --group-directories-first'
-alias ll='ls -alFh --group-directories-first'
+alias    l='ls -CFh --group-directories-first'
+alias   la='ls -alh --group-directories-first'
+alias   ll='ls -alFh --group-directories-first'
 alias dirs="ls -l | grep ^d"
 
 # Navigation Shortcuts
@@ -40,21 +40,20 @@ alias drop='cd ~/Dropbox'
 alias desk='cd ~/Desktop'
 alias docs='cd ~/Documents'
 alias down='cd ~/down'
-# alias ws='cd ~/workspace'
+alias   ws='cd ~/workspace'
 alias wsmy='cd ~/workspace/my'
 alias wsdf='cd ~/workspace/my/dotfiles'
 alias wsaw='cd ~/.config/awesome'
-alias wst='cd ~/workspace/tmp'
+alias  wst='cd ~/workspace/tmp'
 
-# Ormco Shortcuts
-alias ws='cd /c/Users/dkiva/workspace'
-alias wso='cd /c/Users/dkiva/workspace/ormco'
-alias wsoc='cd /c/Users/dkiva/workspace/ormco/common'
-alias wsoc='cd /c/Users/dkiva/workspace/ormco/common/orthoplatform'
-alias wsod='cd /c/Users/dkiva/workspace/ormco/devops'
+# Ormco Shortcuts`
+alias  wso='cd ~/workspace/ormco'
+alias wsoc='cd ~/workspace/ormco/common'
+alias wsoc='cd ~/workspace/ormco/common/orthoplatform'
+alias wsod='cd ~/workspace/ormco/devops'
 
-alias crlf_fix='find ./ -type f -exec dos2unix {} \;'
-alias dir_fix='find ./ -type d -print -exec chmod 755 {} \;'
+alias  crlf_fix='find ./ -type f -exec dos2unix {} \;'
+alias   dir_fix='find ./ -type d -print -exec chmod 755 {} \;'
 alias files_fix='find ./ -type f -print -exec chmod 644 {} \;'
 
 # File size

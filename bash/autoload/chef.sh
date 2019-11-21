@@ -32,16 +32,16 @@ ksni() {
 }
 
 
-alias kc='kitchen converge'
-alias kd='kitchen destroy'
-alias kl='kitchen list'
+alias  kl='kitchen list'
 alias klo='kitchen login'
-alias kt='kitchen test -d never'
+alias  kd='kitchen destroy'
+alias  kc='kitchen converge'
+alias  kt='kitchen test -d never'
 
-alias kn='knife node'
+alias  kn='knife node'
 alias kns='knife node show'
 alias knl='knife node list'
 alias kne='knife node edit'
 
-alias kbl='knife block list'
 alias kbu='knife block use'
+alias kbl='knife block list'

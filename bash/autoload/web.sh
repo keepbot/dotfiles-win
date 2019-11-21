@@ -9,7 +9,7 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 
 # Weather
-alias wet="curl http://wttr.in/"
-alias wet2="curl http://v2.wttr.in/"
-alias wetM="curl http://wttr.in/Moscow"
-alias wetM2="curl http://v2.wttr.in/Moscow"
+alias  weth1="curl http://wttr.in/"
+alias  weth2="curl http://v2.wttr.in/"
+alias wethM1="curl http://wttr.in/Moscow"
+alias wethM2="curl http://v2.wttr.in/Moscow"
