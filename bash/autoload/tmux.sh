@@ -9,4 +9,4 @@ alias tmls='tmux ls'
 
 # With tmux mouse mode on, just select text in a pane to copy.
 # Then run tcopy to put it in the OS X clipboard (assuming reattach-to-user-namespace).
-alias tcopy='tmux show-buffer | pbcopy"=''
+alias tcopy='tmux show-buffer | pbcopy'
