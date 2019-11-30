@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if grep -q Microsoft /proc/version; then
+if [ -f /proc/version ] && grep -q Microsoft /proc/version; then
   wsl-kali-install-full() {
     sudo apt update
     sudo apt full-upgrade -y

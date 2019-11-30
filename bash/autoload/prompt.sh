@@ -39,14 +39,14 @@ function prompt_rvm {
 
 bash_prompt() {
 	# Colors:
-	local K="\[\033[0;30m\]"    # black
-	local R="\[\033[0;31m\]"    # red
-	local G="\[\033[0;32m\]"    # green
-	local Y="\[\033[0;33m\]"    # yellow
-	local B="\[\033[0;34m\]"    # blue
-	local M="\[\033[0;35m\]"    # magenta
-	local C="\[\033[0;36m\]"    # cyan
-	local W="\[\033[0;37m\]"    # white
+	local  K="\[\033[0;30m\]"   # black
+	local  R="\[\033[0;31m\]"   # red
+	local  G="\[\033[0;32m\]"   # green
+	local  Y="\[\033[0;33m\]"   # yellow
+	local  B="\[\033[0;34m\]"   # blue
+	local  M="\[\033[0;35m\]"   # magenta
+	local  C="\[\033[0;36m\]"   # cyan
+	local  W="\[\033[0;37m\]"   # white
 	local BK="\[\033[1;30m\]"   # bolded black
 	local BR="\[\033[1;31m\]"   # bolded red
 	local BG="\[\033[1;32m\]"   # bolded green
@@ -71,16 +71,16 @@ bash_prompt() {
 	case $PROMPT in
 		COMPLEX)
 			if [ $ENVRM == "PRODUCTION" ]; then
-				PS1="${R}[${BY}\${?}${R}] [ ${B}\w ${R}] ${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$R\t \u (at) \H ${ZZ}\$ "
+				PS1="${R}[${BY}\${?}${R}] [ ${BB}\w ${R}] ${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$R\t \u (at) \H ${ZZ}\$ "
 			else
-				PS1="${G}[${BY}\${?}${G}] [ ${B}\w ${G}] ${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$G\t \u (at) \H ${ZZ}\$ "
+				PS1="${G}[${BY}\${?}${G}] [ ${BB}\w ${G}] ${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${C}$SSHPRPT$BC \n$G\t \u (at) \H ${ZZ}\$ "
 			fi
 			;;
 		SIMPLE)
 			if [ $ENVRM == "PRODUCTION" ]; then
-				PS1="${R}[${BY}\${?}${R}] ${R}\u (at) \h${W}:${B}\w${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
+				PS1="${R}[${BY}\${?}${R}] ${R}\u (at) \h${W}:${BB}\w${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
 			else
-				PS1="${G}[${BY}\${?}${G}] ${G}\u (at) \h${W}:${B}\w${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
+				PS1="${G}[${BY}\${?}${G}] ${G}\u (at) \h${W}:${BB}\w${C}\$(__git_prompt) ${M}\$(prompt_rvm) ${ZZ}\$ "
 			fi
 			;;
   esac

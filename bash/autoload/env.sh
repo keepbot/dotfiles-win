@@ -9,6 +9,9 @@ export HISTSIZE=1000000
 export HISTFILESIZE=1000000
 PROMPT_COMMAND="history -a"
 
+# macOS Catalina: Suppress zsh warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Append to the history file, don't overwrite it
 shopt -s histappend
 # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
@@ -97,7 +100,7 @@ case $platform in
         [[ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]] && \
             export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
         [[ -f "/usr/libexec/java_home" ]]           && export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
-        
+
         # Work
         [[ -d $HOME/thirdparty ]]                   && export THIRDPARTY_LOCATION=$HOME/thirdparty
         [[ -d $HOME/testdata ]]                     && export TESTDATA_LOCATION=$HOME/testdata

@@ -73,11 +73,13 @@ ln -sf "$DOTFILES_DIR/tmux.conf"            "$HOME/.tmux.conf"
 ln -sf "$DOTFILES_DIR/vim"                  "$HOME/.vim"
 ln -sf "$DOTFILES_DIR/vimrc"                "$HOME/.vimrc"
 
-kernel=$(cat /proc/version_signature)
-kernelWSL="Microsoft"
-if [[ "${kernel}" =~ "${kernelWSL}" ]]; then
-	sudo rm -rf "/etc/wsl.conf"               2> /dev/null
-	sudo ln -sf "$DOTFILES_DIR/data/wsl.conf" "/etc/wsl.conf"
+if [ -f /proc/version ]; then
+    kernel=$(cat /proc/version_signature)
+    kernelWSL="Microsoft"
+    if [[ "${kernel}" =~ "${kernelWSL}" ]]; then
+    	sudo rm -rf "/etc/wsl.conf"               2> /dev/null
+    	sudo ln -sf "$DOTFILES_DIR/data/wsl.conf" "/etc/wsl.conf"
+    fi
 fi
 ln -sf "$DOTFILES_DIR/bin-nix"              "$HOME/.bin"
 
