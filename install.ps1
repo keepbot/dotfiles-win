@@ -68,6 +68,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
     $candies = @(
         "7zip.install"                      # Archive manager
         "adobereader"                       # PDF reader
+        "audacity"                          # Audio editor (oficial site preffered)
         "awscli"                            # Command line tools for AWS
         # "azure-cli"                       # Command line tools for Azure
         # mkdir $env:SystemRoot\System32\Drivers\etc\
