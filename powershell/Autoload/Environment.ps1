@@ -227,6 +227,9 @@ function Set-Env {
     if ($env:QTDIR) {
         $system_path += ";$env:QTDIR\bin"
     }
+    if ($env:SQUISH_PATH) {
+        $system_path += ";$env:SQUISH_PATH"
+    }
     $system_path += ";$env:PathsApp"
     $system_path += ";$env:PathsSys"
     [Environment]::SetEnvironmentVariable("PATH", "$system_path", "Machine")
