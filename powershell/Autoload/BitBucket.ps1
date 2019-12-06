@@ -28,6 +28,7 @@ function Get-BitbucketOAuthToken {
     $Secret     = $(Get-Content $SecretFile -First 2)[-1]
 
     $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $Client_id,$Secret)))
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     Invoke-RestMethod -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Uri $UriToken -Method Post -Body @{grant_type='client_credentials'}
 }
 
@@ -46,6 +47,7 @@ function Invoke-BitbucketAPI-Simple {
 
     };
     Write-Host "Request URI: https://api.bitbucket.org/$APIVersion/$Request" -ForegroundColor Yellow
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     $Response = Invoke-RestMethod -Headers $Headers -Uri "https://api.bitbucket.org/$APIVersion/$Request" -Method $Method
     return $Response
 }
@@ -61,6 +63,7 @@ function Invoke-BitbucketAPI {
     )
     $Token = Get-BitbucketOAuthToken
     Write-Host "Request URI: https://api.bitbucket.org/$APIVersion/$UriSuffix$Type$RequestPath" -ForegroundColor Yellow
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     $Response = Invoke-RestMethod -Headers @{Authorization=("Bearer {0}" -f $Token.access_token)} -Uri "https://api.bitbucket.org/$APIVersion/$UriSuffix$Type$RequestPath" -Method $Method
     return $Response
 }
@@ -73,6 +76,7 @@ function Invoke-BitbucketURI {
         [string]$Method = 'GET'
     )
     $Token = Get-BitbucketOAuthToken
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     $Response = Invoke-RestMethod -Headers @{Authorization=("Bearer {0}" -f $Token.access_token)} -Uri "$URI" -Method $Method
     return $Response
 }
