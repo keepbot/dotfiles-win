@@ -49,7 +49,7 @@ alias  wst='cd ~/workspace/tmp'
 # Ormco Shortcuts`
 alias  wso='cd ~/workspace/ormco'
 alias wsoc='cd ~/workspace/ormco/common'
-alias wsoc='cd ~/workspace/ormco/common/orthoplatform'
+alias wsoo='cd ~/workspace/ormco/common/orthoplatform'
 alias wsod='cd ~/workspace/ormco/devops'
 
 alias  crlf_fix='find ./ -type f -exec dos2unix {} \;'
