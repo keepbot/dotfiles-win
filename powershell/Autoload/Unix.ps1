@@ -35,3 +35,5 @@ ${function:lsf}         = { Get-ChildItem . | ForEach-Object{ $_.Name } }
 
 # WSL
 ${function:bash-wsl}    = { conemu-cyg-64.exe --wsl -cur_console:h0 }
+
+Set-Alias wc Measure-Object
