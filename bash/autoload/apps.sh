@@ -1,0 +1,2 @@
+alias icode="code-insiders"
+

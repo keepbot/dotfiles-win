@@ -15,3 +15,7 @@ bamboo-get-ami() {
   curl -v --silent https://maven.atlassian.com/content/groups/public/com/atlassian/bamboo/atlassian-bamboo-elastic-image/$ELASTIC_VERSION/atlassian-bamboo-elastic-image-$ELASTIC_VERSION.ami 2>&1 | grep image. | grep $2 | sort
   echo "REMEMBER: Use the image from the appropriate region!"
 }
+
+atlas-get-cidrs() {
+  curl --silent https://ip-ranges.atlassian.com/ | jq '.items'
+}
