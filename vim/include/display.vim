@@ -17,8 +17,8 @@ else
 endif
 
 " Background
-"set background=dark
-set background=light
+set background=dark
+" set background=light
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
