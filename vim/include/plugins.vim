@@ -364,8 +364,14 @@ if 'VIRTUAL_ENV' in os.environ:
     execfile(activate_this, dict(__file__=activate_this))
 EOF
 let python_highlight_all=1
-command! Python2Completer :YcmCompleter RestartServer /usr/bin/python2
-command! Python3Completer :YcmCompleter RestartServer /usr/bin/python3
+
+if (has('macunix'))
+    command! Python2Completer :YcmCompleter RestartServer /usr/local/bin/python2
+    command! Python3Completer :YcmCompleter RestartServer /usr/local/bin/python3
+else
+    command! Python2Completer :YcmCompleter RestartServer /usr/bin/python2
+    command! Python3Completer :YcmCompleter RestartServer /usr/bin/python3
+endif
 
 " Tab completion
 " will insert tab at beginning of line,
