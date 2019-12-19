@@ -172,7 +172,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         # "pgina"                           # Pluggable, open source credential provider (and GINA) replacement
         "putty"                             # SSH Client
         #"python2"                          # Use with '--params /InstallDir:C:\tools\python2"'
-        #"python3"                          # Use with '--params /InstallDir:C:\tools\python3"'
+        #"python3"                          # Use 'choco install python3 --params /InstallDir:C:\tools\python3 --version 3.7.5'
         "qbittorrent"                       # Torrent Downloader
         # "qtcreator"                       # Use Native QT installer instead
         "rdcman"                            # Remote Desktop Connection Manager
