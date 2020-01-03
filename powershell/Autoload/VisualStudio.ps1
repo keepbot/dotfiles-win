@@ -358,7 +358,6 @@ function Set-VC-Vars-All {
     }
 }
 
-
 if ($ENV:VSDevEnv){
     ${function:vs}              = { dev; devenv @args }
     ${function:vsix}            = { dev; VSIXInstaller.exe @args }
