@@ -132,6 +132,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "kubernetes-cli"                    # Kubernetes command line tools
         "kubernetes-helm"                   # The package manager for Kubernetes
         "ldapadmin"                         # LDAP Explorer
+        "lein"                              # Leiningen - Clojure Project Automation
         "librecad"                          # CAD software
         "libreoffice-fresh"                 # Office package
         "llvm"                              # LLVM compiler collection
