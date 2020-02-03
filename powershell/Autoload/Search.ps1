@@ -88,6 +88,6 @@ ${function:tail} = {
 
 # Which and where
 function which($name) { Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition }
-function Show-Command($name) { Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition }
+Set-Alias Show-Command which
 New-Alias which1 Get-Command -Force
 ${function:which2} = { Get-Command @args -All | Format-Table CommandType, Name, Definition }
