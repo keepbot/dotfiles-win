@@ -3,7 +3,7 @@
 alias    di='docker images'
 alias    dc='docker ps -a'
 alias   dcl='docker rm $(docker ps -aqf status=exited)'
-alias  dcla='docker rm $(docker ps -aqf status=exited) && docker rmi $(docker images -qf dangling=true) && docker volume rm $(docker volume ls -qf dangling=true)'
+alias  dcla='docker rm $(docker ps -aqf status=exited) || docker rmi $(docker images -qf dangling=true) || docker volume rm $(docker volume ls -qf dangling=true)'
 alias  dira='docker rmi $(docker images -q)'
 alias diraf='docker rmi -f $(docker images -q)'
 # inspect docker images
