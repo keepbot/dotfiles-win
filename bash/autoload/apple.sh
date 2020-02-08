@@ -1,10 +1,11 @@
 platform=`uname`
 if [ ! "${platform}" != "Darwin"  ]; then
-  alias  sign_check='codesign -dv --verbose=4'
-  alias   sign_code='codesign --force --verify --verbose --deep --sign --options=runtime'
+  alias sign_check='codesign -dv --verbose=4'
+  alias sign_check_v='codesign -vvv --deep --strict'
+  alias sign_code='codesign --force --verify --verbose --deep --sign --options=runtime'
 
-  alias   sign_prod='productsign --sign'
-  alias   sign_list='security find-identity'
+  alias sign_prod='productsign --sign'
+  alias sign_list='security find-identity'
   alias sign_verify='pkgutil --check-signature'
   
   ntz_list_providers () {
