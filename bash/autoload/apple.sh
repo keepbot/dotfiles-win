@@ -44,8 +44,6 @@ if [ ! "${platform}" != "Darwin"  ]; then
     xar -xf "${2}"
     cd $(basename "${2}")
     cat Payload | gunzip -dc |cpio -i
-
-    
   }
 
   repack_payload() {
