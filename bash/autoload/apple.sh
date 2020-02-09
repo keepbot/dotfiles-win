@@ -35,4 +35,35 @@ if [ ! "${platform}" != "Darwin"  ]; then
 	  fi
     xcrun altool --notarization-info ${3} -u "${1}" -p "${2}"
   }
+
+  unpack_pkg_payload () {
+    if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]; then
+		  echo "Usage: $0 <temp_folder> <path_to_pkg>"; echo; break
+	  fi
+    mkdir "${1}" && cd "${1}"
+    xar -xf "${2}"
+    cd $(basename "${2}")
+    cat Payload | gunzip -dc |cpio -i
+
+    
+  }
+
+  repack_payload() {
+    if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]; then
+		  echo "Usage: $0 <path_to_payload> <path_to_app>"; echo; break
+	  fi
+    base_dir=$(dirname "${1}")
+    rm "${base_dir}/Payload"
+    find "${2}" | cpio -o | gzip -c > "${1}"
+    mkbom "${2}" "${base_dir}/Bom"
+  }
+
+  repack_pkg() {
+    if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]; then
+		  echo "Usage: $0 <path_to_pkg_folder> <path_to_new_pkg>"; echo; break
+	  fi
+    rm -rf Foo.app
+    cd "${1}"
+    xar -cf "${2}"
+  }
 fi
