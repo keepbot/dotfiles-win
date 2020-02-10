@@ -75,7 +75,7 @@ if [ ! "${platform}" != "Darwin"  ]; then
       echo
 	  else
       cd "${1}"
-      xar -cf "${2}"
+      xar -cf "${2}" *
     fi
   }
 fi
