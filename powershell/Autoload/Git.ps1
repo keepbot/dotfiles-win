@@ -52,13 +52,16 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:GClean2}     = { while ((git diff-index HEAD --)) {git.exe reset --hard HEAD}; git.exe clean -d -f @args }
     ${function:git-review}  = { if ($args[0] -and -Not $args[1]) {git.exe push origin HEAD:refs/for/@args[0]} else {Write-Host "Wrong command!`nUsage: git-review <branch_name>"}}
     ${function:grw}         = { git-review }
-    ${function:git-home}    = { git config --local user.email "d.k.ivanov@live.com" }
-    ${function:git-work}    = { git config --local user.email "dmitriy.ivanov@ormco.com" }
     ${function:grmt}        = { git.exe tag --delete @args }
     ${function:grmto}       = { git.exe push --delete origin @args }
     ${function:gunsec}      = { git.exe -c http.sslVerify=false @args }
     ${function:gcb}         = { git.exe clone --single-branch --branch @args }
     ${function:gcrb}        = { git.exe clone --recurse-submodules --single-branch --branch @args }
+
+    ${function:git-home}    = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'd.k.ivanov@live.com' }
+    ${function:git-work}    = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'dmitriy.ivanov@ormco.com' }
+    ${function:git-builder} = { git config --local user.name 'DEN-ORMCO-MSK-DevOps'; git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com' }
+
     ${function:gprune} = {
         $CurrentBranch = $(cmd /c "git rev-parse --abbrev-ref HEAD")
         # Stash changes
