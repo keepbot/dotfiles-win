@@ -18,3 +18,5 @@ function Get-AtlassianCIDRs {
     $Responce = (Invoke-Webrequest https://ip-ranges.atlassian.com/).Content
     return ($Responce | ConvertFrom-Json).items.cidr
 }
+
+${function:ssh-bamboo-agent} = { ssh -i ~/.ssh/elasticbamboo.pk @args }
