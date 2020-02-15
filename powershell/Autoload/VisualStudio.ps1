@@ -359,12 +359,12 @@ function Set-VC-Vars-All {
 }
 
 if ($ENV:VSDevEnv){
-    ${function:vs}              = { dev; devenv @args }
+    ${function:vs}              = { if (-Not ${ENV:VCToolsVersion}) { dev }; devenv @args }
     ${function:vsix}            = { dev; VSIXInstaller.exe @args }
     # color picker: 11559f0c-c44f-4a26-98e7-f5015f07d691
     ${function:vsix_remove}     = { dev; VSIXInstaller.exe /u:@args }
 } else {
-    ${function:vs}              = { Set-VC-Vars-All; devenv @args }
+    ${function:vs}              = { if (-Not ${ENV:VCToolsVersion}) { Set-VC-Vars-All }; devenv @args }
     ${function:vsix}            = { Set-VC-Vars-All; VSIXInstaller.exe @args }
     # color picker: 11559f0c-c44f-4a26-98e7-f5015f07d691
     ${function:vsix_remove}     = { Set-VC-Vars-All; VSIXInstaller.exe /u:@args }
