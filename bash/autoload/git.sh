@@ -150,14 +150,18 @@ alias GClean="git reset --hard && git clean -d -x -f"
 alias GClean2="git reset --hard && git clean -d -f"
 alias grw="git review $1"
 alias grb="git push origin HEAD:refs/for/$1"
-alias git-home="git config --local user.name 'Dmitriy Ivanov' ;git config --local user.email 'd.k.ivanov@live.com'"
-alias git-work="git config --local user.name 'Dmitriy Ivanov' ;git config --local user.email 'dmitriy.ivanov@ormco.com'"
-alias git-builder="git config --local user.name 'DEN-ORMCO-MSK-DevOps' ;git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com'"
 alias grmt='git tag --delete'
 alias grmto='git push --delete origin'
 alias gabr='git branch -r | grep -v "\->" | while read remote; do git branch --track "${remote#origin/}" "$remote"; done'
 alias gcb='git clone --single-branch --branch'
 alias gcrb='git clone --recurse-submodules --single-branch --branch'
+
+alias gex='mono GitExtensions.exe browse'
+
+alias git-home="git config --local user.name 'Dmitriy Ivanov' ;git config --local user.email 'd.k.ivanov@live.com'"
+alias git-work="git config --local user.name 'Dmitriy Ivanov' ;git config --local user.email 'dmitriy.ivanov@ormco.com'"
+alias git-builder="git config --local user.name 'DEN-ORMCO-MSK-DevOps' ;git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com'"
+
 
 # Gitolite list repos
 alias ginfo='ssh gitolite@git info'

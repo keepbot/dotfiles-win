@@ -58,6 +58,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:gcb}         = { git.exe clone --single-branch --branch @args }
     ${function:gcrb}        = { git.exe clone --recurse-submodules --single-branch --branch @args }
 
+    ${function:gex}        = { GitExtensions.exe browse @args }
+
     ${function:git-home}    = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'd.k.ivanov@live.com' }
     ${function:git-work}    = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'dmitriy.ivanov@ormco.com' }
     ${function:git-builder} = { git config --local user.name 'DEN-ORMCO-MSK-DevOps'; git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com' }
