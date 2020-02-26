@@ -5,13 +5,13 @@
 # When given an argument, uses that for a message.
 # With no argument, opens an editor that also shows the diff (-v).
 gco() {
-	if [ -z "$1" ]; then
-		git commit -v
-	elif [ -z "$2" ]; then
-		git commit "$1"
-	else
-		git commit "$1" -m "$2"
-	fi
+    if [ -z "$1" ]; then
+        git commit -v
+    elif [ -z "$2" ]; then
+    git commit "$1"
+    else
+        git commit "$1" -m "$2"
+    fi
 }
 
 # "git commit all"
@@ -19,81 +19,81 @@ gco() {
 # When given an argument, uses that for a message.
 # With no argument, opens an editor that also shows the diff (-v).
 gca() {
-	git add --all && gco "$1"
+    git add --all && gco "$1"
 }
 
 # "git get"
 # Clones the given repo and then cd:s into that directory.
 gget() {
-	git clone "$1" && cd $( basename "$1" .git )
+    git clone "$1" && cd $( basename "$1" .git )
 }
 
 
 get_repo_with_target() {
-  if [ -z "$1" ] || [ $2 ]; then
-    echo "You should enter repo URI."
-    echo "Usage: get_repo_with_targe <repo_url>"
-    echo
-  else
-    scheme=$(python3 -c "from urllib.parse import urlparse; uri='${1}'; result = urlparse(uri); print(result.scheme)")
-    if [[ ${scheme} = "https" ]]; then
-      target=$(python3 -c "from urllib.parse import urlparse; import os.path; uri='${1}'; result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
+    if [ -z "$1" ] || [ $2 ]; then
+        echo "You should enter repo URI."
+        echo "Usage: get_repo_with_targe <repo_url>"
+        echo
     else
-      target=$(python3 -c "from urllib.parse import urlparse; import os.path; uri='${1}'; result = urlparse(uri); path = os.path.splitext(result.path.split(':', 1)[-1]); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
+        scheme=$(python3 -c "from urllib.parse import urlparse; uri='${1}'; result = urlparse(uri); print(result.scheme)")
+        if [[ ${scheme} = "https" ]]; then
+            target=$(python3 -c "from urllib.parse import urlparse; import os.path; uri='${1}'; result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
+        else
+            target=$(python3 -c "from urllib.parse import urlparse; import os.path; uri='${1}'; result = urlparse(uri); path = os.path.splitext(result.path.split(':', 1)[-1]); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))")
+        fi
+        git clone --recurse-submodules "${1}" "$target"
     fi
-    git clone --recurse-submodules "${1}" "$target"
-  fi
-	return 0
+    return 0
 }
 
 # Function to recursive clone repo from souurce URL to target direcrtory formated as <<repo_name>>-<<username>> (".git" - removed from path)
 gcsr() {
-	if [ -z "$1" ] || [ $2 ]; then
-		echo "You should enter repo URI."
-		echo "Usage: $0 <repo_url>"
-		echo
-	else
-		target=`python -c "from urlparse import urlparse; import os.path; uri='$1';result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))"`
-		git clone --recurse-submodules "${1}" "${target}"
-	fi
+    if [ -z "$1" ] || [ $2 ]; then
+        echo "You should enter repo URI."
+        echo "Usage: $0 <repo_url>"
+        echo
+    else
+        target=`python -c "from urlparse import urlparse; import os.path; uri='$1';result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))"`
+        git clone --recurse-submodules "${1}" "${target}"
+    fi
 }
 
-git-review() {
-	if [ -z "$1" ] || [ "$2" ]; then
-		echo "Wrong command!"
-		echo "Usage: $0 <branch_name>"
-		echo
-	else
-		git push origin HEAD:refs/for/${1}
-	fi
+gitreview() {
+    if [ -z "$1" ] || [ "$2" ]; then
+        echo "Wrong command!"
+        echo "Usage: $0 <branch_name>"
+        echo
+    else
+        git push origin HEAD:refs/for/${1}
+    fi
 }
 
 gprune() {
-  CurrentBranch=$(git rev-parse --abbrev-ref HEAD)
+    CurrentBranch=$(git rev-parse --abbrev-ref HEAD)
 
-  # Stash changes
-  git stash
+    # Stash changes
+    git stash
 
-  # Checkout master:
-  git checkout master
-  git fetch
+    # Checkout master:
+    git checkout master
+    git fetch
 
-  # Run garbage collector
-  git gc --prune=now
+    # Run garbage collector
+    git gc --prune=now
 
-  # Prune obsolete refs in 3 turns
-  git remote prune origin
-  git fetch --prune
-  git remote prune origin
-  git fetch --prune
-  git remote prune origin
-  git fetch --prune
+    # Prune obsolete refs in 3 turns
+    git remote prune origin
+    git fetch --prune
+    git remote prune origin
+    git fetch --prune
+    git remote prune origin
+    git fetch --prune
 
-  # Return to working branch
-  git checkout ${CurrentBranch}
+    # Return to working branch
+    git checkout ${CurrentBranch}
 
-  # Unstash work:
-  git stash pop
+    # Unstash work:
+    git stash pop
 }
 
 # Main
