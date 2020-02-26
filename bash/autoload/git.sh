@@ -47,7 +47,7 @@ get_repo_with_target() {
 }
 
 # Function to recursive clone repo from souurce URL to target direcrtory formated as <<repo_name>>-<<username>> (".git" - removed from path)
-gcsr () {
+gcsr() {
 	if [ -z "$1" ] || [ $2 ]; then
 		echo "You should enter repo URI."
 		echo "Usage: $0 <repo_url>"
