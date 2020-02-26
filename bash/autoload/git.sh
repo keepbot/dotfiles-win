@@ -173,7 +173,6 @@ alias gbc="git add -A && git rebase --continue"
 alias gbm="git fetch origin master && git rebase origin/master"
 
 # Code-Review
-alias git-review="git push origin HEAD:refs/for/$1"
 alias grw="git review $1"
 
 # Tags
