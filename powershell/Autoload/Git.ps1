@@ -1,65 +1,99 @@
 # Git:
 if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
+    # Main
+    ${function:g}           = { git.exe @args }
+    ${function:gunsec}      = { git.exe -c http.sslVerify=false @args }
+
+    # Logs
     ${function:gll}         = { git.exe log --pretty=format:"%h - %an, %ar : %s" @args }
     ${function:glL}         = { git.exe log --pretty=format:"%H - %an, %ar : %s" @args }
-    ${function:g}           = { git.exe @args }
+
+    # Clone
     ${function:gcr}         = { git.exe clone --recurse-submodules @args }
+    ${function:gcb}         = { git.exe clone --single-branch --branch @args }
+    ${function:gcrb}        = { git.exe clone --recurse-submodules --single-branch --branch @args }
+
+    # Look for satus or changes
     ${function:gs}          = { git.exe status @args }
+
     ${function:gw}          = { git.exe show @args }
     ${function:gw^}         = { git.exe show HEAD^ @args }
     ${function:gw^^}        = { git.exe show HEAD^^ @args }
     ${function:gw^^^}       = { git.exe show HEAD^^^ @args }
     ${function:gw^^^^}      = { git.exe show HEAD^^^^ @args }
     ${function:gw^^^^^}     = { git.exe show HEAD^^^^^ @args }
+
     ${function:gd}          = { git.exe diff HEAD @args } # What's changed? Both staged and unstaged.
     ${function:gdo}         = { git.exe diff --cached @args } # What's changed? Only staged (added) changes.
+
+    # Add and Commit
     ${function:gco}         = { if ($args) {git.exe commit -m @args} else {git.exe commit -v}} # "git commit only"
-    ${function:gca}         = { git.exe add --all; gco @args} # "git commit all"
     ${function:ga}          = { git.exe add @args }
+    ${function:gca}         = { git.exe add --all; gco @args} # "git commit all"
     ${function:gcv}         = { git.exe commit -v @args }
     ${function:gcof}        = { git.exe commit --no-verify -m @args }
     ${function:gcaf}        = { (git.exe add --all) -and (gcof @args) }
-    ${function:gcac}        = { gca Cleanup. @args }
-    ${function:gcoc}        = { gco Cleanup. @args }
-    ${function:gcaw}        = { gca Whitespace. @args }
-    ${function:gcow}        = { gco Whitespace. @args }
-    # ${function:gp}        = { git.exe push }  # Comment if you use Get-Property and use gpp insted
-    ${function:gpl}         = { git.exe pull @args }
-    ${function:gpls}        = { git.exe pull; git.exe submodule update }
-    ${function:gplp}        = { git.exe pull --rebase; git.exe push @args } # Can't pull because you forgot to track? Run this.
-    ${function:gpp}         = { git.exe push }
-    ${function:gppt}        = { git.exe push --tags}
-    ${function:gppu}        = { git.exe push -u @args }
-    ${function:gck}         = { git.exe checkout @args }
-    ${function:gb}          = { git.exe checkout -b @args }
-    ${function:got}         = { git.exe checkout - @args }
-    ${function:gom}         = { git.exe checkout master @args }
-    ${function:grb}         = { git.exe rebase -i origin/master @args }
-    ${function:gbr}         = { git.exe branch -d @args }
-    ${function:gbrf}        = { git.exe branch -D @args }
-    ${function:gbrr}        = { git.exe push origin --delete @args }
-    ${function:gbrrm}       = { git.exe branch -D @args; git.exe push origin --delete @args }
-    ${function:gcp}         = { git.exe cherry-pick @args }
     ${function:gam}         = { git.exe commit --amend @args }
     ${function:gamne}       = { git.exe commit --amend --no-edit @args }
     ${function:gamm}        = { git.exe add --all; git.exe commit --amend -C HEAD @args }
     ${function:gammf}       = { gamm --no-verify @args }
-    ${function:gba}         = { git.exe rebase --abort @args }
-    ${function:gbc}         = { git.exe add -A; git.exe rebase --continue @args }
-    ${function:gbm}         = { git.exe fetch origin master; git.exe rebase origin/master @args }
+
+    # Cleanup
+    ${function:gcac}        = { gca Cleanup. @args }
+    ${function:gcoc}        = { gco Cleanup. @args }
+    ${function:gcaw}        = { gca Whitespace. @args }
+    ${function:gcow}        = { gco Whitespace. @args }
     ${function:gfr}         = { git.exe fetch --all; git.exe reset --hard origin/master @args }
     ${function:GClean}      = { while ((git diff-index HEAD --)) {git.exe reset --hard HEAD}; git.exe clean -d -x -f @args }
     ${function:GClean2}     = { while ((git diff-index HEAD --)) {git.exe reset --hard HEAD}; git.exe clean -d -f @args }
+
+    # Pull
+    ${function:gpl}         = { git.exe pull @args }
+    ${function:gpls}        = { git.exe pull; git.exe submodule update }
+    ${function:gplp}        = { git.exe pull --rebase; git.exe push @args } # Can't pull because you forgot to track? Run this.
+
+    # Push
+    # ${function:gp}        = { git.exe push }  # Comment if you use Get-Property and use gpp insted
+    ${function:gpp}         = { git.exe push }
+    ${function:gppt}        = { git.exe push --tags}
+    ${function:gppu}        = { git.exe push -u @args }
+
+    # Checkout
+    ${function:gck}         = { git.exe checkout @args }
+    ${function:gb}          = { git.exe checkout -b @args }
+    ${function:got}         = { git.exe checkout - @args }
+    ${function:gom}         = { git.exe checkout master @args }
+
+    # Remove Branches
+    ${function:gbr}         = { git.exe branch -d @args }
+    ${function:gbrf}        = { git.exe branch -D @args }
+    ${function:gbrr}        = { git.exe push origin --delete @args }
+    ${function:gbrrm}       = { git.exe branch -D @args; git.exe push origin --delete @args }
+
+    # Rebase
+    ${function:gcp}         = { git.exe cherry-pick @args }
+    ${function:grb}         = { git.exe rebase -i origin/master @args }
+    ${function:gba}         = { git.exe rebase --abort @args }
+    ${function:gbc}         = { git.exe add -A; git.exe rebase --continue @args }
+    ${function:gbm}         = { git.exe fetch origin master; git.exe rebase origin/master @args }
+
+    # Code-Review
     ${function:git-review}  = { if ($args[0] -and -Not $args[1]) {git.exe push origin HEAD:refs/for/@args[0]} else {Write-Host "Wrong command!`nUsage: git-review <branch_name>"}}
     ${function:grw}         = { git-review }
+
+    # Tags
     ${function:grmt}        = { git.exe tag --delete @args }
     ${function:grmto}       = { git.exe push --delete origin @args }
-    ${function:gunsec}      = { git.exe -c http.sslVerify=false @args }
-    ${function:gcb}         = { git.exe clone --single-branch --branch @args }
-    ${function:gcrb}        = { git.exe clone --recurse-submodules --single-branch --branch @args }
 
-    ${function:gex}        = { GitExtensions.exe browse @args }
+    # Submodules
+    ${function:gsu}         = { git.exe submodule update --recursive --remote @args }
+    ${function:gsu2}        = { git.exe submodule foreach git pull origin master @args }
 
+    # Misc
+    ${function:gex}         = { GitExtensions.exe browse @args }
+    ${function:ginfo}       = { ssh.exe gitolite@git info @args }   # Gitolite list repos
+
+    # Accounts
     ${function:git-home}    = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'd.k.ivanov@live.com' }
     ${function:git-work}    = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'dmitriy.ivanov@ormco.com' }
     ${function:git-builder} = { git config --local user.name 'DEN-ORMCO-MSK-DevOps'; git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com' }
@@ -85,10 +119,6 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         # Unstash work:
         cmd /c "git stash pop"
     }
-
-    # Update
-    ${function:gsu}         = { git.exe submodule update --recursive --remote @args }
-    ${function:gsu2}        = { git.exe submodule foreach git pull origin master @args }
 
     function ugr {
         param (
@@ -199,7 +229,7 @@ function Set-GitVerbosity {
     }
 }
 
-function Git-DiffBranches {
+function Show-Diff_Of_Git_Branches {
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory=$true)]
@@ -214,6 +244,3 @@ function Git-DiffBranches {
     git diff Branch1..Branch2
 }
 
-if (Get-Command ssh.exe -ErrorAction SilentlyContinue | Test-Path) {
-    ${function:ginfo} = { ssh.exe gitolite@git info @args }
-}
