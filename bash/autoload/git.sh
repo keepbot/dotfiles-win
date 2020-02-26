@@ -98,7 +98,7 @@ gprune() {
 
 # Main
 alias g="git"
-alias gunsec"git -c http.sslVerify=false"
+alias gunsec="git -c http.sslVerify=false"
 
  # Logs
 alias gll='git log --pretty=format:"%h - %an, %ar : %s"'
