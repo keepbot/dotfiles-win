@@ -131,6 +131,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "krita"                             # Painting program
         "kubernetes-cli"                    # Kubernetes command line tools
         "kubernetes-helm"                   # The package manager for Kubernetes
+        "kubernetes-kompose"                # A conversion tool to go from Docker Compose to Kubernetes
         "ldapadmin"                         # LDAP Explorer
         "lein"                              # Leiningen - Clojure Project Automation
         "librecad"                          # CAD software
