@@ -10,6 +10,7 @@
 [core]
 	autocrlf = true
 	editor = \"C:/Program Files (x86)/GitExtensions/GitExtensions.exe\" fileeditor
+    #editor = "C:/tools/vim/vim.exe"
 [merge]
 	tool = kdiff3
 [mergetool "kdiff3"]

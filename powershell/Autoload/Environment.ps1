@@ -1,8 +1,9 @@
 #!/usr/bin/env powershell
 
-# Make vim the default editor
-# $Env:EDITOR = "gvim --nofork"
-$Env:EDITOR = "vim --nofork"
+# Make vim the default editor\
+$Env:VISUAL = "vim --nofork"
+# $Env:VISUAL = "gvim --nofork"
+$Env:EDITOR = "${Env:VISUAL}"
 $Env:GIT_EDITOR = $Env:EDITOR
 # Set-Alias vim gvim
 
@@ -53,7 +54,7 @@ function Initialize-Paths-APP {
         "C:\Program Files (x86)\GitExtensions\"
         "C:\Program Files\KDiff3"
         "C:\Program Files\KDiff3\bin"
-        "C:\tools\vim\vim81"
+        "C:\tools\vim"
         "C:\Program Files\OpenSSL\bin"
         "C:\Program Files\OpenSSH-Win64"
         "C:\Program Files\OpenVPN\bin"

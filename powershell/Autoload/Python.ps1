@@ -30,12 +30,6 @@ if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path) {
 
 function Get-PyList {
     $serpents = @(
-        'C:\tools\python3'
-        'C:\tools\python3_x86'
-        'C:\tools\python2'
-        'C:\tools\python2_x86'
-        'C:\tools\miniconda3'
-        'C:\tools\miniconda2'
         'C:\Python38'
         'C:\Python37'
         'C:\Python36'
@@ -51,6 +45,12 @@ function Get-PyList {
         "$env:LOCALAPPDATA\Programs\Python\Python27"
         "$env:LOCALAPPDATA\Programs\Python\Python26"
         "$env:LOCALAPPDATA\Programs\Python\Python25"
+        'C:\tools\python3'
+        'C:\tools\python3_x86'
+        'C:\tools\python2'
+        'C:\tools\python2_x86'
+        'C:\tools\miniconda3'
+        'C:\tools\miniconda2'
     )
     return $serpents
 }
