@@ -1,8 +1,8 @@
 #!/usr/bin/env powershell
 
 # Make vim the default editor\
-$Env:VISUAL = "vim --nofork"
-# $Env:VISUAL = "gvim --nofork"
+# $Env:VISUAL = "vim --nofork"
+$Env:VISUAL = "gvim --nofork"
 $Env:EDITOR = "${Env:VISUAL}"
 $Env:GIT_EDITOR = $Env:EDITOR
 # Set-Alias vim gvim
