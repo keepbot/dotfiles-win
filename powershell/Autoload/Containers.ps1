@@ -11,6 +11,10 @@ if (Get-Command docker.exe -ErrorAction SilentlyContinue | Test-Path)
     }
     ${function:dira} = { docker.exe rmi $(docker images -q) }
     ${function:diraf} = { docker.exe rmi -f $(docker images -q) }
+
+    # Rewrite entry point to shell
+    ${function:desh} = { docker.exe run --rm -it --entrypoint /bin/sh @args }
+
     # inspect docker images
     ${function:dc_trace_cmd} = {
         ${parent}= $(docker.exe inspect -f '{{ .Parent }}' $args[0])
