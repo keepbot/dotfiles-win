@@ -349,21 +349,21 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 " else
 "     command! -nargs=1 Py py <args>
 " endif
-" Py << EOF
-" import os
-" import sys
-" if 'VIRTUAL_ENV' in os.environ:
-"   project_base_dir = os.environ['VIRTUAL_ENV']
-"   if os.name == 'nt':
-"     activate_this = os.path.join(project_base_dir, 'Scripts\\activate_this.py')
-"   else:
-"     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"   if sys.version_info >= (3, 0):
-"     exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
-"   else:
-"     execfile(activate_this, dict(__file__=activate_this))
-" EOF
-" let python_highlight_all=1
+py3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  if os.name == 'nt':
+    activate_this = os.path.join(project_base_dir, 'Scripts\\activate_this.py')
+  else:
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  if sys.version_info >= (3, 0):
+    exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
+  else:
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+let python_highlight_all=1
 
 if (has('macunix'))
     command! Python2Completer :YcmCompleter RestartServer /usr/local/bin/python2
