@@ -39,10 +39,10 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:gammf}       = { gamm --no-verify @args }
 
     # Cleanup
-    ${function:gcac}        = { gca Cleanup. @args }
     ${function:gcoc}        = { gco Cleanup. @args }
-    ${function:gcaw}        = { gca Whitespace. @args }
+    ${function:gcac}        = { gca Cleanup. @args }
     ${function:gcow}        = { gco Whitespace. @args }
+    ${function:gcaw}        = { gca Whitespace. @args }
     ${function:gfr}         = { git.exe fetch --all; git.exe reset --hard origin/master @args }
     ${function:GClean}      = { while ((git diff-index HEAD --)) {git.exe reset --hard HEAD}; git.exe clean -d -x -f @args }
     ${function:GClean2}     = { while ((git diff-index HEAD --)) {git.exe reset --hard HEAD}; git.exe clean -d -f @args }
