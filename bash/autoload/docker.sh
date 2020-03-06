@@ -7,6 +7,8 @@ alias  dcla='docker rm $(docker ps -aqf status=exited) || docker rmi $(docker im
 alias  dira='docker rmi $(docker images -q)'
 alias diraf='docker rmi -f $(docker images -q)'
 
+# Run docker container in interactive mode
+alias dri='docker.exe run --rm -it'
 # Rewrite entry point to shell
 alias desh='docker run --rm -it --entrypoint /bin/sh'
 

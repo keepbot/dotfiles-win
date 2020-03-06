@@ -12,6 +12,8 @@ if (Get-Command docker.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:dira} = { docker.exe rmi $(docker images -q) }
     ${function:diraf} = { docker.exe rmi -f $(docker images -q) }
 
+    # Run docker container in interactive mode
+    ${function:dri} = { docker.exe run --rm -it @args }
     # Rewrite entry point to shell
     ${function:desh} = { docker.exe run --rm -it --entrypoint /bin/sh @args }
 
