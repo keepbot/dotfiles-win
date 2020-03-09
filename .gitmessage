@@ -5,3 +5,39 @@
 # >> Body of git message (72-75)
 # >> Footer: References: #1, #4, and #2 || Fix: #1 || Closes: #1 and #2
 # >> Footer: Links: https://github.com/d-k-ivanov/dotfiles/issues/XXX
+#
+# ** Play Hard: EMOJI -> just in case **
+# :white_circle:              - init
+# :new:heavy_plus_sign:       - new, add, feat, create
+# :leaves:                    - mongodb
+# :hammer:wrench:             - fix
+# :bug:ant:beetle:honeybee:   - bugs
+# :closed_book:book:pencil:   - docs, readme
+# :art:                       - art, style
+# :recycle:                   - refactoring
+# :arrow_up:                  - update
+# :arrow_down:                - downgrade
+# :bulb:thought_balloon:      - TODO's
+# :copyright:                 - dealing with licenses
+# :hankey:                    - if code looks like peace of shit
+# :key:lock:                  - security
+# :twisted_rightwards_arrows: - move
+# :x:fire:                    - remove, delete, clean
+# :apple:                     - apple
+# :penguin:                   - linux
+# :white_medium_square:       - windows
+# :arrows_clockwise:          - chore, routine
+# :whale:whale2               - docker
+# :non-potable_water:         - memory leaks
+# :ballot_box_with_check:     - test
+# :white_check_mark:ok:       - done
+# :cloud:                     - aws, gcp, azure, cloud
+# :computer:                  - system, sys
+# :dash:horse_racing:         - performance
+# :globe_with_meridians:      - internet
+# :package:                   - package
+# :paperclip:                 - attachment, file
+# :abcd:construction_worker:  - ci/cd
+# :black_nib:pencil2:         - modify, change
+# :bangbang:interrobang:      - misc (try to avoid)
+# :id:soon:speech_balloon:alien:
