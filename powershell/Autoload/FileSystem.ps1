@@ -27,6 +27,7 @@ ${function:desk}    = { Set-Location ~\Desktop                  }
 ${function:docs}    = { Set-Location ~\Documents                }
 ${function:down}    = { Set-Location ~\Downloads                }
 ${function:ws}      = { Set-Location ~\workspace                }
+${function:wsm}     = { Set-Location ~\workspace\misc           }
 ${function:wsmy}    = { Set-Location ~\workspace\my             }
 ${function:wsdf}    = { Set-Location ~\workspace\my\dotfiles    }
 ${function:wst}     = { Set-Location ~\workspace\tmp            }
