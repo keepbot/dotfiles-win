@@ -30,10 +30,13 @@ case $platform in
 		ls='ls --color=auto'
 		;;
 esac
-alias    l='ls -CFh --group-directories-first'
-alias   la='ls -alh --group-directories-first'
-alias   ll='ls -alFh --group-directories-first'
-alias dirs="ls -l | grep ^d"
+alias     l='ls -CFh --group-directories-first'
+alias    la='ls -alh --group-directories-first'
+alias    ll='ls -alFh --group-directories-first'
+alias   fls="ls -l | grep -v ^d"
+alias  flsa="ls -la | grep -v ^d"
+alias  dirs="ls -l | grep ^d"
+alias dirsa="ls -la | grep ^d"
 
 # Navigation Shortcuts
 alias drop='cd ~/Dropbox'
