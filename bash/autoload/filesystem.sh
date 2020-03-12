@@ -12,35 +12,41 @@ alias cdd='cd -'  # back to last directory
 
 # Create a new directory and enter it
 md() {
-	mkdir -p "$@" && cd "$@"
+    mkdir -p "$@" && cd "$@"
 }
 
 platform=`uname`
-case $platform in
-	Linux )
-		alias ls='ls --color=auto'
-		;;
-	Darwin )
-		alias ls='gls --color=auto'
-		;;
-	FreeBSD )
-		alias ls='ls -G'
-		;;
-	MSYS_NT-10.0 )
-		ls='ls --color=auto'
-		;;
+case ${platform} in
+    Linux )
+        alias ls='ls --color=auto '
+        ;;
+    Darwin )
+        alias ls='gls --color=auto '
+        ;;
+    FreeBSD )
+        alias ls='ls -G '
+        ;;
+    MSYS_NT-10.0 )
+        alias ls='ls --color=auto '
+        ;;
 esac
-alias     l='ls -CFh --group-directories-first'
-alias    la='ls -alh --group-directories-first'
-alias    ll='ls -alFh --group-directories-first'
 
-f() {
-	find . -name "$1"
+alias l='ls -CFh --group-directories-first '
+alias la='ls -alh --group-directories-first '
+alias ll='ls -alFh --group-directories-first '
+
+fls() {
+    ls -l  "${@}" | grep -v ^d
 }
-  fls() { ls -l  "${@}" | grep -v ^d }
- flsa() { ls -la "${@}" | grep -v ^d }
- dirs() { ls -l  "${@}" | grep ^d    }
-dirsa() { ls -la "${@}" | grep ^d    }
+flsa() {
+    ls -la "${@}" | grep -v ^d
+}
+dirs() {
+    ls -l  "${@}" | grep ^d
+}
+dirsa() {
+    ls -la "${@}" | grep ^d
+}
 
 # Navigation Shortcuts
 alias drop='cd ~/Dropbox'
@@ -74,17 +80,17 @@ alias mmn="mount|column -t"
 
 # find shorthand
 f() {
-	find . -name "$1"
+    find . -name "$1"
 }
 
 # List files in current directory and replace spaces with underscores
 lsD() {
-  origIFS="${IFS}"
-	IFS=''
-	for str in `find . -maxdepth 1 -type f -name "* *" |sed 's#.*/##'`; do
-		echo ${str// /_}
-	done
-  IFS="${origIFS}"
+    origIFS="${IFS}"
+        IFS=''
+        for str in `find . -maxdepth 1 -type f -name "* *" |sed 's#.*/##'`; do
+            echo ${str// /_}
+        done
+    IFS="${origIFS}"
 }
 
 find-rootfs() {
@@ -107,3 +113,4 @@ get-file-vars() {
     echo "Filename:     ${filename%.*}"
     echo "Extention:    ${filename##*.}"
 }
+
