@@ -63,12 +63,13 @@ function Initialize-Paths-APP {
         "C:\Program Files\CMake\bin"
         "C:\Program Files\LLVM\bin"
         "C:\Program Files\BinDiff\bin"
-        "${Env:M2_HOME}/bin"
+        "${Env:M2_HOME}\bin"
         "C:\tools\vcpkg"
         "C:\boost\dist\bin"
         "C:\Go\bin"
         "C:\Program Files\Rust stable MSVC 1.33\bin"
         "C:\Program Files\Rust stable MSVC 1.32\bin"
+        "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.8.3\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.8.1\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.4\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.2\bin"
@@ -91,8 +92,6 @@ function Initialize-Paths-APP {
         "C:\Program Files (x86)\Yarn\bin"
         "C:\Program Files\Mercurial"
         "C:\Program Files (x86)\Subversion\bin"
-        "C:\tools\ruby26\bin"
-        "C:\tools\ruby25\bin"
         "C:\tools\cmdermini"
         "C:\tools\cmdermini\bin"
         "C:\tools\cmdermini\vendor\conemu-maximus5\ConEmu"
@@ -215,6 +214,9 @@ function Set-Env {
     if ($env:PYTHON_PATH) {
         $system_path += ";$env:PYTHON_PATH\Scripts"
         $system_path += ";$env:PYTHON_PATH"
+    }
+    if ($env:RUBY_PATH) {
+        $system_path += ";$env:RUBY_PATH"
     }
     if ($env:JAVA_HOME) {
         $system_path += ";$env:JAVA_HOME\bin"

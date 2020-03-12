@@ -199,6 +199,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "tftpd32"                           # TFTP server
         "tightvnc"                          # VNC server and client
         "tor-browser"                       # TOR
+        "tree"                              # List contents of directories in a tree-like format
         "vagrant-manager"                   # VM Manager
         "vagrant"                           # VM and CLoud Creator
         "vcxsrv"                            # X server for Windows
