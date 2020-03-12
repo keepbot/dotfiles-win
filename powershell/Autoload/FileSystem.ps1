@@ -89,9 +89,9 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
     # List all files in long format, including hidden files
     ${function:la}      = { ls -alh @args }
     ${function:ll}      = { ls -alFh @args }
-    ${function:fls}     = { ls -l | busybox.exe grep -v ^d }
+    ${function:fls}     = { ls -l  | busybox.exe grep -v ^d }
     ${function:flsa}    = { ls -la | busybox.exe grep -v ^d }
-    ${function:dirs}    = { ls -l | busybox.exe grep ^d }
+    ${function:dirs}    = { ls -l  | busybox.exe grep ^d }
     ${function:dirsa}   = { ls -la | busybox.exe grep ^d }
     # List only directories
     ${function:lsd} = { Get-ChildItem -Directory -Force @args }
