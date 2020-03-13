@@ -180,6 +180,9 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "reshack"                           # Resource Hacker
         "robo3t"                            # MongoDB exprlorer
         "ruby"                              # Ruby: cinst msys2 --params "/NoUpdate"; Update-SessionEnvironment; ridk install 2 3
+        # choco install -y ruby --version 2.3.3 --params "/NoPath '/InstallDir:C:\tools\ruby23\'"`
+        # choco install -y ruby --version 2.6.3 --params "/NoPath '/InstallDir:C:\tools\ruby26\'"`
+        # choco install -y ruby --version 2.7.0 --params "/NoPath '/InstallDir:C:\tools\ruby27\'"`
         # "ruby2.devkit"                      # Ruby
         "rufus"                             # Boot USB creation
         # "rust-ms"                         # Use rustup-init instead
