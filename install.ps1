@@ -79,7 +79,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         # "cabal"                             # Haskell package manager comes with ghc package
         "calibre"                           # Book manager and reader
         "ccleaner"                          # Garbage Collection for Windows
-        # "chefdk"                            # Chef SDK
+        "chefdk"                            # Chef SDK
         "choco-cleaner"                     # Garbage Collection for Chocolatey
         "chocolateygui"                     # GUI for Chocolate
         "cmake"                             # Build tools generator
