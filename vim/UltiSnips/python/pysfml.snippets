@@ -1,0 +1,35 @@
+
+snippet pysfml "PySFML base" b
+import sfml as sf
+
+# Create the window
+${1:window} = sf.RenderWindow(sf.VideoMode(${2:640}, ${3:480}), "${4:Game Title}")
+
+# start the game loop
+is_running = True
+while is_running:
+	# process events
+	for event in $1.events:
+		# close window: exit
+		if type(event) is sf.CloseEvent:
+			is_running = False
+
+	$1.clear() # clear screen
+
+	${0:# Code here}
+
+	$1.display() # update the window
+
+# Quitting
+$1.close()
+endsnippet
+
+snippet sfkey "SFML sf::Keyboard" i
+sf.Keyboard
+endsnippet
+
+snippet sfkeyp "SFML isKeyPressed" i
+sf.Keyboard.isKeyPressed(${1:sf.Keyboard.${2:Button}})
+endsnippet
+
+
