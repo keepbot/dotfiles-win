@@ -37,7 +37,7 @@ augroup Shebang
   autocmd BufNewFile *.php 0put =\"#!/usr/bin/env php\<nl>\"|$
   autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\"|$
   autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl># -*- coding: utf-8 -*-\<nl>\"|$
-  autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl># -*- coding: None -*-\<nl>\"|$
+  autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby -w\<nl># -*- coding: utf-8 -*-\<nl>\"|$
   autocmd BufNewFile *.sed 0put =\"#!/usr/bin/env sed\<nl>\"|$
   autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env sh\<nl>\"|$
   autocmd BufNewFile *.tex 0put =\"%&plain\<nl>\"|$
