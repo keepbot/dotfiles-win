@@ -23,6 +23,9 @@ function Get-Rubies {
         'C:\tools\ruby23\bin'
         'C:\tools\ruby22\bin'
         'C:\tools\ruby21\bin'
+        'C:\tools\jruby92\bin'
+        'C:\tools\jruby91\bin'
+        'C:\tools\jruby90\bin'
     )
     return $rubies
 }
@@ -47,7 +50,12 @@ function Find-Ruby {
 
     Write-Host "List of Ruby interpretators on this PC:"
     foreach($ruby in $rubies) {
-        $rubyBin = (Join-Path $ruby "ruby.exe")
+        if ($ruby -match "jruby") {
+            $rubyBin = (Join-Path $ruby "jruby.exe")
+        } else {
+            $rubyBin = (Join-Path $ruby "ruby.exe")
+        }
+
         if (Test-Path $rubyBin) {
             Write-Host "- [$($( & $rubyBin --version 2>&1) -replace '\D+(\d.\d.\d+)\D.*','$1')] -> $ruby"
         }
@@ -72,7 +80,11 @@ function Set-Ruby {
     $rubies = Get-Rubies
     $Versions = @()
     foreach($ruby in $rubies) {
-        $rubyBin = (Join-Path $ruby "ruby.exe")
+        if ($ruby -match "jruby") {
+            $rubyBin = (Join-Path $ruby "jruby.exe")
+        } else {
+            $rubyBin = (Join-Path $ruby "ruby.exe")
+        }
         if (Test-Path $rubyBin) {
             $Versions += $ruby
         }
