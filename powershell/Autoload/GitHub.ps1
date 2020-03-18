@@ -46,7 +46,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         Write-Host "Clonning all GH repos of $($args[0])"
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
             for ($i = 1; $i -lt 10; $i++) {
-            $repoList = Invoke-WebRequest -Uri "https://api.github.com/users/$($args[0])/repos?sort=pushed&per_page=1000" | ConvertFrom-Json
+            $repoList = Invoke-WebRequest -Uri "https://api.github.com/users/$($args[0])/repos?sort=pushed&per_page=100&page=${i}" | ConvertFrom-Json
             foreach($repo in $repoList.ssh_url){
                 git.exe clone $repo
             }
@@ -58,7 +58,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         Write-Host "Showing all GH repos of $($args[0])"
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
             for ($i = 1; $i -lt 10; $i++) {
-            $repoList = Invoke-WebRequest -Uri "https://api.github.com/users/$($args[0])/repos?sort=pushed&per_page=1000" | ConvertFrom-Json
+            $repoList = Invoke-WebRequest -Uri "https://api.github.com/users/$($args[0])/repos?sort=pushed&per_page=100&page=${i}" | ConvertFrom-Json
             foreach($repo in $repoList.ssh_url){
                 Write-Output $repo
             }
