@@ -59,6 +59,7 @@ function Initialize-Paths-APP {
         "C:\Program Files\OpenSSH-Win64"
         "C:\Program Files\OpenVPN\bin"
         "C:\Program Files\TAP-Windows\bin"
+        "C:\Program Files\Amazon\AWSCLIV2\"
         "C:\Program Files\Amazon\AWSCLI\bin"
         "C:\Program Files\CMake\bin"
         "C:\Program Files\LLVM\bin"
@@ -99,6 +100,7 @@ function Initialize-Paths-APP {
         # "C:\Qt\Qt5.12.1\5.12.1\msvc2017\bin"
         # "C:\Qt\Qt5.11.1\5.11.1\msvc2015\bin"
         # "C:\Qt\Qt5.9.5\5.9.5\msvc2015\bin"
+        "C:\Program Files\ImageMagick-7.0.10-Q16"
         "C:\Program Files\ImageMagick-7.0.8-Q16"
         "C:\Program Files\MiKTeX 2.9\miktex\bin\x64"
         "C:\Program Files\Pandoc"
@@ -123,6 +125,7 @@ function Initialize-Paths-APP {
         "C:\tools\wsl\kali"
         "C:\tools\wsl\ubuntu"
         "C:\tools\emsdk"
+        "C:\tools\BCURRAN3"
     )
 
     $final_path = "C:\tools\bin"

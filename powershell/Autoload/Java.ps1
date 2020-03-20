@@ -13,10 +13,19 @@ function Get-JavaList {
     .NOTES
         Written by: Dmitriy Ivanov
     #>
+    $javaBases = @(
+        'C:\Program Files\Java\'
+        'C:\Program Files\OpenJDK\'
+        'C:\Program Files (x86)\Java\'
+        'C:\Program Files (x86)\OpenJDK\'
+    )
 
     $javas = @()
-    $((Get-ChildItem 'C:\Program Files\Java\').FullName         | ForEach-Object { $javas += $_ })
-    $((Get-ChildItem 'C:\Program Files (x86)\Java\').FullName   | ForEach-Object { $javas += $_ })
+    foreach($javaBase in $javaBases) {
+        if (Test-Path $javaBase) {
+            $((Get-ChildItem $javaBase).FullName | ForEach-Object { $javas += $_ })
+        }
+    }
 
     $javasValidated = @()
     foreach($java in $javas) {
@@ -29,26 +38,8 @@ function Get-JavaList {
 }
 
 function Find-Java {
-    <#
-    .SYNOPSIS
-        List installed Java versions on current PC.
-    .DESCRIPTION
-        List installed Java versions on current PC.
-    .EXAMPLE
-        Find-Java
-    .INPUTS
-        None
-    .OUTPUTS
-        Java Kits Array
-    .NOTES
-        Written by: Dmitriy Ivanov
-    #>
-
     Write-Host "List of Java Kits on this PC:"
-    $javas = @()
-    $((Get-ChildItem 'C:\Program Files\Java\').Name         | ForEach-Object { $javas += "x64 -> $_" })
-    $((Get-ChildItem 'C:\Program Files (x86)\Java\').Name   | ForEach-Object { $javas += "x86 -> $_" })
-    return $javas
+    return Get-JavaList
 }
 
 
