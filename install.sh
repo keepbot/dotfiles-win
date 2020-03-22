@@ -73,7 +73,7 @@ ln -sf "$DOTFILES_DIR/tmux.conf"            "$HOME/.tmux.conf"
 ln -sf "$DOTFILES_DIR/vim"                  "$HOME/.vim"
 ln -sf "$DOTFILES_DIR/vimrc"                "$HOME/.vimrc"
 
-if [ -f /proc/version ]; then
+if [ -f /proc/version_signature ] ; then
     kernel=$(cat /proc/version_signature)
     kernelWSL="Microsoft"
     if [[ "${kernel}" =~ "${kernelWSL}" ]]; then
