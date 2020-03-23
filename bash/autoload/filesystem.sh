@@ -11,7 +11,7 @@ alias  ........='cd ../../../../../../..'
 alias cdd='cd -'  # back to last directory
 
 # Create a new directory and enter it
-md() {
+mkd() {
     mkdir -p "$@" && cd "$@"
 }
 
