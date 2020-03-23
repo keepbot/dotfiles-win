@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-umask 022
+umask 027
 
 export EDITOR='vim'
 # No duplicates in history.
