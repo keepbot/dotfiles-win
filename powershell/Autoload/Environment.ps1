@@ -79,6 +79,7 @@ function Initialize-Paths-APP {
         "C:\Strawberry\c\bin"
         "C:\Strawberry\perl\site\bin"
         "C:\Strawberry\perl\bin"
+        "C:\msys64"
         "C:\tools\msys64"
         "C:\tools\swig"
         "C:\Program Files\Microsoft VS Code\bin"
