@@ -25,6 +25,10 @@ au BufNewFile,BufRead *.py
       \set autoindent
       \set fileformat=unix
 
+" YAML file type
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
 augroup Shebang
   autocmd BufNewFile *.awk 0put =\"#!/usr/bin/awk -f\<nl>\"|$
   autocmd BufNewFile *.bash 0put =\"#!/usr/bin/env bash \<nl>\"|$
@@ -52,7 +56,7 @@ augroup END
 
 " cpp
 function! EnhanceCppSyntax()
-	syn match cppFuncDef "::\~\?\zs\h\w*\ze([^)]*\()\s*\(const\)\?\)\?$"
+    syn match cppFuncDef "::\~\?\zs\h\w*\ze([^)]*\()\s*\(const\)\?\)\?$"
 endfunction
 autocmd Syntax cpp call EnhanceCppSyntax()
 autocmd FileType c,cpp nmap <F5> "lYml[[kw"cye'l

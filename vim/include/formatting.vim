@@ -26,7 +26,7 @@ set shiftround
 " Replace tabs with spaces.
 set expandtab
 
-" Make tabs as wide as two spaces
+" Make tabs as wide as four spaces
 set tabstop=4
 
 " Make shift as wide as tabstop
