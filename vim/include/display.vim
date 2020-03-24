@@ -72,7 +72,7 @@ set incsearch
 
 " Disable toolbars
 if has("gui_running")
-	set guioptions-=T
+    set guioptions-=T
 endif
 
 " Optimize for fast terminal connections
