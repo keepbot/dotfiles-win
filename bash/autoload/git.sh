@@ -195,56 +195,56 @@ alias git-work="git config --local user.name 'Dmitriy Ivanov' ;git config --loca
 alias git-builder="git config --local user.name 'DEN-ORMCO-MSK-DevOps' ;git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com'"
 
 git-verbose() {
-  if [ -z "${1}" ] || [ ${3} ]; then
-    echo "ERROR: Wrong operation...."
-    echo "Usage: Git-Verbose <On|Off> [Category]"
-    echo "  Categories: curl, trace, pack, packet, perf"
-    echo
-    return 1
-  fi
+    if [ -z "${1}" ] || [ ${3} ]; then
+        echo "ERROR: Wrong operation...."
+        echo "Usage: Git-Verbose <On|Off> [Category]"
+        echo "  Categories: curl, trace, pack, packet, perf"
+        echo
+        return 1
+    fi
 
-  if [ -z "${2}" ]; then
-    category="all"
-  else
-    category="${2}"
-  fi
+    if [ -z "${2}" ]; then
+        category="all"
+    else
+        category="${2}"
+    fi
 
-  case $1 in
+    case $1 in
     On|on)
-      if [[ "${category}" == "curl" || "${category}" == "all" ]];then
-        export GIT_CURL_VERBOSE=1
-        export GIT_TRACE_CURL=1
-      fi
-      if [[ "${category}" == "trace" || "${category}" == "all" ]];then
-        export GIT_TRACE=1
-      fi
-      if [[ "${category}" == "pack" || "${category}" == "all" ]];then
-        export GIT_TRACE_PACK_ACCESS=1
-      fi
-      if [[ "${category}" == "packet" || "${category}" == "all" ]];then
-        export GIT_TRACE_PACKET=1
-      fi
-      if [[ "${category}" == "perf" || "${category}" == "all" ]];then
-        export GIT_TRACE_PERFORMANCE=1
-      fi
-      if [[ "${category}" == "setup" || "${category}" == "all" ]];then
-        export GIT_TRACE_SETUP=1
-      fi
-      ;;
+        if [[ "${category}" == "curl" || "${category}" == "all" ]];then
+            export GIT_CURL_VERBOSE=1
+            export GIT_TRACE_CURL=1
+        fi
+        if [[ "${category}" == "trace" || "${category}" == "all" ]];then
+            export GIT_TRACE=1
+        fi
+        if [[ "${category}" == "pack" || "${category}" == "all" ]];then
+            export GIT_TRACE_PACK_ACCESS=1
+        fi
+        if [[ "${category}" == "packet" || "${category}" == "all" ]];then
+            export GIT_TRACE_PACKET=1
+        fi
+        if [[ "${category}" == "perf" || "${category}" == "all" ]];then
+            export GIT_TRACE_PERFORMANCE=1
+        fi
+        if [[ "${category}" == "setup" || "${category}" == "all" ]];then
+            export GIT_TRACE_SETUP=1
+        fi
+        ;;
     Off|off)
-      export GIT_CURL_VERBOSE=0
-      export GIT_TRACE_CURL=0
-      export GIT_TRACE=0
-      export GIT_TRACE_PACK_ACCESS=0
-      export GIT_TRACE_PACKET=0
-      export GIT_TRACE_PERFORMANCE=0
-      export GIT_TRACE_SETUP=0
-      ;;
+        export GIT_CURL_VERBOSE=0
+        export GIT_TRACE_CURL=0
+        export GIT_TRACE=0
+        export GIT_TRACE_PACK_ACCESS=0
+        export GIT_TRACE_PACKET=0
+        export GIT_TRACE_PERFORMANCE=0
+        export GIT_TRACE_SETUP=0
+        ;;
     *)
-      echo "ERROR: Wrong operation...."
-      echo "Usage: Git-Verbose <On|Off> [Category]"
-      echo "  Categories: curl, trace, pack, packet, perf"
-      echo
-      ;;
-  esac
+        echo "ERROR: Wrong operation...."
+        echo "Usage: Git-Verbose <On|Off> [Category]"
+        echo "  Categories: curl, trace, pack, packet, perf"
+        echo
+        ;;
+    esac
 }
