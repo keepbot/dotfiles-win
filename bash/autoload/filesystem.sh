@@ -66,9 +66,13 @@ alias wsoc='cd ~/workspace/ormco/common'
 alias wsoo='cd ~/workspace/ormco/common/orthoplatform'
 alias wsod='cd ~/workspace/ormco/devops'
 
-alias  crlf_fix='find ./ -type f -exec dos2unix {} \;'
-alias   dir_fix='find ./ -type d -print -exec chmod 755 {} \;'
-alias files_fix='find ./ -type f -print -exec chmod 644 {} \;'
+alias crlf_fix='find ./ -type f -exec dos2unix {} \;'
+alias   fix_dir_755='find ./ -type d -print -exec chmod 755 {} \;'
+alias   fix_dir_750='find ./ -type d -print -exec chmod 750 {} \;'
+alias   fix_dir_700='find ./ -type d -print -exec chmod 700 {} \;'
+alias fix_files_644='find ./ -type f -print -exec chmod 644 {} \;'
+alias fix_files_640='find ./ -type f -print -exec chmod 640 {} \;'
+alias fix_files_600='find ./ -type f -print -exec chmod 600 {} \;'
 
 # File size
 alias fs="stat -c \"%s bytes\""
