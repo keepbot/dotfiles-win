@@ -74,6 +74,10 @@ alias fix_files_644='find ./ -type f -print -exec chmod 644 {} \;'
 alias fix_files_640='find ./ -type f -print -exec chmod 640 {} \;'
 alias fix_files_600='find ./ -type f -print -exec chmod 600 {} \;'
 
+alias fix_022='fix_dir_755 && fix_files_644'
+alias fix_027='fix_dir_750 && fix_files_640'
+alias fix_077='fix_dir_700 && fix_files_600'
+
 # File size
 alias fs="stat -c \"%s bytes\""
 
