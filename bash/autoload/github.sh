@@ -1,7 +1,39 @@
 #!/usr/bin/env bash
 
-# Clone all users repos in current folder
-gh_get_all_repos_https () {
+# TODO:
+get_gh_repos() {
+    # A POSIX variable
+    OPTIND=1         # Reset in case getopts has been used previously in the shell.
+
+    # Initialize our own variables:
+    output_file=""
+    verbose=0
+    show_help() {
+        echo "$0 -h -v -f"
+    }
+
+    while getopts "h?vf:" opt; do
+        case "$opt" in
+        h|\?)
+            show_help
+            return
+            ;;
+        v)  verbose=1
+            ;;
+        f)  output_file=$OPTARG
+            ;;
+        esac
+    done
+
+    shift $((OPTIND-1))
+
+    [ "${1:-}" = "--" ] && shift
+
+    echo "verbose=$verbose, output_file='$output_file', Leftovers: $@"
+}
+
+# Clone all users repos from GitHub
+gh_get_user_repos_https () {
     if [ -z "$1" ] || [ $2 ]; then
         echo "You should enter name of GitHub user."
         echo "Usage: gh_get_all_repos_https <github_username>"
@@ -14,7 +46,7 @@ gh_get_all_repos_https () {
     return 0
 }
 
-gh_get_all_repos_ssh () {
+gh_get_user_repos_ssh () {
     if [ -z "$1" ] || [ $2 ]; then
         echo "You should enter name of GitHub user."
         echo "Usage: gh_get_all_repos_ssh <github_username>"
@@ -27,8 +59,8 @@ gh_get_all_repos_ssh () {
     return 0
 }
 
-# Clone all users repos in current folder
-gh_list_all_repos_https () {
+# List users repos on GitHub
+gh_list_user_repos_https () {
     if [ -z "$1" ] || [ $2 ]; then
         echo "You should enter name of GitHub user."
         echo "Usage: gh_list_all_repos_https <github_username>"
@@ -41,7 +73,7 @@ gh_list_all_repos_https () {
     return 0
 }
 
-gh_list_all_repos_ssh () {
+gh_list_user_repos_ssh () {
     if [ -z "$1" ] || [ $2 ]; then
         echo "You should enter name of GitHub user."
         echo "Usage: gh_list_all_repos_ssh <github_username>"
