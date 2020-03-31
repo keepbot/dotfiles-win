@@ -250,13 +250,19 @@ function Set-Env {
     If (Test-Path "C:\Program Files\Git LFS")  {
         [Environment]::SetEnvironmentVariable("GIT_LFS_PATH", "C:\Program Files\Git LFS", "Machine")
     }
+
+    Set-WorkEnv
+
+    Reset-Environment
+}
+
+function Set-WorkEnv {
     If (Test-Path "$env:HOME\workspace\ormco\common\aligner-thirdparty")  {
         [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "$env:HOME\workspace\ormco\common\aligner-thirdparty", "Machine")
     }
     If (Test-Path "$env:HOME\workspace\ormco\aligner\testdataaligner")  {
         [Environment]::SetEnvironmentVariable("TESTDATA_LOCATION", "$env:HOME\workspace\ormco\aligner\testdataaligner", "Machine")
     }
-    Reset-Environment
 }
 
 # Set a permanent Environment variable, and reload it into $env
