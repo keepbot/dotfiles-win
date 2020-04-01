@@ -160,6 +160,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "nugetpackageexplorer"              # NuGet Package Explorer
         "octopustools"                      # Automated release management tool
         "ollydbg"                           # Olly Debugger
+        "openshot"                          # OpenShot Video Editor
         "openssh"                           # OpenSSH
         "openssl.light"                     # OpenSSL
         "openvpn"                           # VPN Client
@@ -212,6 +213,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         # "vim"                             # Text editor: should be installed manually to cover python 3.6 support
         "whatsapp"                          # Messanger
         "wget"                              # HTTP/WEB Downloader
+        "wifiinfoview"                      # WiFi Scanner for Windows 7/8/Vista
         "wincdemu"                          # Virtual CD
         "windirstat"                        # Files and Forlders statistics
         "windjview"                         # DJVU viewer
