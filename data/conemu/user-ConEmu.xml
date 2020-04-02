@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2019-11-29 12:50:15" build="180626">
+		<key name=".Vanilla" modified="2020-04-02 03:10:20" build="191012">
 			<value name="ColorTable00" type="dword" data="00282828"/>
 			<value name="ColorTable01" type="dword" data="00758392"/>
 			<value name="ColorTable02" type="dword" data="001a9798"/>
@@ -502,11 +502,11 @@
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="Flags" type="dword" data="00000000"/>
 				</key>
-				<key name="Task3" modified="2019-02-01 02:24:09" build="180528">
-					<value name="Name" type="string" data="{Bash::WSL}"/>
+				<key name="Task3" modified="2020-04-02 03:11:45" build="191012">
+					<value name="Name" type="string" data="{Bash::Ubuntu}"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl -C~ -cur_console:p:n:m:"":t:Ubuntu'/>
+					<value name="Cmd1" type="string" data='ubuntu.exe -cur_console:p:n:m:"":t:Ubuntu'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Flags" type="dword" data="00000004"/>
@@ -530,31 +530,31 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task6" modified="2019-10-23 16:43:18" build="180626">
-					<value name="Name" type="string" data="{Bash::Kali}"/>
+				<key name="Task6" modified="2020-04-02 03:10:20" build="191012">
+					<value name="Name" type="string" data="{Bash::WSL}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl --distro-guid={b5c0c847-216a-4c15-a9b8-5dcfaf92fa4a} -C~ -cur_console:p:n:m:"":t:Kali'/>
+					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl -C~ -cur_console:p:n:m:"":t:Ubuntu'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Cmd2" type="string" data="%CMDER_ROOT%vendor\git-for-windows\usr\bin\mintty.exe /bin/bash -l -new_console"/>
 				</key>
-				<key name="Task7" modified="2019-10-23 16:43:18" build="180626">
-					<value name="Name" type="string" data="{Bash::Debian}"/>
+				<key name="Task7" modified="2020-04-02 03:10:20" build="191012">
+					<value name="Name" type="string" data="{Bash::Kali}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl --distro-guid={c2e0b363-b6d2-4388-8077-789bad262fd9} -C~ -cur_console:p:n:m:"":t:Debian'/>
+					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl --distro-guid={b5c0c847-216a-4c15-a9b8-5dcfaf92fa4a} -C~ -cur_console:p:n:m:"":t:Kali'/>
 				</key>
-				<key name="Task8" modified="2019-10-23 16:43:18" build="180626">
-					<value name="Name" type="string" data="{Bash::MSYS2}"/>
+				<key name="Task8" modified="2020-04-02 03:10:20" build="191012">
+					<value name="Name" type="string" data="{Bash::Debian}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data='set MSYSTEM=MSYS &amp; set MSYSCON=conemu64.exe &amp; "c:\tools\msys64\usr\bin\bash.exe" --login -i -new_console:C:"c:\tools\msys64\msys2.exe"'/>
+					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
+					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl --distro-guid={c2e0b363-b6d2-4388-8077-789bad262fd9} -C~ -cur_console:p:n:m:"":t:Debian'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
@@ -564,7 +564,16 @@
 					<value name="Active" type="long" data="1"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task9" modified="2019-10-23 16:41:58" build="180626">
+				<key name="Task9" modified="2020-04-02 03:10:20" build="191012">
+					<value name="Name" type="string" data="{Bash::MSYS2}"/>
+					<value name="Flags" type="dword" data="00000004"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data=""/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+					<value name="Cmd1" type="string" data='set MSYSTEM=MSYS &amp; set MSYSCON=conemu64.exe &amp; "c:\tools\msys64\usr\bin\bash.exe" --login -i -new_console:C:"c:\tools\msys64\msys2.exe"'/>
+				</key>
+				<key name="Task10" modified="2020-04-02 03:10:20" build="191012">
 					<value name="Name" type="string" data="{Far Manager::Far 3.0 x86}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -573,7 +582,7 @@
 					<value name="Count" type="long" data="1"/>
 					<value name="Cmd1" type="string" data='set "FARHOME=" &amp; "far.exe" /w /p"%ConEmuDir%\Plugins\ConEmu;%FARHOME%\Plugins;%FARPROFILE%\Plugins" -new_console:h0:t:Far'/>
 				</key>
-				<key name="Task10" modified="2019-10-23 16:41:58" build="180626">
+				<key name="Task11" modified="2020-04-02 03:10:20" build="191012">
 					<value name="Name" type="string" data="{Far Manager::Far 3.0 x64}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -581,15 +590,6 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Cmd1" type="string" data='set "FARHOME=" &amp; "%ConEmuDrive%\Program Files\Far Manager\far.exe" /w /p"%ConEmuDir%\Plugins\ConEmu;%FARHOME%\Plugins;%FARPROFILE%\Plugins" -new_console:h0:t:Far'/>
-				</key>
-				<key name="Task11" modified="2019-10-23 16:41:58" build="180626">
-					<value name="Name" type="string" data="{Bash::Ubuntu}"/>
-					<value name="Flags" type="dword" data="00000004"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data="ubuntu.exe"/>
 				</key>
 				<key name="Task12" modified="2019-10-23 16:41:58" build="180626">
 					<value name="Name" type="string" data="{Powershell::PowerShell as Admin}"/>
@@ -1129,6 +1129,10 @@
 			<value name="StatusBar.Hide.WMode" type="hex" data="01"/>
 			<value name="Language" type="string" data="en"/>
 			<value name="RestoreInactive" type="hex" data="01"/>
+			<value name="AnsiLogCodes" type="hex" data="00"/>
+			<value name="AutoReloadEnvironment" type="hex" data="01"/>
+			<value name="AutoTrimSingleLine" type="hex" data="00"/>
+			<value name="StatusBar.Hide.InputGrouping" type="hex" data="00"/>
 		</key>
 	</key>
 </key>
