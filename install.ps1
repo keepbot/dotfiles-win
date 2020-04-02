@@ -196,6 +196,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         # "sumatrapdf"                      # PDF viewer
         "superputty"                        # SSH Client (wrapper on PuTTY)
         "svn"                               # Subversion VCS
+        "sqlitebrowser.install"             # SQLite DB Browser
         "swissfileknife"                    # The Swiss File Knife
         "sysinternals"                      # Windows Sysinternals
         "telegram.install"                  # Telegram messanger
