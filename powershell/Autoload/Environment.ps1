@@ -144,6 +144,8 @@ function Initialize-Paths-SYS {
         "C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\"
         "C:\Program Files (x86)\Common Files\Oracle\Java\javapath"
         "C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\"
+        "C:\Program Files\Docker\Docker\resources\bin"
+        "C:\ProgramData\DockerDesktop\version-bin"
     )
 
     $final_path = "$env:SystemRoot\system32"
@@ -160,6 +162,7 @@ function Initialize-Paths-User {
     $paths = @(
         "${env:GOPATH}\bin"
         "${Env:M2_HOME}\bin"
+        "${env:USERPROFILE}\go\bin"
         "${env:USERPROFILE}\.cargo\bin"
         "${env:USERPROFILE}\.dotnet\tools"
         "${env:USERPROFILE}\AppData\Local\Android\Sdk\platform-tools\"
@@ -173,14 +176,12 @@ function Initialize-Paths-User {
         "C:\HashiCorp\Vagrant\bin"
         "C:\msys64"
         "C:\opscode\chefdk\bin"
-        "C:\Program Files\Docker\Docker\resources\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.1\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.1\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.2\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.4\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.8.1\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.8.3\bin"
-        "C:\ProgramData\DockerDesktop\version-bin"
         "C:\tools\Atlassian\atlassian-plugin-sdk-6.3.10\bin"
         "C:\tools\Atlassian\atlassian-plugin-sdk-8.0.16\bin"
         "C:\tools\BCURRAN3"
@@ -200,7 +201,6 @@ function Initialize-Paths-User {
         "C:\tools\wsl\debian"
         "C:\tools\wsl\kali"
         "C:\tools\wsl\ubuntu"
-        # "${env:USERPROFILE}\go\bin"
         # "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
     )
 
