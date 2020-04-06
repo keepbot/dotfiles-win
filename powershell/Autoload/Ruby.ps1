@@ -78,6 +78,7 @@ function Set-Ruby {
         Written by: Dmitriy Ivanov
     #>
     $rubies = Get-Rubies
+    $ValidatedRubies = @()
     $Versions = @()
     foreach($ruby in $rubies) {
         if ($ruby -match "jruby") {
@@ -86,10 +87,11 @@ function Set-Ruby {
             $rubyBin = (Join-Path $ruby "ruby.exe")
         }
         if (Test-Path $rubyBin) {
-            $Versions += $ruby
+            $ValidatedRubies += $ruby
+            $Versions += "$($( & $rubyBin --version 2>&1) -replace '\D+(\d.\d.\d+)\D.*','$1')"
         }
     }
-    $ChoosenVersion = Select-From-List $Versions "Ruby Version"
+    $ChoosenVersion = Select-From-List $ValidatedRubies "Ruby Version" $Versions
     [Environment]::SetEnvironmentVariable("RUBY_PATH", $ChoosenVersion, "Machine")
     Set-Item -Path Env:RUBY_PATH -Value "$ChoosenVersion"
     # Set-Env

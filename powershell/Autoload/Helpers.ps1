@@ -192,14 +192,23 @@ function Select-From-List {
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [String[]]$List,
         [ValidateNotNullOrEmpty()]
-        [string]$ListItemName = "Item"
+        [string]$ListItemName = "Item",
+        [String[]]$Versions
     )
 
   do {
     $x = 0
     foreach($item in $List) {
       $x = $x + 1
-      Write-Host "`t[$x]" $item
+      $OutString  = ""
+      $OutString += "`t[$x] "
+      if($Versions) {
+          $OutString += $Versions[$x - 1] + "`t"
+
+      }
+      $OutString += $item
+      Write-Host $OutString
+
     }
 
     # Write-Host

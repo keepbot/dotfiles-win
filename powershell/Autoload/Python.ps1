@@ -103,14 +103,17 @@ function Set-Py {
         Written by: Dmitriy Ivanov
     #>
     $serpents = Get-PyList
+    $ValidatedSerpents = @()
     $Versions = @()
     foreach($snake in $serpents) {
         $snakeBin = (Join-Path $snake "python.exe")
         if (Test-Path $snakeBin) {
-            $Versions += $snake
+            $ValidatedSerpents += $snake
+            $Versions += "$($( & $snakeBin --version 2>&1) -replace '\D+(\d+...)','$1')"
+
         }
     }
-    $ChoosenVersion = Select-From-List $Versions "Python Version"
+    $ChoosenVersion = Select-From-List $ValidatedSerpents "Python Version" $Versions
     [Environment]::SetEnvironmentVariable("PYTHON_PATH", $ChoosenVersion, "Machine")
     Set-Item -Path Env:PYTHON_PATH -Value "$ChoosenVersion"
     # Set-Env
