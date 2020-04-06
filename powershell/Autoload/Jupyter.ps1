@@ -111,9 +111,9 @@ function jp-conf {
 function jp-install {
     <#
     .SYNOPSIS
-        Install or update mine set of modules.
+        Install or update my set of module for Jupiter Nortebookss.
     .DESCRIPTION
-       Install or update mine set of modules.
+        Install or update my set of modules for Jupiter Nortebooks.
     .PARAMETER ReInstall
         Remove environment and install from scratch
     .EXAMPLE
@@ -150,7 +150,37 @@ function jp-install {
     python -m pip install --upgrade jupyter
     python -m pip install --upgrade numpy
     python -m pip install --upgrade matplotlib
-    python -m pip install --upgrade powershell_kernel
-    python -m powershell_kernel.install
+    # python -m pip install --upgrade powershell_kernel
+    # python -m powershell_kernel.install
     deactivate
+}
+
+function jp-remove {
+    <#
+    .SYNOPSIS
+        Cleanup local Jupiter Environment.
+    .DESCRIPTION
+        Cleanup local Jupiter Environment.
+    .INPUTS
+        None
+    .OUTPUTS
+        None
+    .NOTES
+        Written by: Dmitriy Ivanov
+    #>
+    $jenvDir = Join-Path $env:USERPROFILE .jpenv
+    If (Test-Path $jenvDir) {
+        $title    = "Removing Jupiter Environment: $jenvDir"
+        $question = 'Are you sure you want to remove it?'
+        $choices  = '&Yes', '&No'
+
+        $decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+        if ($decision -eq 0) {
+            Remove-Item -Recurse -Force $jenvDir
+        } else {
+            Write-Host 'cancelled'
+        }
+    } else {
+        Write-Host "ERROR: Jupiter Environment: $jenvDir doesn't exist. Exiting..." -ForegroundColor Red
+    }
 }
