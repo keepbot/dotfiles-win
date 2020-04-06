@@ -4,10 +4,13 @@ if (Get-Command conda.exe -ErrorAction SilentlyContinue | Test-Path) {
     (& "conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
     #endregion
 
-    ${function:cnl}      = { conda-env list }
-    ${function:cnn}      = { conda create -n @args }
-    ${function:cna}      = { conda activate @args }
-    ${function:cni}      = { conda init powershell }
+    ${function:cnl}     = { conda env list          @args }
+    ${function:cnn}     = { conda create -n         @args }
+    ${function:cnn}     = { conda env remove -n     @args }
+    ${function:cna}     = { conda activate          @args }
+    ${function:cnd}     = { conda deactivate        @args }
+    ${function:cni}     = { conda init powershell }
+    ${function:cneu}    = { conda update -n @args -c defaults conda  }
 
     function cupdate {
         conda update -n base -c defaults conda
