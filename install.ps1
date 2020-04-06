@@ -146,6 +146,7 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "miktex"                            # TeX tools
         # "mingw"                             # GCC for windows
         "minikube"                          # Mini Kuberneted for Dev
+        # "miniconda3"                        # choco install miniconda3 --params="'/InstallationType:AllUsers /AddToPath:0 /RegisterPython:0'"
         "mremoteng"                         # Open source, tabbed, multi-protocol, remote connections manager
         "mysql.workbench"                   # MySQL Admin and Explorer
         "nasm"                              # Assebler
