@@ -43,6 +43,14 @@ function Get-PyList {
         'C:\Python27'
         'C:\Python26'
         'C:\Python25'
+        'C:\Python38-32'
+        'C:\Python37-32'
+        'C:\Python36-32'
+        'C:\Python35-32'
+        'C:\Python34-32'
+        'C:\Python27-32'
+        'C:\Python26-32'
+        'C:\Python25-32'
         "$env:LOCALAPPDATA\Programs\Python\Python38"
         "$env:LOCALAPPDATA\Programs\Python\Python37"
         "$env:LOCALAPPDATA\Programs\Python\Python36"
@@ -50,12 +58,21 @@ function Get-PyList {
         "$env:LOCALAPPDATA\Programs\Python\Python27"
         "$env:LOCALAPPDATA\Programs\Python\Python26"
         "$env:LOCALAPPDATA\Programs\Python\Python25"
+        "$env:LOCALAPPDATA\Programs\Python\Python38-32"
+        "$env:LOCALAPPDATA\Programs\Python\Python37-32"
+        "$env:LOCALAPPDATA\Programs\Python\Python36-32"
+        "$env:LOCALAPPDATA\Programs\Python\Python35-32"
+        "$env:LOCALAPPDATA\Programs\Python\Python27-32"
+        "$env:LOCALAPPDATA\Programs\Python\Python26-32"
+        "$env:LOCALAPPDATA\Programs\Python\Python25-32"
         'C:\tools\python3'
         'C:\tools\python3_x86'
         'C:\tools\python2'
         'C:\tools\python2_x86'
         'C:\tools\miniconda3'
         'C:\tools\miniconda2'
+        'C:\tools\python-embed-38-x64'
+        'C:\tools\python-embed-38-win32'
     )
     return $serpents
 }
