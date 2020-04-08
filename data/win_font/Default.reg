@@ -1,0 +1,9 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts]
+"Segoe UI (TrueType)"="segoeui.ttf"
+"Segoe UI Italic (TrueType)"="segoeuii.ttf"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontSubstitutes]
+"Segoe UI"="-"
+"MS Shell Dlg"="Tahoma"
+"MS Shell Dlg 2"="Microsoft Sans Serif"
