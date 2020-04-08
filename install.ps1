@@ -175,10 +175,10 @@ If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
         "pgadmin4"                          # PostgreSQL Administrator
         # "pgina"                           # Pluggable, open source credential provider (and GINA) replacement
         "putty"                             # SSH Client
-        "python3"                           # Python 3
+        "python"                            # Python 3
         "qbittorrent"                       # Torrent Downloader
         # "qtcreator"                       # Use Native QT installer instead
-        "rdcman"                            # Remote Desktop Connection Manager
+        # "rdcman"                          # Remote Desktop Connection Manager
         "reshack"                           # Resource Hacker
         "robo3t"                            # MongoDB exprlorer
         "ruby"                              # Ruby: cinst msys2 --params "/NoUpdate"; Update-SessionEnvironment; ridk install 2 3
