@@ -9,28 +9,28 @@
 RequireAdmin
 
 ### Privacy Tweaks ###
-DisableTelemetry                # EnableTelemetry
-DisableWiFiSense                # EnableWiFiSense
+EnableTelemetry                 # DisableTelemetry                # EnableTelemetry
+EnableWiFiSense                 # DisableWiFiSense                # EnableWiFiSense
 DisableSmartScreen              # EnableSmartScreen
 DisableWebSearch                # EnableWebSearch
 DisableAppSuggestions           # EnableAppSuggestions
 DisableActivityHistory          # EnableActivityHistory
-DisableBackgroundApps           # EnableBackgroundApps
+EnableBackgroundApps            # DisableBackgroundApps           # EnableBackgroundApps
 # DisableSensors                # EnableSensors
 EnableLocation                  # DisableLocation
 EnableMapUpdates                # DisableMapUpdates
-DisableFeedback                 # EnableFeedback
-DisableTailoredExperiences      # EnableTailoredExperiences
-DisableAdvertisingID            # EnableAdvertisingID
+EnableFeedback                  # DisableFeedback                 # EnableFeedback
+EnableTailoredExperiences       # DisableTailoredExperiences      # EnableTailoredExperiences
+EnableAdvertisingID             # DisableAdvertisingID            # EnableAdvertisingID
 DisableWebLangList              # EnableWebLangList
 EnableCortana                   # DisableCortana
 # DisableBiometrics             # EnableBiometrics
 # DisableCamera                 # EnableCamera
 # DisableMicrophone             # EnableMicrophone
-DisableErrorReporting           # EnableErrorReporting
-# SetP2PUpdateLocal             # SetP2PUpdateInternet              # SetP2PUpdateDisable
-DisableDiagTrack                # EnableDiagTrack
-DisableWAPPush                  # EnableWAPPush
+EnableErrorReporting            # DisableErrorReporting           # EnableErrorReporting
+# SetP2PUpdateLocal             # SetP2PUpdateInternet            # SetP2PUpdateDisable
+EnableDiagTrack                 # DisableDiagTrack                # EnableDiagTrack
+EnableWAPPush                   # DisableWAPPush                  # EnableWAPPush
 # EnableClearRecentFiles        # DisableClearRecentFiles
 # DisableRecentFiles            # EnableRecentFiles
 

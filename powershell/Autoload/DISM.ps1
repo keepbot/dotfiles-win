@@ -14,7 +14,20 @@
 # DISM /Image:C:\Temp\WIM /Cleanup-Image /RestoreHealth
 # Dism /Online /Cleanup-Image /RestoreHealth /Source:wim:H:\sources\install.wim:1 /limitaccess ?????
 #
-#
-#
-#
-#
+
+${function:sys-repair} = {
+    DISM.exe /Online /Cleanup-image /Restorehealth
+    sfc /scannow
+    cmd /c 'findstr /c:"[SR]" %windir%\Logs\CBS\CBS.log >"%userprofile%\Desktop\sfcdetails.txt"'
+
+    # cat "${Env:USERPROFILE}\Desktop\sfcdetails.txt"
+
+    # Check:
+    # %WinDir%\WinSxS\Temp
+    # %WinDir%\Logs\CBS\CBS.log
+
+    # Replace a corrupted system file:
+    # takeown /f Path_And_File_Name
+    # icacls Path_And_File_Name /GRANT ADMINISTRATORS:F
+    # copy Source_File Destination
+}
