@@ -100,6 +100,54 @@ function Get-BitbucketUser {
     return $Response
 }
 
+function Get-BitbucketTeamMembers {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$Team
+    )
+
+    # display_name    :
+    # has_2fa_enabled :
+    # links           :
+    # nickname        :
+    # account_id      :
+    # created_on      :
+    # is_staff        :
+    # account_status  :
+    # type            :
+    # properties      :
+    # uuid            :
+
+
+    $Response = Invoke-BitbucketAPI -Type "/${Team}/members?pagelen=100" -UriSuffix 'teams'
+    return $Response
+}
+
+function List-BitbucketTeamMembers {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$Team
+    )
+
+    # display_name    :
+    # has_2fa_enabled :
+    # links           :
+    # nickname        :
+    # account_id      :
+    # created_on      :
+    # is_staff        :
+    # account_status  :
+    # type            :
+    # properties      :
+    # uuid            :
+
+
+    $Response = Get-BitbucketTeamMembers "${Team}"
+    return $Response.values | Format-Table -Property display_name,has_2fa_enabled,nickname,account_id,account_status,uuid -AutoSize
+}
+
 function Get-BitbucketWikiPage {
     # DEPRECATED API
     [CmdletBinding()]
