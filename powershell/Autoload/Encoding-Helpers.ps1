@@ -115,3 +115,13 @@ function Get-FileEncoding
     else
     { Write-Output 'ASCII' }
 }
+
+function genguids {
+    [CmdletBinding()]
+    Param
+    (
+        [Int]$Num = 1
+    )
+
+    1..${Num} | % { Write-Host $([System.guid]::NewGuid().toString()) -ForegroundColor Cyan }
+}
