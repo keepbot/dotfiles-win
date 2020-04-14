@@ -23,14 +23,14 @@ foreach($module in $local_modules) {
 }
 
 foreach($module in $modules) {
-    if (Get-Module -ListAvailable -Name $module ) {
+    if (Get-Module -ListAvailable -Name ${module} ) {
     #  Write-Host "Module $module already exist"
     #  Get-Date -Format HH:mm:ss.fff
         Import-Module -Name $module
     } else {
-        PowerShellGet\Install-Module $module
-        Write-Host "Module $module succesfully installed"
-        Import-Module -Name $module
+        Install-Module -Scope AllUsers -Name ${module} -Force 
+        Write-Host "Module ${module} succesfully installed"
+        Import-Module -Name ${module}
     }
 }
 
