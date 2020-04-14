@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Unix-like scripts.
+
+.DESCRIPTION
+Unix-like scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 # Missing Bash aliases
 # Set-Alias time Measure-Command
 # ${function:time} = { Measure-Command { @args }}

@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Git scripts.
+
+.DESCRIPTION
+Git scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 # Git:
 if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     # Main

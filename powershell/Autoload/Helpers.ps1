@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Helper scripts.
+
+.DESCRIPTION
+Helper scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 # Utilities to manage PowerShell Consoles
 # Based on code from ConCFG: https://github.com/lukesampson/concfg/
 Add-Type -TypeDefinition @'

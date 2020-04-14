@@ -1,4 +1,22 @@
-#!/usr/env/pwsh
+<#
+.SYNOPSIS
+Visual Studio scripts.
+
+.DESCRIPTION
+Visual Studio scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 function Set-VCToolsArchx64 {
     [CmdletBinding()]
 

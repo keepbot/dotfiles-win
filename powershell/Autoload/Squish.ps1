@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Squish scripts.
+
+.DESCRIPTION
+Squish scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 if ($env:SQUISH_PATH) {
     if (Get-Command "${env:SQUISH_PATH}\..\python\python.exe" -ErrorAction SilentlyContinue | Test-Path) {
         ${function:vc3-squish}  = { & ${env:SQUISH_PATH}\..\python\python.exe -m virtualenv -p ${env:SQUISH_PATH}\..\python\python.exe venv }

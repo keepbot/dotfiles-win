@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Filesystem scripts.
+
+.DESCRIPTION
+Filesystem scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 Remove-Item alias:cd -ErrorAction SilentlyContinue
 ${function:cd} = {
     if ($args -eq '-') {

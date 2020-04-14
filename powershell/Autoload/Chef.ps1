@@ -1,4 +1,22 @@
-# Chef
+<#
+.SYNOPSIS
+Chef scripts.
+
+.DESCRIPTION
+Chef scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 if (Get-Command kitchen.bat -ErrorAction SilentlyContinue | Test-Path) {
     ${function:kc}  = { kitchen converge @args }
     ${function:kd}  = { kitchen destroy @args }

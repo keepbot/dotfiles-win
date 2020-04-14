@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Web scripts.
+
+.DESCRIPTION
+Web scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 # WGet: Use `wget.exe` if available
 if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
     Remove-Item alias:wget -ErrorAction SilentlyContinue

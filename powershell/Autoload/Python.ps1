@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Python scripts.
+
+.DESCRIPTION
+Python scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 # Python aliases
 # if (Get-Command c:\tools\python2\python.exe -ErrorAction SilentlyContinue | Test-Path) {
 #     ${function:vc2}     = { c:\tools\python2\python.exe -m virtualenv -p c:\tools\python2\python.exe venv } # init py2 venv in curent dir

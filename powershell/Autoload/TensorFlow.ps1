@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+TensorFlow scripts.
+
+.DESCRIPTION
+TensorFlow scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 function TF_Env_Vars {
     if (Test-Path ".\venv\Scripts\activate")  {
         .\venv\Scripts\activate

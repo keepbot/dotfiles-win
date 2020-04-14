@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+PowerShell modules scripts.
+
+.DESCRIPTION
+PowerShell modules scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 $ModulesDir = Join-Path (Get-Item $PSScriptRoot).Parent.FullName "Modules"
 
 $local_modules = @(
@@ -66,5 +85,20 @@ foreach($InstallPath in $InstallPaths) {
         ${function:dev}         = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" @args }
         $ENV:VSDevEnv = "True"
         break
+    }
+}
+
+function Get-Manually-Installed-Modules {
+    Get-Module -ListAvailable |
+    Where-Object ModuleBase -like $env:ProgramFiles\WindowsPowerShell\Modules\* |
+    Sort-Object -Property Name, Version -Descending |
+    Get-Unique -PipelineVariable Module |
+    ForEach-Object {
+        if (-not(Test-Path -Path "$($_.ModuleBase)\PSGetModuleInfo.xml")) {
+            Find-Module -Name $_.Name -OutVariable Repo -ErrorAction SilentlyContinue |
+            Compare-Object -ReferenceObject $_ -Property Name, Version |
+            Where-Object SideIndicator -eq '=>' |
+            Select-Object -Property Name, Version, @{label='Repository';expression={$Repo.Repository}}, @{label='InstalledVersion';expression={$Module.Version}}
+        }
     }
 }

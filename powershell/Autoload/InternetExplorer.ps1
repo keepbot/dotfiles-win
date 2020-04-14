@@ -1,3 +1,21 @@
+<#
+.SYNOPSIS
+Internet Explorer scripts.
+
+.DESCRIPTION
+Internet Explorer scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
 
 # Disable 'Automatically detect proxy settings' in Internet Explorer. by Reuben Bond
 function Disable-AutomaticallyDetectProxySettings {

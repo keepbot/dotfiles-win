@@ -1,4 +1,21 @@
-#!/usr/bin/env powershell
+<#
+.SYNOPSIS
+Environment scripts.
+
+.DESCRIPTION
+Environment scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
 
 # Make vim the default editor\
 # $Env:VISUAL = "vim --nofork"

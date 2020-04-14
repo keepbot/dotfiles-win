@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+GitHub scripts.
+
+.DESCRIPTION
+GitHub scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     # FIXME
     ${function:get_gh_user_repos_https} = {

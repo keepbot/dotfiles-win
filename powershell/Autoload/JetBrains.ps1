@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+JetBrains scripts.
+
+.DESCRIPTION
+JetBrains scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 function Get-JBList {
     $IdeaPaths = @(
         "${Env:LOCALAPPDATA}\JetBrains\Toolbox\apps\AndroidStudio"

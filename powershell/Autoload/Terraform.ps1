@@ -1,4 +1,22 @@
-# Terraform
+<#
+.SYNOPSIS
+Terraform scripts.
+
+.DESCRIPTION
+Terraform scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 if (Get-Command terraform.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:terrafrom}   = { terraform.exe @args }
     ${function:t}           = { terraform.exe @args }

@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Crypto scripts.
+
+.DESCRIPTION
+Crypto scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 if (Get-Command openssl.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:genpass}   = { openssl.exe rand -base64 @args }
 }

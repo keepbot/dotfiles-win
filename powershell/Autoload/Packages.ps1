@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Package scripts.
+
+.DESCRIPTION
+Package scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 function Remove-WAPP {
     if ($args.Count -ne 1) {
         Write-Host "Usage: rm-wapp <package_mask>"

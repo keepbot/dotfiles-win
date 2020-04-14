@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Conda scripts.
+
+.DESCRIPTION
+Conda scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 if (Get-Command conda.exe -ErrorAction SilentlyContinue | Test-Path) {
     #region conda initialize
     # !! Contents within this block are managed by 'conda init' !!

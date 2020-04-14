@@ -41,15 +41,15 @@ C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $HOME ".vimrc"        ) ( J
 
 C:\Windows\System32\cmd.exe /c mklink      "C:\sr\config.yaml"               ( Join-Path $PSScriptRoot "stack\config.yaml" )
 
+# Set dot source string to default PS profile for Current User
+If (Test-Path $profile) { Remove-Item -Force -Confirm:$false $profile }
+". `"$PSScriptRoot\powershell\profile_loader.ps1`"" | Out-File $profile
+
 # Install Nuget package provide if needed
 if (-Not (Get-packageProvider -Name NuGet -ListAvailable -ErrorAction SilentlyContinue))
 {
     Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 }
-
-# Set dot source string to default PS profile for Current User
-If (Test-Path $profile) { Remove-Item -Force -Confirm:$false $profile }
-". `"$PSScriptRoot\powershell\profile_loader.ps1`"" | Out-File $profile
 
 # Make PSGallery Trusted if needed
 if (-Not (Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue).InstallationPolicy -eq 'Trusted')

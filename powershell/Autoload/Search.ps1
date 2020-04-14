@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Search scripts.
+
+.DESCRIPTION
+Search scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 # Greps with status
 if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:grep} = {

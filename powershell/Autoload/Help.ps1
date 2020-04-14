@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Information and Help scripts.
+
+.DESCRIPTION
+Information and Help scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 # Get help from cheat.sh
 function cht {
     param (

@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Ruby scripts.
+
+.DESCRIPTION
+Ruby scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 # Ruby aliases
 if (Get-Command ruby.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:ruby} = { ruby.exe -w @args }

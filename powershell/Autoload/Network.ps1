@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Network scripts.
+
+.DESCRIPTION
+Network scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 if (Get-Command dig.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:myip} = { dig.exe +short myip.opendns.com `@resolver1.opendns.com }
     ${function:digga} = { dig.exe +nocmd "$($args[0].ToString())" any +multiline +noall +answer }

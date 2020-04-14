@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+MSYS scripts.
+
+.DESCRIPTION
+MSYS scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 function Use-Msys2 {
     $msys_path = $(Get-Command msys2.exe -ErrorAction SilentlyContinue | Split-Path)
 

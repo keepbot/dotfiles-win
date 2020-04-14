@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Java scripts.
+
+.DESCRIPTION
+Java scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 function Get-JavaList {
     <#
     .SYNOPSIS

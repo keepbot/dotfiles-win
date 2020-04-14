@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+DISM scripts.
+
+.DESCRIPTION
+DISM scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 # TMP
 # Dism /Unmount-Image /?
 # Dism /Unmount-Image /MountDir:C:\Temp\WIM /Commit

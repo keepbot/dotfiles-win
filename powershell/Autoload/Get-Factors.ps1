@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Fuction to get factors of a number.
+
+.DESCRIPTION
+Fuction to get factors of a number.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 # Calculates Prime Factors of Given Integer
 #
 # Algorithm based on an article from "Practical Computing", February 1980 (when computer magazines were really about computing:-)

@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+MSI scripts.
+
+.DESCRIPTION
+MSI scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 function Get-MSI-Upgrade-Codes {
     $wmipackages = Get-WmiObject -Class win32_product
     $wmiproperties = gwmi -Query "SELECT ProductCode,Value FROM Win32_Property WHERE Property='UpgradeCode'"

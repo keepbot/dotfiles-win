@@ -1,5 +1,24 @@
 <#
 .SYNOPSIS
+Encoding scripts.
+
+.DESCRIPTION
+Encoding scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
+<#
+.SYNOPSIS
     Converts files to the given encoding.
     Matches the include pattern recursively under the given path.
 .EXAMPLE

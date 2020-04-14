@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Atlassian scripts.
+
+.DESCRIPTION
+Atlassian scripts.
+#>
+
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
+
+
 function Get-Bamboo-AMI {
     if ($args.Count -ne 2) {
         Write-Host "Usage: Bamboo-Get-AMI <Bamboo_version> <filter(windows, linux, PV, HVM)>"
