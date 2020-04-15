@@ -24,6 +24,7 @@ if (Get-Command kitchen.bat -ErrorAction SilentlyContinue | Test-Path) {
     ${function:klo} = { kitchen login @args }
     ${function:kt}  = { kitchen test -d never @args }
 }
+
 if (Get-Command knife.bat -ErrorAction SilentlyContinue | Test-Path) {
     ${function:kn}  = { knife node @args }
     ${function:kns} = { knife node show @args }
