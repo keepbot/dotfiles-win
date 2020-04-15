@@ -315,6 +315,7 @@ function Reset-Environment {
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 }
 
+If (Test-Path "C:\Program Files\Microsoft VS Code\bin") { ${function:icode} = {code.cmd @args} }
+If (Test-Path "C:\Program Files\Microsoft VS Code\bin") { ${function:vscode} = {code.cmd @args} }
 if (Test-Path "${env:USERPROFILE}\AppData\Local\Programs\Microsoft VS Code Insiders\bin") { ${function:icode} = {code-insiders.cmd @args} }
 if (Test-Path "C:\Program Files\Microsoft VS Code Insiders\bin") { ${function:icode} = {code-insiders.cmd @args} }
-If (Test-Path "C:\Program Files\Microsoft VS Code\bin") { ${function:vscode} = {code.cmd @args} }
