@@ -21,21 +21,24 @@ if ($MyInvocation.InvocationName -ne '.')
 Set-Alias c Clear-Host
 
 # Empty the Recycle Bin on all drives
-function EmptyRecycleBin {
+function EmptyRecycleBin
+{
     $RecBin = (New-Object -ComObject Shell.Application).Namespace(0xA)
     $RecBin.Items() | ForEach-Object {Remove-Item $_.Path -Recurse -Confirm:$false}
 }
 Set-Alias emptytrash Empty-RecycleBin
 
 # Reload the shell
-function Restart-Powershell {
+function Restart-Powershell
+{
     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell"
     $newProcess.Arguments = "-nologo"
     [System.Diagnostics.Process]::Start($newProcess)
     exit
 }
 
-function Reload-Powershell {
+function Reload-Powershell
+{
     function Invoke-PowerShell {
         powershell -nologo
     }
@@ -52,13 +55,15 @@ function Reload-Powershell {
 }
 Set-Alias reload Reload-Powershell
 
-function Refresh-Powershell {
+function Refresh-Powershell
+{
     . $profile
 }
 Set-Alias refresh Refresh-Powershell
 
 # Update installed Ruby Gems, NPM, and their installed packages.
-function Update-System() {
+function Update-System()
+{
     # Install-WindowsUpdate -IgnoreUserInput -IgnoreReboot -AcceptAll
     Update-Module
     Update-Help -Force
@@ -72,7 +77,8 @@ function Update-System() {
 Set-Alias update System-Update
 
 # Sudo
-function sudo() {
+function sudo()
+{
     if ($args.Length -eq 1) {
         start-process $args[0] -verb "runAs"
     }
@@ -84,12 +90,14 @@ function sudo() {
 # Show function code
 ${function:show-cmd} = { (Get-Command $args[0]).Definition }
 
-function Stop-Beeper {
+function Stop-Beeper
+{
     # sc config beep start= disabled
     net stop beep
 }
 
-function Get-WindowsKey {
+function Get-WindowsKey
+{
     ## function to retrieve the Windows Product Key from any PC
     ## by Jakob Bindslet (jakob@bindslet.dk)
     param ($targets = ".")
@@ -129,4 +137,23 @@ function Get-WindowsKey {
         $obj | Add-Member Noteproperty ProductKey -value $productkey
         $obj
     }
+}
+
+function  Get-WindowsBuildNumber
+{
+    $os = Get-CimInstance -ClassName Win32_OperatingSystem
+    return [int]($os.BuildNumber)
+}
+
+function Get-WinFeatures
+{
+    Get-WindowsOptionalFeature -Online |format-table
+}
+
+function Get-WinFeatureInfo {
+    Param
+    (
+        [String] $FeatureName
+    )
+    dism /online /Get-FeatureInfo /FeatureName:$FeatureName
 }
