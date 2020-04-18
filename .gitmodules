@@ -163,11 +163,6 @@
     url = https://github.com/Valloric/YouCompleteMe.git
     ignore = dirty
     branch = master
-[submodule "powershell/Modules/Win10-Initial-Setup-Script"]
-    path = powershell/Modules/W10Init
-    url = https://github.com/Disassembler0/Win10-Initial-Setup-Script.git
-    ignore = dirty
-    branch = master
 [submodule "vim/bundle/rust.vim"]
     path = vim/bundle/rust.vim
     url = https://github.com/rust-lang/rust.vim.git
