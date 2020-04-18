@@ -20,7 +20,9 @@ if ($MyInvocation.InvocationName -ne '.')
 ${function:git-ssh-bb}  = { (Get-Content .gitmodules).replace('https://bitbucket.org/', 'git@bitbucket.org:') | Set-Content .gitmodules }
 ${function:git-ssh-bbr} = { (Get-Content .gitmodules).replace('git@bitbucket.org:', 'https://bitbucket.org/') | Set-Content .gitmodules }
 
-function Set-BitbucketOAuthCreds {
+
+function Set-BitbucketOAuthCreds
+{
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
@@ -33,7 +35,9 @@ function Set-BitbucketOAuthCreds {
     Add-Content $SecretFile "$Secret"
 }
 
-function Get-BitbucketOAuthToken {
+
+function Get-BitbucketOAuthToken
+{
     [string] $SecretFile   = (Join-Path $env:USERPROFILE '.bitbucket.secrets')
 
     if (-Not (Test-Path -Path $SecretFile)) {
@@ -51,7 +55,9 @@ function Get-BitbucketOAuthToken {
     Invoke-RestMethod -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Uri $UriToken -Method Post -Body @{grant_type='client_credentials'}
 }
 
-function Invoke-BitbucketAPI-Simple {
+
+function Invoke-BitbucketAPI-Simple
+{
     [CmdletBinding()]
     param (
         [string]$Request,
@@ -71,7 +77,9 @@ function Invoke-BitbucketAPI-Simple {
     return $Response
 }
 
-function Invoke-BitbucketAPI {
+
+function Invoke-BitbucketAPI
+{
     [CmdletBinding()]
     param (
         [string]$RequestPath,
@@ -87,7 +95,9 @@ function Invoke-BitbucketAPI {
     return $Response
 }
 
-function Invoke-BitbucketURI {
+
+function Invoke-BitbucketURI
+{
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
@@ -100,7 +110,9 @@ function Invoke-BitbucketURI {
     return $Response
 }
 
-function Get-BitbucketPR {
+
+function Get-BitbucketPR
+{
     [CmdletBinding()]
     param (
         [string]$PR
@@ -109,7 +121,21 @@ function Get-BitbucketPR {
     return $Response
 }
 
-function Get-BitbucketUser {
+
+function Get-BitbucketPRDiff
+{
+    [CmdletBinding()]
+    param (
+        [string]$PR
+    )
+    $DiffLink = (Invoke-BitbucketAPI -RequestPath "/$PR").links.diff.href
+    $Response = Invoke-BitbucketURI $DiffLink
+    return $Response
+}
+
+
+function Get-BitbucketUser
+{
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
@@ -119,7 +145,9 @@ function Get-BitbucketUser {
     return $Response
 }
 
-function Get-BitbucketTeamMembers {
+
+function Get-BitbucketTeamMembers
+{
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
@@ -143,7 +171,9 @@ function Get-BitbucketTeamMembers {
     return $Response
 }
 
-function List-BitbucketTeamMembers {
+
+function List-BitbucketTeamMembers
+{
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
@@ -167,7 +197,9 @@ function List-BitbucketTeamMembers {
     return $Response.values | Format-Table -Property display_name,has_2fa_enabled,nickname,account_id,account_status,uuid -AutoSize
 }
 
-function Get-BitbucketWikiPage {
+
+function Get-BitbucketWikiPage
+{
     # DEPRECATED API
     [CmdletBinding()]
     param (
@@ -178,7 +210,9 @@ function Get-BitbucketWikiPage {
     return $Response
 }
 
-if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
+
+if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ${function:list_bb_user_repos_https} = {
         Write-Host "Listing all Bitbucket repos of $($args[0])"
         $repoList = Invoke-BitbucketURI "https://api.bitbucket.org/2.0/repositories/$($args[0])?pagelen=100"
