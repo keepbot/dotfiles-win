@@ -20,6 +20,7 @@ if ($MyInvocation.InvocationName -ne '.')
 # Clear screen
 Set-Alias c Clear-Host
 
+
 # Empty the Recycle Bin on all drives
 function EmptyRecycleBin
 {
@@ -27,6 +28,7 @@ function EmptyRecycleBin
     $RecBin.Items() | ForEach-Object {Remove-Item $_.Path -Recurse -Confirm:$false}
 }
 Set-Alias emptytrash Empty-RecycleBin
+
 
 # Reload the shell
 function Restart-Powershell
@@ -37,29 +39,36 @@ function Restart-Powershell
     exit
 }
 
+
 function Reload-Powershell
 {
-    function Invoke-PowerShell {
+    function Invoke-PowerShell
+    {
         powershell -nologo
     }
 
     # $parentProcessId = (Get-WmiObject Win32_Process -Filter "ProcessId=$PID").ParentProcessId
     # $parentProcessName = (Get-WmiObject Win32_Process -Filter "ProcessId=$parentProcessId").ProcessName
 
-    if ($host.Name -eq 'ConsoleHost') {
+    if ($host.Name -eq 'ConsoleHost')
+    {
             Invoke-PowerShell
-    } else {
+    }
+    else
+    {
         Write-Warning 'Only usable while in the PowerShell console host'
     }
     exit
 }
 Set-Alias reload Reload-Powershell
 
+
 function Refresh-Powershell
 {
     . $profile
 }
 Set-Alias refresh Refresh-Powershell
+
 
 # Update installed Ruby Gems, NPM, and their installed packages.
 function Update-System()
@@ -76,6 +85,7 @@ function Update-System()
 }
 Set-Alias update System-Update
 
+
 # Sudo
 function sudo()
 {
@@ -87,8 +97,6 @@ function sudo()
     }
 }
 
-# Show function code
-${function:show-cmd} = { (Get-Command $args[0]).Definition }
 
 function Stop-Beeper
 {
@@ -96,11 +104,15 @@ function Stop-Beeper
     net stop beep
 }
 
+
 function Get-WindowsKey
 {
     ## function to retrieve the Windows Product Key from any PC
     ## by Jakob Bindslet (jakob@bindslet.dk)
-    param ($targets = ".")
+    Param
+    (
+        $targets = "."
+    )
     $hklm = 2147483650
     $regPath = "Software\Microsoft\Windows NT\CurrentVersion"
     $regValue = "DigitalProductId"
@@ -139,21 +151,31 @@ function Get-WindowsKey
     }
 }
 
+
 function  Get-WindowsBuildNumber
 {
     $os = Get-CimInstance -ClassName Win32_OperatingSystem
     return [int]($os.BuildNumber)
 }
 
+
 function Get-WinFeatures
 {
     Get-WindowsOptionalFeature -Online |format-table
 }
 
-function Get-WinFeatureInfo {
+
+function Get-WinFeatureInfo
+{
     Param
     (
         [String] $FeatureName
     )
     dism /online /Get-FeatureInfo /FeatureName:$FeatureName
+}
+
+
+function Get-ConsoleCP
+{
+    return ($(chcp) -replace '[^0-9]','')
 }
