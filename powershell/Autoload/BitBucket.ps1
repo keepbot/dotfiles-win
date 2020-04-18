@@ -255,6 +255,18 @@ function Get-BitbucketPR-Curl
 }
 
 
+function Get-BitbucketPRComments
+{
+    [CmdletBinding()]
+    Param
+    (
+        [string]$PR
+    )
+    $Response = Invoke-BitbucketAPI -RequestPath "/$PR/comments"
+    return $Response
+}
+
+
 function Get-BitbucketPRDiff
 {
     [CmdletBinding()]
