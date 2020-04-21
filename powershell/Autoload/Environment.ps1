@@ -214,7 +214,6 @@ function Initialize-Paths-User {
         "C:\tools\swig"
         "C:\tools\vcpkg"
         "C:\tools\vim\vim82"
-        "C:\tools\vim"
         "C:\tools\wsl\arch"
         "C:\tools\wsl\debian"
         "C:\tools\wsl\kali"
