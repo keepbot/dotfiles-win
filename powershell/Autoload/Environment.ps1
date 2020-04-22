@@ -212,6 +212,7 @@ function Initialize-Paths-User {
         "C:\tools\msys64"
         "C:\tools\ProccessHacker"
         "C:\tools\swig"
+        "C:\tools\sfktrayfree"
         "C:\tools\vcpkg"
         "C:\tools\vim\vim82"
         "C:\tools\wsl\arch"
