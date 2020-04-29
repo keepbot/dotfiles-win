@@ -68,6 +68,7 @@ Custom prompt functions are loaded in as constants to get the same behaviour
 #>
 [ScriptBlock]$Prompt = {
     $realLASTEXITCODE = $LASTEXITCODE
+    Microsoft.PowerShell.Utility\Write-Host "[$realLASTEXITCODE] " -NoNewLine -ForegroundColor "Yellow"
     $host.UI.RawUI.WindowTitle = Microsoft.PowerShell.Management\Split-Path $pwd.ProviderPath -Leaf
     PrePrompt | Microsoft.PowerShell.Utility\Write-Host -NoNewline
     CmderPrompt
