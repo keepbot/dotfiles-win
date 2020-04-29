@@ -209,6 +209,7 @@ function Initialize-Paths-User {
         "C:\tools\CppDepend"
         "C:\tools\doublecmd"
         "C:\tools\emsdk"
+        "C:\tools\fasm"
         "C:\tools\msys64"
         "C:\tools\ProccessHacker"
         "C:\tools\swig"
