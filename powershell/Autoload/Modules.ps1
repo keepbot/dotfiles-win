@@ -47,7 +47,7 @@ foreach($module in $modules) {
     #  Get-Date -Format HH:mm:ss.fff
         Import-Module -Name $module
     } else {
-        Install-Module -Scope AllUsers -Name ${module} -Force 
+        Install-Module -Scope AllUsers -Name ${module} -Force
         Write-Host "Module ${module} succesfully installed"
         Import-Module -Name ${module}
     }
@@ -81,8 +81,12 @@ foreach($InstallPath in $InstallPaths) {
     $DevShell = (Join-Path "$InstallPath" 'Common7\Tools\Microsoft.VisualStudio.DevShell.dll')
     if (Test-Path "$DevShell") {
         Import-Module "$DevShell"
-        ${function:vsdevenv}    = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" @args }
-        ${function:dev}         = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" @args }
+        ${function:vsdevenv}    = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" -DevCmdArguments -arch=x64 @args }
+        ${function:vsdevenv32}  = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" -DevCmdArguments -arch=x86 @args }
+        ${function:vsdevenv64}  = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" -DevCmdArguments -arch=x64 @args }
+        ${function:dev}         = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" -DevCmdArguments -arch=x64 @args }
+        ${function:dev32}       = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" -DevCmdArguments -arch=x86 @args }
+        ${function:dev64}       = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" -DevCmdArguments -arch=x64 @args }
         $ENV:VSDevEnv = "True"
         break
     }
