@@ -119,11 +119,17 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:git-builder} = { git config --local user.name 'DEN-ORMCO-MSK-DevOps'; git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com' }
 
     ${function:gprune} = {
+        [CmdletBinding()]
+        Param
+        (
+            [string]$branch = "master"
+        )
+
         $CurrentBranch = $(cmd /c "git rev-parse --abbrev-ref HEAD")
         # Stash changes
         cmd /c "git stash"
         # Checkout master:
-        cmd /c "git checkout master"
+        cmd /c "git checkout $branch"
         cmd /c "git fetch"
         # Run garbage collector
         cmd /c "git gc --prune=now"
@@ -140,22 +146,33 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         cmd /c "git stash pop"
     }
 
-    function ugr {
-        param (
+    function ugr
+    {
+        Param
+        (
             [Parameter(ValueFromRemainingArguments = $true)]
             [string]$Options = ""
         )
+
         $dir = Get-Location
-        Get-ChildItem $dir -Directory | ForEach-Object { Write-Host $_.FullName; Set-Location $_.FullName; cmd /c "git.exe pull $Options" }
+        Get-ChildItem $dir -Directory | ForEach-Object {
+            Write-Host $_.FullName
+            Set-Location $_.FullName
+            git.exe pull $Options
+        }
+
         Set-Location $dir
     }
 
-    function ugrm {
+    function ugrm
+    {
         ugr origin master
     }
 
-    function ugrs {
-        param (
+    function ugrs
+    {
+        Param
+        (
             [Parameter(ValueFromRemainingArguments = $true)]
             [string]$Options = ""
         )
@@ -180,9 +197,11 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         }
     }
 
-    function Move-GitRepo {
+    function Move-GitRepo
+    {
         [CmdletBinding()]
-        Param (
+        Param
+        (
             [Parameter(Mandatory=$true)]
             [string]$From,
             [Parameter(Mandatory=$true)]
@@ -202,8 +221,10 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     # ${function:get_cbk} = { if (Test-Path "~/workspace/Chef/cookbooks"){ Set-Location "~/workspace/Chef/cookbooks"; git clone "gitolite@git.domain.com:chef/cookbooks/$($args[0].ToString()).git"; Set-Location "$($args[0].ToString())" } }
 }
 
-function Set-GitVerbosity {
-    param (
+function Set-GitVerbosity
+{
+    Param
+    (
         [Parameter(Mandatory=$true)]
         [string]$Button,
         [string]$Category='all'
@@ -249,9 +270,11 @@ function Set-GitVerbosity {
     }
 }
 
-function Show-Diff_Of_Git_Branches {
+function Show-Diff_Of_Git_Branches
+{
     [CmdletBinding()]
-    Param (
+    Param
+    (
         [Parameter(Mandatory=$true)]
         [string]$Branch1,
         [Parameter(Mandatory=$true)]
