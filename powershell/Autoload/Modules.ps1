@@ -55,8 +55,10 @@ foreach($module in $modules) {
 
 # Posh git settings
 # $GitPromptSettings.EnableFileStatus = $false
-$GitPromptSettings.RepositoriesInWhichToDisableFileStatus += 'C:\a'         # Dev folder for big repos
-$GitPromptSettings.RepositoriesInWhichToDisableFileStatus += 'C:\boost'     # Boost libs
+$GitPromptSettings.RepositoriesInWhichToDisableFileStatus += "C:\a"         # Dev folder for big repos
+$GitPromptSettings.RepositoriesInWhichToDisableFileStatus += "C:\boost"     # Boost libs
+$GitPromptSettings.RepositoriesInWhichToDisableFileStatus += "${Env:USERPROFILE}\workspace\libs\boost"          # Boost libs
+$GitPromptSettings.RepositoriesInWhichToDisableFileStatus += "${Env:USERPROFILE}\workspace\libs\UnrealEngine"   # Unreal Engine
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
