@@ -25,7 +25,7 @@ if (Get-Command conda.exe -ErrorAction SilentlyContinue | Test-Path) {
 
     ${function:cnl}     = { conda env list          @args }
     ${function:cnn}     = { conda create -n         @args }
-    ${function:cnn}     = { conda env remove -n     @args }
+    ${function:cnr}     = { conda env remove -n     @args }
     ${function:cna}     = { conda activate          @args }
     ${function:cnd}     = { conda deactivate        @args }
     ${function:cni}     = { conda init powershell }
