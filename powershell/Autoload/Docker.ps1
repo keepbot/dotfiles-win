@@ -20,19 +20,20 @@ if ($MyInvocation.InvocationName -ne '.')
 # Docker
 if (Get-Command docker.exe -ErrorAction SilentlyContinue | Test-Path)
 {
-    ${function:di} = { docker.exe images }
-    ${function:dc} = { docker.exe ps -a }
-    ${function:dcl} = { docker.exe rm $(docker ps -aqf status=exited) }
-    ${function:dcla} = {
+    ${function:di}    = { docker.exe images }
+    ${function:dc}    = { docker.exe ps -a }
+    ${function:dcle}  = { docker.exe rm $(docker ps -aqf status=exited) }
+    ${function:dclc}  = { docker.exe rm $(docker ps -aqf status=created) }
+    ${function:dcli}  = { docker.exe rmi $(docker images -q) }
+    ${function:dclif} = { docker.exe rmi -f $(docker images -q) }
+    ${function:dcla}  = {
         docker.exe rm $(docker ps -aqf status=exited)
         docker.exe rmi $(docker images -qf dangling=true)
         docker.exe volume rm $(docker volume ls -qf dangling=true)
     }
-    ${function:dira} = { docker.exe rmi $(docker images -q) }
-    ${function:diraf} = { docker.exe rmi -f $(docker images -q) }
 
     # Run docker container in interactive mode
-    ${function:dri} = { docker.exe run --rm -it @args }
+    ${function:dri}  = { docker.exe run --rm -it @args }
     # Rewrite entry point to shell
     ${function:desh} = { docker.exe run --rm -it --entrypoint /bin/sh @args }
 

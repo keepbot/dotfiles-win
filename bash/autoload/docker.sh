@@ -2,10 +2,11 @@
 
 alias    di='docker images'
 alias    dc='docker ps -a'
-alias   dcl='docker rm $(docker ps -aqf status=exited)'
+alias  dcle='docker rm $(docker ps -aqf status=exited)'
+alias  dclc='docker rm $(docker ps -aqf status=created)'
 alias  dcla='docker rm $(docker ps -aqf status=exited) || docker rmi $(docker images -qf dangling=true) || docker volume rm $(docker volume ls -qf dangling=true)'
-alias  dira='docker rmi $(docker images -q)'
-alias diraf='docker rmi -f $(docker images -q)'
+alias  dcli='docker rmi $(docker images -q)'
+alias dclif='docker rmi -f $(docker images -q)'
 
 # Run docker container in interactive mode
 alias dri='docker.exe run --rm -it'
