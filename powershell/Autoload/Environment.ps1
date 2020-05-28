@@ -215,6 +215,7 @@ function Initialize-Paths-User {
         "C:\tools\swig"
         "C:\tools\sfktrayfree"
         "C:\tools\vcpkg"
+        "C:\tools\gnuplot\bin"
         "C:\tools\vim\vim82"
         "C:\tools\wsl\arch"
         "C:\tools\wsl\debian"
