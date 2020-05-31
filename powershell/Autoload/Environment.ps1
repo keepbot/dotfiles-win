@@ -237,11 +237,17 @@ function Initialize-Paths-User {
 }
 
 function Set-Env {
+    # Save current variables
+    [Environment]::SetEnvironmentVariable("PATH_PRE_SYS", "$([Environment]::GetEnvironmentVariable("PATH", "Machine"))", "Machine")
+    [Environment]::SetEnvironmentVariable("PATH_PRE_USR", "$([Environment]::GetEnvironmentVariable("PATH", "User"))",    "Machine")
+
     # PATHs
     Initialize-Paths-APP
     Initialize-Paths-SYS
     Initialize-Paths-User
+
     Reset-Environment
+
     $system_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
     if ($env:PYTHON_PATH) {
         $system_path += ";$env:PYTHON_PATH\Scripts"
