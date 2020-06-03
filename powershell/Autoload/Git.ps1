@@ -196,6 +196,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
             git clone --recurse-submodules "$($args[0])" "$target"
         }
     }
+    ${function:grt}  = { get_repo_with_target @args }
 
     function Move-GitRepo
     {
