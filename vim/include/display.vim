@@ -18,8 +18,8 @@ else
 endif
 
 " Background
-set background=dark
-" set background=light
+" set background=dark
+set background=light
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -28,10 +28,11 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
 endif
 
 " Set colors
-"colorscheme monokai
-"colorscheme hybrid
+" colorscheme one
+" colorscheme monokai
+" colorscheme hybrid
 colorscheme gruvbox
-"colorscheme mirec
+" colorscheme mirec
 
 " Make it obvious where 80 characters is
 set textwidth=80
