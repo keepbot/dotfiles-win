@@ -3,23 +3,21 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set window size for GVIM
 if has("gui_running")
-  " GUI is running or is about to start.
-  " Maximize gvim window (for an alternative on Windows, see simalt below).
-  " set lines =999 columns=999
-  set lines=60 columns=200
+    " GUI is running or is about to start.
+    " Maximize gvim window (for an alternative on Windows, see simalt below).
+    " set lines =999 columns=999
+    set lines=60 columns=200
 else
-  " This is console Vim.
-  if exists("+lines")
-    set lines=50
-  endif
-  if exists("+columns")
-    set columns=100
-  endif
+    " This is console Vim.
+    if exists("+lines")
+        set lines=50
+    endif
+    if exists("+columns")
+        set columns=100
+    endif
 endif
 
-" Background
-" set background=dark
-set background=light
+
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -27,11 +25,20 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-" Set colors
-" colorscheme one
+" Background: Personalized for light console themes.
+if has("gui_running")
+    " set background=dark
+    set background=light
+else
+    set background=dark
+    " set background=light
+endif
+
+" Set Colors
+colorscheme one
 " colorscheme monokai
 " colorscheme hybrid
-colorscheme gruvbox
+" colorscheme gruvbox
 " colorscheme mirec
 
 " Make it obvious where 80 characters is
@@ -44,8 +51,8 @@ set number
 
 " Use relative line numbers
 if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
+    set relativenumber
+    au BufReadPost * set relativenumber
 endif
 noremap <leader>. :set relativenumber!<CR> :set number!<CR> :GitGutterToggle <CR>
 
@@ -89,30 +96,30 @@ set cursorline
 " syntax sync minlines=500
 
 if (has('unix') || has('macunix'))
-  " Split symbols
-  if has("multi_byte")
-	  set fillchars=stl:\ ,stlnc:\ ,vert:┆,fold:-,diff:-
-  else
-	  set fillchars=stl:\ ,stlnc:\ ,vert:\|,fold:-,diff:-
-  endif
+    " Split symbols
+    if has("multi_byte")
+        set fillchars=stl:\ ,stlnc:\ ,vert:┆,fold:-,diff:-
+    else
+        set fillchars=stl:\ ,stlnc:\ ,vert:\|,fold:-,diff:-
+endif
 
 " Whitespace symbols
-  if has("multi_byte")
-  " set lcs=tab:»·,trail:·,nbsp:·
-  " set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-  " set lcs=tab:\⁝\ ,trail:•,extends:>,precedes:<,nbsp:¤"
-	  set lcs=tab:»·,trail:•,extends:>,precedes:<,nbsp:¤"
-	  let &sbr = nr2char(8618).' '
-  else
-	  set lcs=tab:>\ ,extends:>,precedes:<,trail:-
-	  let &sbr = '+++ '
-  endif
+    if has("multi_byte")
+    " set lcs=tab:»·,trail:·,nbsp:·
+    " set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+    " set lcs=tab:\⁝\ ,trail:•,extends:>,precedes:<,nbsp:¤"
+        set lcs=tab:»·,trail:•,extends:>,precedes:<,nbsp:¤"
+        let &sbr = nr2char(8618).' '
+    else
+        set lcs=tab:>\ ,extends:>,precedes:<,trail:-
+        let &sbr = '+++ '
+    endif
 endif
 
 function! UpdateLcs()
-	if (&previewwindow)
-		setlocal nolist
-	endif
+    if (&previewwindow)
+        setlocal nolist
+    endif
 endfunction
 
 autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter * call UpdateLcs()
