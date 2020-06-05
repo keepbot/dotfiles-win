@@ -35,7 +35,8 @@ else
 endif
 
 " Set Colors
-colorscheme one
+colorscheme papercolor
+" colorscheme one
 " colorscheme monokai
 " colorscheme hybrid
 " colorscheme gruvbox
@@ -87,7 +88,12 @@ endif
 set ttyfast
 
 " Highlight current line
-set cursorline
+if has("gui_running")
+    set cursorline
+else
+    set nocursorline
+endif
+
 
 " Automatic sync (slow!)
 " autocmd BufEnter * syntax sync fromstart

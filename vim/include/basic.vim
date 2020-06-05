@@ -90,3 +90,6 @@ set nojoinspaces
 " Spelling
 " set spell
 " set spelllang=en,fromtags
+
+" Disable folding
+set nofoldenable
