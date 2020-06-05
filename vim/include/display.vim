@@ -17,8 +17,6 @@ else
     endif
 endif
 
-
-
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
@@ -35,12 +33,11 @@ else
 endif
 
 " Set Colors
-colorscheme papercolor
-" colorscheme one
-" colorscheme monokai
-" colorscheme hybrid
+" colorscheme eclipse
 " colorscheme gruvbox
-" colorscheme mirec
+" colorscheme papercolor
+colorscheme pyte
+" colorscheme summerfruit256
 
 " Make it obvious where 80 characters is
 set textwidth=80
@@ -91,9 +88,10 @@ set ttyfast
 if has("gui_running")
     set cursorline
 else
-    set nocursorline
+    set cursorline
+    :hi CursorLine   cterm=NONE ctermbg=3
+    :hi CursorColumn cterm=NONE ctermbg=3
 endif
-
 
 " Automatic sync (slow!)
 " autocmd BufEnter * syntax sync fromstart
