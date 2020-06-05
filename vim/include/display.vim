@@ -85,6 +85,8 @@ endif
 set ttyfast
 
 " Highlight current line
+" :hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" :hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 if has("gui_running")
     set cursorline
 else
@@ -92,6 +94,7 @@ else
     :hi CursorLine   cterm=NONE ctermbg=3
     :hi CursorColumn cterm=NONE ctermbg=3
 endif
+
 
 " Automatic sync (slow!)
 " autocmd BufEnter * syntax sync fromstart
