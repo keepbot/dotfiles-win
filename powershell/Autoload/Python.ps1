@@ -17,42 +17,58 @@ if ($MyInvocation.InvocationName -ne '.')
 }
 
 
-# Python aliases
-# if (Get-Command c:\tools\python2\python.exe -ErrorAction SilentlyContinue | Test-Path) {
-#     ${function:vc2}     = { c:\tools\python2\python.exe -m virtualenv -p c:\tools\python2\python.exe venv } # init py2 venv in curent dir
-# }
-# if (Get-Command c:\tools\python2\python.exe -ErrorAction SilentlyContinue | Test-Path) {
-#     ${function:vc2-32}  = { c:\tools\python2_x86\python.exe -m virtualenv -p c:\tools\python2_x86\python.exe venv } # init py2 venv in curent dir x86
-# }
-# if (Get-Command c:\tools\python3\python.exe -ErrorAction SilentlyContinue | Test-Path) {
-#     ${function:vc3}     = { c:\tools\python3\python.exe -m virtualenv -p c:\tools\python3\python.exe venv } # init py3 venv in curent dir
-# }
-# if (Get-Command c:\tools\python3\python.exe -ErrorAction SilentlyContinue | Test-Path) {
-#     ${function:vc3-32}  = { c:\tools\python3_x86\python.exe -m virtualenv -p c:\tools\python3_x86\python.exe venv } # init py3 venv in curent dir x86
-# }
+# Python virtualenv aliases - personal
+if (Get-Command c:\tools\python2\python.exe -ErrorAction SilentlyContinue | Test-Path) {
+    ${function:vc2}     = { c:\tools\python2\python.exe -m virtualenv -p c:\tools\python2\python.exe venv } # init py2 venv in curent dir
+}
+
+if (Get-Command c:\tools\python2\python.exe -ErrorAction SilentlyContinue | Test-Path) {
+    ${function:vc2-32}  = { c:\tools\python2_x86\python.exe -m virtualenv -p c:\tools\python2_x86\python.exe venv } # init py2 venv in curent dir x86
+}
+
+if (Get-Command c:\tools\python3\python.exe -ErrorAction SilentlyContinue | Test-Path) {
+    ${function:vc3}     = { c:\tools\python3\python.exe -m virtualenv -p c:\tools\python3\python.exe venv } # init py3 venv in curent dir
+}
+
+if (Get-Command c:\tools\python3\python.exe -ErrorAction SilentlyContinue | Test-Path) {
+    ${function:vc3-32}  = { c:\tools\python3_x86\python.exe -m virtualenv -p c:\tools\python3_x86\python.exe venv } # init py3 venv in curent dir x86
+}
+
 if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:vc}      = { ($python = Get-Command python.exe | Select-Object -ExpandProperty Definition); python.exe -m virtualenv -p $python venv }
-    ${function:va}      = { .\venv\Scripts\activate}
+    ${function:va}      = { .\venv\Scripts\activate }
     ${function:vd}      = { deactivate }
     ${function:vr}      = { rmrf venv }
-    ${function:vpi}     = { python -m pip install  }
+    ${function:vpi}     = { python.exe -m pip install  }
     ${function:vins}    = { If (-Not (Test-Path venv)){vc}; va; python.exe -m pip install -r .\requirements.txt }
     ${function:vgen}    = { va; python.exe -m pip freeze > .\requirements.txt }
 
     # Basic environment
-    ${function:pip-update}      = { python -m pip install --upgrade pip }
-    ${function:venv-install}    = { python -m pip install virtualenv }
-    ${function:ipython-install} = { python -m pip install ipython }
+    ${function:pip-update}      = { python.exe -m pip install --upgrade pip }
+    ${function:venv-install}    = { python.exe -m pip install virtualenv }
+    ${function:ipython-install} = { python.exe -m pip install ipython }
 
-    function pyenv {
+    function pyenv
+    {
         python.exe -m pip install --upgrade pip
         python.exe -m pip install --upgrade virtualenv
         python.exe -m pip install --upgrade ipython
     }
     ${function:pyupdate} = { pyenv }
+
+    function pyclean
+    {
+        [string] $SessionID = [System.Guid]::NewGuid()
+        $TempFreezeFile  = (Join-Path "${Env:Temp}" "${SessionID}")
+        python.exe -m pip freeze > "${TempFreezeFile}"
+        python.exe -m pip uninstall -y -r "${TempFreezeFile}"
+        python.exe -m pip install --upgrade pip
+        python.exe -m pip install --upgrade virtualenv
+    }
 }
 
-function Get-PyList {
+function Get-PyList
+{
     $serpents = @(
         'C:\Python38'
         'C:\Python37'
@@ -96,7 +112,8 @@ function Get-PyList {
     return $serpents
 }
 
-function Find-Py {
+function Find-Py
+{
     <#
     .SYNOPSIS
         List installed Python versions on current PC.
@@ -115,15 +132,18 @@ function Find-Py {
     $serpents = Get-PyList
 
     Write-Host "List of Python interpretators on this PC:"
-    foreach($snake in $serpents) {
+    foreach($snake in $serpents)
+    {
         $snakeBin = (Join-Path $snake "python.exe")
-        if (Test-Path $snakeBin) {
+        if (Test-Path $snakeBin)
+        {
             Write-Host "- [$($( & $snakeBin --version 2>&1) -replace '\D+(\d+...)','$1')] -> $snake"
         }
     }
 }
 
-function Set-Py {
+function Set-Py
+{
     <#
     .SYNOPSIS
         Set Python version on current PC.
@@ -141,12 +161,13 @@ function Set-Py {
     $serpents = Get-PyList
     $ValidatedSerpents = @()
     $Versions = @()
-    foreach($snake in $serpents) {
+    foreach($snake in $serpents)
+    {
         $snakeBin = (Join-Path $snake "python.exe")
-        if (Test-Path $snakeBin) {
+        if (Test-Path $snakeBin)
+        {
             $ValidatedSerpents += $snake
             $Versions += "$($( & $snakeBin --version 2>&1) -replace '\D+(\d+...)','$1')"
-
         }
     }
     $ChoosenVersion = Select-From-List $ValidatedSerpents "Python Version" $Versions
@@ -155,9 +176,11 @@ function Set-Py {
     # Set-Env
 }
 
-function Clear-Py {
+function Clear-Py
+{
     [Environment]::SetEnvironmentVariable("PYTHON_PATH", $null, "Machine")
-    if ($env:PYTHON_PATH) {
+    if ($env:PYTHON_PATH)
+    {
         Remove-Item Env:PYTHON_PATH
     }
     # Set-Env
