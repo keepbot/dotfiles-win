@@ -16,9 +16,10 @@ if ( $MyInvocation.InvocationName -ne '.' )
     Exit
 }
 
+# Variables
 $conan_env_path = 'c:\tools\conan_env'
 
-function cenv_init {
+function cei {
     if ( -Not $(Test-Path "${conan_env_path}") )
     {
         $python = Get-Command python.exe | Select-Object -ExpandProperty Definition
@@ -34,16 +35,18 @@ function cenv_init {
         & $(Join-Path "${conan_env_path}" 'Scripts\activate.ps1')
     }
 }
+Set-Alias cenv_init cei
 
-function cenv_go
+function ceg
 {
     if ( Test-Path "${conan_env_path}" )
     {
         Set-Location "${conan_env_path}"
     }
 }
+Set-Alias cenv_go ceg
 
-function cenv
+function ce
 {
     if ( Test-Path "${conan_env_path}" )
     {
@@ -54,36 +57,40 @@ function cenv
         cenv_init
     }
 }
-Set-Alias cenv_activate cenv
+Set-Alias cenv_activate ce
 
-function nocenv
+function ced
 {
     if(${Env:VIRTUAL_ENV})
     {
         deactivate
     }
 }
-Set-Alias cenv_deactivate nocenv
+Set-Alias cenv_deactivate ced
 
-function cenv_update
+function ceu
 {
     if ( Test-Path "${conan_env_path}" )
     {
         cenv_activate
         [string] $SessionID = [System.Guid]::NewGuid()
-        $TempFreezeFile  = (Join-Path "${Env:Temp}" "${SessionID}")
-        python.exe -m pip freeze | %{ $_.split('==')[0] } | %{ python.exe -m pip install --upgrade $_ }
+        $TempFreezeFile  = Join-Path "${Env:Temp}" "${SessionID}"
+        python.exe -m pip install --upgrade -r "${TempFreezeFile}"
+        Remove-Item -Force "${TempFreezeFile}"
+        # python.exe -m pip freeze | %{ $_.split('==')[0] } | %{ python.exe -m pip install --upgrade $_ }
     }
     else
     {
         cenv_init
     }
 }
+Set-Alias cenv_update ceu
 
-function cenv_rm {
-    nocenv
+function cer {
+    cenv_deactivate
     if ( Test-Path "${conan_env_path}" )
     {
-        rmrf "${conan_env_path}"
+        Remove-Item -Recurse -Force "${conan_env_path}"
     }
 }
+Set-Alias cenv_rm cer

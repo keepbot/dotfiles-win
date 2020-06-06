@@ -62,6 +62,8 @@ if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path) {
         $TempFreezeFile  = (Join-Path "${Env:Temp}" "${SessionID}")
         python.exe -m pip freeze > "${TempFreezeFile}"
         python.exe -m pip uninstall -y -r "${TempFreezeFile}"
+        Remove-Item -Force "${TempFreezeFile}"
+        # python.exe -m pip freeze | %{ $_.split('==')[0] } | %{ python.exe -m pip install --upgrade $_ }
         python.exe -m pip install --upgrade pip
         python.exe -m pip install --upgrade virtualenv
     }

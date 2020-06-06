@@ -162,12 +162,14 @@ function Remove-File-Recursively {
 }
 
 #if (Get-Command rm.exe -ErrorAction SilentlyContinue | Test-Path) {
+#   ${function:rmf}  = { rm.exe -f  @args }
 #   ${function:rmrf} = { rm.exe -rf @args }
 #} else {
+    ${function:rmf}  = { Remove-Item -Force @args }
     ${function:rmrf} = { Remove-Item -Recurse -Force @args }
 #}
 
-function touch($file) { "" | Out-File $file -Encoding ASCII }
+function touch($file) { $null | Out-File -Append $file -Encoding ASCII }
 
 # Mounts
 ${function:mountW} = { subst.exe W: ( Join-Path $HOME "workspace" ) }
