@@ -6,7 +6,6 @@ Conan.io scripts.
 Conan.io scripts.
 #>
 
-
 # Check invocation
 if ( $MyInvocation.InvocationName -ne '.' )
 {
@@ -14,6 +13,24 @@ if ( $MyInvocation.InvocationName -ne '.' )
         "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
         -ForegroundColor Red
     Exit
+}
+
+
+if(-Not $Env:CONAN_USER_HOME)
+{
+    $Env:CONAN_USER_HOME="C:\tools\conan_data"
+    [Environment]::SetEnvironmentVariable("CONAN_USER_HOME", "C:\tools\conan_data", "Machine")
+    if(-Not (Test-Path "${Env:CONAN_USER_HOME}"))
+    {
+        New-Item "${Env:CONAN_USER_HOME}" -ItemType Directory -ErrorAction SilentlyContinue
+    }
+
+}
+
+if((-Not $Env:CONAN_TRACE_FILE) -And $Env:CONAN_USER_HOME)
+{
+    $Env:CONAN_TRACE_FILE="${Env:CONAN_USER_HOME}\conan.log"
+    [Environment]::SetEnvironmentVariable("CONAN_TRACE_FILE", "${Env:CONAN_USER_HOME}\conan.log", "Machine")
 }
 
 # Variables
