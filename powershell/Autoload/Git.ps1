@@ -73,10 +73,10 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:gplp}        = { git.exe pull --rebase; git.exe push @args } # Can't pull because you forgot to track? Run this.
 
     # Push
-    # ${function:gp}        = { git.exe push }  # Comment if you use Get-Property and use gpp insted
-    ${function:gpp}         = { git.exe push }
-    ${function:gppt}        = { git.exe push --tags}
+    # ${function:gp}        = { git.exe push @args }  # Comment if you use Get-Property and use gpp insted
+    ${function:gpp}         = { git.exe push @args }
     ${function:gppu}        = { git.exe push -u @args }
+    ${function:gppt}        = { git.exe push --tags @args }
 
     # Checkout
     ${function:gck}         = { git.exe checkout @args }
