@@ -21,8 +21,13 @@ if ($MyInvocation.InvocationName -ne '.')
 if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     function grcpr
     {
-        git.exe fetch origin master
+        git fetch origin master
         git checkout DEV/Copyright
-        git.exe rebase master
+        git rebase master
+    }
+
+    function grcpr_push
+    {
+        git push --force origin DEV/Copyright
     }
 }
