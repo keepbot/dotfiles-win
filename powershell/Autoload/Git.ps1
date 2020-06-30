@@ -213,7 +213,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         Invoke-Expression "git.exe clone --mirror $From $SessionID"
         $RepoDir  = (Join-Path $env:Temp $SessionID)
         Set-Location $RepoDir
-        Invoke-Expression "git.exe push  --mirror $To"
+        Invoke-Expression "git.exe push --mirror $To"
         Set-Location $env:Temp
         Remove-Item -Force -ErrorAction SilentlyContinue "$TempDir"
     }
