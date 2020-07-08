@@ -115,6 +115,7 @@ function Initialize-Paths-APP {
         "C:\Program Files (x86)\Graphviz2.38\bin\"
         "C:\Program Files (x86)\pgAdmin 4\v3\runtime"
         "C:\Program Files (x86)\pgAdmin 4\v4\runtime"
+        "C:\Program Files\f3d\bin"
 
     )
 
