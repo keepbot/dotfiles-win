@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2020-07-10 01:11:15" build="191012">
+		<key name=".Vanilla" modified="2020-07-10 01:40:52" build="191012">
 			<value name="ColorTable00" type="dword" data="00ffffff"/>
-			<value name="ColorTable01" type="dword" data="00573821"/>
-			<value name="ColorTable02" type="dword" data="00004638"/>
-			<value name="ColorTable03" type="dword" data="004f4c1f"/>
-			<value name="ColorTable04" type="dword" data="00141464"/>
-			<value name="ColorTable05" type="dword" data="00542c44"/>
-			<value name="ColorTable06" type="dword" data="00005b75"/>
-			<value name="ColorTable07" type="dword" data="004c4d4d"/>
-			<value name="ColorTable08" type="dword" data="008c908e"/>
-			<value name="ColorTable09" type="dword" data="00ae7142"/>
-			<value name="ColorTable10" type="dword" data="00008c71"/>
-			<value name="ColorTable11" type="dword" data="009f993e"/>
-			<value name="ColorTable12" type="dword" data="002928c8"/>
-			<value name="ColorTable13" type="dword" data="00a85989"/>
-			<value name="ColorTable14" type="dword" data="000091bb"/>
+			<value name="ColorTable01" type="dword" data="00663300"/>
+			<value name="ColorTable02" type="dword" data="00003300"/>
+			<value name="ColorTable03" type="dword" data="00333300"/>
+			<value name="ColorTable04" type="dword" data="00330066"/>
+			<value name="ColorTable05" type="dword" data="00330033"/>
+			<value name="ColorTable06" type="dword" data="00000033"/>
+			<value name="ColorTable07" type="dword" data="00333333"/>
+			<value name="ColorTable08" type="dword" data="00999999"/>
+			<value name="ColorTable09" type="dword" data="00993300"/>
+			<value name="ColorTable10" type="dword" data="00006600"/>
+			<value name="ColorTable11" type="dword" data="00446600"/>
+			<value name="ColorTable12" type="dword" data="00440099"/>
+			<value name="ColorTable13" type="dword" data="00440066"/>
+			<value name="ColorTable14" type="dword" data="00000066"/>
 			<value name="ColorTable15" type="dword" data="00000000"/>
 			<value name="ColorTable16" type="dword" data="00000000"/>
 			<value name="ColorTable17" type="dword" data="00800000"/>
