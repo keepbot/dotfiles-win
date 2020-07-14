@@ -32,6 +32,8 @@ if (Get-Command docker.exe -ErrorAction SilentlyContinue | Test-Path)
         docker.exe volume rm $(docker volume ls -qf dangling=true)
     }
 
+    ${function:dsprune}  = { docker system prune }
+
     # Run docker container in interactive mode
     ${function:dri}  = { docker.exe run --rm -it @args }
     # Rewrite entry point to shell
