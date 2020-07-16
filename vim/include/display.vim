@@ -33,10 +33,9 @@ else
 endif
 
 " Set Colors
-" colorscheme eclipse
-" colorscheme gruvbox
+colorscheme gruvbox
 " colorscheme papercolor
-colorscheme pyte
+" colorscheme pyte
 " colorscheme summerfruit256
 
 " Make it obvious where 80 characters is
@@ -87,13 +86,13 @@ set ttyfast
 " Highlight current line
 " :hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " :hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-if has("gui_running")
+" if has("gui_running")
     set cursorline
-else
-    set cursorline
-    :hi CursorLine   cterm=NONE ctermbg=3
-    :hi CursorColumn cterm=NONE ctermbg=3
-endif
+" else
+"     set cursorline
+"     :hi CursorLine   cterm=NONE ctermbg=3
+"     :hi CursorColumn cterm=NONE ctermbg=3
+" endif
 
 
 " Automatic sync (slow!)
