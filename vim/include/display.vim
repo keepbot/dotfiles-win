@@ -6,7 +6,12 @@ if has("gui_running")
     " GUI is running or is about to start.
     " Maximize gvim window (for an alternative on Windows, see simalt below).
     " set lines =999 columns=999
-    set lines=60 columns=200
+    set lines=48 columns=200
+    if (has('win32') || has('win64'))
+        set guifont=Consolas:h14:cANSI
+    else
+        set guifont=Luxi\ Mono\ 12
+    endif
 else
     " This is console Vim.
     if exists("+lines")
