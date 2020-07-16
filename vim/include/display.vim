@@ -25,8 +25,8 @@ endif
 
 " Background: Personalized for light console themes.
 if has("gui_running")
-    " set background=dark
-    set background=light
+    set background=dark
+    " set background=light
 else
     set background=dark
     " set background=light
