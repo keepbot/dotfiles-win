@@ -502,11 +502,11 @@
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="Flags" type="dword" data="00000000"/>
 				</key>
-				<key name="Task3" modified="2020-06-12 02:27:42" build="191012">
+				<key name="Task3" modified="2020-07-16 15:00:46" build="191012">
 					<value name="Name" type="string" data="{WSL::Ubuntu}"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data='ubuntu.exe -cur_console:p:n:m:"":t:Ubuntu'/>
+					<value name="Cmd1" type="string" data='ubuntu2004.exe -cur_console:p:n:m:"":t:Ubuntu'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Flags" type="dword" data="00000004"/>
