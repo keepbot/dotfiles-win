@@ -40,7 +40,7 @@ gh_get_user_repos_https () {
         echo
     else
         curl -s "https://api.github.com/users/${1}/repos?sort=pushed&per_page=100" > repo.list.json
-        python -c "import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()"
+        python3 -c "import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()"
         rm repo.list.json
     fi
     return 0
@@ -53,7 +53,7 @@ gh_get_user_repos_ssh () {
         echo
     else
         curl -s "https://api.github.com/users/${1}/repos?sort=pushed&per_page=100" > repo.list.json
-        python -c "import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone ';[os.system(cmd + obj[x]['ssh_url']) for x in range(0, obj_size)];file.close()"
+        python3 -c "import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone ';[os.system(cmd + obj[x]['ssh_url']) for x in range(0, obj_size)];file.close()"
         rm repo.list.json
     fi
     return 0
@@ -67,7 +67,7 @@ gh_list_user_repos_https () {
         echo
     else
         curl -s "https://api.github.com/users/${1}/repos?sort=pushed&per_page=100" > repo.list.json
-        python -c "import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'echo ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()"
+        python3 -c "import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'echo ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()"
         rm repo.list.json
     fi
     return 0
@@ -80,7 +80,7 @@ gh_list_user_repos_ssh () {
         echo
     else
         curl -s "https://api.github.com/users/${1}/repos?sort=pushed&per_page=100" > repo.list.json
-        python -c "import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'echo ';[os.system(cmd + obj[x]['ssh_url']) for x in range(0, obj_size)];file.close()"
+        python3 -c "import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'echo ';[os.system(cmd + obj[x]['ssh_url']) for x in range(0, obj_size)];file.close()"
         rm repo.list.json
     fi
     return 0
