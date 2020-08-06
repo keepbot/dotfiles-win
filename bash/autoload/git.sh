@@ -250,3 +250,18 @@ git-verbose() {
         ;;
     esac
 }
+
+get-git-commits-by-author() {
+    if [ -z "${1}" ] || [ ${3} ]; then
+        echo "ERROR: Wrong operation...."
+        echo "Usage: get-git-commits-by-author <Author> [all]"
+        echo
+        return 1
+    fi
+
+    if [ -z ${2} ]; then
+        git log --pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --author "${1}"
+    else
+        git log --pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --all --author "${1}"
+    fi
+}

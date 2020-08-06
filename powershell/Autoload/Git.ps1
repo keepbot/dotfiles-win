@@ -288,3 +288,23 @@ function Show-Diff_Of_Git_Branches
     git diff Branch1..Branch2
 }
 
+# Git analisys:
+function Get-GitCommitsByAuthor
+{
+    [CmdletBinding()]
+    Param
+    (
+        [string]$Author = "d-k-ivanov",
+        [switch]$AllBranches
+    )
+    $cmd  = "git log "
+    $cmd += "--pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' "
+    $cmd += "--abbrev-commit --date=relative "
+
+    if ($AllBranches) {
+        $cmd += "--all "
+    }
+
+    $cmd += "--author $Author"
+    Invoke-Expression $cmd
+}
