@@ -48,24 +48,23 @@ if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:venv-install}    = { python.exe -m pip install virtualenv }
     ${function:ipython-install} = { python.exe -m pip install ipython }
 
-    function pyenv
+    function py_venv
     {
-        python.exe -m pip install --upgrade pip
-        python.exe -m pip install --upgrade virtualenv
-        python.exe -m pip install --upgrade ipython
+        python -m pip install --upgrade pip
+        python -m pip install --upgrade virtualenv
+        python -m pip install --upgrade ipython
     }
-    ${function:pyupdate} = { pyenv }
 
     function pyclean
     {
         [string] $SessionID = [System.Guid]::NewGuid()
         $TempFreezeFile  = (Join-Path "${Env:Temp}" "${SessionID}")
-        python.exe -m pip freeze > "${TempFreezeFile}"
-        python.exe -m pip uninstall -y -r "${TempFreezeFile}"
+        python -m pip freeze > "${TempFreezeFile}"
+        python -m pip uninstall -y -r "${TempFreezeFile}"
         Remove-Item -Force "${TempFreezeFile}"
         # python.exe -m pip freeze | %{ $_.split('==')[0] } | %{ python.exe -m pip install --upgrade $_ }
-        python.exe -m pip install --upgrade pip
-        python.exe -m pip install --upgrade virtualenv
+        python -m pip install --upgrade pip
+        python -m pip install --upgrade virtualenv
     }
 }
 

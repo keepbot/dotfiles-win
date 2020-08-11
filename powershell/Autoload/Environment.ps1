@@ -179,7 +179,7 @@ function Initialize-Paths-SYS {
 function Initialize-Paths-User {
     $paths = @(
         "${env:GOPATH}\bin"
-        "${Env:M2_HOME}\bin"
+        "${env:M2_HOME}\bin"
         "${env:USERPROFILE}\go\bin"
         "${env:USERPROFILE}\.cargo\bin"
         "${env:USERPROFILE}\.dotnet\tools"
@@ -254,6 +254,10 @@ function Set-Env {
         $system_path += ";$env:PYTHON_PATH\Scripts"
         $system_path += ";$env:PYTHON_PATH"
     }
+    # if ($env:PYENV) {
+    #     $system_path += ";$env:PYENV\bin"
+    #     $system_path += ";$env:PYENV\shims"
+    # }
     if ($env:RUBY_PATH) {
         $system_path += ";$env:RUBY_PATH"
     }
