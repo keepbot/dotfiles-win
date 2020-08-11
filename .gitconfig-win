@@ -9,6 +9,7 @@
 	path = ~/.git.d/user.ini
 [core]
 	autocrlf = true
+    safecrlf = false
 	editor = \"C:/Program Files (x86)/GitExtensions/GitExtensions.exe\" fileeditor
     #editor = "C:/tools/vim/vim.exe"
 [merge]
