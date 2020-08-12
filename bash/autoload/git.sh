@@ -265,3 +265,11 @@ get-git-commits-by-author() {
         git log --pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --all --author "${1}"
     fi
 }
+
+git_rename_author() {
+    git filter-branch --env-filter "export GIT_COMMITTER_NAME='Dmitriy Ivanov';export GIT_COMMITTER_EMAIL='d.k.ivanov@live.com';export GIT_AUTHOR_NAME='Dmitriy Ivanov';export GIT_AUTHOR_EMAIL='d.k.ivanov@live.com'" --tag-name-filter cat -- --branches --tags
+}
+
+git_push_force() {
+    git push --force --tags origin 'refs/heads/*'
+}

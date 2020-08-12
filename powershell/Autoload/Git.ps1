@@ -308,3 +308,13 @@ function Get-GitCommitsByAuthor
     $cmd += "--author $Author"
     Invoke-Expression $cmd
 }
+
+function git_rename_author
+{
+    git filter-branch --env-filter "export GIT_COMMITTER_NAME='Dmitriy Ivanov';export GIT_COMMITTER_EMAIL='d.k.ivanov@live.com';export GIT_AUTHOR_NAME='Dmitriy Ivanov';export GIT_AUTHOR_EMAIL='d.k.ivanov@live.com'" --tag-name-filter cat -- --branches --tags
+}
+
+function git_push_force
+{
+    git push --force --tags origin 'refs/heads/*'
+}
