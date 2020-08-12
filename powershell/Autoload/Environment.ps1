@@ -42,6 +42,12 @@ $env:OLDPWD = Get-Location
 $PSReadLineOptions = @{
     # EditMode = "Vi"
     EditMode = "Emacs"
+
+    # Defaiult word delimiters
+    # WordDelimiters = ';:,.[]{}()/\|^&*-=+`"–—―'
+    # Bash 4.0 word delimiters
+    WordDelimiters = '()<>;&|"'
+
     MaximumHistoryCount = 32767
     HistoryNoDuplicates = $true
     HistorySearchCursorMovesToEnd = $true
