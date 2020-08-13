@@ -318,3 +318,13 @@ function git_push_force
 {
     git push --force --tags origin 'refs/heads/*'
 }
+
+function git_remove_file_from_history
+{
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+        [string] $File
+    )
+    git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $File" --prune-empty --tag-name-filter cat -- --all
+}

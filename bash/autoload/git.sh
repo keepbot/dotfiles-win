@@ -273,3 +273,7 @@ git_rename_author() {
 git_push_force() {
     git push --force --tags origin 'refs/heads/*'
 }
+
+git_remove_file_from_history() {
+    git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $1" --prune-empty --tag-name-filter cat -- --all
+}
