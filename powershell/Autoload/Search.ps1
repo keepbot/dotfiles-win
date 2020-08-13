@@ -17,6 +17,8 @@ if ($MyInvocation.InvocationName -ne '.')
 }
 
 
+Set-Alias gre findstr
+
 # Greps with status
 if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:grep} = {
