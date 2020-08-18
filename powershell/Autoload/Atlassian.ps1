@@ -77,8 +77,13 @@ function bamboo_generate_specs()
 
     $ArtifactId = $($($Package -replace "^\w+\.\w+\.","") -replace "\.","-")
 
-    If (Get-Command mvn.cmd -ErrorAction SilentlyContinue | Test-Path) {
-        $cmd += "mvn.exe archetype:generate -B"
+    If (Get-Command mvn -ErrorAction SilentlyContinue | Test-Path) {
+        # Simplest:
+        # mvn archetype:generate -DarchetypeGroupId=com.atlassian.bamboo -DarchetypeArtifactId=bamboo-specs-archetype -DarchetypeVersion=7.0.4
+
+        # Custom
+        $cmd  = "cmd /c '"
+        $cmd += "mvn archetype:generate -B"
         $cmd += " -DarchetypeGroupId=com.atlassian.bamboo"
         $cmd += " -DarchetypeArtifactId=bamboo-specs-archetype"
         $cmd += " -DarchetypeVersion=${Version}"
@@ -87,9 +92,12 @@ function bamboo_generate_specs()
         $cmd += " -Dversion=1.0.0-SNAPSHOT"
         $cmd += " -Dpackage=${Package}"
         $cmd += " -Dtemplate=minimal"
-        Write-Host "$cmd"
+        $cmd += "'"
+
+        # Write-Host "`t Maven cmd: $cmd`n" -ForegroundColor Yellow
+        Invoke-Expression "$cmd"
     } else {
-        Write-Host "ERROR: mvn.exe not found..." -ForegroundColor Red
+        Write-Host "ERROR: mvn not found..." -ForegroundColor Red
         Write-Host "ERROR: Maven should be installed and mvn.exe added to the %PATH% env" -ForegroundColor Red
     }
 }
