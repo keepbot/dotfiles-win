@@ -36,7 +36,8 @@ if((-Not $Env:CONAN_TRACE_FILE) -And $Env:CONAN_USER_HOME)
 # Variables
 $conan_env_path = 'c:\tools\conan_env'
 
-function cei {
+function cei
+{
     if ( -Not $(Test-Path "${conan_env_path}") )
     {
         $python = Get-Command python.exe | Select-Object -ExpandProperty Definition
@@ -103,7 +104,8 @@ function ceu
 }
 Set-Alias cenv_update ceu
 
-function cer {
+function cer
+{
     cenv_deactivate
     if ( Test-Path "${conan_env_path}" )
     {
