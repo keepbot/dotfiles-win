@@ -44,9 +44,9 @@ $PSReadLineOptions = @{
     EditMode = "Emacs"
 
     # Defaiult word delimiters
-    # WordDelimiters = ';:,.[]{}()/\|^&*-=+`"–—―'
+    WordDelimiters = ';:,.[]{}()/\|^&*-=+`"–—―'
     # Bash 4.0 word delimiters
-    WordDelimiters = '()<>;&|"'
+    # WordDelimiters = '()<>;&|"'
 
     MaximumHistoryCount = 32767
     HistoryNoDuplicates = $true
