@@ -209,3 +209,32 @@ function Copy-FilesWithFolderStructure {
         }
     }
 }
+
+function join_files {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)]
+        [string] $Out,
+
+        [Parameter(ValueFromPipeline=$true)]
+        [ValidateScript({
+            foreach ($file in $_) {
+                Test-Path $file.FullName
+            }
+        })]
+        [System.Object[]] $FilesToJoin = (Get-ChildItem -Path . -File)
+
+
+    )
+    $cmd = "cmd /c '$($FilesToJoin.FullName -join ' + ') ${Out}'"
+    Write-Host $cmd
+
+    # Usages:
+    # join_files out.mp3
+    # join_files out.mp3 (Get-ChildItem -Path ..\path\to\folder\ -File)
+    # Get-ChildItem -Path ..\path\to\folder\ -File | join_files out.mp3
+    # Get-ChildItem -Path ..\path\to\folder\ -File -Filter "*.mp3"  | join_files out.mp3
+    #
+    # CMD equivalent
+    # copy /b 01.mp3 + 02.mp3 + 03.mp3 + 04.mp3 + 05.mp3 + 06.mp3 + 07.mp3 + 08.mp3 + 09.mp3 + 10.mp3 + 11.mp3 out.mp3
+}
