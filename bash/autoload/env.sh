@@ -127,11 +127,6 @@ else
     export OS_DISTRIBUTION=$(uname -s)
 fi
 
-# Export display for WSL:
-if [[ $WSL_DISTRO_NAME ]]; then
-    export DISPLAY=$(ip route | grep default | awk '{print $3}'):0.0
-fi
-
 list-paths() {
     for path in $(echo $PATH | tr ":" "\n"); do
         echo $path
