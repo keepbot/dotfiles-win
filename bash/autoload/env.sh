@@ -63,6 +63,8 @@ case $platform in
         [[ -d /usr/local/bin ]]                     && export PATH=$PATH:/usr/local/bin
         [[ -d /opt/local/bin ]]                     && export PATH=$PATH:/opt/local/bin
         [[ -d /opt/bin ]]                           && export PATH=$PATH:/opt/bin
+        # Snap
+        [[ -d /var/lib/snapd/snap/bin ]]            && export PATH=$PATH:/var/lib/snapd/snap/bin
         # Ubuntu games
         [[ -d /usr/games ]]                         && export PATH=$PATH:/usr/games
         [[ -d /usr/local/games ]]                   && export PATH=$PATH:/usr/local/games
