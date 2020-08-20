@@ -34,29 +34,30 @@ ${function:cd} = {
 ${function:~} = { Set-Location ~ }
 # PoSh won't allow ${function:..} because of an invalid path error, so...
 ${function:Set-ParentLocation} = { Set-Location .. }; Set-Alias ".." Set-ParentLocation
-${function:...}     = { Set-Location ..\..                                  }
-${function:....}    = { Set-Location ..\..\..                               }
-${function:.....}   = { Set-Location ..\..\..\..                            }
-${function:......}  = { Set-Location ..\..\..\..\..                         }
-${function:.......} = { Set-Location ..\..\..\..\..\..                      }
+${function:...}     = { Set-Location ..\..                                      }
+${function:....}    = { Set-Location ..\..\..                                   }
+${function:.....}   = { Set-Location ..\..\..\..                                }
+${function:......}  = { Set-Location ..\..\..\..\..                             }
+${function:.......} = { Set-Location ..\..\..\..\..\..                          }
 
 # Navigation Shortcuts
-${function:drop}    = { Set-Location D:\Dropbox                             }
-${function:desk}    = { Set-Location ~\Desktop                              }
-${function:docs}    = { Set-Location ~\Documents                            }
-${function:down}    = { Set-Location ~\Downloads                            }
-${function:ws}      = { Set-Location ~\workspace                            }
-${function:wsm}     = { Set-Location ~\workspace\misc                       }
-${function:wsmy}    = { Set-Location ~\workspace\my                         }
-${function:wsdf}    = { Set-Location ~\workspace\my\dotfiles                }
-${function:wsdsc}   = { Set-Location ~\workspace\my\dsc-windows-workstation }
-${function:wst}     = { Set-Location ~\workspace\tmp                        }
+${function:drop}    = { Set-Location D:\Dropbox                                 }
+${function:desk}    = { Set-Location ~\Desktop                                  }
+${function:docs}    = { Set-Location ~\Documents                                }
+${function:down}    = { Set-Location ~\Downloads                                }
+${function:ws}      = { Set-Location ~\workspace                                }
+${function:wsm}     = { Set-Location ~\workspace\misc                           }
+${function:wsmy}    = { Set-Location ~\workspace\my                             }
+${function:wsdf}    = { Set-Location ~\workspace\my\dotfiles                    }
+${function:wsdsc}   = { Set-Location ~\workspace\my\dsc-windows-workstation     }
+${function:wst}     = { Set-Location ~\workspace\tmp                            }
 
 # Ormco Shortcuts
-${function:wso}     = { Set-Location ~\workspace\ormco                      }
-${function:wsoc}    = { Set-Location ~\workspace\ormco\common               }
-${function:wsoo}    = { Set-Location ~\workspace\ormco\common\orthoplatform }
-${function:wsod}    = { Set-Location ~\workspace\ormco\devops               }
+${function:wso}     = { Set-Location ~\workspace\ormco                          }
+${function:wsoc}    = { Set-Location ~\workspace\ormco\common                   }
+${function:wsoo}    = { Set-Location ~\workspace\ormco\common\orthoplatform     }
+${function:wsod}    = { Set-Location ~\workspace\ormco\devops                   }
+${function:wsor}    = { Set-Location ~\workspace\ormco\web\alignerweb-reports   }
 
 # Create a new directory and enter it
 function New-DirectoryAndSet ([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path}
