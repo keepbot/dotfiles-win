@@ -328,3 +328,13 @@ function git_remove_file_from_history
     )
     git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $File" --prune-empty --tag-name-filter cat -- --all
 }
+
+function git_dnagling_show
+{
+    git fsck --full
+
+function git_dnagling_fix
+{
+    git reflog expire --expire=now --all
+    git gc --prune=now
+}
