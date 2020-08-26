@@ -332,6 +332,7 @@ function git_remove_file_from_history
 function git_dnagling_show
 {
     git fsck --full
+}
 
 function git_dnagling_fix
 {
