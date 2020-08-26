@@ -334,7 +334,7 @@ function git_dangling_show
     git fsck --full
 }
 
-function git_dangling_show
+function git_dangling_fix
 {
     git reflog expire --expire=now --all
     git gc --prune=now
