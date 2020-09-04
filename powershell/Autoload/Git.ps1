@@ -339,3 +339,13 @@ function git_dangling_fix
     git reflog expire --expire=now --all
     git gc --prune=now
 }
+
+function git_upstream
+{
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)]
+        [string] $Upstream
+    )
+    git branch --set-upstream-to=origin/${Upstream} ${Upstream}
+}
