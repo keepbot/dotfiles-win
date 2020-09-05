@@ -8,4 +8,3 @@ if command -v code-insiders >/dev/null; then
 else
     alias icode="code"
 fi
-

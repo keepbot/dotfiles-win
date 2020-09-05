@@ -6,5 +6,5 @@ alias reload='source ~/.bashrc && echo "Bash profile reloaded"'
 alias bash='bash -l '
 
 hist() {
-	history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+    history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 }

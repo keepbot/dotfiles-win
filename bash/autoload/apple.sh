@@ -7,7 +7,7 @@ if [ ! "${platform}" != "Darwin"  ]; then
   alias sign_prod='productsign --sign'
   alias sign_list='security find-identity'
   alias sign_verify='pkgutil --check-signature'
-  
+
   ntz_list_providers () {
 	  if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]; then
 		  echo "Usage: $0 <apple_username> <apple_password>"

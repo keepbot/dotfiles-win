@@ -134,3 +134,6 @@ list-paths() {
         echo $path
     done
 }
+
+# Travis CI
+[ ! -s "${HOME}/.travis/travis.sh" ] || source "${HOME}/.travis/travis.sh"
