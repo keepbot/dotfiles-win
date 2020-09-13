@@ -46,6 +46,7 @@ rm -rf "$HOME/.bash"                        2> /dev/null
 rm -rf "$HOME/.bash_profile"                2> /dev/null
 rm -rf "$HOME/.bashrc"                      2> /dev/null
 rm -rf "$HOME/.bin"                         2> /dev/null
+rm -rf "$HOME/.gdbinit"                     2> /dev/null
 rm -rf "$HOME/.gemrc"                       2> /dev/null
 rm -rf "$HOME/.git.d"                       2> /dev/null
 rm -rf "$HOME/.gitconfig"                   2> /dev/null
@@ -61,6 +62,7 @@ ln -sf "$DOTFILES_DIR/bash"                 "$HOME/.bash"
 ln -sf "$DOTFILES_DIR/bash_profile"         "$HOME/.bash_profile"
 ln -sf "$DOTFILES_DIR/bash_profile"         "$HOME/.profile"
 ln -sf "$DOTFILES_DIR/bashrc"               "$HOME/.bashrc"
+ln -sf "$DOTFILES_DIR/gdbinit"              "$HOME/.gdbinit"
 ln -sf "$DOTFILES_DIR/gemrc"                "$HOME/.gemrc"
 ln -sf "$DOTFILES_DIR/git.d"                "$HOME/.git.d"
 ln -sf "$DOTFILES_DIR/.gitmessage"          "$HOME/.gitmessage"
