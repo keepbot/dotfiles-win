@@ -106,6 +106,7 @@ function Initialize-Paths-APP {
         # "C:\Qt\Qt5.12.1\5.12.1\msvc2017\bin"
         # "C:\Qt\Qt5.11.1\5.11.1\msvc2015\bin"
         # "C:\Qt\Qt5.9.5\5.9.5\msvc2015\bin"
+        "C:\Program Files\ImageMagick-7.0.10-Q16-HDRI"
         "C:\Program Files\ImageMagick-7.0.10-Q16"
         "C:\Program Files\ImageMagick-7.0.8-Q16"
         "C:\Program Files\MiKTeX 2.9\miktex\bin\x64"
@@ -122,7 +123,7 @@ function Initialize-Paths-APP {
         "C:\Program Files (x86)\pgAdmin 4\v3\runtime"
         "C:\Program Files (x86)\pgAdmin 4\v4\runtime"
         "C:\Program Files\f3d\bin"
-
+        "C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin"
     )
 
     $final_path = "C:\tools\bin"
@@ -200,6 +201,7 @@ function Initialize-Paths-User {
         "C:\HashiCorp\Vagrant\bin"
         "C:\msys64"
         "C:\opscode\chefdk\bin"
+        "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.2\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.1\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.1\bin"
         "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.2\bin"
