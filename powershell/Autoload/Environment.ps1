@@ -230,6 +230,7 @@ function Initialize-Paths-User {
         "C:\tools\wsl\debian"
         "C:\tools\wsl\kali"
         "C:\tools\wsl\ubuntu"
+        "C:\tools\sonar-scanner-4.4.0.2170-windows\bin"
         # "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
     )
 
