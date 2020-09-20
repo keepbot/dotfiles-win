@@ -110,7 +110,7 @@ alias gcb='git clone --single-branch --branch'
 alias gcrb='git clone --recurse-submodules --single-branch --branch'
 
 # Look for satus or changes
-alias ggs="git status"
+alias gg="git status"
 
 alias gw="git show"
 alias gw^="git show HEAD^"
