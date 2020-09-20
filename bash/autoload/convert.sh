@@ -32,26 +32,34 @@ calc() {
 
 resize_pdf() {
     # Input:
-    IFILE="${1}"
-    if [ -z "${IFILE}" ]; then
-        Usage: ${0} input_file [output_file=input_file_72dpi.pdf] [resolution_in_dpi=72]
+    if [ -z "$1" ]; then
+        Usage: $0 input_file [resolution_in_dpi=72] [output_file=input_file_72dpi.pdf]
         exit 1
     fi
 
+    input_basename=$(basename -- "$1")
+    input_extension="${input_basename##*.}"
+    input_filename="${input_basename%.*}"
+
     # Output resolution
-    if [ -z "${3}" ]; then
-        DPI="${3}"
+    if [ -z "$2" ]; then
+        DPI="$2"
     else
         DPI="72"
     fi
+    echo "  DPI set to ${DPI}"
 
     # Output:
-    if [ ! -z "${2}" ]; then
-        OFILE="${2}"
+    if [ ! -z "$3" ]; then
+        output_basename=$(basename -- "$3")
+        output_extension="${output_basename##*.}"
+        output_filename="${output_filename%.*}"
     else
-        input_file_name=(basename ${IFILE})
-        OFILE="${input_file_name}_${DPI}.pdf"
+        output_basename="${input_filename}_${DPI}.pdf"
+        output_extension="${output_basename##*.}"
+        output_filename="${output_filename%.*}"
     fi
+    echo "  Output file name set to $DPI"
 
     gs                                          \
         -q -dNOPAUSE -dBATCH -dSAFER            \
@@ -62,11 +70,11 @@ resize_pdf() {
         -dSubsetFonts=true                      \
         -dAutoRotatePages=/None                 \
         -dColorImageDownsampleType=/Bicubic     \
-        -dColorImageResolution=${DPI}           \
+        -dColorImageResolution=$DPI             \
         -dGrayImageDownsampleType=/Bicubic      \
-        -dGrayImageResolution=${DPI}            \
+        -dGrayImageResolution=$DPI              \
         -dMonoImageDownsampleType=/Subsample    \
-        -dMonoImageResolution=${DPI}            \
-        -sOutputFile="${OFILE}"                 \
-        "${IFILE}"
+        -dMonoImageResolution=$DPI              \
+        -sOutputFile="$output_basename"         \
+        "$input_basename"
 }
