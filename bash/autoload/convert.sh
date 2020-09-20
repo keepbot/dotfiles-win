@@ -37,12 +37,14 @@ resize_pdf() {
         exit 1
     fi
 
+    input_directory=$(dirname -- "$1")
     input_basename=$(basename -- "$1")
     input_extension="${input_basename##*.}"
     input_filename="${input_basename%.*}"
-
+    input_fullname="${input_directory}/${input_basename}"
+    echo $input_fullname
     # Output resolution
-    if [ -z "$2" ]; then
+    if [ ! -z "$2" ]; then
         DPI="$2"
     else
         DPI="72"
@@ -51,15 +53,18 @@ resize_pdf() {
 
     # Output:
     if [ ! -z "$3" ]; then
+        output_directory=$(dirname -- "$3")
         output_basename=$(basename -- "$3")
         output_extension="${output_basename##*.}"
         output_filename="${output_filename%.*}"
     else
-        output_basename="${input_filename}_${DPI}.pdf"
+        output_directory=${input_directory}
+        output_basename="${input_filename}_${DPI}dpi.pdf"
         output_extension="${output_basename##*.}"
         output_filename="${output_filename%.*}"
     fi
-    echo "  Output file name set to $DPI"
+    output_fullname="${output_directory}/${output_basename}"
+    echo "  Output file name set to ${output_fullname}"
 
     gs                                          \
         -q -dNOPAUSE -dBATCH -dSAFER            \
@@ -75,6 +80,6 @@ resize_pdf() {
         -dGrayImageResolution=$DPI              \
         -dMonoImageDownsampleType=/Subsample    \
         -dMonoImageResolution=$DPI              \
-        -sOutputFile="$output_basename"         \
-        "$input_basename"
+        -sOutputFile="$output_fullname"         \
+        "$input_fullname"
 }
