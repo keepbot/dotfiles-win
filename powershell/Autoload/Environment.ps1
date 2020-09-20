@@ -124,6 +124,7 @@ function Initialize-Paths-APP {
         "C:\Program Files (x86)\pgAdmin 4\v4\runtime"
         "C:\Program Files\f3d\bin"
         "C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin"
+        "C:\Program Files\gs\gs9.53.1\bin"
     )
 
     $final_path = "C:\tools\bin"
