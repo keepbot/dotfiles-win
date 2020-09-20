@@ -33,7 +33,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:gcrb}        = { git.exe clone --recurse-submodules --single-branch --branch @args }
 
     # Look for satus or changes
-    ${function:gs}          = { git.exe status @args }
+    ${function:ggs}         = { git.exe status @args }
 
     ${function:gw}          = { git.exe show @args }
     ${function:gw^}         = { git.exe show HEAD^ @args }
