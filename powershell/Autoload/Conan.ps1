@@ -45,6 +45,7 @@ function cei
         python.exe -m pip install --upgrade virtualenv
         python.exe -m virtualenv -p $python "${conan_env_path}"
         & $(Join-Path "${conan_env_path}" 'Scripts\activate.ps1')
+        python.exe -m pip install --upgrade pip
         python.exe -m pip install --upgrade conan
         # python.exe -m pip install --upgrade ipython
     }
