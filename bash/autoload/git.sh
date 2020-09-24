@@ -114,10 +114,15 @@ alias gss="git status"
 
 alias gw="git show"
 alias gw^="git show HEAD^"
+alias gww="git show HEAD^"
 alias gw^^="git show HEAD^^"
+alias gwww="git show HEAD^^"
 alias gw^^^="git show HEAD^^^"
+alias gwwww="git show HEAD^^^"
 alias gw^^^^="git show HEAD^^^^"
+alias gwwwww="git show HEAD^^^^"
 alias gw^^^^^="git show HEAD^^^^^"
+alias gwwwwww="git show HEAD^^^^^"
 
 alias gd="git diff HEAD"  # What's changed? Both staged and unstaged.
 alias gdo="git diff --cached"  # What's changed? Only staged (added) changes.

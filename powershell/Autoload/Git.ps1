@@ -35,12 +35,17 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     # Look for satus or changes
     ${function:gs}          = { git.exe status @args }
 
-    ${function:gw}          = { git.exe show @args }
-    ${function:gw^}         = { git.exe show HEAD^ @args }
-    ${function:gw^^}        = { git.exe show HEAD^^ @args }
-    ${function:gw^^^}       = { git.exe show HEAD^^^ @args }
-    ${function:gw^^^^}      = { git.exe show HEAD^^^^ @args }
-    ${function:gw^^^^^}     = { git.exe show HEAD^^^^^ @args }
+    ${function:gw}          = { git.exe show @args              }
+    ${function:gw^}         = { git.exe show HEAD^ @args        }
+    ${function:gww}         = { git.exe show HEAD^ @args        }
+    ${function:gw^^}        = { git.exe show HEAD^^ @args       }
+    ${function:gwww}        = { git.exe show HEAD^^ @args       }
+    ${function:gw^^^}       = { git.exe show HEAD^^^ @args      }
+    ${function:gwwww}       = { git.exe show HEAD^^^ @args      }
+    ${function:gw^^^^}      = { git.exe show HEAD^^^^ @args     }
+    ${function:gwwwww}      = { git.exe show HEAD^^^^ @args     }
+    ${function:gw^^^^^}     = { git.exe show HEAD^^^^^ @args    }
+    ${function:gwwwwww}     = { git.exe show HEAD^^^^^ @args    }
 
     ${function:gd}          = { git.exe diff HEAD @args } # What's changed? Both staged and unstaged.
     ${function:gdo}         = { git.exe diff --cached @args } # What's changed? Only staged (added) changes.
