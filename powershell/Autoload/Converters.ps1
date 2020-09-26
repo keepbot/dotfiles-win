@@ -45,8 +45,9 @@ function ResizePDF() {
         [Parameter(Mandatory=$true)]
         [ValidateScript({Test-Path -Path $_})]
         [string] $Path,
-        [string] $OutputPath,
-        [string] $Resolution = "72"
+        [string] $Resolution = "72",
+        [string] $OutputPath
+
     )
 
     if (-Not $OutputPath) {
