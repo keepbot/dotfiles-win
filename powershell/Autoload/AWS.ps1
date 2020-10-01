@@ -16,7 +16,7 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-function aws_see_env_vars()
+function aws_set_env_vars()
 {
     [CmdletBinding()]
     param
