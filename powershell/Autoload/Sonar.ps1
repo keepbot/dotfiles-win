@@ -31,7 +31,7 @@ function sonar_run_msbuild_cpp
     build-wrapper-win-x86-64.exe --out-dir bw-output msbuild $Path /t:Clean;Rebuild /m:$Threads /p:Configuration=Release /p:Platform=x64 /verbosity:normal
 }
 
-function sonar_scan
+function sonar_scan_cpp
 {
     [CmdletBinding()]
     param (
@@ -39,6 +39,7 @@ function sonar_scan
         [string] $Organization,
         [Parameter(Mandatory=$true)]
         [string] $ProjectKey,
+        [string] $Language = 'cpp',
         [string] $Threads = '4'
     )
 
@@ -49,13 +50,31 @@ function sonar_scan
         return
     }
 
-    $cmd  = "sonar-scanner.bat"
-    $cmd += " -Dsonar.cfamily.build-wrapper-output=bw-output"
-    $cmd += " -Dsonar.cfamily.threads=${Threads}"
-    $cmd += " -Dsonar.host.url=https://sonarcloud.io"
-    $cmd += " -Dsonar.organization=${Organization}"
-    $cmd += " -Dsonar.projectKey=${ProjectKey}"
-    $cmd += " -Dsonar.sources=."
+    Switch ($Language) {
+        'maven'     { $cmd  = "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar" }
+        'gradle'    { $cmd  = "./gradlew sonarqube" }
+        'dotnet'    {
+            $cmd  = 'dotnet sonarscanner begin /o:"ormcornd" /k:"ormcornd_alignerweb-api" /d:sonar.host.url="https://sonarcloud.io"; '
+            $cmd  = 'dotnet build -c release; '
+            $cmd  = 'dotnet sonarscanner end'
+        }
+        'cpp'       {
+            $cmd  = "sonar-scanner.bat"
+            $cmd += " -Dsonar.cfamily.build-wrapper-output=bw-output"
+            $cmd += " -Dsonar.cfamily.threads=${Threads}"
+            $cmd += " -Dsonar.host.url=https://sonarcloud.io"
+            $cmd += " -Dsonar.organization=${Organization}"
+            $cmd += " -Dsonar.projectKey=${ProjectKey}"
+            $cmd += " -Dsonar.sources=."
+        }
+        Default     {
+            $cmd  = "sonar-scanner.bat"
+            $cmd += " -Dsonar.host.url=https://sonarcloud.io"
+            $cmd += " -Dsonar.organization=${Organization}"
+            $cmd += " -Dsonar.projectKey=${ProjectKey}"
+            $cmd += " -Dsonar.sources=."
+        }
+    }
 
     Invoke-Expression "$cmd"
 }
