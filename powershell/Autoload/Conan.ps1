@@ -94,6 +94,7 @@ function ceu
         cenv_activate
         [string] $SessionID = [System.Guid]::NewGuid()
         $TempFreezeFile  = Join-Path "${Env:Temp}" "${SessionID}"
+        python.exe -m pip freeze --all | ForEach-Object { $_.split('==')[0] } >> "${TempFreezeFile}"
         python.exe -m pip install --upgrade -r "${TempFreezeFile}"
         Remove-Item -Force "${TempFreezeFile}"
         # python.exe -m pip freeze | %{ $_.split('==')[0] } | %{ python.exe -m pip install --upgrade $_ }
