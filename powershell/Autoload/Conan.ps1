@@ -54,12 +54,12 @@ function conan_symlinks
     if((Test-Path $conan_my_path) -And $Env:CONAN_USER_HOME)
     {
         Get-ChildItem "${conan_my_path}\hooks\" | ForEach-Object {
-            Remove-Item -Force -Confirm:$false "${conan_hooks}\$($_.Name)"
+            Remove-Item -Force -Confirm:$false "${conan_hooks}\$($_.Name)" -ErrorAction SilentlyContinue
             cmd.exe /c mklink "${conan_hooks}\$($_.Name)" "$($_.FullName)"
         }
 
         Get-ChildItem "${conan_my_path}\profiles\" | ForEach-Object {
-            Remove-Item -Force -Confirm:$false "${conan_profiles}\$($_.Name)"
+            Remove-Item -Force -Confirm:$false "${conan_profiles}\$($_.Name)" -ErrorAction SilentlyContinue
             cmd.exe /c mklink "${conan_profiles}\$($_.Name)" "$($_.FullName)"
         }
     }
