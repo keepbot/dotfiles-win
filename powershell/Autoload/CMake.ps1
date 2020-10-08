@@ -25,10 +25,42 @@ if (Get-Command cmake.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:cmake2019x86} = { mkdir build; Set-Location build; Set-VC-Vars-All x86; cmake -G "Visual Studio 16 2019" -A Win32 -DCMAKE_BUILD_TYPE="Release" ..; cmake --build . --config "Release" }
     ${function:cmake2019x64} = { mkdir build; Set-Location build; Set-VC-Vars-All x64; cmake -G "Visual Studio 16 2019" -A x64   -DCMAKE_BUILD_TYPE="Release" ..; cmake --build . --config "Release" }
 
-
+    ${function:cmake_gen}    = { cmake -G "Visual Studio 16 2019" -A x64   -DCMAKE_BUILD_TYPE="Release" .. }
     ${function:cmake_gen_32} = { cmake -G "Visual Studio 16 2019" -A Win32 -DCMAKE_BUILD_TYPE="Release" .. }
     ${function:cmake_gen_64} = { cmake -G "Visual Studio 16 2019" -A x64   -DCMAKE_BUILD_TYPE="Release" .. }
 
     ${function:cmake_build}  = { cmake --build . --config "Release" }
 
+    function ccc
+    {
+        [CmdletBinding()]
+        Param
+        (
+            [switch] $ConanStatic,
+            [switch] $ConanShared
+        )
+
+        if ($ConanStatic)
+        {
+            ce
+            conan_static
+        }
+
+        if ($ConanShared)
+        {
+            ce
+            conan_shared
+        }
+
+        $old_dir = Get-Location
+        New-Item _build -ItemType Directory -ErrorAction SilentlyContinue
+        Set-Location _build
+
+        Set-VC-Vars-All x64
+        cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE="Release" ..
+        cmake --build . --config "Release"
+
+        Set-Location ${old_dir}
+        Remove-Item -Recurse -Force ./_build
+    }
 }
