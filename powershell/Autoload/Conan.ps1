@@ -24,7 +24,6 @@ if(-Not $Env:CONAN_USER_HOME)
     {
         New-Item "${Env:CONAN_USER_HOME}" -ItemType Directory -ErrorAction SilentlyContinue
     }
-
 }
 
 if((-Not $Env:CONAN_TRACE_FILE) -And $Env:CONAN_USER_HOME)
@@ -35,6 +34,36 @@ if((-Not $Env:CONAN_TRACE_FILE) -And $Env:CONAN_USER_HOME)
 
 # Variables
 $conan_env_path = 'c:\tools\conan_env'
+
+function conan_symlinks
+{
+    $conan_my_path  = Join-Path $HOME ".conan_my"
+    $conan_hooks    = Join-Path $Env:CONAN_USER_HOME ".conan\hooks"
+    $conan_profiles = Join-Path $Env:CONAN_USER_HOME ".conan\profiles"
+
+    if(-Not (Test-Path $conan_hooks))
+    {
+        New-Item "${conan_hooks}" -ItemType Directory -ErrorAction SilentlyContinue
+    }
+
+    if(-Not (Test-Path $conan_profiles))
+    {
+        New-Item "${conan_profiles}" -ItemType Directory -ErrorAction SilentlyContinue
+    }
+
+    if((Test-Path $conan_my_path) -And $Env:CONAN_USER_HOME)
+    {
+        Get-ChildItem "${conan_my_path}\hooks\" | ForEach-Object {
+            Remove-Item -Force -Confirm:$false "${conan_hooks}\$($_.Name)"
+            cmd.exe /c mklink "${conan_hooks}\$($_.Name)" "$($_.FullName)"
+        }
+
+        Get-ChildItem "${conan_my_path}\profiles\" | ForEach-Object {
+            Remove-Item -Force -Confirm:$false "${conan_profiles}\$($_.Name)"
+            cmd.exe /c mklink "${conan_profiles}\$($_.Name)" "$($_.FullName)"
+        }
+    }
+}
 
 function cei
 {
