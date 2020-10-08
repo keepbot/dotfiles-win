@@ -26,6 +26,16 @@ if(-Not $Env:CONAN_USER_HOME)
     }
 }
 
+if(-Not $Env:CONAN_USER_HOME_SHORT)
+{
+    $Env:CONAN_USER_HOME_SHORT="${Env:CONAN_USER_HOME}\short"
+    [Environment]::SetEnvironmentVariable("CONAN_USER_HOME_SHORT", "${Env:CONAN_USER_HOME_SHORT}", "Machine")
+    if(-Not (Test-Path "${Env:CONAN_USER_HOME_SHORT}"))
+    {
+        New-Item "${Env:CONAN_USER_HOME_SHORT}" -ItemType Directory -ErrorAction SilentlyContinue
+    }
+}
+
 if((-Not $Env:CONAN_TRACE_FILE) -And $Env:CONAN_USER_HOME)
 {
     $Env:CONAN_TRACE_FILE="${Env:CONAN_USER_HOME}\conan.log"
