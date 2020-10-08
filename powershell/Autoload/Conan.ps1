@@ -186,6 +186,9 @@ if (Get-Command conan.exe -ErrorAction SilentlyContinue | Test-Path)
     }
 }
 
+${function:conan_shared} = { conan install . -pr "${Env:CONAN_USER_HOME}\.conan\profiles\windows-msvc-16-shared-release-x64" --build=missing }
+${function:conan_static} = { conan install . -pr "${Env:CONAN_USER_HOME}\.conan\profiles\windows-msvc-16-static-release-x64" --build=missing }
+
 ## History
 # conan remove --locks
 # conan install conanfile.txt -g visual_studio --install-folder Source\Apps\Aligner\Solution\.conan -s arch=x86_64 -s build_type=Release -s compiler.toolset=v142 -s compiler.version=16 -s compiler.runtime=MD  --build=outdated --update
