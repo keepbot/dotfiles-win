@@ -16,30 +16,71 @@ if ( $MyInvocation.InvocationName -ne '.' )
 }
 
 
-if(-Not $Env:CONAN_USER_HOME)
+function conan_set_vars
 {
-    $Env:CONAN_USER_HOME="C:\tools\conan_data"
-    [Environment]::SetEnvironmentVariable("CONAN_USER_HOME", "C:\tools\conan_data", "Machine")
-    if(-Not (Test-Path "${Env:CONAN_USER_HOME}"))
+    [CmdletBinding()]
+    param
+    (
+        [string]$ConanHome  = "None",
+        [string]$ConanShort = "None"
+    )
+
+    # Set Conan Home Path
+    if($ConanHome -ne "None")
     {
-        New-Item "${Env:CONAN_USER_HOME}" -ItemType Directory -ErrorAction SilentlyContinue
+        $Env:CONAN_USER_HOME="${ConanHome}"
+        [Environment]::SetEnvironmentVariable("CONAN_USER_HOME", "${Env:CONAN_USER_HOME}", "Machine")
+        if(-Not (Test-Path "${Env:CONAN_USER_HOME}"))
+        {
+            New-Item "${Env:CONAN_USER_HOME}" -ItemType Directory -ErrorAction SilentlyContinue
+        }
+    }
+
+    # Set Conan Home Short Path
+    if($ConanShort -ne "None")
+    {
+        $Env:CONAN_USER_HOME_SHORT="${ConanShort}"
+        [Environment]::SetEnvironmentVariable("CONAN_USER_HOME_SHORT", "${Env:CONAN_USER_HOME_SHORT}", "Machine")
+        if(-Not (Test-Path "${Env:CONAN_USER_HOME_SHORT}"))
+        {
+            New-Item "${Env:CONAN_USER_HOME_SHORT}" -ItemType Directory -ErrorAction SilentlyContinue
+        }
+    }
+    else
+    {
+        $Env:CONAN_USER_HOME_SHORT="None"
+        [Environment]::SetEnvironmentVariable("CONAN_USER_HOME_SHORT", "${Env:CONAN_USER_HOME_SHORT}", "Machine")
+    }
+
+    if($Env:CONAN_USER_HOME)
+    {
+        $Env:CONAN_TRACE_FILE="${Env:CONAN_USER_HOME}\conan.log"
+        [Environment]::SetEnvironmentVariable("CONAN_TRACE_FILE", "${Env:CONAN_USER_HOME}\conan.log", "Machine")
+    }
+    else
+    {
+        $Env:CONAN_TRACE_FILE="${Env:USERPROFILE}\.conan\conan.log"
+        [Environment]::SetEnvironmentVariable("CONAN_TRACE_FILE", "${Env:USERPROFILE}\.conan\conan.log", "Machine")
     }
 }
 
-if(-Not $Env:CONAN_USER_HOME_SHORT)
+function conan_clean_vars
 {
-    $Env:CONAN_USER_HOME_SHORT="${Env:CONAN_USER_HOME}\short"
-    [Environment]::SetEnvironmentVariable("CONAN_USER_HOME_SHORT", "${Env:CONAN_USER_HOME_SHORT}", "Machine")
-    if(-Not (Test-Path "${Env:CONAN_USER_HOME_SHORT}"))
+    [Environment]::SetEnvironmentVariable("CONAN_USER_HOME",        $null, "Machine")
+    [Environment]::SetEnvironmentVariable("CONAN_USER_HOME_SHORT",  $null, "Machine")
+    [Environment]::SetEnvironmentVariable("CONAN_TRACE_FILE",       $null, "Machine")
+    if ($env:CONAN_USER_HOME)
     {
-        New-Item "${Env:CONAN_USER_HOME_SHORT}" -ItemType Directory -ErrorAction SilentlyContinue
+        Remove-Item Env:CONAN_USER_HOME
     }
-}
-
-if((-Not $Env:CONAN_TRACE_FILE) -And $Env:CONAN_USER_HOME)
-{
-    $Env:CONAN_TRACE_FILE="${Env:CONAN_USER_HOME}\conan.log"
-    [Environment]::SetEnvironmentVariable("CONAN_TRACE_FILE", "${Env:CONAN_USER_HOME}\conan.log", "Machine")
+    if ($env:CONAN_USER_HOME_SHORT)
+    {
+        Remove-Item Env:CONAN_USER_HOME
+    }
+    if ($env:CONAN_TRACE_FILE)
+    {
+        Remove-Item Env:CONAN_USER_HOME
+    }
 }
 
 # Variables
@@ -47,9 +88,18 @@ $conan_env_path = 'c:\tools\conan_env'
 
 function conan_symlinks
 {
-    $conan_my_path  = Join-Path $HOME ".conan_my"
-    $conan_hooks    = Join-Path $Env:CONAN_USER_HOME ".conan\hooks"
-    $conan_profiles = Join-Path $Env:CONAN_USER_HOME ".conan\profiles"
+    if($Env:CONAN_USER_HOME)
+    {
+        $conan_my_path  = Join-Path $HOME ".conan_my"
+        $conan_hooks    = Join-Path $Env:CONAN_USER_HOME ".conan\hooks"
+        $conan_profiles = Join-Path $Env:CONAN_USER_HOME ".conan\profiles"
+    }
+    else
+    {
+        $conan_my_path  = Join-Path $HOME ".conan_my"
+        $conan_hooks    = Join-Path $Env:USERPROFILE ".conan\hooks"
+        $conan_profiles = Join-Path $Env:USERPROFILE ".conan\profiles"
+    }
 
     if(-Not (Test-Path $conan_hooks))
     {
@@ -61,7 +111,7 @@ function conan_symlinks
         New-Item "${conan_profiles}" -ItemType Directory -ErrorAction SilentlyContinue
     }
 
-    if((Test-Path $conan_my_path) -And $Env:CONAN_USER_HOME)
+    if(Test-Path $conan_my_path)
     {
         Get-ChildItem "${conan_my_path}\hooks\" | ForEach-Object {
             Remove-Item -Force -Confirm:$false "${conan_hooks}\$($_.Name)" -ErrorAction SilentlyContinue
@@ -196,8 +246,40 @@ if (Get-Command conan.exe -ErrorAction SilentlyContinue | Test-Path)
     }
 }
 
-${function:conan_shared} = { conan install . -pr "${Env:CONAN_USER_HOME}\.conan\profiles\windows-msvc-16-shared-release-x64" --build=missing }
-${function:conan_static} = { conan install . -pr "${Env:CONAN_USER_HOME}\.conan\profiles\windows-msvc-16-static-release-x64" --build=missing }
+function get_conan_home {
+    if(${Env:CONAN_USER_HOME})
+    {
+        return ${Env:CONAN_USER_HOME}
+    }
+    else
+    {
+        return ${Env:USERPROFILE}
+    }
+}
+
+function conan_install
+{
+    [CmdletBinding()]
+    param
+    (
+        [string] $PathToConanFile = '..',
+        [string] $Configuration = 'release',
+        [string] $Arch = 'x64',
+        [string] $MSVCVer = '16',
+        [switch] $Shared
+    )
+
+    cenv_activate
+    $conan_home = get_conan_home
+
+    if ($Shared) {
+        conan install "$PathToConanFile" -pr "${conan_home}\.conan\profiles\windows-msvc-${MSVCVer}-shared-${Configuration}-${Arch}" --build=missing
+    }
+    else
+    {
+        conan install "$PathToConanFile" -pr "${conan_home}\.conan\profiles\windows-msvc-${MSVCVer}-static-${Configuration}-${Arch}" --build=missing
+    }
+}
 
 ## History
 # conan remove --locks

@@ -36,31 +36,23 @@ if (Get-Command cmake.exe -ErrorAction SilentlyContinue | Test-Path) {
         [CmdletBinding()]
         Param
         (
-            [switch] $ConanStatic,
-            [switch] $ConanShared
+            [switch] $Shared
         )
 
-        if ($ConanStatic)
+        New-Item build -ItemType Directory -ErrorAction SilentlyContinue
+        Set-Location build
+
+        dev
+
+        if ($Shared)
         {
-            ce
-            conan_static
+            conan_install -Shared
+        }
+        else {
+            conan_install
         }
 
-        if ($ConanShared)
-        {
-            ce
-            conan_shared
-        }
-
-        $old_dir = Get-Location
-        New-Item _build -ItemType Directory -ErrorAction SilentlyContinue
-        Set-Location _build
-
-        Set-VC-Vars-All x64
-        cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE="Release" ..
-        cmake --build . --config "Release"
-
-        Set-Location ${old_dir}
-        Remove-Item -Recurse -Force ./_build
+        cmake_gen
+        cmake_build
     }
 }
