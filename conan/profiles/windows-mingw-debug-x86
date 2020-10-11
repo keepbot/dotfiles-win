@@ -17,5 +17,5 @@ build_type=Debug
 [env]
 CC=gcc.exe
 CXX=c++.exe
-CONAN_CMAKE_GENERATOR=MinGW Makefiles
-CONAN_CMAKE_PROGRAM=C:/PROGRA~1/CMake/bin/cmake.exe
+CONAN_CMAKE_GENERATOR=Unix Makefiles
+CONAN_CMAKE_PROGRAM=cmake.exe
