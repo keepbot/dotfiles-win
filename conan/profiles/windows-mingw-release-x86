@@ -4,8 +4,10 @@ os_build=Windows
 arch=x86
 arch_build=x86
 compiler=gcc
-compiler.version=9
+compiler.version=10
 compiler.libcxx=libstdc++11
+compiler.exception=seh
+compiler.threads=posix
 build_type=Release
 
 [options]
@@ -13,7 +15,7 @@ build_type=Release
 [build_requires]
 
 [env]
-CC=gcc
-CXX=c++
-CONAN_CMAKE_GENERATOR=Ninja
+CC=gcc.exe
+CXX=c++.exe
+CONAN_CMAKE_GENERATOR=MinGW Makefiles
 CONAN_CMAKE_PROGRAM=C:/PROGRA~1/CMake/bin/cmake.exe
