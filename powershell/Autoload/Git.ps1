@@ -34,6 +34,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
 
     # Look for satus or changes
     ${function:gs}          = { git.exe status @args }
+    ${function:gss}         = { git.exe status @args }
 
     ${function:gw}          = { git.exe show @args              }
     ${function:gw^}         = { git.exe show HEAD^ @args        }
