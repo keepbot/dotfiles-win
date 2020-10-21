@@ -174,6 +174,9 @@ function Set-Py
     $ChoosenVersion = Select-From-List $ValidatedSerpents "Python Version" $Versions
     [Environment]::SetEnvironmentVariable("PYTHON_PATH", $ChoosenVersion, "Machine")
     Set-Item -Path Env:PYTHON_PATH -Value "$ChoosenVersion"
+
+    [Environment]::SetEnvironmentVariable("PYTHONPATH", "${ChoosenVersion}\Lib\;${ChoosenVersion}\DLLs\", "Machine")
+    Set-Item -Path Env:PYTHONPATH -Value "${ChoosenVersion}\Lib\;${ChoosenVersion}\DLLs\"
     # Set-Env
 }
 
@@ -183,6 +186,12 @@ function Clear-Py
     if ($env:PYTHON_PATH)
     {
         Remove-Item Env:PYTHON_PATH
+    }
+
+    [Environment]::SetEnvironmentVariable("PYTHONPATH", $null, "Machine")
+    if ($env:PYTHONPATH)
+    {
+        Remove-Item Env:PYTHONPATH
     }
     # Set-Env
 }
