@@ -91,12 +91,14 @@ function conan_symlinks
     if($Env:CONAN_USER_HOME)
     {
         $conan_my_path  = Join-Path $HOME ".conan_my"
+        $conan_config   = Join-Path $Env:CONAN_USER_HOME ".conan\conan.conf"
         $conan_hooks    = Join-Path $Env:CONAN_USER_HOME ".conan\hooks"
         $conan_profiles = Join-Path $Env:CONAN_USER_HOME ".conan\profiles"
     }
     else
     {
         $conan_my_path  = Join-Path $HOME ".conan_my"
+        $conan_config   = Join-Path $Env:USERPROFILE ".conan\conan.conf"
         $conan_hooks    = Join-Path $Env:USERPROFILE ".conan\hooks"
         $conan_profiles = Join-Path $Env:USERPROFILE ".conan\profiles"
     }
@@ -113,6 +115,9 @@ function conan_symlinks
 
     if(Test-Path $conan_my_path)
     {
+        Remove-Item -Force -Confirm:$false "${conan_config}" -ErrorAction SilentlyContinue
+        cmd.exe /c mklink "${conan_config}" "${conan_my_path}\conan.conf"
+
         Get-ChildItem "${conan_my_path}\hooks\" | ForEach-Object {
             Remove-Item -Force -Confirm:$false "${conan_hooks}\$($_.Name)" -ErrorAction SilentlyContinue
             cmd.exe /c mklink "${conan_hooks}\$($_.Name)" "$($_.FullName)"
