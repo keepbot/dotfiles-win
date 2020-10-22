@@ -7,7 +7,6 @@
     path = ~/.git.d/lfs.ini
     path = ~/.git.d/misc.ini
     path = ~/.git.d/user.ini
-
 [core]
     autocrlf = input
 [credential]
