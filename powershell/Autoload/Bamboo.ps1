@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-Bitbucket scripts.
+Bamboo scripts.
 
 .DESCRIPTION
-Bitbucket scripts.
+Bamboo scripts.
 #>
 
 
@@ -22,16 +22,22 @@ function Set-BambooSecrets
     param
     (
         [Parameter(Mandatory=$true)]
-        [string]$UrlBase,
+        [string]$ServerUrl,
         [Parameter(Mandatory=$true)]
-        [string]$Token
+        [string]$Token,
+        [Parameter(Mandatory=$true)]
+        [string]$Username,
+        [Parameter(Mandatory=$true)]
+        [string]$Pass
     )
     [string] $SecretFile = (Join-Path $env:USERPROFILE '.bamboo.secrets')
-    Add-Content $SecretFile "$UrlBase"
+    Add-Content $SecretFile "$ServerUrl"
     Add-Content $SecretFile "$Token"
+    Add-Content $SecretFile "$Username"
+    Add-Content $SecretFile "$Pass"
 }
 
-function Get-BambooUrl
+function Get-BambooRESTUrlBase
 {
     [string] $SecretFile   = (Join-Path $env:USERPROFILE '.bamboo.secrets')
 
@@ -42,7 +48,8 @@ function Get-BambooUrl
         return
     }
 
-    return $(Get-Content $SecretFile -First 1)
+    $ServerUrl = $(Get-Content $SecretFile -First 1)
+    return "https://${ServerUrl}/rest/api/latest/"
 }
 
 function Get-BambooToken
@@ -58,3 +65,141 @@ function Get-BambooToken
 
     return $(Get-Content $SecretFile -First 2)[-1]
 }
+
+function Get-BambooCreds
+{
+    [string] $SecretFile   = (Join-Path $env:USERPROFILE '.bamboo.secrets')
+
+    if (-Not (Test-Path -Path $SecretFile)) {
+        Write-Host `
+            "ERROR: Secretfile $SecretFile wasn't found. Run 'Set-BambooSecrets' for initialization. Exiting..." `
+            -ForegroundColor Red
+        return
+    }
+
+    $Username = $(Get-Content $SecretFile -First 4)[2]
+    $Password = $(Get-Content $SecretFile -First 4)[3]
+    return "${Username}:${Password}"
+}
+
+
+function Invoke-BambooLink
+{
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true)]
+        [string] $Link,
+        [string] $Method        = 'GET',
+        [switch] $ShowRequestUri
+    )
+
+    $CredentialsPair = Get-BambooCreds
+    $EncodedCredentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($CredentialsPair))
+
+    $Headers    = @{
+        'Authorization' = "Basic $EncodedCredentials"
+        'Content-Type'=('application/json')
+
+    };
+
+    If ($ShowRequestUri)
+    {
+        Write-Host "Request URI: ${Link}" -ForegroundColor Yellow
+    }
+
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    $Response = Invoke-WebRequest -Headers ${Headers} -Uri ${Link} -Method "${Method}"
+    return $Response
+}
+
+function Invoke-BambooLink-Curl
+{
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true)]
+        [string] $Link,
+        [string] $Method            = 'GET',
+        [string[]] $CurlArgs        = @('-s'),
+        [switch] $VerboseOutput,
+        [switch] $ShowRequestUri
+    )
+
+    If($VerboseOutput)
+    {
+        $CurlArgs += '-v'
+    }
+
+    $CredentialsPair = Get-BambooCreds
+    # $EncodedCredentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($CredentialsPair))
+    # $Headers    = "Authorization: Basic ${EncodedCredentials}; Content-Type: application/json"
+    $Headers    = "Content-Type: application/json"
+
+    If ($ShowRequestUri)
+    {
+        Write-Host "Request URI: ${Link}" -ForegroundColor Yellow
+    }
+
+    $Response = (curl.exe -k -u $CredentialsPair -X ${Method} -H ${Headers} ${Link} ${CurlArgs})
+    return $Response
+}
+
+function Invoke-BambooREST
+{
+    [CmdletBinding()]
+    Param
+    (
+        [string] $Path,
+        [string] $Method        = 'GET',
+        [switch] $ShowRequestUri
+    )
+
+    $UrlBase    = Get-BambooRESTUrlBase
+    $Token      = Get-BambooToken
+    $Headers    = @{
+        'Authorization'=("Bearer {0}" -f $Token)
+        'Content-Type'=('application/json')
+
+    };
+
+    If ($ShowRequestUri)
+    {
+        Write-Host "Request URI: ${UrlBase}${Path}" -ForegroundColor Yellow
+    }
+
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    $Response = Invoke-RestMethod -Headers ${Headers} -Uri ${UrlBase}${Path} -Method "${Method}"
+    return $Response
+}
+
+function Invoke-BambooREST-Curl
+{
+    [CmdletBinding()]
+    Param
+    (
+        [string] $Path,
+        [string] $Method            = 'GET',
+        [string[]] $CurlArgs        = @('-s'),
+        [switch] $VerboseOutput,
+        [switch] $ShowRequestUri
+    )
+
+    If($VerboseOutput)
+    {
+        $CurlArgs += '-v'
+    }
+
+    $UrlBase    = Get-BambooRESTUrlBase
+    $Token      = Get-BambooToken
+    $Headers    = "Authorization: Bearer ${Token}; Content-Type: application/json"
+
+    If ($ShowRequestUri)
+    {
+        Write-Host "Request URI: ${UrlBase}${Path}" -ForegroundColor Yellow
+    }
+
+    $Response = (curl.exe -k -X ${Method} -H ${Headers} ${UrlBase}${Path} ${CurlArgs})
+    return $Response
+}
+
