@@ -28,8 +28,9 @@ function Edit-Hosts { Invoke-Expression "sudo $(if($env:EDITOR -ne $null)  {$env
 function Edit-Profile { Invoke-Expression "$(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $profile" }
 
 # Language
-$Env:LANG = "en_US"
-$Env:LC_ALL = "C.UTF-8"
+$Env:LANG   = "en_US"
+# $Env:LC_ALL = "C.UTF-8"
+$Env:LC_ALL = "C"
 
 # Init of directory envs:
 $env:PWD = Get-Location
