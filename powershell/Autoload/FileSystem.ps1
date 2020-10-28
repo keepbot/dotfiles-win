@@ -173,7 +173,7 @@ function Remove-File-Recursively {
 function touch($file) { $null | Out-File -Append $file -Encoding ASCII }
 
 # Mounts
-${function:mountW} = { subst.exe W: ( Join-Path $HOME "workspace" ) }
+${function:mountW} = { subst.exe W: ( Join-Path $Env:USERPROFILE "workspace" ) }
 
 # Find files
 function find {

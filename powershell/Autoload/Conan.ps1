@@ -90,14 +90,14 @@ function conan_symlinks
 {
     if($Env:CONAN_USER_HOME)
     {
-        $conan_my_path  = Join-Path $HOME ".conan_my"
+        $conan_my_path  = Join-Path $Env:USERPROFILE ".conan_my"
         $conan_config   = Join-Path $Env:CONAN_USER_HOME ".conan\conan.conf"
         $conan_hooks    = Join-Path $Env:CONAN_USER_HOME ".conan\hooks"
         $conan_profiles = Join-Path $Env:CONAN_USER_HOME ".conan\profiles"
     }
     else
     {
-        $conan_my_path  = Join-Path $HOME ".conan_my"
+        $conan_my_path  = Join-Path $Env:USERPROFILE ".conan_my"
         $conan_config   = Join-Path $Env:USERPROFILE ".conan\conan.conf"
         $conan_hooks    = Join-Path $Env:USERPROFILE ".conan\hooks"
         $conan_profiles = Join-Path $Env:USERPROFILE ".conan\profiles"
