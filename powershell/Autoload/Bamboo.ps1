@@ -91,7 +91,8 @@ function Invoke-BambooLink
         [Parameter(Mandatory=$true)]
         [string] $Link,
         [string] $Method        = 'GET',
-        [switch] $ShowRequestUri
+        [switch] $ShowRequestUri,
+        [string] $OutFile       = 'None'
     )
 
     $CredentialsPair = Get-BambooCreds
@@ -109,7 +110,15 @@ function Invoke-BambooLink
     }
 
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    $Response = Invoke-WebRequest -Headers ${Headers} -Uri ${Link} -Method "${Method}"
+
+    If ($OutFile -eq 'None')
+    {
+        $Response = Invoke-WebRequest -Headers ${Headers} -Uri ${Link} -Method "${Method}"
+    }
+    else {
+        $Response = Invoke-WebRequest -Headers ${Headers} -Uri ${Link} -Method "${Method}" -OutFile ${OutFile}
+    }
+
     return $Response
 }
 
