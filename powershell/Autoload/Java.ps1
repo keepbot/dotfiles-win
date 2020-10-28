@@ -85,7 +85,8 @@ function Set-Java {
 
 function ormco_gen_aligners_reports {
     [CmdletBinding()]
-    Param (
+    param
+    (
         # [Parameter(Mandatory = $True)]
         # [string]$PathToJar,
         [Parameter(Mandatory = $True)]

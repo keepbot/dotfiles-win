@@ -23,7 +23,8 @@ Set-Alias gre findstr
 if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:grep} = {
         [CmdletBinding()]
-        Param (
+        param
+        (
             [Parameter(Mandatory=$true)]
             [string]$Pattern,
             [switch]$c,

@@ -60,7 +60,8 @@ function Convert-FileEncoding([string]$Include, [string]$Path, [string]$Encoding
 function Get-FileEncoding
 {
     [CmdletBinding()]
-    Param (
+    param
+    (
         [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
         [string]$Path
     )
@@ -118,7 +119,7 @@ function Get-FileEncoding
 
 function genguids {
     [CmdletBinding()]
-    Param
+    param
     (
         [Int]$Num = 1
     )

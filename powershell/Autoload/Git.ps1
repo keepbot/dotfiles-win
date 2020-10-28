@@ -126,7 +126,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
 
     ${function:gprune} = {
         [CmdletBinding()]
-        Param
+        param
         (
             [string]$branch = "master"
         )
@@ -154,7 +154,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
 
     function ugr
     {
-        Param
+        param
         (
             [Parameter(ValueFromRemainingArguments = $true)]
             [string]$Options = ""
@@ -177,7 +177,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
 
     function ugrs
     {
-        Param
+        param
         (
             [Parameter(ValueFromRemainingArguments = $true)]
             [string]$Options = ""
@@ -207,7 +207,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     function Move-GitRepo
     {
         [CmdletBinding()]
-        Param
+        param
         (
             [Parameter(Mandatory=$true)]
             [string]$From,
@@ -230,7 +230,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
 
 function Set-GitVerbosity
 {
-    Param
+    param
     (
         [Parameter(Mandatory=$true)]
         [string]$Button,
@@ -280,7 +280,7 @@ function Set-GitVerbosity
 function Show-Diff_Of_Git_Branches
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [Parameter(Mandatory=$true)]
         [string]$Branch1,
@@ -298,7 +298,7 @@ function Show-Diff_Of_Git_Branches
 function Get-GitCommitsByAuthor
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string]$Author = "d-k-ivanov",
         [switch]$AllBranches
@@ -328,7 +328,8 @@ function git_push_force
 function git_remove_file_from_history
 {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string] $File
     )
@@ -349,9 +350,39 @@ function git_dangling_fix
 function git_upstream
 {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true)]
         [string] $Upstream
     )
     git branch --set-upstream-to=origin/${Upstream} ${Upstream}
 }
+
+function git_remove_submodule
+{
+    [CmdletBinding()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [string] $SubmoduleName
+    )
+
+    # 1. Delete the relevant section from the *.gitmodules* file.
+    # [submodule "vendor"]
+    # path = vendor
+    # url = git://github.com/some-user/some-repo.git
+    # 2. Stage the *.gitmodules* changes with following command:
+    # git add .gitmodules
+    # 3.Delete the relevant section from *.git/config*:
+    # [submodule "vendor"]
+    # url = git://github.com/some-user/some-repo.git
+    # 4. Remove submodule folders from repo:
+    # git rm --cached path/to/submodule
+    # rm -rf .git/modules/submodule_name
+    # 6. Commit changes
+    # 7. Delete files
+    # rm -rf path/to/submodule
+}
+
+
+

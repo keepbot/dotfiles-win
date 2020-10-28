@@ -2,7 +2,8 @@
 function sonar_set_token
 {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true)]
         [string] $Token
     )
@@ -12,7 +13,8 @@ function sonar_set_token
 function sonar_run_msbuild_cpp
 {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true)]
         [ValidateScript({Test-Path $_})]
         [string] $Path,
@@ -34,7 +36,8 @@ function sonar_run_msbuild_cpp
 function sonar_scan_cpp
 {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true)]
         [string] $Organization,
         [Parameter(Mandatory=$true)]

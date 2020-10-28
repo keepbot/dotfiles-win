@@ -109,7 +109,7 @@ function Get-WindowsKey
 {
     ## function to retrieve the Windows Product Key from any PC
     ## by Jakob Bindslet (jakob@bindslet.dk)
-    Param
+    param
     (
         $targets = "."
     )
@@ -167,7 +167,7 @@ function Get-WinFeatures
 
 function Get-WinFeatureInfo
 {
-    Param
+    param
     (
         [String] $FeatureName
     )

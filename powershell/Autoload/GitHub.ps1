@@ -85,7 +85,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     }
 
     function Rename-GitHub-Origin {
-        param (
+        param
+        (
             [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
             [string]$NewName
         )

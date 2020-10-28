@@ -86,7 +86,7 @@ function Get-BambooCreds
 function Invoke-BambooLink
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [Parameter(Mandatory=$true)]
         [string] $Link,
@@ -125,7 +125,7 @@ function Invoke-BambooLink
 function Invoke-BambooLink-Curl
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [Parameter(Mandatory=$true)]
         [string] $Link,
@@ -157,7 +157,7 @@ function Invoke-BambooLink-Curl
 function Invoke-BambooREST
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string] $Path,
         [string] $Method        = 'GET',
@@ -185,7 +185,7 @@ function Invoke-BambooREST
 function Invoke-BambooREST-Curl
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string] $Path,
         [string] $Method            = 'GET',

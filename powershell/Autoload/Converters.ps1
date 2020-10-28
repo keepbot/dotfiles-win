@@ -19,7 +19,8 @@ if ($MyInvocation.InvocationName -ne '.')
 
 function ConvertTo-Base64() {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string] $string
     )
@@ -30,7 +31,8 @@ function ConvertTo-Base64() {
 
 function ConvertFrom-Base64() {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string] $string
     )
@@ -41,7 +43,8 @@ function ConvertFrom-Base64() {
 
 function ResizePDF() {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true)]
         [ValidateScript({Test-Path -Path $_})]
         [string] $Path,

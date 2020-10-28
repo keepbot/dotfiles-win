@@ -20,7 +20,8 @@ if ($MyInvocation.InvocationName -ne '.')
 if (Get-Command youtube-dl.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:yget} = {
         [CmdletBinding()]
-        param (
+        param
+        (
             [Parameter(Mandatory=$true)]
             [String] $link,
             [String] $dst = "./youtube.mp4"

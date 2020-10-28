@@ -19,7 +19,8 @@ if ($MyInvocation.InvocationName -ne '.')
 
 # Get help from cheat.sh
 function cht {
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string]$Language,
         [Parameter(Mandatory=$true,ValueFromRemainingArguments=$true)]

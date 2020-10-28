@@ -83,7 +83,7 @@ function Get-BitbucketOAuthTokenCurl
 function Invoke-BitbucketAPIUri
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string] $Uri,
         [string] $Method        = 'GET',
@@ -110,7 +110,7 @@ function Invoke-BitbucketAPIUri
 function Invoke-BitbucketAPIUri-Curl
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string] $Uri,
         [string] $Method            = 'GET',
@@ -140,7 +140,7 @@ function Invoke-BitbucketAPIUri-Curl
 function Invoke-BitbucketAPI-Simple
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string] $Request,
         [string] $APIVersion        = '2.0',
@@ -165,7 +165,7 @@ function Invoke-BitbucketAPI-Simple
 function Invoke-BitbucketAPI-Simple-Curl
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string] $Request,
         [string] $APIVersion        = '2.0',
@@ -188,7 +188,7 @@ function Invoke-BitbucketAPI-Simple-Curl
 function Invoke-BitbucketAPI
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string]$RequestPath,
         [string]$Type           = '/pullrequests',
@@ -208,7 +208,7 @@ function Invoke-BitbucketAPI
 function Invoke-BitbucketAPI-Curl
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string] $RequestPath,
         [string] $Type              = '/pullrequests',
@@ -234,7 +234,7 @@ function Invoke-BitbucketAPI-Curl
 function Get-BitbucketPR
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string]$PR
     )
@@ -246,7 +246,7 @@ function Get-BitbucketPR
 function Get-BitbucketPR-Curl
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string]$PR
     )
@@ -258,7 +258,7 @@ function Get-BitbucketPR-Curl
 function Get-BitbucketPRComments
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string]$PR
     )
@@ -270,7 +270,7 @@ function Get-BitbucketPRComments
 function Get-BitbucketPRDiff
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [string]$PR
     )
@@ -307,7 +307,7 @@ function Get-BitbucketPRDiff
 function Get-BitbucketUser
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [Parameter(Mandatory=$true)]
         [string]$AccountID
@@ -320,7 +320,7 @@ function Get-BitbucketUser
 function Get-BitbucketUser-Curl
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [Parameter(Mandatory=$true)]
         [string]$AccountID
@@ -333,7 +333,7 @@ function Get-BitbucketUser-Curl
 function Get-BitbucketTeamMembers
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [Parameter(Mandatory=$true)]
         [string]$Team
@@ -360,7 +360,7 @@ function Get-BitbucketTeamMembers
 function Get-BitbucketTeamMembers-Curl
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [Parameter(Mandatory=$true)]
         [string]$Team
@@ -386,7 +386,7 @@ function Get-BitbucketTeamMembers-Curl
 function Show-BitbucketTeamMembers
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [Parameter(Mandatory=$true)]
         [string]$Team
@@ -413,7 +413,7 @@ function Show-BitbucketTeamMembers
 function Show-BitbucketTeamMembers-Curl
 {
     [CmdletBinding()]
-    Param
+    param
     (
         [Parameter(Mandatory=$true)]
         [string]$Team
@@ -441,7 +441,7 @@ function Get-BitbucketWikiPage
 {
     # DEPRECATED API
     [CmdletBinding()]
-    Param
+    param
     (
         [string]$WikiPage = 'Code Reviewers'
     )

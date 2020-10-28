@@ -50,7 +50,8 @@ function jp {
         Written by: Dmitriy Ivanov
     #>
     [CmdletBinding()]
-    param (
+    param
+    (
         [string]$NoteBookPath = $null,
         [string]$Command = "notebook",
         [Int]$Port = 8888,
@@ -105,7 +106,8 @@ function jp-conf {
         Written by: Dmitriy Ivanov
     #>
     [CmdletBinding()]
-    param (
+    param
+    (
         [switch]$ReInstall
     )
     if (-Not (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)) {
@@ -146,7 +148,8 @@ function jp-install {
         Written by: Dmitriy Ivanov
     #>
     [CmdletBinding()]
-    param (
+    param
+    (
         [switch]$ReInstall
     )
     if (-Not (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)) {

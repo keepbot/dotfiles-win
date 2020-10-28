@@ -37,7 +37,7 @@ if ($MyInvocation.InvocationName -ne '.')
 # Source: http://chrisjwarwick.wordpress.com/2012/09/16/finding-prime-factors/
 Function Get-Factors
 {
-    Param ($n = $( Throw "Specify a number to factorise" ))
+    param($n = $( Throw "Specify a number to factorise" ))
 
     $DivisorIncrements = 1, 2, 2, 4, 2, 4, 2, 4, 6, 2, 6
     $IncrementLength = $DivisorIncrements.Length

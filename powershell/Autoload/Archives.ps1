@@ -46,7 +46,8 @@ function Unzip {
         This function first checks to see if the .NET Framework 4.5 is installed and uses it for the unzipping process, otherwise COM is used.
     #>
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string]$File,
         [ValidateNotNullOrEmpty()]

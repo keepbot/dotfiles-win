@@ -67,7 +67,8 @@ function Verify-Elevated {
 
 function Verify-PowershellShortcut {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string] $Path
     )
@@ -86,7 +87,8 @@ function Verify-PowershellShortcut {
 
 function Verify-BashShortcut {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string] $Path
     )
@@ -104,7 +106,8 @@ function Verify-BashShortcut {
 
 function Reset-PowerShellShortcut {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string] $Path
     )
@@ -138,7 +141,8 @@ function Reset-PowerShellShortcut {
 
 function Reset-BashShortcut {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string] $Path
     )
@@ -189,7 +193,8 @@ function Reset-AllBashShortcuts {
 
 function Convert-ConsoleColor {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string]$rgb
     )
@@ -207,7 +212,8 @@ function Convert-ConsoleColor {
 function Select-From-List {
     [CmdletBinding()]
 
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [String[]]$List,
         [ValidateNotNullOrEmpty()]

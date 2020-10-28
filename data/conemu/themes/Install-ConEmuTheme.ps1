@@ -1,6 +1,7 @@
 [CmdletBinding()]
 
-param (
+param
+(
     [Parameter(Position = 0, Mandatory = $false)]
     [ValidateNotNullOrEmpty()]
     [ValidateScript({Test-Path -Path $_})]
@@ -20,7 +21,11 @@ param (
 )
 
 function AddTheme {
-    Param ([Xml]$Config, [string]$ThemeFile)
+    param
+    (
+        [Xml]$Config,
+        [string]$ThemeFile
+    )
 
     $vanilla = $Config.key.key.key | Where-Object { $_.name -eq ".Vanilla" }
     $colors = $vanilla.key | Where-Object { $_.name -eq "Colors" }
@@ -43,7 +48,11 @@ function AddTheme {
 }
 
 function RemoveTheme {
-    Param ([Xml]$Config, [string]$ThemeToRemove)
+    param
+    (
+        [Xml]$Config,
+        [string]$ThemeToRemove
+    )
 
     $vanilla = $Config.key.key.key | Where-Object { $_.name -eq ".Vanilla" }
     $colors = $vanilla.key | Where-Object { $_.name -eq "Colors" }

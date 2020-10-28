@@ -53,7 +53,7 @@ $null = [win32.nativemethods]::setconsolemode($h, $m)
 
 ### Show current console colors
 function Show-Colors-Current {
-    Param()
+    param()
     $host.PrivateData.psobject.properties |
         ForEach-Object {
             #$text = "$($_.Name) = $($_.Value)"

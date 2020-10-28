@@ -114,7 +114,8 @@ function TF_Build_Env {
 
 function TF_Build {
     [CmdletBinding()]
-    param (
+    param
+    (
         [ValidateNotNullOrEmpty()]
         [string]$Arch   = "x64"
     )

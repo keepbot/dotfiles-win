@@ -34,7 +34,7 @@ if (Get-Command cmake.exe -ErrorAction SilentlyContinue | Test-Path) {
     function ccc
     {
         [CmdletBinding()]
-        Param
+        param
         (
             [switch] $Shared
         )

@@ -65,7 +65,8 @@ Set-Alias mkd New-DirectoryAndSet
 
 function Get-DuList {
     [CmdletBinding()]
-    param (
+    param
+    (
         [ValidateNotNullOrEmpty()]
         [string]$Path = $(Get-Location),
         [ValidateNotNullOrEmpty()]
@@ -88,7 +89,12 @@ function Get-DiskUsage([string] $Path=(Get-Location).Path) {
 }
 
 function Convert-ToDiskSize {
-    param ( $bytes, $precision='0' )
+    param
+    (
+        $bytes,
+        $precision='0'
+    )
+
     foreach ($size in ("B","K","M","G","T")) {
         if (($bytes -lt 1000) -or ($size -eq "T")){
             $bytes = ($bytes).tostring("F0" + "$precision")
@@ -147,7 +153,8 @@ function  llf() {
 }
 
 function Remove-File-Recursively {
-    Param (
+    param
+    (
         [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
         [string]$PathToFolderTree,
         [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
@@ -177,7 +184,8 @@ ${function:mountW} = { subst.exe W: ( Join-Path $Env:USERPROFILE "workspace" ) }
 
 # Find files
 function find {
-    Param (
+    param
+    (
         [Parameter(Mandatory = $True)]
         [string]$Path,
         [Parameter(Mandatory = $True)]
@@ -191,7 +199,8 @@ function find {
 # Output: Folder with copied files
 function Copy-FilesWithFolderStructure {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory = $True)]
         [String]$Destination,
         [Parameter(Mandatory = $True,ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True)]
@@ -213,7 +222,8 @@ function Copy-FilesWithFolderStructure {
 
 function join_files {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true)]
         [string] $Out,
 
@@ -224,8 +234,6 @@ function join_files {
             }
         })]
         [System.Object[]] $FilesToJoin = (Get-ChildItem -Path . -File)
-
-
     )
     $cmd = "cmd /c '$($FilesToJoin.FullName -join ' + ') ${Out}'"
     Write-Host $cmd

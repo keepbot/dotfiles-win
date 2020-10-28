@@ -20,9 +20,10 @@ if ($MyInvocation.InvocationName -ne '.')
 function Set-VCToolsArchx64 {
     [CmdletBinding()]
 
-    param (
-        [switch]$On,
-        [switch]$Off
+    param
+    (
+        [switch] $On,
+        [switch] $Off
     )
     if ($On) {
         Set-Item -Path Env:PreferredToolArchitecture -Value "x64"
@@ -294,7 +295,8 @@ function Set-VC-Vars-All {
     #>
     [CmdletBinding()]
 
-    param (
+    param
+    (
         [ValidateNotNullOrEmpty()]
         [string]$Arch   = "x64",
         [string]$SDK,

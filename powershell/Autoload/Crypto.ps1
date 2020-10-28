@@ -26,8 +26,11 @@ if (Get-Command shasum.bat -ErrorAction SilentlyContinue | Test-Path) {
 }
 
 function DecryptFrom-Base64() {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseApprovedVerbs')]
+
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string] $string
     )
@@ -47,7 +50,8 @@ ${function:ggg}  = { gpg.exe --dry-run -vvvv --import @args }
 
 function gpg_file_e() {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [ValidateScript({Test-Path $_})]
         [string] $File,
@@ -63,7 +67,8 @@ function gpg_file_e() {
 
 function gpg_file_d() {
     [CmdletBinding()]
-    param (
+    param
+    (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [ValidateScript({Test-Path $_})]
         [string] $File
