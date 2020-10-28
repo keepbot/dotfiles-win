@@ -15,7 +15,6 @@ If (Test-Path (Join-Path $Env:USERPROFILE ".conan_my"       )) { [System.IO.Dire
 If (Test-Path (Join-Path $Env:USERPROFILE ".git.d"          )) { [System.IO.Directory]::Delete(( Join-Path $Env:USERPROFILE ".git.d"        ),  $true       )}
 If (Test-Path (Join-Path $Env:USERPROFILE ".tmux"           )) { [System.IO.Directory]::Delete(( Join-Path $Env:USERPROFILE ".tmux"         ),  $true       )}
 If (Test-Path (Join-Path $Env:USERPROFILE ".vim"            )) { [System.IO.Directory]::Delete(( Join-Path $Env:USERPROFILE ".vim"          ),  $true       )}
-If (Test-Path (Join-Path $Env:LOCALAPPDATA "nvim"           )) { [System.IO.Directory]::Delete(( Join-Path $Env:LOCALAPPDATA "nvim"         ),  $true       )}
 If (Test-Path (Join-Path $Env:USERPROFILE ".bash_profile"   )) { Remove-Item -Force -Confirm:$false -Recurse ( Join-Path $Env:USERPROFILE   ".bash_profile" )}
 If (Test-Path (Join-Path $Env:USERPROFILE ".bashrc"         )) { Remove-Item -Force -Confirm:$false -Recurse ( Join-Path $Env:USERPROFILE   ".bashrc"       )}
 If (Test-Path (Join-Path $Env:USERPROFILE ".gemrc"          )) { Remove-Item -Force -Confirm:$false -Recurse ( Join-Path $Env:USERPROFILE   ".gemrc"        )}
@@ -25,7 +24,6 @@ If (Test-Path (Join-Path $Env:USERPROFILE ".profile"        )) { Remove-Item -Fo
 If (Test-Path (Join-Path $Env:USERPROFILE ".tmux.conf"      )) { Remove-Item -Force -Confirm:$false -Recurse ( Join-Path $Env:USERPROFILE   ".tmux.conf"    )}
 If (Test-Path (Join-Path $Env:USERPROFILE ".vimrc"          )) { Remove-Item -Force -Confirm:$false -Recurse ( Join-Path $Env:USERPROFILE   ".vimrc"        )}
 
-New-Item (Join-Path $Env:LOCALAPPDATA "nvim") -ItemType Directory -ErrorAction SilentlyContinue
 
 # Making Symlinks
 C:\Windows\System32\cmd.exe /c mklink /d ( Join-Path $Env:USERPROFILE ".bash"          ) ( Join-Path $PSScriptRoot "bash"           )
@@ -42,7 +40,6 @@ C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $Env:USERPROFILE ".gitconfi
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $Env:USERPROFILE ".gitmessage"    ) ( Join-Path $PSScriptRoot ".gitmessage"    )
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $Env:USERPROFILE ".tmux.conf"     ) ( Join-Path $PSScriptRoot "tmux.conf"      )
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $Env:USERPROFILE ".vimrc"         ) ( Join-Path $PSScriptRoot "vimrc"          )
-C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $Env:LOCALAPPDATA "nvim\init.vim" ) ( Join-Path $PSScriptRoot "vimrc"          )
 
 # Set dot source string to default PS profile for Current User
 If (Test-Path $profile) { Remove-Item -Force -Confirm:$false $profile }
