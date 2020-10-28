@@ -227,12 +227,13 @@ function Initialize-Paths-User {
         "C:\tools\sfktrayfree"
         "C:\tools\vcpkg"
         "C:\tools\gnuplot\bin"
-        "C:\tools\vim\vim82"
         "C:\tools\wsl\arch"
         "C:\tools\wsl\debian"
         "C:\tools\wsl\kali"
         "C:\tools\wsl\ubuntu"
         "C:\tools\sonar-scanner-4.4.0.2170-windows\bin"
+        "C:\tools\neovim\Neovim\bin"
+        "C:\tools\vim\vim82"
         # "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
     )
 
