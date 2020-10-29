@@ -286,6 +286,24 @@ function conan_install
     }
 }
 
+# Work-Related fun
+${function:c_list}          = { ce; conan search --remote conan-ormco }
+${function:c_list_qt}       = { ce; conan info qt/5.14.2@orthoplatform/stable --paths }
+${function:c_create}        = { ce; conan create . orthoplatform/stable }
+${function:c_create_mac}    = { ce; conan create . orthoplatform/stable --settings os=Macos }
+
+function c_install_ormco {
+    ce
+    conan remove --locks
+    conan install                                           `
+        ..\..\Apps\Aligner\Solution\conanfile.txt           `
+        --generator visual_studio                           `
+        --install-folder ..\..\Apps\Aligner\Solution\.conan `
+        --settings compiler="Visual Studio"                 `
+        --update                                            `
+        --remote conan-ormco
+}
+
 ## History
 # conan remove --locks
 # conan install conanfile.txt -g visual_studio --install-folder Source\Apps\Aligner\Solution\.conan -s arch=x86_64 -s build_type=Release -s compiler.toolset=v142 -s compiler.version=16 -s compiler.runtime=MD  --build=outdated --update

@@ -74,6 +74,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
 
     # Pull
     ${function:gpl}         = { git.exe pull @args }
+    ${function:gplm}        = { git.exe pull origin main }
     ${function:gpls}        = { git.exe stash; git.exe pull @args; git.exe stash pop}
     ${function:gplm}        = { git.exe pull; git.exe submodule update }
     ${function:gplp}        = { git.exe pull --rebase; git.exe push @args } # Can't pull because you forgot to track? Run this.
