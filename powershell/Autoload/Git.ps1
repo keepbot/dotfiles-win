@@ -361,6 +361,7 @@ function git_upstream
     git branch --set-upstream-to=origin/${Upstream} ${Upstream}
 }
 
+#TODO: Add implementation
 function git_remove_submodule
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
