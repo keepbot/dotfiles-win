@@ -296,9 +296,9 @@ function c_install_ormco {
     ce
     conan remove --locks
     conan install                                           `
-        ..\..\Apps\Aligner\Solution\conanfile.txt           `
+        .\\Source\\Apps\\Aligner\\Solution\\conanfile.txt           `
         --generator visual_studio                           `
-        --install-folder ..\..\Apps\Aligner\Solution\.conan `
+        --install-folder .\\Source\\Apps\\Aligner\\Solution\\.conan `
         --settings compiler="Visual Studio"                 `
         --update                                            `
         --remote conan-ormco
