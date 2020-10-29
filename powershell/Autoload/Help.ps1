@@ -27,7 +27,11 @@ function cht {
         [psobject[]]$SearchString
     )
     $site = "cheat.sh/" + $Language + "/" + ($SearchString -join '+')
-    curl $site
+
+    if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path)
+    {
+        curl.exe $site
+    }
 }
 
 # Show command definiton

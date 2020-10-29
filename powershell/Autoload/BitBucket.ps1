@@ -292,7 +292,7 @@ function Get-BitbucketPRDiff
     }
     catch
     {
-        $_.Exception.Response.Headers | FL
+        $_.Exception.Response.Headers | Format-List
         if(($_.Exception.GetType() -match "HttpResponseException") -and ($_.Exception -match "302"))
         {
             $Response = Invoke-BitbucketAPIUri $_.Exception.Response.Headers.Location.AbsoluteUri

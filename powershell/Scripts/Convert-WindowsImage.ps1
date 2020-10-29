@@ -1,4 +1,5 @@
 ﻿Function Convert-WindowsImage {
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidGlobalVars")]
 
   <#
     .NOTES
@@ -155,6 +156,9 @@
     .OUTPUTS
         System.IO.FileInfo
   #>
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidDefaultValueSwitchParameter")]
 
    #region Data
 
@@ -3226,6 +3230,7 @@ namespace WIM2VHD {
                 #>
 
                 [CmdletBinding()]
+                [OutputType([System.Boolean])]
                 param(
                     [Parameter(ValueFromPipeLine = $true)]
                     [string]
@@ -4512,26 +4517,26 @@ format fs=fat32 label="System"
             } finally {
 
                 # If we still have a WIM image open, close it.
-                if ($openWim -ne $null) {
+                if ($null -ne $openWim) {
                     Write-W2VInfo
                     Write-W2VInfo "Closing Windows image..."
                     $openWim.Close()
                 }
 
                 # If we still have a registry hive mounted, dismount it.
-                if ($mountedHive -ne $null) {
+                if ($null -ne $mountedHive) {
                     Write-W2VInfo "Closing registry hive..."
                     Dismount-RegistryHive -HiveMountPoint $mountedHive
                 }
 
                 # If we still have a VHD(X) open, close it.
-                if ($openVhd -ne $null) {
+                if ($null -ne $openVhd) {
                     Write-W2VInfo "Closing $VHDFormat..."
                     $openVhd.Close()
                 }
 
                 # If we still have an ISO open, close it.
-                if ($openIso -ne $null) {
+                if ($null -ne $openIso) {
                     Write-W2VInfo "Closing ISO..."
                     Dismount-DiskImage $ISOPath
                 }

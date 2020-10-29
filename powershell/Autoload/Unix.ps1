@@ -22,7 +22,7 @@ if ($MyInvocation.InvocationName -ne '.')
 # ${function:time} = { Measure-Command { @args }}
 ${function:time} = {
     $command = $args
-    $timings = $(Measure-Command {Invoke-Expression "${command}" | Out-Default})
+    $timings = $(Measure-Command { Invoke-Expression "${command}" | Out-Default })
     $obj = New-Object PSObject
     $obj | Add-Member Ticks $timings.Ticks
     $obj | Add-Member Hours $timings.TotalHours

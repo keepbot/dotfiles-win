@@ -154,6 +154,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
 
     function ugr
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
         param
         (
             [Parameter(ValueFromRemainingArguments = $true)]
@@ -177,6 +178,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
 
     function ugrs
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
         param
         (
             [Parameter(ValueFromRemainingArguments = $true)]
@@ -279,6 +281,7 @@ function Set-GitVerbosity
 
 function Show-Diff_Of_Git_Branches
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
     [CmdletBinding()]
     param
     (
@@ -360,12 +363,23 @@ function git_upstream
 
 function git_remove_submodule
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
     [CmdletBinding()]
     param
     (
         [Parameter(Mandatory=$true)]
         [string] $SubmoduleName
     )
+
+    If (-Not (Test-Path '.\\.gitmodules'))
+    {
+        Write-Host `
+            "Error: Wrong directory. You should be in the root of git repo to use this function. Exiting..." `
+            -ForegroundColor Red
+        Exit
+    }
+
+    Get-Content '.\\.gitmodules'
 
     # 1. Delete the relevant section from the *.gitmodules* file.
     # [submodule "vendor"]

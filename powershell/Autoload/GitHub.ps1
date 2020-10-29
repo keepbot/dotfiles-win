@@ -90,6 +90,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
             [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
             [string]$NewName
         )
+        Write-Output "Renaming repo to $NewName"
         $dir = Get-Location
         Get-ChildItem $dir -Directory | ForEach-Object {
             Write-Host $_.FullName

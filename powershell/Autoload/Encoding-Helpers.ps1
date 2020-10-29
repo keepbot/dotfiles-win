@@ -124,5 +124,5 @@ function genguids {
         [Int]$Num = 1
     )
 
-    1..${Num} | % { Write-Host $([System.guid]::NewGuid().toString()) -ForegroundColor Cyan }
+    1..${Num} | ForEach-Object { Write-Host $([System.guid]::NewGuid().toString()) -ForegroundColor Cyan }
 }

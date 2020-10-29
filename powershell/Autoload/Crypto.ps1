@@ -26,8 +26,6 @@ if (Get-Command shasum.bat -ErrorAction SilentlyContinue | Test-Path) {
 }
 
 function DecryptFrom-Base64() {
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseApprovedVerbs')]
-
     [CmdletBinding()]
     param
     (

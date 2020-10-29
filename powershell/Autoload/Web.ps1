@@ -36,7 +36,7 @@ if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:wetM2}   = { wet2 Moscow }
 } else {
     # Gzip-enabled `curl`
-    ${function:gurl} = { Invoke-WebRequest -TransferEncoding GZip }
+    ${function:gurl} = { Invoke-WebRequest -TransferEncoding GZip @args }
 }
 
 # Download a file into a temporary folder

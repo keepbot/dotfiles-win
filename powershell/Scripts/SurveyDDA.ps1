@@ -97,7 +97,7 @@ foreach ($pcidev in $pcidevs) {
         # decimal, one which always happens to start with "42949...".
         #
         $msiAssignments = $irqAssignments | Where-Object {$_.Antecedent -like "*IRQNumber=42949*"}
-    
+
         #$msiAssignments | Format-Table -Property __RELPATH
 
         if ($msiAssignments.length -eq 0) {
@@ -115,7 +115,7 @@ foreach ($pcidev in $pcidevs) {
 
     $mmioAssignments = gwmi -query "select * from Win32_PnPAllocatedResource" | Where-Object {$_.__RELPATH -like "*Win32_DeviceMemoryAddress*"} | Where-Object {$_.Dependent -like $doubleslashDevId}
     $mmioTotal = 0
-    foreach ($mem in $mmioAssignments) 
+    foreach ($mem in $mmioAssignments)
     {
         $baseAdd =$mem.Antecedent.SubString($mem.Antecedent.IndexOf("""")+1)
         $baseAdd=$baseAdd.SubString(0,$baseAdd.IndexOf(""""))
@@ -127,10 +127,8 @@ foreach ($pcidev in $pcidevs) {
         Write-Host -ForegroundColor Green -BackgroundColor Black "    And it has no MMIO space"
     } else {
   	     [int]$mmioMB = [math]::ceiling($mmioTotal / 1MB)
-        Write-Host -ForegroundColor Green -BackgroundColor Black "    And it requires at least:" $mmioMB "MB of MMIO gap space"
+        Write-Host -Object "    And it requires at least: $mmioMB MB of MMIO gap space" -ForegroundColor Green -BackgroundColor Black
     }
-    
-
 
     #
     # Print out the location path, as that's the way to refer to this device that won't

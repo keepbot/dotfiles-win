@@ -64,6 +64,7 @@ function New-DirectoryAndSet ([String] $path) { New-Item $path -ItemType Directo
 Set-Alias mkd New-DirectoryAndSet
 
 function Get-DuList {
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
     [CmdletBinding()]
     param
     (
@@ -106,7 +107,8 @@ function Convert-ToDiskSize {
 Set-Alias du Get-DiskUsage
 
 # Directory Listing: Use `ls.exe` if available
-if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     Remove-Item alias:ls -ErrorAction SilentlyContinue
     # Set `ls` to call `ls.exe` and always use --color
     # ${function:ls} = { busybox.exe ls --color --group-directories-first @args }
@@ -153,6 +155,7 @@ function  llf() {
 }
 
 function Remove-File-Recursively {
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
     param
     (
         [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]

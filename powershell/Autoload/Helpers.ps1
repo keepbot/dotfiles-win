@@ -115,7 +115,7 @@ function Reset-PowerShellShortcut {
     if (!(Test-Path $Path)) { Return }
 
     if (Test-Path $Path -PathType Container) {
-        Get-ChildItem $Path | ForEach {
+        Get-ChildItem $Path | ForEach-Object {
             Reset-PowerShellShortcut $_.FullName
         }
         Return
@@ -150,7 +150,7 @@ function Reset-BashShortcut {
     if (!(Test-Path $Path)) { Return }
 
     if (Test-Path $Path -PathType Container) {
-        Get-ChildItem $Path | ForEach {
+        Get-ChildItem $Path | ForEach-Object {
             Reset-BashShortcut $_.FullName
         }
         Return
@@ -179,7 +179,7 @@ function Reset-AllPowerShellShortcuts {
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\StartMenu",`
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar",`
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"`
-    ) | ForEach { Reset-PowerShellShortcut $_ }
+    ) | ForEach-Object { Reset-PowerShellShortcut $_ }
 }
 
 function Reset-AllBashShortcuts {
@@ -188,7 +188,7 @@ function Reset-AllBashShortcuts {
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\StartMenu",`
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar",`
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"`
-    ) | ForEach { Reset-BashShortcut $_ }
+    ) | ForEach-Object { Reset-BashShortcut $_ }
 }
 
 function Convert-ConsoleColor {
