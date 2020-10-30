@@ -98,14 +98,14 @@ function Set-QTShort
 
     if ($Arch -eq "x86")
     {
-        Set-Item -Path Env:QTDIR -Value "C:\Qt\5.15.0\msvc2019"
-        Set-Item -Path Env:QMAKESPEC -Value "C:\Qt\5.15.0\msvc2019\mkspecs\win32-msvc"
+        Set-Item -Path Env:QTDIR -Value "C:\Qt\5.14.2\msvc2019"
+        Set-Item -Path Env:QMAKESPEC -Value "C:\Qt\5.14.2\msvc2019\mkspecs\win32-msvc"
         Set-Item -Path Env:QMAKE_TARGET.arch -Value "x86"
     }
     else
     {
-        Set-Item -Path Env:QTDIR -Value "C:\Qt\5.15.0\msvc2019_64"
-        Set-Item -Path Env:QMAKESPEC -Value "C:\Qt\5.15.0\msvc2019_64\mkspecs\win32-msvc"
+        Set-Item -Path Env:QTDIR -Value "C:\Qt\5.14.2\msvc2019_64"
+        Set-Item -Path Env:QMAKESPEC -Value "C:\Qt\5.14.2\msvc2019_64\mkspecs\win32-msvc"
         Set-Item -Path Env:QMAKE_TARGET.arch -Value "x64"
     }
 

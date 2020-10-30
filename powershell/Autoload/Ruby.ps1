@@ -50,21 +50,6 @@ function Get-Rubies {
 }
 
 function Find-Ruby {
-    <#
-    .SYNOPSIS
-        List installed Rubies versions on current PC.
-    .DESCRIPTION
-        List installed Rubies versions on current PC.
-    .EXAMPLE
-        Find-Ruby
-    .INPUTS
-        None
-    .OUTPUTS
-        None
-    .NOTES
-        Written by: Dmitriy Ivanov
-    #>
-
     $rubies = Get-Rubies
 
     Write-Host "List of Ruby interpretators on this PC:"
@@ -82,20 +67,6 @@ function Find-Ruby {
 }
 
 function Set-Ruby {
-    <#
-    .SYNOPSIS
-        Set Python version on current PC.
-    .DESCRIPTION
-        Set Python version on current PC.
-    .EXAMPLE
-        Set-Py
-    .INPUTS
-        None
-    .OUTPUTS
-        None
-    .NOTES
-        Written by: Dmitriy Ivanov
-    #>
     $rubies = Get-Rubies
     $ValidatedRubies = @()
     $Versions = @()

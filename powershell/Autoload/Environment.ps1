@@ -273,6 +273,9 @@ function Set-Env {
     if ($env:RUBY_PATH) {
         $system_path += ";$env:RUBY_PATH"
     }
+    if ($env:RPROJECT_PATH) {
+        $system_path += ";$env:RPROJECT_PATH"
+    }
     if ($env:JAVA_HOME) {
         $system_path += ";$env:JAVA_HOME\bin"
     }

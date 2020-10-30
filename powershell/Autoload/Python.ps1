@@ -115,21 +115,6 @@ function Get-PyList
 
 function Find-Py
 {
-    <#
-    .SYNOPSIS
-        List installed Python versions on current PC.
-    .DESCRIPTION
-        List installed Python versions on current PC.
-    .EXAMPLE
-        Find-Py
-    .INPUTS
-        None
-    .OUTPUTS
-        None
-    .NOTES
-        Written by: Dmitriy Ivanov
-    #>
-
     $serpents = Get-PyList
 
     Write-Host "List of Python interpretators on this PC:"
@@ -145,20 +130,6 @@ function Find-Py
 
 function Set-Py
 {
-    <#
-    .SYNOPSIS
-        Set Python version on current PC.
-    .DESCRIPTION
-        Set Python version on current PC.
-    .EXAMPLE
-        Set-Py
-    .INPUTS
-        None
-    .OUTPUTS
-        None
-    .NOTES
-        Written by: Dmitriy Ivanov
-    #>
     $serpents = Get-PyList
     $ValidatedSerpents = @()
     $Versions = @()
