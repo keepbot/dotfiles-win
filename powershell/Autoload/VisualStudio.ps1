@@ -392,3 +392,19 @@ if ($ENV:VSDevEnv){
 ${function:vs64}                = { Set-VC-Vars-All x64; devenv @args }
 ${function:vs32}                = { Set-VC-Vars-All x86; devenv @args }
 ${function:vssafe}              = { vs /SafeMode @args }
+
+If (Test-Path "C:\Program Files\Microsoft VS Code\bin")
+{
+    ${function:icode}  = {code.cmd @args}
+    ${function:vscode} = {code.cmd @args}
+}
+elseif (Test-Path "C:\Program Files\Microsoft VS Code Insiders\bin")
+{
+    ${function:icode} = {code-insiders.cmd @args}
+}
+elseif (Test-Path "${env:USERPROFILE}\AppData\Local\Programs\Microsoft VS Code Insiders\bin")
+{
+    ${function:icode} = {code-insiders.cmd @args}
+}
+
+${function:vsc} = { icode . }
