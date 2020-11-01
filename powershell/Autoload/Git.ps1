@@ -363,9 +363,9 @@ function git_upstream
 }
 
 #TODO: Add implementation
-function git_remove_submodule
+function Remove-GitSubmodule
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
+    # [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
     [CmdletBinding()]
     param
     (
@@ -378,10 +378,14 @@ function git_remove_submodule
         Write-Host `
             "Error: Wrong directory. You should be in the root of git repo to use this function. Exiting..." `
             -ForegroundColor Red
-        Exit
+        return
     }
 
-    Get-Content '.\\.gitmodules'
+    $gm_file = Get-Content '.\\.gitmodules'
+    foreach ($line in $gm_file)
+    {
+        Write-Host $line
+    }
 
     # 1. Delete the relevant section from the *.gitmodules* file.
     # [submodule "vendor"]
