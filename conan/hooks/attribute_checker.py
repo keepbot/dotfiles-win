@@ -1,4 +1,6 @@
-# coding=utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
 
 def pre_export(output, conanfile, *args, **kwargs):

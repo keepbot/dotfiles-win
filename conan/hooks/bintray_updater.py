@@ -1,4 +1,7 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
 """Bintray Package info update
 
 This Conan hook reads your recipe and updates its Bintray package info using the attributes.

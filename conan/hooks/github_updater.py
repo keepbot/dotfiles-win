@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
 """Github project updater
 
 This Conan hook reads your recipe and updates its Github project info using the attributes.
