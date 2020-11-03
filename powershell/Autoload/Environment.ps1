@@ -24,9 +24,6 @@ $Env:EDITOR = "${Env:VISUAL}"
 $Env:GIT_EDITOR = $Env:EDITOR
 # Set-Alias vim gvim
 
-function Edit-Hosts { Invoke-Expression "sudo $(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
-function Edit-Profile { Invoke-Expression "$(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $profile" }
-
 # Language
 $Env:LANG   = "en_US"
 # $Env:LC_ALL = "C.UTF-8"
@@ -291,6 +288,9 @@ function Set-Env {
     if ($env:SquishBinDir) {
         $system_path += ";$env:SquishBinDir"
     }
+    if ($env:VISUALGDB_DIR) {
+        $system_path += ";$env:VISUALGDB_DIR"
+    }
     $system_path += ";$env:PathsApp"
     $system_path += ";$env:PathsSys"
     [Environment]::SetEnvironmentVariable("PATH", "$system_path", "Machine")
@@ -342,4 +342,30 @@ function Reset-Environment {
     }
 
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+}
+
+function Edit-Hosts
+{
+    Invoke-Expression "sudo $(
+        if($null -ne $env:EDITOR)
+        {
+            $env:EDITOR
+        }
+        else
+        {
+            'notepad'
+        }) $env:windir\system32\drivers\etc\hosts"
+}
+
+function Edit-Profile
+{
+    Invoke-Expression "$(
+        if($null -ne $env:EDITOR)
+        {
+            $env:EDITOR
+        }
+        else
+        {
+            'notepad'
+        }) $profile"
 }
