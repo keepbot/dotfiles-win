@@ -155,7 +155,6 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
 
     function ugr
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
         param
         (
             [Parameter(ValueFromRemainingArguments = $true)]
@@ -179,7 +178,6 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
 
     function ugrs
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
         param
         (
             [Parameter(ValueFromRemainingArguments = $true)]
@@ -282,7 +280,6 @@ function Set-GitVerbosity
 
 function Show-Diff_Of_Git_Branches
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
     [CmdletBinding()]
     param
     (
@@ -365,7 +362,6 @@ function git_upstream
 #TODO: Add implementation
 function Remove-GitSubmodule
 {
-    # [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
     [CmdletBinding()]
     param
     (

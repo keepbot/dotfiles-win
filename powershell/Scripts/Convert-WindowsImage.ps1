@@ -1,6 +1,4 @@
 ﻿Function Convert-WindowsImage {
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidGlobalVars")]
-
   <#
     .NOTES
         Copyright (c) Microsoft Corporation.  All rights reserved.
@@ -156,9 +154,6 @@
     .OUTPUTS
         System.IO.FileInfo
   #>
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidDefaultValueSwitchParameter")]
 
    #region Data
 

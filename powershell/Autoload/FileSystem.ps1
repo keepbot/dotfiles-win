@@ -64,7 +64,6 @@ function New-DirectoryAndSet ([String] $path) { New-Item $path -ItemType Directo
 Set-Alias mkd New-DirectoryAndSet
 
 function Get-DuList {
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
     [CmdletBinding()]
     param
     (
@@ -155,7 +154,6 @@ function  llf() {
 }
 
 function Remove-File-Recursively {
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter")]
     param
     (
         [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
