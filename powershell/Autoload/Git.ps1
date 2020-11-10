@@ -165,7 +165,25 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         Get-ChildItem $dir -Directory | ForEach-Object {
             Write-Host $_.FullName
             Set-Location $_.FullName
-            git.exe pull $Options
+            & git.exe pull $Options
+        }
+
+        Set-Location $dir
+    }
+
+    function ugrf
+    {
+        param
+        (
+            [Parameter(ValueFromRemainingArguments = $true)]
+            [string]$Options = ""
+        )
+
+        $dir = Get-Location
+        Get-ChildItem $dir -Directory | ForEach-Object {
+            Write-Host $_.FullName
+            Set-Location $_.FullName
+            & git.exe fetch $Options
         }
 
         Set-Location $dir
@@ -185,6 +203,18 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         )
         $dir = Get-Location
         Get-ChildItem @args -Directory | ForEach-Object { Set-Location $_.FullName; ugr $Options }
+        Set-Location $dir
+    }
+
+    function ugrfs
+    {
+        param
+        (
+            [Parameter(ValueFromRemainingArguments = $true)]
+            [string]$Options = ""
+        )
+        $dir = Get-Location
+        Get-ChildItem @args -Directory | ForEach-Object { Set-Location $_.FullName; ugrf $Options }
         Set-Location $dir
     }
 
