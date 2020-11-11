@@ -59,6 +59,13 @@ ${function:wsoo}    = { Set-Location ~\workspace\ormco\common\orthoplatform     
 ${function:wsod}    = { Set-Location ~\workspace\ormco\devops                   }
 ${function:wsor}    = { Set-Location ~\workspace\ormco\web\alignerweb-reports   }
 
+# IRQ Shortcuts
+${function:wsr}     = { Set-Location ~\workspace\irq                            }
+${function:wsrr}    = { Set-Location ~\workspace\irq\irrq                       }
+${function:wsrm}    = { Set-Location ~\workspace\irq\irqml                      }
+${function:wsrmt}   = { Set-Location ~\workspace\irq\irqml_test                 }
+${function:wsrws}   = { Set-Location ~\workspace\irq\irqmlworkspace             }
+
 # Create a new directory and enter it
 function New-DirectoryAndSet ([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path}
 Set-Alias mkd New-DirectoryAndSet
