@@ -21,9 +21,21 @@ ipif() {
 	return
 }
 
-# All the dig info
+# Get DNS info about some site
 digga() {
-	dig +nocmd "$1" any +multiline +noall +answer
+    if [ $2 ]; then
+        dig @${2} +nocmd ${1} any +multiline +noall +answer
+    else
+        dig @8.8.8.8 +nocmd ${1} any +multiline +noall +answer
+    fi
+}
+
+digga_full() {
+    if [ $2 ]; then
+        dig @${2} ${1} any +multiline +noall +answer
+    else
+        dig @8.8.8.8 ${1} any +multiline +noall +answer
+    fi
 }
 
 sIP() {

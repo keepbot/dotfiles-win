@@ -18,8 +18,55 @@ if ($MyInvocation.InvocationName -ne '.')
 
 
 if (Get-Command dig.exe -ErrorAction SilentlyContinue | Test-Path) {
-    ${function:myip} = { dig.exe +short myip.opendns.com `@resolver1.opendns.com }
-    ${function:digga} = { dig.exe +nocmd "$($args[0].ToString())" any +multiline +noall +answer }
+    ${function:myip}   = { dig.exe +short myip.opendns.com `@resolver1.opendns.com }
+    function digga
+    {
+        [CmdletBinding()]
+        param
+        (
+            [Parameter(Mandatory=$true)]
+            [ValidatePattern('\w+\.\w+')]
+            [string] $Domain,
+            [ValidatePattern('^\d+\.\d+\.\d+\.\d+$')]
+            [string] $DNSServer
+        )
+
+        $cmd  = "dig.exe"
+
+        if ($DNSServer) {
+            $cmd += " ``@${DNSServer}"
+        }
+
+        $cmd += "  +nocmd"
+        $cmd += " ${Domain}"
+        $cmd += " any +multiline +noall +answer"
+
+        Invoke-Expression "${cmd}"
+    }
+
+    function digga_full
+    {
+        [CmdletBinding()]
+        param
+        (
+            [Parameter(Mandatory=$true)]
+            [ValidatePattern('\w+\.\w+')]
+            [string] $Domain,
+            [ValidatePattern('^\d+\.\d+\.\d+\.\d+$')]
+            [string] $DNSServer
+        )
+
+        $cmd  = "dig.exe"
+
+        if ($DNSServer) {
+            $cmd += " ``@${DNSServer}"
+        }
+
+        $cmd += " ${Domain}"
+        $cmd += " any +multiline"
+
+        Invoke-Expression "${cmd}"
+    }
 }
 ${function:ipif} = {if ($($args[0])) {curl ipinfo.io/"$($args[0].ToString())"} else {curl ipinfo.io}}
 
