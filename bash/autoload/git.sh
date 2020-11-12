@@ -199,8 +199,13 @@ alias ginfo='ssh gitolite@git info'             # Gitolite list repos
 
 # Accounts
 alias git-home="git config --local user.name 'Dmitriy Ivanov' ;git config --local user.email 'd.k.ivanov@live.com'"
-alias git-work="git config --local user.name 'Dmitriy Ivanov' ;git config --local user.email 'dmitriy.ivanov@ormco.com'"
-alias git-builder="git config --local user.name 'DEN-ORMCO-MSK-DevOps' ;git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com'"
+
+# IRQ
+alias git-irq="git config --local user.name 'Dmitriy Ivanov' ;git config --local user.email 'divanov@irq.ru'"
+
+# Ormco
+alias git-ormco="git config --local user.name 'Dmitriy Ivanov' ;git config --local user.email 'dmitriy.ivanov@ormco.com'"
+alias git-ormco-builder="git config --local user.name 'DEN-ORMCO-MSK-DevOps' ;git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com'"
 
 git-verbose() {
     if [ -z "${1}" ] || [ ${3} ]; then
