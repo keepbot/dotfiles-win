@@ -68,6 +68,7 @@ ${function:List-Paths} = { $Env:Path.Split(';') }
 
 function Initialize-Paths-APP {
     $paths = @(
+        "C:\Program Files\PowerShell\7\"
         "${env:USERPROFILE}\OneDrive\bin"
         "C:\ProgramData\chocolatey\bin"
         "C:\usr\bin"
