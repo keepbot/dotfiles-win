@@ -26,6 +26,9 @@ function Get-RProjectPaths {
     $rPaths = @(
         'C:\Program Files\R\R-4.0.3\bin\i386'
         'C:\Program Files\R\R-4.0.3\bin\x64'
+        'C:\Program Files\Microsoft\R Open\R-3.5.3\bin\x64'
+        'C:\Program Files\Microsoft\R Open\R-3.6.3\bin\x64'
+        'C:\Program Files\Microsoft\R Open\R-4.0.2\bin\x64'
     )
     return $rPaths
 }
