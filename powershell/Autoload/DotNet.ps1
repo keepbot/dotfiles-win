@@ -16,6 +16,7 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
+$Env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
 
 function Get-DotNet-All
 {
