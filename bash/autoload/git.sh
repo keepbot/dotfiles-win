@@ -150,7 +150,7 @@ alias GClean="git reset --hard && git clean -d -x -f"
 alias GClean2="git reset --hard && git clean -d -f"
 
 # Pull
-alias gpl='git pull'
+alias gpl='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias gpls='git stash && git pull && git stash pop'
 alias gplm='git pull && git submodule update'
 alias gplp='git pull --rebase && git push'

@@ -73,7 +73,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:GClean2}     = { while ((git diff-index HEAD --)) {git.exe reset --hard HEAD}; git.exe clean -d -f @args }
 
     # Pull
-    ${function:gpl}         = { git.exe pull @args }
+    ${function:gpl}         = { git.exe pull origin $(git.exe rev-parse --abbrev-ref HEAD) }
     ${function:gplm}        = { git.exe pull origin main }
     ${function:gpls}        = { git.exe stash; git.exe pull @args; git.exe stash pop}
     ${function:gplm}        = { git.exe pull; git.exe submodule update }
