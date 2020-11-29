@@ -484,10 +484,10 @@
 			<value name="WndDragKey" type="dword" data="00121101"/>
 			<key name="Tasks" modified="2020-11-26 02:07:01" build="191012">
 				<value name="Count" type="long" data="22"/>
-				<key name="Task1" modified="2020-11-30 00:05:13" build="201011">
+				<key name="Task1" modified="2020-11-30 02:23:36" build="201011">
 					<value name="Name" type="string" data="{PS::PowerShell 7}"/>
 					<value name="GuiArgs" type="string" data=' /icon "%CMDER_ROOT%\icons\cmder.ico"'/>
-					<value name="Cmd1" type="string" data="pwsh -ExecutionPolicy Bypass -NoLogo -NoExit -new_console:p:t:PowerShell7"/>
+					<value name="Cmd1" type="string" data="pwsh -ExecutionPolicy Bypass -NoLogo -NoExit -new_console::t:PowerShell7"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
