@@ -50,3 +50,10 @@ ${function:sys-repair} = {
     # icacls Path_And_File_Name /GRANT ADMINISTRATORS:F
     # copy Source_File Destination
 }
+
+${function:hyperv-repair} = {
+    dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
+    Get-HNSNetwork | Remove-HNSNetwork
+    netsh int ipv4 add excludedportrange protocol=tcp startport=50051 numberofports=1
+    dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
+}
