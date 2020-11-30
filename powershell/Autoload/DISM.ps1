@@ -55,5 +55,6 @@ ${function:hyperv-repair} = {
     dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
     Get-HNSNetwork | Remove-HNSNetwork
     netsh int ipv4 add excludedportrange protocol=tcp startport=50051 numberofports=1
+    netsh int ipv4 set dynamic tcp start=49152 num=16384
     dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
 }
