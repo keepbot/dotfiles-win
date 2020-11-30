@@ -75,3 +75,5 @@ ${function:localip} = { Get-NetIPAddress | Format-Table }
 ${function:urlencode} = { python.exe -c "import sys, urllib.parse; print(urllib.parse.quote(str(sys.argv[1])));" @args }
 
 ${function:net_show_excluded} = { netsh interface ipv4 show excludedportrange protocol=tcp }
+
+${function:net_show_connects} = { netstat -ano }
