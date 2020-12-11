@@ -62,9 +62,9 @@ ${function:wsor}    = { Set-Location ~\workspace\ormco\web\alignerweb-reports   
 # IRQ Shortcuts
 ${function:wsr}     = { Set-Location ~\workspace\irq                            }
 ${function:wsrr}    = { Set-Location ~\workspace\irq\irrq                       }
-${function:wsrm}    = { Set-Location ~\workspace\irq\irqml                      }
-${function:wsrmt}   = { Set-Location ~\workspace\irq\irqml_test                 }
-${function:wsrws}   = { Set-Location ~\workspace\irq\irqmlworkspace             }
+${function:wsrm}    = { Set-Location ~\workspace\irq\ml\irqml                   }
+${function:wsrmt}   = { Set-Location ~\workspace\irq\ml\irqml_test              }
+${function:wsrws}   = { Set-Location ~\workspace\irq\ml\irqmlworkspace          }
 
 # Create a new directory and enter it
 function New-DirectoryAndSet ([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path}
