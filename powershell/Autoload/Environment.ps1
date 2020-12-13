@@ -68,6 +68,7 @@ ${function:List-Paths} = { $Env:Path.Split(';') }
 
 # C:\Program Files\       --> C:\PROGRA~1\
 # C:\Program Files (x86)\ --> C:\PROGRA~2\
+# C:\ProgramData\         --> C:\PROGRA~3\
 function Initialize-Paths-APP {
     $paths = @(
         "C:\PROGRA~1\PowerShell\7\"
@@ -136,6 +137,7 @@ function Initialize-Paths-APP {
 
 # C:\Program Files\       --> C:\PROGRA~1\
 # C:\Program Files (x86)\ --> C:\PROGRA~2\
+# C:\ProgramData\         --> C:\PROGRA~3\
 function Initialize-Paths-SYS {
     $paths = @(
         "$env:SystemRoot"
@@ -180,6 +182,7 @@ function Initialize-Paths-SYS {
 
 # C:\Program Files\       --> C:\PROGRA~1\
 # C:\Program Files (x86)\ --> C:\PROGRA~2\
+# C:\ProgramData\         --> C:\PROGRA~3\
 function Initialize-Paths-User {
     $paths = @(
         "${env:GOPATH}\bin"
