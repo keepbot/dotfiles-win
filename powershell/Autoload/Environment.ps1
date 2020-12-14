@@ -96,7 +96,7 @@ function Initialize-Paths-APP {
         "C:\PROGRA~1\Mercurial"
         "C:\PROGRA~1\Microsoft VS Code Insiders\bin"
         "C:\PROGRA~1\Microsoft VS Code\bin"
-        "C:\PROGRA~1\MiKTeX 2.9\miktex\bin\x64"
+        "C:\PROGRA~1\MiKTeX\miktex\bin\x64"
         "C:\PROGRA~1\MySQL\MySQL Workbench 8.0 CE"
         "C:\PROGRA~1\NASM"
         "C:\PROGRA~1\nodejs"
