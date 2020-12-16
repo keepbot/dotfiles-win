@@ -67,11 +67,11 @@ alias wsoo='cd ~/workspace/ormco/common/orthoplatform'
 alias wsod='cd ~/workspace/ormco/devops'
 
 # IRQ Shortcuts
-alias   wsr='cd ~/workspace/irq'
-alias  wsrr='cd ~/workspace/irq/irrq'
-alias  wsrm='cd ~/workspace/irq/irqml'
-alias wsrmt='cd ~/workspace/irq/irqml_test'
-alias wsrws='cd ~/workspace/irq/irqmlworkspace'
+alias   wsi='cd ~/workspace/irq'
+alias  wsic='cd ~/workspace/irq/common'
+alias  wsid='cd ~/workspace/irq/devops'
+alias  wsrm='cd ~/workspace/irq/ml'
+alias wsimm='cd ~/workspace/irq/ml/irqml'
 
 alias crlf_fix='find ./ -type f -exec dos2unix {} \;'
 alias   fix_dir_755='find ./ -type d -print -exec chmod 755 {} \;'
