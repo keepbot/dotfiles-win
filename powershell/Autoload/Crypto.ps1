@@ -44,7 +44,16 @@ function DecryptFrom-Base64() {
         Write-Host "ERROR: GPG4Win should be installed and gpg.exe added to the %PATH% env" -ForegroundColor Red
     }
 }
-${function:ggg}  = { gpg.exe --dry-run -vvvv --import @args }
+${function:ggg}                 = { gpg --dry-run -vvvv --import @args }
+
+${function:gpg_show_keys}       = { gpg --list-secret-keys --keyid-format LONG @args }
+${function:gpg_show_key_info}   = { gpg --import-options show-only --import --fingerprint @args }
+
+${function:gpg_search_sks}      = { gpg --keyserver pool.sks-keyservers.net --search-key  @args }
+${function:gpg_search_ubuntu}   = { gpg --keyserver keyserver.ubuntu.com --search-key  @args }
+${function:gpg_search_mit}      = { gpg --keyserver pgp.mit.edu --search-key  @args }
+
+
 
 function gpg_file_e() {
     [CmdletBinding()]
