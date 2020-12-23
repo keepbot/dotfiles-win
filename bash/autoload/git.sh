@@ -32,7 +32,7 @@ gget() {
 get_repo_with_target() {
     if [ -z "$1" ] || [ $2 ]; then
         echo "You should enter repo URI."
-        echo "Usage: get_repo_with_targe <repo_url>"
+        echo "Usage: get_repo_with_target <repo_url>"
         echo
     else
         scheme=$(python3 -c "from urllib.parse import urlparse; uri='${1}'; result = urlparse(uri); print(result.scheme)")
@@ -45,6 +45,8 @@ get_repo_with_target() {
     fi
     return 0
 }
+
+alias grt='get_repo_with_target'
 
 # Function to recursive clone repo from souurce URL to target direcrtory formated as <<repo_name>>-<<username>> (".git" - removed from path)
 gcsr() {
