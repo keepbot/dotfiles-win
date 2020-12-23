@@ -26,6 +26,8 @@ If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path) {
 
 #Set-Location "~/workspace/my/dotfiles/"
 
+# Invovoke ANSI 256 Color Console
+AnsiColors256
+
 # Write-Host "Welcome Home:"(Get-WmiObject -Class Win32_UserAccount -Filter "Name = '$env:USERNAME'").FullName
 Write-Host "Welcome Home: $(Split-Path (Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object UserName).UserName -Leaf)"
-
