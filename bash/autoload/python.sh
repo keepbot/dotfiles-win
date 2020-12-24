@@ -14,9 +14,9 @@ alias pip_update='python -m pip install --upgrade pip'
 alias venv_install='python -m pip install virtualenv'
 alias ipython_install='python -m pip install ipython'
 
-pyenv() {
+py_venv() {
     python -m pip install --upgrade pip
     python -m pip install --upgrade virtualenv
     python -m pip install --upgrade ipython
 }
-alias pip_update='pyenv'
+alias pip_update='py_venv'
