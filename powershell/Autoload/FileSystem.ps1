@@ -19,11 +19,14 @@ if ($MyInvocation.InvocationName -ne '.')
 
 Remove-Item alias:cd -ErrorAction SilentlyContinue
 ${function:cd} = {
-    if ($args -eq '-') {
+    if ($args -eq '-')
+    {
         $tmpLocation = $env:OLDPWD
         $env:OLDPWD = Get-Location
         Set-Location $tmpLocation
-    } else {
+    }
+    else
+    {
         $env:OLDPWD = Get-Location
         Set-Location @args
     }
@@ -70,8 +73,11 @@ ${function:wsimm}   = { Set-Location ~\workspace\irq\ml\irqml                   
 function New-DirectoryAndSet ([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path}
 Set-Alias mkd New-DirectoryAndSet
 
-function Get-DuList {
+function Get-DuList
+{
     [CmdletBinding()]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', 'Precision',
+        Justification = 'False positive as rule does not know that ForEach-Object operates within the same scope')]
     param
     (
         [ValidateNotNullOrEmpty()]
@@ -79,6 +85,7 @@ function Get-DuList {
         [ValidateNotNullOrEmpty()]
         [string]$Precision = 5
     )
+    # $null = $Precision
     Get-ChildItem ${Path} -Force | ForEach-Object {
         "{0} {1:N${Precision}} MB" -f ($_.Name), ((Get-ChildItem $(Join-Path ${Path} ${_}) -Force -Recurse | Measure-Object -Property Length -Sum -ErrorAction Stop).Sum / 1MB)
     }
@@ -160,7 +167,10 @@ function  llf() {
     }
 }
 
-function Remove-File-Recursively {
+function Remove-File-Recursively
+{
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', 'FileName',
+        Justification = 'False positive as rule does not know that ForEach-Object operates within the same scope')]
     param
     (
         [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
@@ -191,7 +201,8 @@ function touch($file) { $null | Out-File -Append $file -Encoding ASCII }
 ${function:mountW} = { subst.exe W: ( Join-Path $Env:USERPROFILE "workspace" ) }
 
 # Find files
-function find {
+function find
+{
     param
     (
         [Parameter(Mandatory = $True)]
@@ -205,7 +216,8 @@ function find {
 # Copy files with directory structure.
 # Input: Array of Strings
 # Output: Folder with copied files
-function Copy-FilesWithFolderStructure {
+function Copy-FilesWithFolderStructure
+{
     [CmdletBinding()]
     param
     (
@@ -215,12 +227,15 @@ function Copy-FilesWithFolderStructure {
         [String[]]$Items
     )
 
-    if(-Not (Test-Path $Destination)) {
+    if(-Not (Test-Path $Destination))
+    {
         New-Item -ItemType Directory -Path "$Destination" -Force
     }
 
-    foreach ($item in $Items) {
-        if(Test-Path $item) {
+    foreach ($item in $Items)
+    {
+        if(Test-Path $item)
+        {
             $Dir = Split-Path -Path $item
             New-Item -Path "$(Join-Path $Destination $Dir)" -ItemType Directory -Force
             Copy-Item "$item" -Destination "$(Join-Path $Destination $Dir)" -Force
@@ -228,7 +243,8 @@ function Copy-FilesWithFolderStructure {
     }
 }
 
-function join_files {
+function join_files
+{
     [CmdletBinding()]
     param
     (

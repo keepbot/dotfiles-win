@@ -69,7 +69,8 @@ ${function:List-Paths} = { $Env:Path.Split(';') }
 # C:\Program Files\       --> C:\PROGRA~1\
 # C:\Program Files (x86)\ --> C:\PROGRA~2\
 # C:\ProgramData\         --> C:\PROGRA~3\
-function Initialize-Paths-APP {
+function Initialize-Paths-APP
+{
     $paths = @(
         "C:\PROGRA~1\PowerShell\7\"
         "${env:USERPROFILE}\OneDrive\bin"
@@ -126,8 +127,10 @@ function Initialize-Paths-APP {
 
     $final_path = "C:\tools\bin"
 
-    foreach ($path in $paths) {
-        If (Test-Path $path)  {
+    foreach ($path in $paths)
+    {
+        If (Test-Path $path)
+        {
             $final_path += ";$path"
         }
     }
@@ -138,7 +141,8 @@ function Initialize-Paths-APP {
 # C:\Program Files\       --> C:\PROGRA~1\
 # C:\Program Files (x86)\ --> C:\PROGRA~2\
 # C:\ProgramData\         --> C:\PROGRA~3\
-function Initialize-Paths-SYS {
+function Initialize-Paths-SYS
+{
     $paths = @(
         "$env:SystemRoot"
         "$env:SystemRoot\System32\Wbem"
@@ -171,8 +175,10 @@ function Initialize-Paths-SYS {
 
     $final_path = "$env:SystemRoot\system32"
 
-    foreach ($path in $paths) {
-        If (Test-Path $path)  {
+    foreach ($path in $paths)
+    {
+        If (Test-Path $path)
+        {
             $final_path += ";$path"
         }
     }
@@ -183,7 +189,8 @@ function Initialize-Paths-SYS {
 # C:\Program Files\       --> C:\PROGRA~1\
 # C:\Program Files (x86)\ --> C:\PROGRA~2\
 # C:\ProgramData\         --> C:\PROGRA~3\
-function Initialize-Paths-User {
+function Initialize-Paths-User
+{
     $paths = @(
         "${env:GOPATH}\bin"
         "${env:M2_HOME}\bin"
@@ -225,17 +232,19 @@ function Initialize-Paths-User {
 
     $final_path = "${env:USERPROFILE}\AppData\Local\Microsoft\WindowsApps"
 
-    foreach ($path in $paths) {
-        If (Test-Path $path)  {
+    foreach ($path in $paths)
+    {
+        If (Test-Path $path)
+        {
             $final_path += ";$path"
         }
     }
 
     [Environment]::SetEnvironmentVariable("PATH", "$final_path", "User")
-
 }
 
-function Set-Env {
+function Set-Env
+{
     # Save current variables
     [Environment]::SetEnvironmentVariable("PATH_PRE_SYS", "$([Environment]::GetEnvironmentVariable("PATH", "Machine"))", "Machine")
     [Environment]::SetEnvironmentVariable("PATH_PRE_USR", "$([Environment]::GetEnvironmentVariable("PATH", "User"))",    "Machine")
@@ -309,15 +318,17 @@ function Set-WorkEnv {
 }
 
 # Set a permanent Environment variable, and reload it into $env
-function Set-Environment([String] $variable, [String] $value) {
-    Set-ItemProperty "HKCU:\Environment" $variable $value
+function Set-Environment([String] $variable, [String] $value)
+{
+    Set-ItemProperty -Path "HKCU:\Environment" -Name $variable -Value $value
     # Manually setting Registry entry. SetEnvironmentVariable is too slow because of blocking HWND_BROADCAST
     #[System.Environment]::SetEnvironmentVariable("$variable", "$value","User")
     Invoke-Expression "`$env:${variable} = `"$value`""
 }
 
 # Reload the $env object from the registry
-function Reset-Environment {
+function Reset-Environment
+{
     $locations = 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment',
                  'HKCU:\Environment'
 
