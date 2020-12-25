@@ -68,23 +68,31 @@ if (-Not (Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue).Instal
 #  chef gem install knife-block
 #}
 
-# ConEmu profile
-If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path) {
-    $cmder_home = Get-Command cmder.exe | Select-Object -ExpandProperty Definition | Split-Path
-    Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path $cmder_home "config\user-ConEmu.xml")
-    Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path $cmder_home "config\user-aliases.cmd")
-    Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path $cmder_home "vendor\init.bat")
-    Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path $cmder_home "vendor\profile.ps1")
-    Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path $cmder_home "vendor\conemu-maximus5\ConEmu.xml")
+Import-Module -FullyQualifiedName (Join-Path $dotfilesModulesDir "ApplicationCompatibility")
 
-    C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "config\user-ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\user-ConEmu.xml")
-    C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "config\user-aliases.cmd") (Join-Path $PSScriptRoot "data\conemu\useuser-aliasesr_aliases.cmd")
-    C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\init.bat") (Join-Path $PSScriptRoot "data\conemu\init.bat")
-    C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\profile.ps1") (Join-Path $PSScriptRoot "data\conemu\profile.ps1")
-    C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\conemu-maximus5\ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\ConEmu.xml")
-
-    $dep_modules                     = @("ApplicationCompatibility")
-    foreach($module in $dep_modules)    { Import-Module -FullyQualifiedName (Join-Path $dotfilesModulesDir $module) }
-    Set-ApplicationCompatibility -CurrentUser -ApplicationLocation (Get-Command cmder.exe | Select-Object -ExpandProperty Definition) -PrivilegeLevel
+# ConEmu
+if(Test-Path "C:\Program Files\ConEmu\ConEmu64.exe")
+{
+    Set-ApplicationCompatibility -CurrentUser -ApplicationLocation "C:\Program Files\ConEmu\ConEmu64.exe" -PrivilegeLevel
 }
+Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path ${Env:APPDATA} "ConEmu.xml")
+cmd /c mklink (Join-Path ${Env:APPDATA} "ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\ConEmu.xml")
+
+# If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path)
+# {
+#     $cmder_home = Get-Command cmder.exe | Select-Object -ExpandProperty Definition | Split-Path
+#     Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path $cmder_home "config\user-ConEmu.xml")
+#     Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path $cmder_home "config\user-aliases.cmd")
+#     Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path $cmder_home "vendor\init.bat")
+#     Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path $cmder_home "vendor\profile.ps1")
+#     Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path $cmder_home "vendor\conemu-maximus5\ConEmu.xml")
+#
+#     C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "config\user-ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\user-ConEmu.xml")
+#     C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "config\user-aliases.cmd") (Join-Path $PSScriptRoot "data\conemu\useuser-aliasesr_aliases.cmd")
+#     C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\init.bat") (Join-Path $PSScriptRoot "data\conemu\init.bat")
+#     C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\profile.ps1") (Join-Path $PSScriptRoot "data\conemu\profile.ps1")
+#     C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\conemu-maximus5\ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\ConEmu.xml")
+#
+#     Set-ApplicationCompatibility -CurrentUser -ApplicationLocation (Get-Command cmder.exe | Select-Object -ExpandProperty Definition) -PrivilegeLevel
+# }
 
