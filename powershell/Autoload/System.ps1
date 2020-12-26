@@ -44,7 +44,14 @@ function Reload-Powershell
 {
     function Invoke-PowerShell
     {
-        powershell -nologo
+        if($PSVersionTable.PSEdition -eq "Core")
+        {
+            pwsh -ExecutionPolicy Bypass -NoLogo -NoExit
+        }
+        else
+        {
+            powershell -ExecutionPolicy Bypass -NoLogo -NoExit
+        }
     }
 
     # $parentProcessId = (Get-WmiObject Win32_Process -Filter "ProcessId=$PID").ParentProcessId
