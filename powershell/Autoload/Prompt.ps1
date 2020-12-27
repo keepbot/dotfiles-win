@@ -48,7 +48,7 @@ function CheckGit($Path)
         {
             {$_.TotalMilliseconds -lt 1} {
                 [int]$us = $(($_.Ticks / 10) % 1000)
-                '{0:d3}µs' -f ($us) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor Cyan -NoNewline
+                '{0:d3}µs' -f ($us) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor DarkGray -NoNewline
                 break
             }
             {$_.TotalMilliseconds -lt 100} {
@@ -62,13 +62,19 @@ function CheckGit($Path)
                 '{0}ms' -f ($ms) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor Cyan -NoNewline
                 break
             }
-            {$_.totalminutes -lt 1} {
+            {$_.TotalSeconds -lt 5} {
+                [int]$s = [Math]::Floor([decimal]($_.TotalSeconds))
+                [int]$ms = $($_.TotalMilliseconds % 1000)
+                '{0}.{1:d3}s' -f ($s, $ms) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor Cyan -NoNewline
+                break
+            }
+            {$_.TotalMinutes -lt 1} {
                 [int]$s = [Math]::Floor([decimal]($_.TotalSeconds))
                 [int]$ms = $($_.TotalMilliseconds % 1000)
                 '{0}.{1:d3}s' -f ($s, $ms) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor Yellow -NoNewline
                 break
             }
-            {$_.totalminutes -ge 1} {
+            {$_.TotalMinutes -ge 1} {
                 "{0:HH:mm:ss}" -f ([datetime]$ts.Ticks) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor Red -NoNewline
                 break
             }

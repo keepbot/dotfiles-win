@@ -77,12 +77,13 @@ format_time_diff_from_ns()
     # elif ((s > 0));     then _out=$(printf "${BY}%ds${ZZ}"            ${s}             )
     # elif ((ms > 0));    then _out=$(printf "${BC}%dms${ZZ}"           ${ms}            )
 
-    if   ((m > 0));     then _out=$(printf "${BR}%02d:%02d:%02d${ZZ}" ${h}   ${m} ${s} )
-    elif ((s > 0));     then _out=$(printf "${BY}%d.%03ds${ZZ}"       ${s}  ${ms}      )
+    if   ((m  >    0)); then _out=$(printf "${BR}%02d:%02d:%02d${ZZ}" ${h}   ${m} ${s} )
+    elif ((s  >=   5)); then _out=$(printf "${BY}%d.%03ds${ZZ}"       ${s}  ${ms}      )
+    elif ((s  >    0)); then _out=$(printf "${BC}%d.%03ds${ZZ}"       ${s}  ${ms}      )
     elif ((ms >= 100)); then _out=$(printf "${BC}%dms${ZZ}"           ${ms}            )
-    elif ((ms > 0));    then _out=$(printf "${BC}%d.%03dms${ZZ}"      ${ms} ${us}      )
-    elif ((us > 0));    then _out=$(printf "${BC}%dµs${ZZ}"           ${us}            )
-    else                     _out=$(printf "${BC}%dns${ZZ}"           ${ns}            )
+    elif ((ms >    0)); then _out=$(printf "${BC}%d.%03dms${ZZ}"      ${ms} ${us}      )
+    elif ((us >    0)); then _out=$(printf "${GR}%dµs${ZZ}"           ${us}            )
+    else                     _out=$(printf "${GR}%dns${ZZ}"           ${ns}            )
     fi
 
     printf "$_out"
