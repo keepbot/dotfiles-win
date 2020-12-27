@@ -158,13 +158,11 @@ function Get-WindowsKey
     }
 }
 
-
 function  Get-WindowsBuildNumber
 {
     $os = Get-CimInstance -ClassName Win32_OperatingSystem
     return [int]($os.BuildNumber)
 }
-
 
 function Get-WinFeatures
 {
@@ -181,38 +179,42 @@ function Get-WinFeatureInfo
     dism /online /Get-FeatureInfo /FeatureName:$FeatureName
 }
 
-
 function Get-ConsoleCP
 {
     return ($(chcp) -replace '[^0-9]','')
 }
 
-function Get-DuplicatedModules {
+function Get-DuplicatedModules
+{
     Get-InstalledModule | ForEach-Object {
         $latestVersion = $PSItem.Version
 
         Write-Host "$($PSItem.Name) - $($PSItem.Version)" -ForegroundColor Green
 
         Get-InstalledModule $PSItem.Name -AllVersions |
-        Where-Object Version -NE $latestVersion |
-        ForEach-Object {
+        Where-Object Version -NE $latestVersion       | ForEach-Object {
             Write-Host "- $($PSItem.Name) - $($PSItem.Version)" -ForegroundColor Magenta
         }
     }
 }
 
-function Uninstall-DuplicatedModules {
+function Uninstall-DuplicatedModules
+{
     Get-InstalledModule | ForEach-Object {
         $latestVersion = $PSItem.Version
 
         Write-Host "$($PSItem.Name) - $($PSItem.Version)" -ForegroundColor Green
 
         Get-InstalledModule $PSItem.Name -AllVersions |
-        Where-Object Version -NE $latestVersion |
-        ForEach-Object {
+        Where-Object Version -NE $latestVersion       | ForEach-Object {
             Write-Host "- Uninstalling version $($PSItem.Version)..." -ForegroundColor Magenta -NoNewline
             $PSItem | Uninstall-Module -Force
             Write-Host "done"
         }
     }
+}
+
+function Get-SystemInfo
+{
+    Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object -Property *
 }

@@ -89,8 +89,11 @@ function CheckGit($Path)
 
     checkGit($pwd.ProviderPath)
 
-    $now = Get-date -Format "HH:mm:ss"
-    Microsoft.PowerShell.Utility\Write-Host "`n${now} λ " -NoNewLine -ForegroundColor DarkGray
+    $now      = Get-date -Format "HH:mm:ss"
+    # $username = $(Split-Path (Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object UserName).UserName -Leaf)
+    $username = Split-Path $Env:USERPROFILE -Leaf
+    $compname = (Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object DNSHostName).DNSHostName
+    Microsoft.PowerShell.Utility\Write-Host "`n${now} ${username}@${compname} λ " -NoNewLine -ForegroundColor DarkGray
 
     $global:LASTEXITCODE = $realLASTEXITCODE
     return " "
