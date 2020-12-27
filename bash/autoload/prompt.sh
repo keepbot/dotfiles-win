@@ -25,7 +25,6 @@ function __git_prompt {
     local BW="\033[1;37m"   # bolded white
     local ZZ="\033[0m"      # Reset
 
-
     if [ ${PROMPT} == "COMPLEX" ]; then
         # Classic Git-Prompt
         # GIT_PS1_SHOWDIRTYSTATE=1

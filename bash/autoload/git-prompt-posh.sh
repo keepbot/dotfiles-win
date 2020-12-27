@@ -218,11 +218,12 @@ __posh_git_echo () {
     local BranchBehindAndAheadStatusSymbol=''
     local BranchWarningStatusSymbol=''
     if $EnableStatusSymbol; then
-      BranchIdenticalStatusSymbol=$' \xE2\x89\xA1' # Three horizontal lines
-      BranchAheadStatusSymbol=$' \xE2\x86\x91' # Up Arrow
-      BranchBehindStatusSymbol=$' \xE2\x86\x93' # Down Arrow
-      BranchBehindAndAheadStatusSymbol=$'\xE2\x86\x95' # Up and Down Arrow
-      BranchWarningStatusSymbol=' ?'
+        BranchIdenticalStatusSymbol=$' \xE2\x89\xA1' # Three horizontal lines
+        BranchAheadStatusSymbol=$' \xE2\x86\x91' # Up Arrow
+        BranchBehindStatusSymbol=$' \xE2\x86\x93' # Down Arrow
+        BranchBehindAndAheadStatusSymbol=$'\xE2\x86\x95' # Up and Down Arrow
+        # BranchWarningStatusSymbol=' ?'
+        BranchWarningStatusSymbol=''
     fi
 
     # these globals are updated by __posh_git_ps1_upstream_divergence
@@ -316,6 +317,7 @@ __posh_git_echo () {
         fi
         __posh_git_ps1_upstream_divergence
         local divergence_return_code=$?
+        # local divergence_return_code=0
     fi
 
     # show index status and working directory status
