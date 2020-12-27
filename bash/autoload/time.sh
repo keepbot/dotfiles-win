@@ -92,12 +92,9 @@ format_time_diff_from_ns()
 format_time_from_ns()
 {
     if [[ -z ${1} ]]; then
-        echo "Error: $0 - wrong arguments..."
-        echo "Usage: $0 <timestamp_in_ns>"
+        echo "Usage: $0 <timestamp_in_nanoseconds>"
         return
-        # Fallback to current time
-        # _timestamp_start=$(date +%s%N)
-    else
+    fi
 
     local _timestamp=$1
     local _out
@@ -109,16 +106,16 @@ format_time_from_ns()
     local  m=$(((${_timestamp} / 60000000000) % 60))
     local  h=$(((${_timestamp} / 3600000000000)))
 
-    if   ((h  >    0)); then _out=$(printf "%02d:%02d:%02d" ${h}   ${m} ${s} )
-    elif ((m  >    0)); then _out=$(printf "%dm%ds"         ${m}   ${s}      )
-    elif ((s  >    0)); then _out=$(printf "%d.%03ds"       ${s}  ${ms}      )
+    if   ((h  >    0)); then _out=$(printf "%02d:%02d:%02d"  ${h}  ${m} ${s} )
+    elif ((m  >    0)); then _out=$(printf "%dm%ds"          ${m}  ${s}      )
+    elif ((s  >    0)); then _out=$(printf "%d.%03ds"        ${s} ${ms}      )
     elif ((ms >= 100)); then _out=$(printf "%dms"           ${ms}            )
     elif ((ms >    0)); then _out=$(printf "%d.%03dms"      ${ms} ${us}      )
     elif ((us >    0)); then _out=$(printf "%dµs"           ${us}            )
     else                     _out=$(printf "%dns"           ${ns}            )
     fi
 
-    printf "$_out"
+    printf "${_out}"
 }
 
 function timer_now
