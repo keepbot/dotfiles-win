@@ -173,3 +173,4 @@ function timer_get_elapsed()
         echo
     fi
 }
+
