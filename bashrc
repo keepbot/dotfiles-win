@@ -8,3 +8,5 @@
 for file in ${HOME}/.bash/autoload/*; do
     source ${file}
 done
+
+source ${HOME}/.bash/bash-preexec.sh

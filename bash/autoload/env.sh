@@ -7,6 +7,7 @@ export HISTCONTROL=ignoredups
 # Big history
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
+export HISTTIMEFORMAT='%s '
 PROMPT_COMMAND="history -a"
 
 # macOS Catalina: Suppress zsh warning

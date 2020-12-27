@@ -54,7 +54,7 @@ function __git_prompt {
     return $exit
 }
 
-function prompt_rvm
+function __prompt_rvm
 {
     # preserve exit status
     local exit=$?
@@ -70,6 +70,14 @@ function prompt_rvm
     else
         echo "$rbv"
     fi
+    return $exit
+}
+
+function __prompt_time
+{
+    # preserve exit status
+    local exit=$?
+    printf ${timer_output}
     return $exit
 }
 
@@ -109,24 +117,22 @@ bash_prompt()
     case $PROMPT in
         COMPLEX)
             if [ $ENVRM == "PRODUCTION" ]; then
-                PS1="${R}[${BY}\${?}${R}] [${BR}\w${R}] \$(__git_prompt) ${M}\$(prompt_rvm) ${BR}$SSHPRPT \n${BK}\t \u@\H λ${ZZ} "
-                # __posh_git_ps1 "${R}[${BY}\${?}${R}] [${BR}\w${R}] " "${M}\$(prompt_rvm) ${BR}$SSHPRPT \n${BK}\t \u@\H λ${ZZ} "
+                PS1="${R}[${BY}\${?}${R}] [\$(__prompt_time)${R}] [${BR}\w${R}] \$(__git_prompt) ${M}\$(__prompt_rvm) ${BR}$SSHPRPT \n${BK}\t \u@\H λ${ZZ} "
             else
-                PS1="${G}[${BY}\${?}${G}] [${BC}\w${G}] \$(__git_prompt) ${M}\$(prompt_rvm) ${BB}$SSHPRPT \n${BK}\t \u@\H λ${ZZ} "
-                # __posh_git_ps1 "${G}[${BY}\${?}${G}] [${BC}\w${G}] " " ${M}\$(prompt_rvm) ${BB}$SSHPRPT \n${BK}\t \u@\H λ${ZZ} "
+                PS1="${G}[${BY}\${?}${G}] [\$(__prompt_time)${G}] [${BC}\w${G}] \$(__git_prompt) ${M}\$(__prompt_rvm) ${BB}$SSHPRPT \n${BK}\t \u@\H λ${ZZ} "
             fi
             ;;
         SIMPLE)
             if [ $ENVRM == "PRODUCTION" ]; then
-                PS1="${R}[${BY}\${?}${R}] \u@\h${BY}:${R}\W \$(__git_prompt) ${M}\$(prompt_rvm) ${BK}λ ${ZZ}"
-                # __posh_git_ps1 "${R}[${BY}\${?}${R}] \u@\h${BY}:${R}\W " " ${M}\$(prompt_rvm) ${BK}λ ${ZZ}"
+                PS1="${R}[${BY}\${?}${R}] \u@\h${BY}:${R}\W \$(__git_prompt) ${M}\$(__prompt_rvm) ${BK}λ ${ZZ}"
             else
-                PS1="${G}[${BY}\${?}${G}] \u@\h${BY}:${G}\W \$(__git_prompt) ${M}\$(prompt_rvm) ${BK}λ ${ZZ}"
-                # __posh_git_ps1 "${G}[${BY}\${?}${G}] \u@\h${BY}:${G}\W " " ${M}\$(prompt_rvm) ${BK}λ ${ZZ}"
+                PS1="${G}[${BY}\${?}${G}] \u@\h${BY}:${G}\W \$(__git_prompt) ${M}\$(__prompt_rvm) ${BK}λ ${ZZ}"
             fi
             ;;
     esac
 }
 
+preexec_functions+=(timer_start)
+precmd_functions+=(timer_stop)
 bash_prompt
-# unset bash_prompt
+unset bash_prompt
