@@ -49,12 +49,12 @@ format_time_diff_from_ns()
     # local 1m=1000000
 
     local delta_ns=$((${_timestamp_stop} - ${_timestamp_start}))
-    local ns=$(((delta_ns % 1000)))
-    local us=$(((delta_ns / 1000) % 1000))
-    local ms=$(((delta_ns / 1000000) % 1000))
-    local  s=$(((delta_ns / 1000000000) % 60))
-    local  m=$(((delta_ns / 60000000000) % 60))
-    local  h=$(((delta_ns / 3600000000000)))
+    local ns=$(((${delta_ns} % 1000)))
+    local us=$(((${delta_ns} / 1000) % 1000))
+    local ms=$(((${delta_ns} / 1000000) % 1000))
+    local  s=$(((${delta_ns} / 1000000000) % 60))
+    local  m=$(((${delta_ns} / 60000000000) % 60))
+    local  h=$(((${delta_ns} / 3600000000000)))
 
     # printf " start: ${_timestamp_start}ns\n stop: ${_timestamp_stop}ns\n"
     # printf "  delta: ${delta_ns} ns\n\
@@ -144,8 +144,13 @@ function timer_stop
 {
     # preserve exit status
     local exit=$?
+
     timer_stop_timestamp=$(timer_now)
     timer_output=${timer_output:-$(format_time_diff_from_ns $timer_start_timestamp $timer_stop_timestamp)}
+
+    if [ ! -z ${timer_start_timestamp} ] && [ ! -z ${timer_stop_timestamp} ];then
+        timer_elapsed=$(((${timer_stop_timestamp} - ${timer_start_timestamp})))
+    fi
 
     # Cleanup timer
     unset timer_stop_timestamp
@@ -154,14 +159,18 @@ function timer_stop
     return $exit
 }
 
-function timer_elapsed
+function timer_get_elapsed()
 {
-    # preserve exit status
-    local exit=$?
-
-    format_time_diff_from_ns ${timer_start_timestamp} ${timer_stop_timestamp}
-    unset timer_stop_timestamp
-    unset timer_start_timestamp
-
-    return $exit
+    if [[ -z ${1} ]]; then
+        printf ${timer_elapsed}
+    elif [[ '-v' == ${1} ]]; then
+        format_time_from_ns ${timer_elapsed}
+        printf '\n'
+    else
+        echo "Usase"
+        echo "  timer_get_elapsed    | without arguments prints elapsed timestamp in nanoseconds"
+        echo "  timer_get_elapsed -v | with '-v' argument prints elapsed timestamp in human readable format"
+        echo
+    fi
 }
+
