@@ -356,6 +356,35 @@ function git_rename_author
     git filter-branch --env-filter "export GIT_COMMITTER_NAME='Dmitriy Ivanov';export GIT_COMMITTER_EMAIL='d.k.ivanov@live.com';export GIT_AUTHOR_NAME='Dmitriy Ivanov';export GIT_AUTHOR_EMAIL='d.k.ivanov@live.com'" --tag-name-filter cat -- --branches --tags
 }
 
+function git_change_email_in_my_commits
+{
+    [CmdletBinding()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [string]$OldMail,
+        [string]$NewMail = 'd.k.ivanov@live.com',
+        [string]$GitName = 'Dmitriy Ivanov'
+
+    )
+
+    git filter-branch --env-filter "                            `
+        OLD_EMAIL='${OldMail}';                                 `
+        GIT_NAME='${GitName}';                                  `
+        NEW_EMAIL='${NewMail}';                                 `
+        if [ '$GIT_COMMITTER_EMAIL' = '$OLD_EMAIL' ]; then;     `
+            export GIT_COMMITTER_NAME="$GIT_NAME";              `
+            export GIT_COMMITTER_EMAIL="$NEW_EMAIL";            `
+        fi;                                                     `
+        if [ '$GIT_AUTHOR_EMAIL' = '$OLD_EMAIL' ]; then;        `
+            export GIT_AUTHOR_NAME='$GIT_NAME';                 `
+            export GIT_AUTHOR_EMAIL='$NEW_EMAIL';               `
+        fi;                                                     `
+    " --tag-name-filter cat -- --branches --tags
+}
+
+
+
 function git_push_force
 {
     git push --force --tags origin 'refs/heads/*'
