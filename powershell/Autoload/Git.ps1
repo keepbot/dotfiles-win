@@ -82,6 +82,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     # Push
     # ${function:gp}        = { git.exe push @args }  # Comment if you use Get-Property and use gpp insted
     ${function:gpp}         = { git.exe push @args }
+    ${function:gppf}        = { git.exe push --force @args }
     ${function:gppu}        = { git.exe push -u @args }
     ${function:gppt}        = { git.exe push --tags @args }
 
