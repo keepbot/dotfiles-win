@@ -192,6 +192,7 @@ function Initialize-Paths-SYS
 function Initialize-Paths-User
 {
     $paths = @(
+        "${env:USERPROFILE}\scoop\shims"
         "${env:GOPATH}\bin"
         "${env:M2_HOME}\bin"
         "${env:USERPROFILE}\go\bin"
