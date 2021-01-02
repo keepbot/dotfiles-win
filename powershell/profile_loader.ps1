@@ -5,6 +5,8 @@ $dotfilesModulesDir = Join-Path $dotfilesProfileDir "Modules"
 $dotfilesScriptsDir = Join-Path $dotfilesProfileDir "Scripts"
 $profileDir         = Split-Path -Parent $profile
 
+# $OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+# $PSDefaultParameterValues['*:Encoding'] = 'utf8'
 $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 
 # If (-Not ($env:ConEmuANSI) -And -Not ($env:RELOADED_TRUE)) {
