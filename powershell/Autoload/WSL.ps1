@@ -17,30 +17,41 @@ if ($MyInvocation.InvocationName -ne '.')
 }
 
 
-function Find-WSL() {
+function Find-WSL()
+{
     wslconfig.exe /l @args
 }
 
-function Remove-WSL() {
+function Remove-WSL()
+{
     wslconfig.exe /u @args
 }
 
-function Set-WSL() {
+function Set-WSL()
+{
     wslconfig.exe /s @args
 }
 
-function Stop-WSL() {
+function Stop-WSL()
+{
     wslconfig.exe /t @args
 }
 
-function Update-WSL() {
+function Update-WSL()
+{
     wslconfig.exe /upgrade @args
 }
 
-function Get-WSL-UUID() {
+function Get-WSL-UUID()
+{
     Get-ChildItem -Path Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss
 }
 
-function Get-WSL-UUID-Short() {
+function Get-WSL-UUID-Short()
+{
     (Get-ChildItem -Path Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss).Name
+}
+function List-WSLDistros()
+{
+    wsl.exe --list -v
 }
