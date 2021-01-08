@@ -38,9 +38,10 @@ if [[ -z "${BASH_VERSION:-}" ]]; then
 fi
 
 # Avoid duplicate inclusion
-if [[ "${__bp_imported:-}" == "defined" ]]; then
-    return 0
-fi
+#!! DISABLED to be able to reload bash profile.
+# if [[ "${__bp_imported:-}" == "defined" ]]; then
+#     return 0
+# fi
 __bp_imported="defined"
 
 # Should be available to each precmd and preexec

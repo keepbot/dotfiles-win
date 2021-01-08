@@ -77,7 +77,9 @@ function __prompt_time
 {
     # preserve exit status
     local exit=$?
-    printf ${timer_output}
+    if [ ! -z ${timer_output} ]; then
+        printf ${timer_output}
+    fi
     return $exit
 }
 

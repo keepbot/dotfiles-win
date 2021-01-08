@@ -1,26 +1,39 @@
 #!/usr/bin/env bash
 
-# TODO:
-get_gh_repos() {
+# TODO: Implement same function as in powereshell profile (WIP)
+github_repos() {
     # A POSIX variable
     OPTIND=1         # Reset in case getopts has been used previously in the shell.
 
     # Initialize our own variables:
-    output_file=""
-    verbose=0
+    clone=0
+    organization=0
+    protocol="SSH"
+
     show_help() {
-        echo "$0 -h -v -f"
+        printf "Usage: \n"
+        printf "  github_repos [-c] [-h[?]] -n NAME -o -p PROTOCOL \n\n"
+        printf "  Options:\n"
+        printf "    -n NAME     | Github user or organization name \n"
+        printf "    -p PROTOCOL | Protocol: GIT, HTTPS, SSH or SVN \n"
+
     }
 
-    while getopts "h?vf:" opt; do
+    while getopts "h?vfno:" opt; do
         case "$opt" in
         h|\?)
             show_help
             return
             ;;
-        v)  verbose=1
+        c)  clone=1
             ;;
         f)  output_file=$OPTARG
+            ;;
+        n)  name=$OPTARG
+            ;;
+        o)  organization=1
+            ;;
+        o)  protocol=$OPTARG
             ;;
         esac
     done
@@ -29,7 +42,17 @@ get_gh_repos() {
 
     [ "${1:-}" = "--" ] && shift
 
-    echo "verbose=$verbose, output_file='$output_file', Leftovers: $@"
+    if [ -z $name ]; then
+        show_help
+        return
+    fi
+
+    echo "                              \
+        clone=$clone,                   \
+        organization='$organization',   \
+        protocol='$protocol',           \
+        name='$name',                   \
+        Leftovers: $@"
 }
 
 # Clone all users repos from GitHub
