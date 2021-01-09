@@ -32,7 +32,7 @@ function Set-BitbucketOAuthCreds
         [string]$Secret
     )
     [string] $SecretFile = (Join-Path $env:USERPROFILE '.bitbucket.secrets')
-    Add-Content $SecretFile "$Client_id"
+    Set-Content $SecretFile "$Client_id"
     Add-Content $SecretFile "$Secret"
 }
 

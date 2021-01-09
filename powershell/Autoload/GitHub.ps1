@@ -11,7 +11,7 @@ GitHub scripts.
 if ($MyInvocation.InvocationName -ne '.')
 {
     Write-Host `
-        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        "Error: Bad invocation. $($MyInvocation.MyBaseCommand) supposed to be sourced. Exiting..." `
         -ForegroundColor Red
     Exit
 }
@@ -27,7 +27,7 @@ function Set-GithubOAuthCreds
         [string]$Token
     )
     [string] $SecretFile = (Join-Path $env:USERPROFILE '.github.secrets')
-    Add-Content $SecretFile "$Username"
+    Set-Content $SecretFile "$Username"
     Add-Content $SecretFile "$Token"
 }
 
@@ -62,7 +62,7 @@ function GithubRepos
         [switch] $Clone
     )
 
-    if (-Not (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path))
+    if (-Not (Get-BaseCommand git.exe -ErrorAction SilentlyContinue | Test-Path))
     {
         Write-Host `
                 "Error: Git not found. Please install Git for Windows and add it to PATH. Exiting..." `
@@ -87,25 +87,25 @@ function GithubRepos
     if ($Clone)
     {
         Write-Host "Clonning Github repos of ${GithubName}"
-        $cmd = "git clone --recurse-submodules "
+        $BaseCommand = "git clone --recurse-submodules "
     }
     else
     {
         Write-Host "Showing Github repos of ${GithubName}"
-        $cmd = "Write-Output "
+        $BaseCommand = "Write-Output "
     }
 
 
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    $hasNext = $true
-    $nextUrl   = "${BaseApiUri}?sort=pushed&per_page=100"
+    $HasNext = $true
+    $NextUrl   = "${BaseApiUri}?sort=pushed&per_page=100"
     # for ($i = 1; $i -lt 2; $i++)
-    while ($hasNext)
+    while ($HasNext)
     {
-        # Write-Output $nextUrl
+        # Write-Output $NextUrl
         try
         {
-            $requestAnswer = Invoke-WebRequest -Headers $Headers -Uri $nextUrl
+            $RequestAnswer = Invoke-WebRequest -Headers $Headers -Uri $NextUrl
         }
         catch
         {
@@ -115,30 +115,31 @@ function GithubRepos
             return
         }
 
-        if ($requestAnswer.RelationLink["next"])
+        if ($RequestAnswer.RelationLink["next"])
         {
-            $nextUrl   = $requestAnswer.RelationLink["next"]
+            $NextUrl   = $RequestAnswer.RelationLink["next"]
         }
         else
         {
-            $hasNext = $false
+            $HasNext = $false
         }
 
-        $repos = $requestAnswer | ConvertFrom-Json
-        foreach($repo in $repos)
+        $Repos = $RequestAnswer | ConvertFrom-Json
+        foreach($repo in $Repos)
         {
             if((-Not $All) -And $repo.fork) { continue }
 
             switch ($Protocol)
             {
-                "GIT"   { Invoke-Expression ($cmd + $repo.git_url)   }
-                "HTTPS" { Invoke-Expression ($cmd + $repo.clone_url) }
-                "SSH"   { Invoke-Expression ($cmd + $repo.ssh_url)   }
-                "SVN"   { Invoke-Expression ($cmd + $repo.svn_url)   }
+                "GIT"   { Invoke-Expression ($BaseCommand + $repo.git_url)   }
+                "HTTPS" { Invoke-Expression ($BaseCommand + $repo.clone_url) }
+                "SSH"   { Invoke-Expression ($BaseCommand + $repo.ssh_url)   }
+                "SVN"   { Invoke-Expression ($BaseCommand + $repo.svn_url)   }
             }
         }
     }
 }
+Set-Alias github_repos GithubRepos
 
 function Rename-GitHub-Origin
 {
