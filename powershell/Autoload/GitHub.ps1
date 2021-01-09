@@ -62,7 +62,7 @@ function GithubRepos
         [switch] $Clone
     )
 
-    if (-Not (Get-BaseCommand git.exe -ErrorAction SilentlyContinue | Test-Path))
+    if (-Not (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path))
     {
         Write-Host `
                 "Error: Git not found. Please install Git for Windows and add it to PATH. Exiting..." `
