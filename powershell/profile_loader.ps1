@@ -20,6 +20,12 @@ $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 
 Get-ChildItem "$(Join-Path $PSScriptRoot "Autoload")\*.ps1" | ForEach-Object { . $_ }
 
+$PrivatePSAutoladFolder = $(Join-Path $Env:USERPROFILE "OneDrive\bin\ps_autoload")
+If (Test-Path $PrivatePSAutoladFolder)
+{
+    Get-ChildItem "$PrivatePSAutoladFolder\*.ps1" | ForEach-Object { . $_ }
+}
+
 # Loading Cmder Profile
 # If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path) {
 #   $cmder_home = Get-Command cmder.exe | Select-Object -ExpandProperty Definition | Split-Path
