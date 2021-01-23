@@ -122,13 +122,13 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:ginfo}       = { ssh.exe gitolite@git info @args }   # Gitolite list repos
 
     # Accounts
-    ${function:git-home}    = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'd.k.ivanov@live.com' }
+    ${function:git-home}    = { git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'd.k.ivanov@live.com' }
 
     # IRQ
-    ${function:git-epam}    = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'dmitry_ivanov3@epam.com' }
+    ${function:git-epam}    = { git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'dmitry_ivanov3@epam.com' }
 
     # IRQ
-    ${function:git-irq}     = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'divanov@irq.ru' }
+    ${function:git-irq}     = { git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'divanov@irq.ru' }
 
     # Ormco
     ${function:git-ormco}         = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'dmitriy.ivanov@ormco.com' }
@@ -328,10 +328,10 @@ function Show-Diff_Of_Git_Branches
         [string]$Branch2
     )
 
-    git checkout Branch1
-    git checkout Branch2
+    git checkout $Branch1
+    git checkout $Branch2
 
-    git diff Branch1..Branch2
+    git diff ${Branch1}..${Branch2}
 }
 
 # Git analisys:
