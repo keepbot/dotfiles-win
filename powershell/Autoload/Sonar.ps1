@@ -33,7 +33,7 @@ function sonar_run_msbuild_cpp
     build-wrapper-win-x86-64.exe --out-dir bw-output msbuild $Path /t:Clean;Rebuild /m:$Threads /p:Configuration=Release /p:Platform=x64 /verbosity:normal
 }
 
-function sonar_scan_cpp
+function sonar_scan_ormco_cpp
 {
     [CmdletBinding()]
     param

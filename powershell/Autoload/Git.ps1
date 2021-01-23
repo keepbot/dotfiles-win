@@ -125,6 +125,9 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:git-home}    = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'd.k.ivanov@live.com' }
 
     # IRQ
+    ${function:git-epam}    = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'dmitry_ivanov3@epam.com' }
+
+    # IRQ
     ${function:git-irq}     = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'divanov@irq.ru' }
 
     # Ormco

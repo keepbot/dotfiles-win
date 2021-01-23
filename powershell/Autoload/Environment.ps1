@@ -309,13 +309,15 @@ function Set-Env
     Reset-Environment
 }
 
-function Set-WorkEnv {
-    If (Test-Path "$env:HOME\workspace\ormco\common\aligner-thirdparty")  {
-        [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "$env:HOME\workspace\ormco\common\aligner-thirdparty", "Machine")
-    }
-    If (Test-Path "$env:HOME\workspace\ormco\aligner\testdataaligner")  {
-        [Environment]::SetEnvironmentVariable("TESTDATA_LOCATION", "$env:HOME\workspace\ormco\aligner\testdataaligner", "Machine")
-    }
+function Set-WorkEnv
+{
+    # Ormco
+    # If (Test-Path "$env:HOME\workspace\ormco\common\aligner-thirdparty")  {
+    #     [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "$env:HOME\workspace\ormco\common\aligner-thirdparty", "Machine")
+    # }
+    # If (Test-Path "$env:HOME\workspace\ormco\aligner\testdataaligner")  {
+    #     [Environment]::SetEnvironmentVariable("TESTDATA_LOCATION", "$env:HOME\workspace\ormco\aligner\testdataaligner", "Machine")
+    # }
 }
 
 # Set a permanent Environment variable, and reload it into $env

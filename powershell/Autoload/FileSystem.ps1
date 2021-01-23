@@ -55,6 +55,9 @@ ${function:wsdf}    = { Set-Location ~\workspace\my\dotfiles                    
 ${function:wsdsc}   = { Set-Location ~\workspace\my\dsc-windows-workstation     }
 ${function:wst}     = { Set-Location ~\workspace\tmp                            }
 
+# EPAM Shortcuts
+${function:wse}     = { Set-Location ~\workspace\epam                          }
+
 # Ormco Shortcuts
 ${function:wso}     = { Set-Location ~\workspace\ormco                          }
 ${function:wsoc}    = { Set-Location ~\workspace\ormco\common                   }
