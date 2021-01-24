@@ -328,6 +328,8 @@ function Set-WorkEnv
 function Set-PowershellEnvironment
 {
     $paths = @(
+        "${env:USERPROFILE}\Documents\PowerShell\Modules"
+        "${env:USERPROFILE}\OneDrive\Documents\PowerShell\Modules"
         "C:\Program Files\WindowsPowerShell\Modules"
         "C:\program files\powershell\6\Modules"
         "C:\program files\powershell\7\Modules"
