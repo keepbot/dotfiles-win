@@ -200,14 +200,17 @@ alias gex='mono GitExtensions.exe browse'
 alias ginfo='ssh gitolite@git info'             # Gitolite list repos
 
 # Accounts
-alias git-home="git config --local user.name 'Dmitriy Ivanov' ;git config --local user.email 'd.k.ivanov@live.com'"
+alias git-home="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'd.k.ivanov@live.com'"
+
+# EPAM
+alias git-epam="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'dmitry_ivanov3@epam.com'"
 
 # IRQ
-alias git-irq="git config --local user.name 'Dmitriy Ivanov' ;git config --local user.email 'divanov@irq.ru'"
+alias git-irq="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'divanov@irq.ru'"
 
 # Ormco
-alias git-ormco="git config --local user.name 'Dmitriy Ivanov' ;git config --local user.email 'dmitriy.ivanov@ormco.com'"
-alias git-ormco-builder="git config --local user.name 'DEN-ORMCO-MSK-DevOps' ;git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com'"
+alias git-ormco="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'dmitriy.ivanov@ormco.com'"
+alias git-ormco-builder="git config --local user.name 'DEN-ORMCO-MSK-DevOps'; git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com'"
 
 git-verbose() {
     if [ -z "${1}" ] || [ ${3} ]; then

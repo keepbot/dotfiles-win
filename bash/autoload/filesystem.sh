@@ -60,7 +60,10 @@ alias wsdf='cd ~/workspace/my/dotfiles'
 alias wsaw='cd ~/.config/awesome'
 alias  wst='cd ~/workspace/tmp'
 
-# Ormco Shortcuts`
+# EPAM Shortcuts
+alias  wse='cd ~/workspace/epam'
+
+# Ormco Shortcuts
 alias  wso='cd ~/workspace/ormco'
 alias wsoc='cd ~/workspace/ormco/common'
 alias wsoo='cd ~/workspace/ormco/common/orthoplatform'
