@@ -304,6 +304,8 @@ function Set-Env
         [Environment]::SetEnvironmentVariable("GIT_LFS_PATH", "C:\Program Files\Git LFS", "Machine")
     }
 
+    Set-PowershellEnvironment
+
     Set-WorkEnv
 
     Reset-Environment
@@ -318,6 +320,31 @@ function Set-WorkEnv
     # If (Test-Path "$env:HOME\workspace\ormco\aligner\testdataaligner")  {
     #     [Environment]::SetEnvironmentVariable("TESTDATA_LOCATION", "$env:HOME\workspace\ormco\aligner\testdataaligner", "Machine")
     # }
+}
+
+# C:\Program Files\       --> C:\PROGRA~1\
+# C:\Program Files (x86)\ --> C:\PROGRA~2\
+# C:\ProgramData\         --> C:\PROGRA~3\
+function Set-PowershellEnvironment
+{
+    $paths = @(
+        "C:\Program Files\WindowsPowerShell\Modules"
+        "C:\program files\powershell\6\Modules"
+        "C:\program files\powershell\7\Modules"
+        "C:\Program Files\PowerShell\Modules"
+    )
+
+    $final_path = "C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules"
+
+    foreach ($path in $paths)
+    {
+        If (Test-Path $path)
+        {
+            $final_path = "$path;$final_path"
+        }
+    }
+
+    [Environment]::SetEnvironmentVariable("PSModulePath", "$final_path", "Machine")
 }
 
 # Set a permanent Environment variable, and reload it into $env
