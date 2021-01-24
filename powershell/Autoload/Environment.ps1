@@ -304,7 +304,7 @@ function Set-Env
         [Environment]::SetEnvironmentVariable("GIT_LFS_PATH", "C:\Program Files\Git LFS", "Machine")
     }
 
-    Set-PowershellEnvironment
+    # Set-PowershellEnvironment
 
     Set-WorkEnv
 
