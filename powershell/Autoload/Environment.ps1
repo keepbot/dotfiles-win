@@ -330,7 +330,10 @@ function Set-PowershellEnvironment
     $paths = @(
         "${env:USERPROFILE}\Documents\PowerShell\Modules"
         "${env:USERPROFILE}\OneDrive\Documents\PowerShell\Modules"
+        "${env:USERPROFILE}\OneDrive\Documents\WindowsPowerShell\Modules"
         "C:\Program Files\WindowsPowerShell\Modules"
+        "C:\opscode\chefdk\modules"
+        "C:\ProgramData\chocolatey\lib\Paket.PowerShell\tools"
         "C:\program files\powershell\6\Modules"
         "C:\program files\powershell\7\Modules"
         "C:\Program Files\PowerShell\Modules"
