@@ -158,9 +158,10 @@ alias gplm='git pull && git submodule update'
 alias gplp='git pull --rebase && git push'
 
 # Push
-alias gpp="git push"  # Can't pull because you forgot to track? Run this.
-alias gppt="git push --tags"  # Can't pull because you forgot to track? Run this.
-alias gppu="git push -u"  # Can't pull because you forgot to track? Run this.
+alias gpp="git push"
+alias gppg="git push github"
+alias gppt="git push --tags"
+alias gppu="git push -u"
 alias gps='(git stash --include-untracked | grep -v "No local changes to save") && gpp && git stash pop || echo "Fail!"'
 
 # Checkout
