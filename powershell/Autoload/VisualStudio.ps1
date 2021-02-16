@@ -283,7 +283,7 @@ function Set-VC-Vars-All {
         None
     .NOTES
         Version:        1.0
-        Author:         Dmitriy Ivanov
+        Author:         Dmitry Ivanov
         Creation Date:  2019-01-14
     .EXAMPLE
         VC-Vars-All x86_amd64

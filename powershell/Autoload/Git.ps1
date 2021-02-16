@@ -123,20 +123,16 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:ginfo}       = { ssh.exe gitolite@git info @args }   # Gitolite list repos
 
     # Accounts
-    ${function:git-home}    = { git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'd.k.ivanov@live.com' }
+    ${function:git-home}    = { git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'd.k.ivanov@live.com' }
 
     # EPAM
-    ${function:git-epam}    = { git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'dmitry_ivanov3@epam.com' }
+    ${function:git-epam}    = { git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'dmitry_ivanov3@epam.com' }
 
     # Hermes
-    ${function:git-hermes}  = { git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'dmitry.ivanov@hermes-europe.co.uk' }
+    ${function:git-hermes}  = { git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'dmitry.ivanov@hermes-europe.co.uk' }
 
     # IRQ
-    ${function:git-irq}     = { git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'divanov@irq.ru' }
-
-    # Ormco
-    ${function:git-ormco}         = { git config --local user.name 'Dmitriy Ivanov';       git config --local user.email 'dmitriy.ivanov@ormco.com' }
-    ${function:git-ormco-builder} = { git config --local user.name 'DEN-ORMCO-MSK-DevOps'; git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com' }
+    ${function:git-irq}     = { git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'divanov@irq.ru' }
 
     ${function:gprune} = {
         [CmdletBinding()]
@@ -361,7 +357,7 @@ function Get-GitCommitsByAuthor
 
 function git_rename_author
 {
-    git filter-branch -f --env-filter "export GIT_COMMITTER_NAME='Dmitriy Ivanov';export GIT_COMMITTER_EMAIL='d.k.ivanov@live.com';export GIT_AUTHOR_NAME='Dmitriy Ivanov';export GIT_AUTHOR_EMAIL='d.k.ivanov@live.com'" --tag-name-filter cat -- --branches --tags
+    git filter-branch -f --env-filter "export GIT_COMMITTER_NAME='Dmitry Ivanov';export GIT_COMMITTER_EMAIL='d.k.ivanov@live.com';export GIT_AUTHOR_NAME='Dmitry Ivanov';export GIT_AUTHOR_EMAIL='d.k.ivanov@live.com'" --tag-name-filter cat -- --branches --tags
 }
 
 function git_change_email_in_my_commits
@@ -372,7 +368,7 @@ function git_change_email_in_my_commits
         [Parameter(Mandatory=$true)]
         [string]$OldMail,
         [string]$NewMail = 'd.k.ivanov@live.com',
-        [string]$GitName = 'Dmitriy Ivanov'
+        [string]$GitName = 'Dmitry Ivanov'
 
     )
 

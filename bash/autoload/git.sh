@@ -201,20 +201,16 @@ alias gex='mono GitExtensions.exe browse'
 alias ginfo='ssh gitolite@git info'             # Gitolite list repos
 
 # Accounts
-alias git-home="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'd.k.ivanov@live.com'"
+alias git-home="git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'd.k.ivanov@live.com'"
 
 # EPAM
-alias git-epam="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'dmitry_ivanov3@epam.com'"
+alias git-epam="git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'dmitry_ivanov3@epam.com'"
 
 # Hermes
-alias git-epam="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'dmitry.ivanov@hermes-europe.co.uk'"
+alias git-epam="git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'dmitry.ivanov@hermes-europe.co.uk'"
 
 # IRQ
-alias git-irq="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'divanov@irq.ru'"
-
-# Ormco
-alias git-ormco="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'dmitriy.ivanov@ormco.com'"
-alias git-ormco-builder="git config --local user.name 'DEN-ORMCO-MSK-DevOps'; git config --local user.email 'DEN-ORMCO-MSK-DevOps@ormco.com'"
+alias git-irq="git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'divanov@irq.ru'"
 
 git-verbose() {
     if [ -z "${1}" ] || [ ${3} ]; then
@@ -287,7 +283,7 @@ get-git-commits-by-author() {
 }
 
 git_rename_author() {
-    git filter-branch --env-filter "export GIT_COMMITTER_NAME='Dmitriy Ivanov';export GIT_COMMITTER_EMAIL='d.k.ivanov@live.com';export GIT_AUTHOR_NAME='Dmitriy Ivanov';export GIT_AUTHOR_EMAIL='d.k.ivanov@live.com'" --tag-name-filter cat -- --branches --tags
+    git filter-branch --env-filter "export GIT_COMMITTER_NAME='Dmitry Ivanov';export GIT_COMMITTER_EMAIL='d.k.ivanov@live.com';export GIT_AUTHOR_NAME='Dmitry Ivanov';export GIT_AUTHOR_EMAIL='d.k.ivanov@live.com'" --tag-name-filter cat -- --branches --tags
 }
 
 git_push_force() {

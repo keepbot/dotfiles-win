@@ -63,11 +63,8 @@ alias  wst='cd ~/workspace/tmp'
 # EPAM Shortcuts
 alias  wse='cd ~/workspace/epam'
 
-# Ormco Shortcuts
-alias  wso='cd ~/workspace/ormco'
-alias wsoc='cd ~/workspace/ormco/common'
-alias wsoo='cd ~/workspace/ormco/common/orthoplatform'
-alias wsod='cd ~/workspace/ormco/devops'
+# Hermes Shortcuts
+alias  wsh='cd ~/workspace/hermes'
 
 # IRQ Shortcuts
 alias   wsi='cd ~/workspace/irq'

@@ -47,7 +47,7 @@ function jp {
     .OUTPUTS
         None
     .NOTES
-        Written by: Dmitriy Ivanov
+        Written by: Dmitry Ivanov
     #>
     [CmdletBinding()]
     param
@@ -103,7 +103,7 @@ function jp-conf {
     .OUTPUTS
         None
     .NOTES
-        Written by: Dmitriy Ivanov
+        Written by: Dmitry Ivanov
     #>
     [CmdletBinding()]
     param
@@ -145,7 +145,7 @@ function jp-install {
     .OUTPUTS
         None
     .NOTES
-        Written by: Dmitriy Ivanov
+        Written by: Dmitry Ivanov
     #>
     [CmdletBinding()]
     param
@@ -188,7 +188,7 @@ function jp-remove {
     .OUTPUTS
         None
     .NOTES
-        Written by: Dmitriy Ivanov
+        Written by: Dmitry Ivanov
     #>
     $jenvDir = Join-Path $env:USERPROFILE .jpenv
     If (Test-Path $jenvDir) {

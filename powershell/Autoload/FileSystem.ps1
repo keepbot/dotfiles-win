@@ -56,14 +56,10 @@ ${function:wsdsc}   = { Set-Location ~\workspace\my\dsc-windows-workstation     
 ${function:wst}     = { Set-Location ~\workspace\tmp                            }
 
 # EPAM Shortcuts
-${function:wse}     = { Set-Location ~\workspace\epam                          }
+${function:wse}     = { Set-Location ~\workspace\epam                           }
 
-# Ormco Shortcuts
-${function:wso}     = { Set-Location ~\workspace\ormco                          }
-${function:wsoc}    = { Set-Location ~\workspace\ormco\common                   }
-${function:wsoo}    = { Set-Location ~\workspace\ormco\common\orthoplatform     }
-${function:wsod}    = { Set-Location ~\workspace\ormco\devops                   }
-${function:wsor}    = { Set-Location ~\workspace\ormco\web\alignerweb-reports   }
+# EPAM Shortcuts
+${function:wsh}     = { Set-Location ~\workspace\hermes                         }
 
 # IRQ Shortcuts
 ${function:wsi}     = { Set-Location ~\workspace\irq                            }

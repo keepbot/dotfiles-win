@@ -30,7 +30,7 @@ function Get-JavaList {
     .OUTPUTS
         Validated Java Kits Array
     .NOTES
-        Written by: Dmitriy Ivanov
+        Written by: Dmitry Ivanov
     #>
     $javaBases = @(
         'C:\Program Files\Java\'
@@ -75,7 +75,7 @@ function Set-Java {
     .OUTPUTS
         None
     .NOTES
-        Written by: Dmitriy Ivanov
+        Written by: Dmitry Ivanov
     #>
     $ChoosenJavaVersion = Select-From-List $(Get-JavaList) "Java path"
     [Environment]::SetEnvironmentVariable("JAVA_HOME", ${ChoosenJavaVersion}, "Machine")
