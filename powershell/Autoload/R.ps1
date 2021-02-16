@@ -24,6 +24,8 @@ if (Get-Command R.exe -ErrorAction SilentlyContinue | Test-Path) {
 
 function Get-RProjectPaths {
     $rPaths = @(
+        'C:\Program Files\R\R-4.0.4\bin\i386'
+        'C:\Program Files\R\R-4.0.4\bin\x64'
         'C:\Program Files\R\R-4.0.3\bin\i386'
         'C:\Program Files\R\R-4.0.3\bin\x64'
         'C:\Program Files\Microsoft\R Open\R-3.5.3\bin\x64'

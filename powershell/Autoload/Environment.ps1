@@ -101,6 +101,7 @@ function Initialize-Paths-APP
         "C:\PROGRA~1\MySQL\MySQL Workbench 8.0 CE"
         "C:\PROGRA~1\NASM"
         "C:\PROGRA~1\nodejs"
+        "C:\PROGRA~1\Go\bin\"
         "C:\PROGRA~1\OpenSSH-Win64"
         "C:\PROGRA~1\OpenSSL\bin"
         "C:\PROGRA~1\OpenVPN\bin"
@@ -120,7 +121,7 @@ function Initialize-Paths-APP
         "C:\PROGRA~2\pgAdmin 4\v4\runtime"
         "C:\PROGRA~2\Subversion\bin"
         "C:\PROGRA~2\Yarn\bin"
-        "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.2\bin"
+        "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.4\bin"
         # "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
         "C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin"
     )
