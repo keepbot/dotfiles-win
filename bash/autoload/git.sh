@@ -206,6 +206,9 @@ alias git-home="git config --local user.name 'Dmitriy Ivanov'; git config --loca
 # EPAM
 alias git-epam="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'dmitry_ivanov3@epam.com'"
 
+# Hermes
+alias git-epam="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'dmitry.ivanov@hermes-europe.co.uk'"
+
 # IRQ
 alias git-irq="git config --local user.name 'Dmitriy Ivanov'; git config --local user.email 'divanov@irq.ru'"
 
