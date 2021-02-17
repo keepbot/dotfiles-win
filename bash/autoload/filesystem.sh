@@ -65,6 +65,7 @@ alias  wse='cd ~/workspace/epam'
 
 # Hermes Shortcuts
 alias  wsh='cd ~/workspace/hermes'
+alias  wshd='cd ~/workspace/hermes/devops'
 
 # IRQ Shortcuts
 alias   wsi='cd ~/workspace/irq'

@@ -60,6 +60,7 @@ ${function:wse}     = { Set-Location ~\workspace\epam                           
 
 # EPAM Shortcuts
 ${function:wsh}     = { Set-Location ~\workspace\hermes                         }
+${function:wshd}    = { Set-Location ~\workspace\hermes\devops                  }
 
 # IRQ Shortcuts
 ${function:wsi}     = { Set-Location ~\workspace\irq                            }
