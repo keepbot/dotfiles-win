@@ -24,7 +24,7 @@ echo "------------------------"
 
 {
     head -1 /etc/resolv.conf | grep '^#.*generated'
-    for i in `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -Command "Get-DnsClientServerAddress -AddressFamily ipv4 | Select-Object -ExpandProperty ServerAddresses"`; do
+    for i in `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -Command "Get-DnsClientServerAddress -AddressFamily ipv4 | Select-Object -ExpandProperty ServerAddresses"`; do
         echo nameserver $i
     done
     tail -n+2 /etc/resolv.conf | grep -v '^nameserver'
