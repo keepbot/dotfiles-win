@@ -55,3 +55,8 @@ function List-WSLDistros()
 {
     wsl.exe --list -v
 }
+
+function FixWSLInternetWithCisco()
+{
+    Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match "Cisco AnyConnect"} | Set-NetIPInterface -InterfaceMetric 6000
+}
