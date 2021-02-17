@@ -58,5 +58,14 @@ function List-WSLDistros()
 
 function FixWSLInternetWithCisco()
 {
-    Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match "Cisco AnyConnect"} | Set-NetIPInterface -InterfaceMetric 6000
+    Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match "Cisco AnyConnect"} | Set-NetIPInterface -InterfaceMetric 4000
+    Get-NetIPInterface -InterfaceAlias "vEthernet (WSL)" | Set-NetIPInterface -InterfaceMetric 1
 }
+
+###
+# Get-DnsClientServerAddress -AddressFamily IPv6 | Where-Object ServerAddresses -NE "{}" | Select-Object -ExpandProperty InterfaceAlias
+# Get-NetAdapterBinding -ComponentID ms_tcpip6 | Where-Object Name -In (Get-DnsClientServerAddress -AddressFamily IPv6 | Where-Object ServerAddresses -NE "{}" | Select-Object -ExpandProperty InterfaceAlias)
+# Disable-NetAdapterBinding -Name ".............." -ComponentID ms_tcpip6 -PassThru
+# Disable-NetAdapterBinding -Name ".............." -ComponentID ms_tcpip6 -PassThru
+# Disable-NetAdapterBinding -Name ".............." -ComponentID ms_tcpip6 -PassThru
+# Disable-NetAdapterBinding -Name ".............." -ComponentID ms_tcpip6 -PassThru
