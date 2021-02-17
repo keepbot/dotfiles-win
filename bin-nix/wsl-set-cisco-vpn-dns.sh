@@ -23,11 +23,12 @@ echo "Creating new resolv.conf"
 echo "------------------------"
 
 {
-    head -1 /etc/resolv.conf | grep '^#.*generated'
-    for i in `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -Command "Get-DnsClientServerAddress -AddressFamily ipv4 | Select-Object -ExpandProperty ServerAddresses"`; do
+    # head -1 /etc/resolv.conf | grep '^#.*generated'
+    # tail -n+2 /etc/resolv.conf | grep -v '^nameserver'
+    grep -v '^nameserver' /etc/resolv.conf
+    for i in `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -Command "Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match "Cisco AnyConnect"} | Get-DnsClientServerAddress -AddressFamily ipv4 | Select-Object -ExpandProperty ServerAddresses"`; do
         echo nameserver $i
     done
-    tail -n+2 /etc/resolv.conf | grep -v '^nameserver'
 } | tr -d '\r' | tee $TMP
 
 (set -x; sudo cp -i $TMP /etc/resolv.conf)
