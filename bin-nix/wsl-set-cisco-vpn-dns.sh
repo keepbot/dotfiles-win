@@ -29,6 +29,7 @@ echo "------------------------"
     for i in `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -Command "Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match "Cisco AnyConnect"} | Get-DnsClientServerAddress -AddressFamily ipv4 | Select-Object -ExpandProperty ServerAddresses"`; do
         echo nameserver $i
     done
+    echo nameserver 1.1.1.1
 } | tr -d '\r' | tee $TMP
 
 (set -x; sudo cp -i $TMP /etc/resolv.conf)
