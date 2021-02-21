@@ -197,6 +197,7 @@ function Initialize-Paths-User
         "${env:GOPATH}\bin"
         "${env:M2_HOME}\bin"
         "${env:USERPROFILE}\go\bin"
+        "${env:USERPROFILE}\.elan\bin"
         "${env:USERPROFILE}\.cargo\bin"
         "${env:USERPROFILE}\.dotnet\tools"
         "${env:USERPROFILE}\AppData\Local\Android\Sdk\platform-tools\"
