@@ -30,3 +30,5 @@ function aws.print-all-private-ip() {
             jq '.Reservations[].Instances[] | "EC2: \(.InstanceId): \(.PrivateIpAddress)"'
     done
 }
+
+alias aws-profiles='aws configure list-profiles'

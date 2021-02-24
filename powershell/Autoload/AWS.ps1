@@ -105,3 +105,5 @@ function aws_assume_role()
     Set-Item -Path Env:AWS_SESSION_TOKEN -Value $creds.SessionToken
     Set-Item -Path Env:AWS_REGION -Value $Region
 }
+
+${function:aws-profiles} = { aws configure list-profiles @args }
