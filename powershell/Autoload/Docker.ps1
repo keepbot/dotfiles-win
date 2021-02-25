@@ -18,30 +18,30 @@ if ($MyInvocation.InvocationName -ne '.')
 
 
 # Docker
-if (Get-Command docker.exe -ErrorAction SilentlyContinue | Test-Path)
+if (Get-Command docker -ErrorAction SilentlyContinue | Test-Path)
 {
-    ${function:di}    = { docker.exe images }
-    ${function:dc}    = { docker.exe ps -a }
-    ${function:dcle}  = { docker.exe rm $(docker ps -aqf status=exited) }
-    ${function:dclc}  = { docker.exe rm $(docker ps -aqf status=created) }
-    ${function:dcli}  = { docker.exe rmi $(docker images -q) }
-    ${function:dclif} = { docker.exe rmi -f $(docker images -q) }
+    ${function:di}    = { docker images }
+    ${function:dc}    = { docker ps -a }
+    ${function:dcle}  = { docker rm $(docker ps -aqf status=exited) }
+    ${function:dclc}  = { docker rm $(docker ps -aqf status=created) }
+    ${function:dcli}  = { docker rmi $(docker images -q) }
+    ${function:dclif} = { docker rmi -f $(docker images -q) }
     ${function:dcla}  = {
-        docker.exe rm $(docker ps -aqf status=exited)
-        docker.exe rmi $(docker images -qf dangling=true)
-        docker.exe volume rm $(docker volume ls -qf dangling=true)
+        docker rm $(docker ps -aqf status=exited)
+        docker rmi $(docker images -qf dangling=true)
+        docker volume rm $(docker volume ls -qf dangling=true)
     }
 
     ${function:dsprune}  = { docker system prune }
 
     # Run docker container in interactive mode
-    ${function:dri}  = { docker.exe run --rm -it @args }
+    ${function:dri}  = { docker run --rm -it @args }
     # Rewrite entry point to shell
-    ${function:desh} = { docker.exe run --rm -it --entrypoint /bin/sh @args }
+    ${function:desh} = { docker run --rm -it --entrypoint /bin/sh @args }
 
     # inspect docker images
     ${function:dc_trace_cmd} = {
-        ${parent}= $(docker.exe inspect -f '{{ .Parent }}' $args[0])
+        ${parent}= $(docker inspect -f '{{ .Parent }}' $args[0])
         [int]${level}=$args[1]
         Write-Host ${level}: $(docker inspect -f '{{ .ContainerConfig.Cmd }}' $args[0])
         ${level}=${level}+1

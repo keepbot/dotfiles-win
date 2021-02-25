@@ -26,7 +26,6 @@ if [ -f /proc/version ] && grep -q Microsoft /proc/version; then
   }
 
   wsl-xfce() {
-
       export DISPLAY=localhost:0.0
       export XDG_RUNTIME_DIR=~/runtime
       export RUNLEVEL=3

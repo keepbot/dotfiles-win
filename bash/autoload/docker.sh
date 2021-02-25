@@ -9,7 +9,7 @@ alias  dcli='docker rmi $(docker images -q)'
 alias dclif='docker rmi -f $(docker images -q)'
 
 # Run docker container in interactive mode
-alias dri='docker.exe run --rm -it'
+alias dri='docker run --rm -it'
 # Rewrite entry point to shell
 alias desh='docker run --rm -it --entrypoint /bin/sh'
 
