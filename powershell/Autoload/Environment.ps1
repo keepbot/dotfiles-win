@@ -354,7 +354,8 @@ function Set-PowershellEnvironment
         }
     }
 
-    [Environment]::SetEnvironmentVariable("PSModulePath", "$final_path", "Machine")
+    Set-Item -Path Env:PSModulePath -Value "${final_path}"
+    # [Environment]::SetEnvironmentVariable("PSModulePath", "$final_path", "Machine")
 }
 
 # Set a permanent Environment variable, and reload it into $env
