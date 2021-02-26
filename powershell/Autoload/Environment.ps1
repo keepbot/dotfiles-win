@@ -333,24 +333,25 @@ function Set-WorkEnv
 function Set-PowershellEnvironment
 {
     $paths = @(
-        "${env:USERPROFILE}\Documents\PowerShell\Modules"
-        "${env:USERPROFILE}\OneDrive\Documents\PowerShell\Modules"
-        "${env:USERPROFILE}\OneDrive\Documents\WindowsPowerShell\Modules"
+        # "C:\Program Files\PowerShell\7\Modules"
         "C:\Program Files\WindowsPowerShell\Modules"
+        "C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules"
         "C:\opscode\chefdk\modules"
         "C:\ProgramData\chocolatey\lib\Paket.PowerShell\tools"
-        "C:\program files\powershell\6\Modules"
-        "C:\program files\powershell\7\Modules"
-        "C:\Program Files\PowerShell\Modules"
+        # "${env:USERPROFILE}\Documents\PowerShell\Modules"
+        # "${env:USERPROFILE}\OneDrive\Documents\PowerShell\Modules"
+        # "${env:USERPROFILE}\OneDrive\Documents\WindowsPowerShell\Modules"
+        # "C:\Program Files\PowerShell\6\Modules"
+        # "C:\Program Files\PowerShell\Modules"
     )
 
-    $final_path = "C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules"
+    $final_path = "C:\Program Files\PowerShell\7\Modules"
 
     foreach ($path in $paths)
     {
         If (Test-Path $path)
         {
-            $final_path = "$path;$final_path"
+            $final_path += ";$path"
         }
     }
 
