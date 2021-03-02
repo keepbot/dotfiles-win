@@ -66,6 +66,8 @@ if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path) {
         python -m pip install --upgrade pip
         python -m pip install --upgrade virtualenv
     }
+
+    ${function:py_srv} = { python -m http.server }
 }
 
 function Get-PyList
