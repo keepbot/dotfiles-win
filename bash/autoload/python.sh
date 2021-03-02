@@ -14,6 +14,8 @@ alias pip_update='python -m pip install --upgrade pip'
 alias venv_install='python -m pip install virtualenv'
 alias ipython_install='python -m pip install ipython'
 
+alias py_srv='python -m http.server'
+
 py_venv() {
     python -m pip install --upgrade pip
     python -m pip install --upgrade virtualenv
