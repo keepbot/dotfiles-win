@@ -228,3 +228,19 @@ Function EnableDifferentInputMethodForEachApp
         New-ItemProperty -Path 'HKCU:\Control Panel\Desktop' -Name 'UserPreferencesMask' -Value $prefMask -PropertyType ([Microsoft.Win32.RegistryValueKind]::Binary) -Force | Out-Null
     }
 }
+
+${function:killall} = { Get-Process @args | Stop-Process }
+
+function psef()
+{
+    Get-Process @args -IncludeUserName | Format-Table `
+    ProcessName,
+    Id,
+    UserName,
+    @{Label = "CPU(s)"; Expression = {if ($_.CPU) {$_.CPU.ToString("N")}}},
+    @{Label = "VM(M)";  Expression = {[int]($_.VM  / 1MB)}},
+    @{Label = "WS(K)";  Expression = {[int]($_.WS  / 1024)}},
+    @{Label = "PM(K)";  Expression = {[int]($_.PM  / 1024)}},
+    @{Label = "NPM(K)"; Expression = {[int]($_.NPM / 1024)}},
+    Path -AutoSize
+}
