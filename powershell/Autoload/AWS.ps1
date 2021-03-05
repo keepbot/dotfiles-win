@@ -50,6 +50,15 @@ function aws_print_all_instances()
     }
 }
 
+function awless_print_all_instances()
+{
+    $REGIONS=$(aws ec2 describe-regions --region eu-central-1 --output text --query Regions[*].[RegionName])
+    foreach ($REGION in $REGIONS)
+    {
+        awless list instances -r $REGION
+    }
+}
+
 # Get all instances public and private IPs
 function aws_print_all_ip()
 {
@@ -107,3 +116,5 @@ function aws_assume_role()
 }
 
 ${function:aws-profiles} = { aws configure list-profiles @args }
+
+
