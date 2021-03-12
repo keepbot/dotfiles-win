@@ -5,7 +5,6 @@ alias gerp='grep'
 
 # Greps with status
 alias gHS='grep -e "status" -e "health"'
-cat pom.xml  | grep -oPm1 "(?<=<groupId>)[^<]+"
 
 alias tf='tail -F -n200'
 
@@ -30,5 +29,12 @@ sss() {
 
 parse_xml_token_value()
 {
-     cat ${2} | grep -oPm1 "(?<=<${1}>)[^<]+"
+    token=$1
+    if [ ! "$2" ]; then
+        grep -oPm1 "(?<=<${token}>)[^<]+" &0</dev/stdin
+    else
+        file=$2
+        grep -oPm1 "(?<=<${token}>)[^<]+" ${file}
+    fi
 }
+
