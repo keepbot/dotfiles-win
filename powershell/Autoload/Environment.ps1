@@ -121,7 +121,8 @@ function Initialize-Paths-APP
         "C:\PROGRA~2\pgAdmin 4\v4\runtime"
         "C:\PROGRA~2\Subversion\bin"
         "C:\PROGRA~2\Yarn\bin"
-        "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.4\bin"
+        "C:\tools\ghc-9.0.1\bin"
+        # "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.4\bin"
         # "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
         "C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin"
     )
