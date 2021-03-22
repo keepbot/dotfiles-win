@@ -103,6 +103,7 @@ function Initialize-Paths-APP
         "C:\PROGRA~1\MySQL\MySQL Workbench 8.0 CE"
         "C:\PROGRA~1\NASM"
         "C:\PROGRA~1\nodejs"
+        "C:\PROGRA~1\OpenConnect-GUI"
         "C:\PROGRA~1\OpenSSH-Win64"
         "C:\PROGRA~1\OpenSSL\bin"
         "C:\PROGRA~1\OpenVPN\bin"
