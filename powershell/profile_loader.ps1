@@ -1,4 +1,5 @@
 #!/usr/bin/env powershell
+# Set-PSDebug -Trace 0
 
 $dotfilesProfileDir = Join-Path $PSScriptRoot "powershell"
 $dotfilesModulesDir = Join-Path $dotfilesProfileDir "Modules"

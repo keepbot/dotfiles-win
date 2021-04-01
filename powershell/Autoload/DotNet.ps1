@@ -102,6 +102,8 @@ function Get-DotNet-FrameworkVersion
 
 # PowerShell parameter completion shim for the dotnet CLI
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', 'commandName',
+        Justification = 'False positive as rule does not know that ForEach-Object operates within the same scope')]
     param
     (
         $commandName,
