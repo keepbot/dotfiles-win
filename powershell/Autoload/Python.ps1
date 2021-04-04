@@ -115,7 +115,7 @@ function Get-PyList
     return $serpents
 }
 
-function Find-Py
+function List-Py
 {
     $serpents = Get-PyList
 
