@@ -18,23 +18,28 @@ if ($MyInvocation.InvocationName -ne '.')
 
 
 # Python virtualenv aliases - personal
-if (Get-Command c:\tools\python2\python.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command c:\tools\python2\python.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ${function:vc2}     = { c:\tools\python2\python.exe -m virtualenv -p c:\tools\python2\python.exe venv } # init py2 venv in curent dir
 }
 
-if (Get-Command c:\tools\python2\python.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command c:\tools\python2\python.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ${function:vc2-32}  = { c:\tools\python2_x86\python.exe -m virtualenv -p c:\tools\python2_x86\python.exe venv } # init py2 venv in curent dir x86
 }
 
-if (Get-Command c:\tools\python3\python.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command c:\tools\python3\python.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ${function:vc3}     = { c:\tools\python3\python.exe -m virtualenv -p c:\tools\python3\python.exe venv } # init py3 venv in curent dir
 }
 
-if (Get-Command c:\tools\python3\python.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command c:\tools\python3\python.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ${function:vc3-32}  = { c:\tools\python3_x86\python.exe -m virtualenv -p c:\tools\python3_x86\python.exe venv } # init py3 venv in curent dir x86
 }
 
-if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ${function:vc}      = { ($python = Get-Command python.exe | Select-Object -ExpandProperty Definition); python.exe -m virtualenv -p $python venv }
     ${function:va}      = { .\venv\Scripts\activate }
     ${function:vd}      = { deactivate }
