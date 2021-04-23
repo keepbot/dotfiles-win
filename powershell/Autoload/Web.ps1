@@ -18,12 +18,14 @@ if ($MyInvocation.InvocationName -ne '.')
 
 
 # WGet: Use `wget.exe` if available
-if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     Remove-Item alias:wget -ErrorAction SilentlyContinue
 }
 
 # curl: Use `curl.exe` if available
-if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     Remove-Item alias:curl -ErrorAction SilentlyContinue
     ${function:curl}    = { curl.exe @args }
     # Gzip-enabled `curl`
@@ -34,13 +36,16 @@ if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:wet2}    = { curl.exe http://v2.wttr.in/@args }
     ${function:wetM}    = { wet Moscow }
     ${function:wetM2}   = { wet2 Moscow }
-} else {
+}
+else
+{
     # Gzip-enabled `curl`
     ${function:gurl} = { Invoke-WebRequest -TransferEncoding GZip @args }
 }
 
 # Download a file into a temporary folder
-function curlex($url) {
+function curlex($url)
+{
     $uri = new-object system.uri $url
     $filename = $uri.segments | Select-Object -Last 1
     $path = join-path $env:Temp $filename
@@ -50,14 +55,16 @@ function curlex($url) {
 }
 
 # Start IIS Express Server with an optional path and port
-function Start-IISExpress {
+function Start-IISExpress
+{
     [CmdletBinding()]
     param
     (
         [String] $path = (Get-Location).Path,
         [Int32]  $port = 3000
     )
-    if ((Test-Path "${env:ProgramFiles}\IIS Express\iisexpress.exe") -or (Test-Path "${env:ProgramFiles(x86)}\IIS Express\iisexpress.exe")) {
+    if ((Test-Path "${env:ProgramFiles}\IIS Express\iisexpress.exe") -or (Test-Path "${env:ProgramFiles(x86)}\IIS Express\iisexpress.exe"))
+    {
         $iisExpress = Resolve-Path "${env:ProgramFiles}\IIS Express\iisexpress.exe" -ErrorAction SilentlyContinue
         if (-Not $iisExpress) { $iisExpress = Get-Item "${env:ProgramFiles(x86)}\IIS Express\iisexpress.exe" }
         & $iisExpress @("/path:${path}") /port:$port
