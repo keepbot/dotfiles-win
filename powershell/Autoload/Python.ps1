@@ -72,7 +72,11 @@ if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)
         python -m pip install --upgrade virtualenv
     }
 
-    ${function:py_srv} = { python -m http.server }
+    ${function:py_srv}  = { python -m http.server }
+    if (Get-Command pyserv.ps1 -ErrorAction SilentlyContinue | Test-Path)
+    {
+        ${function:pyserv}  = { pyserv.ps1 }
+    }
 }
 
 function Get-PyList
