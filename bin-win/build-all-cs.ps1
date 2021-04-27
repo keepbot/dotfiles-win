@@ -3,7 +3,7 @@ $CSSources          = Join-Path (Get-Item $PSScriptRoot).Parent.FullName "data\c
 $CSDestination      = "C:\tools\bin"
 
 Get-ChildItem $CSSources\*.cs | ForEach-Object {
-  $OutFileName      = $_.BaseName + ".exe"
-  $OutFull          = Join-Path $CSDestination $OutFileName
-  csc.exe /t:exe /out:$OutFull $_
+    $OutFileName      = $_.BaseName + ".exe"
+    $OutFull          = Join-Path $CSDestination $OutFileName
+    csc.exe /t:exe /out:$OutFull $_
 }

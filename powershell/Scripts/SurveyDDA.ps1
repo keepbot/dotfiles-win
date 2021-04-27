@@ -33,33 +33,45 @@ write-host "Generating a list of PCI Express endpoint devices"
 $pnpdevs = Get-PnpDevice -PresentOnly
 $pcidevs = $pnpdevs | Where-Object {$_.InstanceId -like "PCI*"}
 
-foreach ($pcidev in $pcidevs) {
+foreach ($pcidev in $pcidevs)
+{
     Write-Host ""
     Write-Host ""
     Write-Host -ForegroundColor White -BackgroundColor Black $pcidev.FriendlyName
 
     $rmrr =  ($pcidev | Get-PnpDeviceProperty $devpkey_PciDevice_RequiresReservedMemoryRegion).Data
-    if ($rmrr -ne 0) {
+    if ($rmrr -ne 0)
+    {
         write-host -ForegroundColor Red -BackgroundColor Black "BIOS requires that this device remain attached to BIOS-owned memory.  Not assignable."
         continue
     }
 
     $acsUp =  ($pcidev | Get-PnpDeviceProperty $devpkey_PciDevice_AcsCompatibleUpHierarchy).Data
-    if ($acsUp -eq $devprop_PciDevice_AcsCompatibleUpHierarchy_NotSupported) {
+    if ($acsUp -eq $devprop_PciDevice_AcsCompatibleUpHierarchy_NotSupported)
+    {
         write-host -ForegroundColor Red -BackgroundColor Black "Traffic from this device may be redirected to other devices in the system.  Not assignable."
         continue
     }
 
     $devtype = ($pcidev | Get-PnpDeviceProperty $devpkey_PciDevice_DeviceType).Data
-    if ($devtype -eq $devprop_PciDevice_DeviceType_PciExpressEndpoint) {
+    if ($devtype -eq $devprop_PciDevice_DeviceType_PciExpressEndpoint)
+    {
         Write-Host "Express Endpoint -- more secure."
-    } else {
-        if ($devtype -eq $devprop_PciDevice_DeviceType_PciExpressRootComplexIntegratedEndpoint) {
+    }
+    else
+    {
+        if ($devtype -eq $devprop_PciDevice_DeviceType_PciExpressRootComplexIntegratedEndpoint)
+        {
             Write-Host "Embedded Endpoint -- less secure."
-        } else {
-            if ($devtype -eq $devprop_PciDevice_DeviceType_PciExpressTreatedAsPci) {
+        }
+        else
+        {
+            if ($devtype -eq $devprop_PciDevice_DeviceType_PciExpressTreatedAsPci)
+            {
                 Write-Host -ForegroundColor Red -BackgroundColor Black "BIOS kept control of PCI Express for this device.  Not assignable."
-            } else {
+            }
+            else
+            {
                 Write-Host -ForegroundColor Red -BackgroundColor Black "Old-style PCI device, switch port, etc.  Not assignable."
             }
             continue
@@ -89,9 +101,12 @@ foreach ($pcidev in $pcidevs) {
 
     #$irqAssignments | Format-Table -Property __RELPATH
 
-    if ($irqAssignments.length -eq 0) {
+    if ($irqAssignments.length -eq 0)
+    {
         Write-Host -ForegroundColor Green -BackgroundColor Black "    And it has no interrupts at all -- assignment can work."
-    } else {
+    }
+    else
+    {
         #
         # Find the message-signaled interrupts.  They are reported with a really big number in
         # decimal, one which always happens to start with "42949...".
@@ -100,10 +115,13 @@ foreach ($pcidev in $pcidevs) {
 
         #$msiAssignments | Format-Table -Property __RELPATH
 
-        if ($msiAssignments.length -eq 0) {
+        if ($msiAssignments.length -eq 0)
+        {
             Write-Host -ForegroundColor Red -BackgroundColor Black "All of the interrupts are line-based, no assignment can work."
             continue
-        } else {
+        }
+        else
+        {
             Write-Host -ForegroundColor Green -BackgroundColor Black "    And its interrupts are message-based, assignment can work."
         }
     }
@@ -125,8 +143,10 @@ foreach ($pcidev in $pcidevs) {
     if ($mmioTotal -eq 0)
     {
         Write-Host -ForegroundColor Green -BackgroundColor Black "    And it has no MMIO space"
-    } else {
-  	     [int]$mmioMB = [math]::ceiling($mmioTotal / 1MB)
+    }
+    else
+    {
+        [int]$mmioMB = [math]::ceiling($mmioTotal / 1MB)
         Write-Host -Object "    And it requires at least: $mmioMB MB of MMIO gap space" -ForegroundColor Green -BackgroundColor Black
     }
 
@@ -143,7 +163,8 @@ foreach ($pcidev in $pcidevs) {
 # is mostly equivalent to asking whether it supports Discrete Device
 # Assignment.
 #
-if ((Get-VMHost).IovSupport -eq $false) {
+if ((Get-VMHost).IovSupport -eq $false)
+{
     Write-Host ""
     write-host "Unfortunately, this machine doesn't support using them in a VM."
     Write-Host ""

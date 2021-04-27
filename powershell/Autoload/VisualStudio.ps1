@@ -17,7 +17,8 @@ if ($MyInvocation.InvocationName -ne '.')
 }
 
 
-function Set-VCToolsArchx64 {
+function Set-VCToolsArchx64
+{
     [CmdletBinding()]
 
     param
@@ -25,20 +26,28 @@ function Set-VCToolsArchx64 {
         [switch] $On,
         [switch] $Off
     )
-    if ($On) {
+    if ($On)
+    {
         Set-Item -Path Env:PreferredToolArchitecture -Value "x64"
         [Environment]::SetEnvironmentVariable("PreferredToolArchitecture", "x64", "Machine")
         Write-Host "Preferred Tool Architecture for MSBuild is set to x64" -ForegroundColor Yellow
-    } elseif ($Off) {
+    }
+    elseif ($Off)
+    {
         Set-Item -Path Env:PreferredToolArchitecture -Value "x86"
         [Environment]::SetEnvironmentVariable("PreferredToolArchitecture", "x86", "Machine")
         Remove-Item -Path Env:PreferredToolArchitecture
         [Environment]::SetEnvironmentVariable("PreferredToolArchitecture", $null, "Machine")
         Write-Host "Preferred Tool Architecture for MSBuild is set to x86" -ForegroundColor Yellow
-    } else {
-        if ($Env:PreferredToolArchitecture -eq "x64") {
+    }
+    else
+    {
+        if ($Env:PreferredToolArchitecture -eq "x64")
+        {
             Write-Host "Preferred Tool Architecture for MSBuild is set to x64" -ForegroundColor Yellow
-        } else {
+        }
+        else
+        {
             Write-Host "Preferred Tool Architecture for MSBuild is set to x86" -ForegroundColor Yellow
         }
     }

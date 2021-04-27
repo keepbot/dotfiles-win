@@ -19,10 +19,12 @@ if ($MyInvocation.InvocationName -ne '.')
 
 function bamboo_get_ami
 {
-    if ($args.Count -ne 2) {
+    if ($args.Count -ne 2)
+    {
         Write-Host "Usage: bamboo_get_ami <Bamboo_version> <filter(windows, linux, PV, HVM, image)>"
     }
-    else {
+    else
+    {
         $BAMBOO_VERSION=$args[0]
 
         Write-Host "AWS AMI for Bamboo v${BAMBOO_VERSION}:"
@@ -31,7 +33,7 @@ function bamboo_get_ami
 
         Write-Host "Elastic bamboo version is $ELASTIC_VERSION"
         $amis = Invoke-RestMethod https://maven.atlassian.com/content/groups/public/com/atlassian/bamboo/atlassian-bamboo-elastic-image/${ELASTIC_VERSION}/atlassian-bamboo-elastic-image-${ELASTIC_VERSION}.ami
-        $amis.tostring() -split "[`r`n]" | Select-String "image." | Select-String $args[1] | Sort-Object | ForEach-Object{
+        $amis.tostring() -split "[`r`n]" | Select-String "image." | Select-String $args[1] | Sort-Object | ForEach-Object {
             $TempCharAray = $_.ToString().Split("=")
             Write-Host -ForegroundColor Yellow "$($TempCharAray[0]) `t$($TempCharAray[1])"
         }
@@ -77,7 +79,8 @@ function bamboo_generate_specs()
 
     $ArtifactId = $($($Package -replace "^\w+\.\w+\.","") -replace "\.","-")
 
-    If (Get-Command mvn -ErrorAction SilentlyContinue | Test-Path) {
+    If (Get-Command mvn -ErrorAction SilentlyContinue | Test-Path)
+    {
         # Simplest:
         # mvn archetype:generate -DarchetypeGroupId=com.atlassian.bamboo -DarchetypeArtifactId=bamboo-specs-archetype -DarchetypeVersion=7.0.4
 
@@ -96,7 +99,9 @@ function bamboo_generate_specs()
 
         # Write-Host "`t Maven cmd: $cmd`n" -ForegroundColor Yellow
         Invoke-Expression "$cmd"
-    } else {
+    }
+    else
+    {
         Write-Host "ERROR: mvn not found..." -ForegroundColor Red
         Write-Host "ERROR: Maven should be installed and mvn.exe added to the %PATH% env" -ForegroundColor Red
     }

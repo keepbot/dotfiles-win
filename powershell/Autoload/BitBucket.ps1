@@ -276,9 +276,12 @@ function Get-BitbucketPRDiff
     )
     # $DiffLink = (Invoke-BitbucketAPI -RequestPath "/$PR").links.diff.href
     # $Response = Invoke-BitbucketURI $DiffLink
-    # try {
+    # try
+    # {
     #     $Response = Invoke-BitbucketAPI -RequestPath "/$PR/diff"
-    # } catch {
+    # }
+    # catch
+    # {
     #     # Dig into the exception to get the Response details.
     #     # Note that value__ is not a typo.
     #     # Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
@@ -296,7 +299,9 @@ function Get-BitbucketPRDiff
         if(($_.Exception.GetType() -match "HttpResponseException") -and ($_.Exception -match "302"))
         {
             $Response = Invoke-BitbucketAPIUri $_.Exception.Response.Headers.Location.AbsoluteUri
-        } else {
+        }
+        else
+        {
             throw $_
         }
     }

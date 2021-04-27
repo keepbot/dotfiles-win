@@ -68,5 +68,9 @@ function Start-IISExpress
         $iisExpress = Resolve-Path "${env:ProgramFiles}\IIS Express\iisexpress.exe" -ErrorAction SilentlyContinue
         if (-Not $iisExpress) { $iisExpress = Get-Item "${env:ProgramFiles(x86)}\IIS Express\iisexpress.exe" }
         & $iisExpress @("/path:${path}") /port:$port
-    } else { Write-Warning "Unable to find iisexpress.exe"}
+    }
+    else
+    {
+        Write-Warning "Unable to find iisexpress.exe"
+    }
 }

@@ -20,7 +20,8 @@ param
     $ThemePathOrName
 )
 
-function AddTheme {
+function AddTheme
+{
     param
     (
         [Xml]$Config,
@@ -32,14 +33,18 @@ function AddTheme {
 
     [Xml]$theme = Get-Content -Path $ThemeFile
 
-    if ($colors -eq $null) {
+    if ($colors -eq $null)
+    {
         [Xml]$emptyColors = "<key name='Colors'><value name='Count' type='long' data='0'/></key>"
         $vanilla.AppendChild($config.ImportNode($emptyColors.DocumentElement, $true)) | Out-Null
         $colors = $vanilla.key | Where-Object { $_.name -eq "Colors" }
-    } else {
+    }
+    else
+    {
         $themeName = ($theme.key.value | Where-Object { $_.name -eq "Name" }).data
         $existingTheme = $colors.key | Where-Object { $_.value | Where-Object { $_.name -eq "Name" -and $_.data -eq $themeName } }
-        if ($existingTheme -ne $null) {
+        if ($existingTheme -ne $null)
+        {
             throw "Theme was already added to config"
         }
     }
@@ -47,7 +52,8 @@ function AddTheme {
     return $colors
 }
 
-function RemoveTheme {
+function RemoveTheme
+{
     param
     (
         [Xml]$Config,
@@ -64,7 +70,8 @@ function RemoveTheme {
     return $colors
 }
 
-try {
+try
+{
     [Xml]$config = Get-Content -Path $ConfigPath
     $config.Save([System.IO.Path]::ChangeExtension($ConfigPath, ".backup.xml"))
 
@@ -81,41 +88,56 @@ try {
             if (Test-Path $ThemePathOrName -pathType container) {
                 $themeFiles = Get-ChildItem $ThemePathOrName
                 foreach ($themeFile in $themeFiles) {
-                    try {
+                    try
+                    {
                         $colors = AddTheme -Config $config -ThemeFile $ThemePathOrName\$themeFile
-                    } catch {
+                    }
+                    catch
+                    {
                         Write-Host Skipped: $themeFile
                     }
                 }
             }
         }
         "Remove" {
-            if ($colors -eq $null -or $colors.key -eq $null) {
+            if ($colors -eq $null -or $colors.key -eq $null)
+            {
                 throw "No themes in config"
             }
-            if (Test-Path $ThemePathOrName -pathType leaf) {
+            if (Test-Path $ThemePathOrName -pathType leaf)
+            {
                 [Xml]$themeFileContents = Get-Content -Path $ThemePathOrName
                 $themeName = ($themeFileContents.key.value | Where-Object { $_.name -eq "Name" }).data
-            } else {
+            }
+            else
+            {
                 $themeName = $ThemePathOrName
             }
             $colors = RemoveTheme -Config $config -ThemeToRemove $themeName
         }
     }
 
-    if ($colors.key -eq $null) {
+    if ($colors.key -eq $null)
+    {
         $colors.value.data = "0"
-    } elseif ($colors.key -is [System.Array]) {
+    }
+    elseif ($colors.key -is [System.Array])
+    {
         $colors.value.data = $colors.key.Count.ToString()
-        for ($i = 0; $i -lt $colors.key.Count; $i++) {
+        for ($i = 0; $i -lt $colors.key.Count; $i++)
+        {
             $colors.key[$i].name = "Palette$($i + 1)"
         }
-    } else {
+    }
+    else
+    {
         $colors.value.data = "1"
         $colors.key.name = "Palette1"
     }
 
     $config.Save($ConfigPath)
-} catch {
+}
+catch
+{
     Write-Error -Message $_
 }

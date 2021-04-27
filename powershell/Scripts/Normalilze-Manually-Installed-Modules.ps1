@@ -1,4 +1,5 @@
-Function Normalilze-Manually-Installed-Modules {
+Function Normalilze-Manually-Installed-Modules
+{
   Get-Module -ListAvailable |
     Where-Object ModuleBase -like $env:ProgramFiles\WindowsPowerShell\Modules\* |
     Sort-Object -Property Name, Version -Descending |

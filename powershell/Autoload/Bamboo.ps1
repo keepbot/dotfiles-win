@@ -115,7 +115,8 @@ function Invoke-BambooLink
     {
         $Response = Invoke-WebRequest -Headers ${Headers} -Uri ${Link} -Method "${Method}"
     }
-    else {
+    else
+    {
         $Response = Invoke-WebRequest -Headers ${Headers} -Uri ${Link} -Method "${Method}" -OutFile ${OutFile}
     }
 

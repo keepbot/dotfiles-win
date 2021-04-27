@@ -17,7 +17,8 @@ if ($MyInvocation.InvocationName -ne '.')
 }
 
 
-function Get-InstalledApps {
+function Get-InstalledApps
+{
     # Alternative
     # wmic
     # wmic:root\cli>/output:D:\Temp\installed2.txt product get name,version

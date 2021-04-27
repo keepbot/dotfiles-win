@@ -11,11 +11,14 @@ Write-Host (([char]27)+"[32766S")
 cls
 
 # Ensure that we are in the bottom of the buffer
-try{
-  [Console]::SetWindowPosition(0,$y)
-  [Console]::SetCursorPosition(0,$y)
-}catch{
-  Write-Host (([char]27)+"[32766H")
+try
+{
+    [Console]::SetWindowPosition(0,$y)
+    [Console]::SetCursorPosition(0,$y)
+}
+catch
+{
+    Write-Host (([char]27)+"[32766H")
 }
 
 # Header
@@ -27,17 +30,19 @@ Write-Host (([char]27)+"[m"+$title)
 $l = 0
 $h -= 3
 $w -= 2
-while ($l -lt $h) {
-  $b = [int]($l*255/$h)
-  $c = 0
-  Write-Host -NoNewLine (([char]27)+"[m ")
-  while ($c -lt $w) {
-    $r = [int]($c*255/$w)
-    Write-Host -NoNewLine (([char]27)+"[48;2;"+$r+";255;"+$b+"m ")
-    $c++
-  }
-  Write-Host (([char]27)+"[m ")
-  $l++
+while ($l -lt $h)
+{
+    $b = [int]($l*255/$h)
+    $c = 0
+    Write-Host -NoNewLine (([char]27)+"[m ")
+    while ($c -lt $w)
+    {
+        $r = [int]($c*255/$w)
+        Write-Host -NoNewLine (([char]27)+"[48;2;"+$r+";255;"+$b+"m ")
+        $c++
+    }
+    Write-Host (([char]27)+"[m ")
+    $l++
 }
 
 # Footer
