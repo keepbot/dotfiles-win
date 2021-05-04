@@ -86,6 +86,7 @@ function Initialize-Paths-APP
         "C:\PROGRA~1\BinDiff\bin"
         "C:\PROGRA~1\Calibre2"
         "C:\PROGRA~1\CMake\bin"
+        "C:\PROGRA~1\Cppcheck"
         "C:\PROGRA~1\f3d\bin"
         "C:\PROGRA~1\Git LFS"
         "C:\PROGRA~1\Git\cmd"
