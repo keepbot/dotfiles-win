@@ -6,6 +6,12 @@ $dotfilesModulesDir = Join-Path $dotfilesProfileDir "Modules"
 $dotfilesScriptsDir = Join-Path $dotfilesProfileDir "Scripts"
 $profileDir         = Split-Path -Parent $profile
 
+$DeafaultVersionTls = [Net.ServicePointManager]::SecurityProtocol
+$AvailableSecurityProtocols = [enum]::GetValues('Net.SecurityProtocolType') | Where-Object { $_ -ge 'Tls' }
+$AvailableSecurityProtocols.ForEach({
+    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor $_
+})
+
 # $OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 # $PSDefaultParameterValues['*:Encoding'] = 'utf8'
 $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
@@ -37,7 +43,7 @@ If (Test-Path $PrivatePSAutoladFolder)
 
 # Invovoke ANSI 256 Color Console
 # AnsiColors256
-AnsiConsole
+# AnsiConsole
 
 # Write-Host "Welcome Home:"(Get-WmiObject -Class Win32_UserAccount -Filter "Name = '$env:USERNAME'").FullName
 # Write-Host "Welcome Home: $(Split-Path (Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object UserName).UserName -Leaf)"
