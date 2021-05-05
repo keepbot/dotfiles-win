@@ -30,11 +30,14 @@ $Env:LANG   = "en_US"
 $Env:LC_ALL = "C"
 
 # Init of directory envs:
-$env:PWD = Get-Location
-$env:OLDPWD = Get-Location
+$Env:PWD = Get-Location
+$Env:OLDPWD = Get-Location
 
 # Virtual Env Fix (if prompt in ReadOnly mode)
 # $env:VIRTUAL_ENV_DISABLE_PROMPT = 1
+
+# VCPKG:
+$Env:VCPKG_DISABLE_METRICS = 1
 
 # PS Readline:
 $PSReadLineOptions = @{
