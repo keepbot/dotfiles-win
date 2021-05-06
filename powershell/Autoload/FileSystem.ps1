@@ -55,12 +55,9 @@ ${function:wsdf}    = { Set-Location ~\workspace\my\dotfiles                    
 ${function:wsdsc}   = { Set-Location ~\workspace\my\dsc-windows-workstation     }
 ${function:wst}     = { Set-Location ~\workspace\tmp                            }
 
-# EPAM Shortcuts
-${function:wse}     = { Set-Location ~\workspace\epam                           }
-
-# EPAM Shortcuts
-${function:wsh}     = { Set-Location ~\workspace\hermes                         }
-${function:wshd}    = { Set-Location ~\workspace\hermes\devops                  }
+# Straumann Shortcuts
+${function:wss}     = { Set-Location ~\workspace\straumann                      }
+${function:wsscc}   = { Set-Location ~\workspace\straumann\cc-dev               }
 
 # IRQ Shortcuts
 ${function:wsi}     = { Set-Location ~\workspace\irq                            }
