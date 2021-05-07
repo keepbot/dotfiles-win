@@ -5,7 +5,8 @@
 # !!! Use "%CMDER_ROOT%\config\user-profile.ps1" to add your own startup commands
 
 # Compatibility with PS major versions <= 2
-#if (!$PSScriptRoot) {
+#if (!$PSScriptRoot)
+# {
 #    $PSScriptRoot = Split-Path $Script:MyInvocation.MyCommand.Path
 #}
 
@@ -25,14 +26,17 @@ if (! $ENV:CMDER_ROOT )
 # Remove trailing '\'
 $ENV:CMDER_ROOT = (($ENV:CMDER_ROOT).trimend("\"))
 
-function checkGit($Path) {
-    if (Test-Path -Path (Join-Path $Path '.git') ) {
-#        $gitLoaded = Import-Git $gitLoaded
+function checkGit($Path)
+{
+    if (Test-Path -Path (Join-Path $Path '.git'))
+    {
+        # $gitLoaded = Import-Git $gitLoaded
         Write-VcsStatus
         return
     }
     $SplitPath = split-path $path
-    if ($SplitPath) {
+    if ($SplitPath)
+    {
         checkGit($SplitPath)
     }
 }
@@ -40,11 +44,13 @@ function checkGit($Path) {
 # Move to the wanted location
 # This is either a env variable set by the user or the result of
 # cmder.exe setting this variable due to a commandline argument or a "cmder here"
-if ( $ENV:CMDER_START ) {
+if ( $ENV:CMDER_START )
+{
     Set-Location -Path "$ENV:CMDER_START"
 }
 
-if (Get-Module PSReadline -ErrorAction "SilentlyContinue") {
+if (Get-Module PSReadline -ErrorAction "SilentlyContinue")
+{
     Set-PSReadlineOption -ExtraPromptLineCount 1
 }
 

@@ -143,3 +143,8 @@ get-file-vars()
     echo "Filename:     ${filename%.*}"
     echo "Extention:    ${filename##*.}"
 }
+
+wsl-rebind-mounts()
+{
+    sudo mount --bind /mnt/c /c && sudo mount --bind /mnt/d /d
+}

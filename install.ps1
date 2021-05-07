@@ -42,7 +42,7 @@ C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $Env:USERPROFILE ".tmux.con
 C:\Windows\System32\cmd.exe /c mklink    ( Join-Path $Env:USERPROFILE ".vimrc"         ) ( Join-Path $PSScriptRoot "vimrc"          )
 
 # Set dot source string to default PS profile for Current User
-If (Test-Path $profile) { Remove-Item -Force -Confirm:$false $profile }
+if (Test-Path $profile) { Remove-Item -Force -Confirm:$false $profile }
 ". `"$PSScriptRoot\powershell\profile_loader.ps1`"" | Out-File $profile
 
 # Install Nuget package provide if needed
@@ -95,4 +95,3 @@ cmd /c mklink (Join-Path ${Env:APPDATA} "ConEmu.xml") (Join-Path $PSScriptRoot "
 #
 #     Set-ApplicationCompatibility -CurrentUser -ApplicationLocation (Get-Command cmder.exe | Select-Object -ExpandProperty Definition) -PrivilegeLevel
 # }
-

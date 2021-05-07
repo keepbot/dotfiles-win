@@ -25,17 +25,19 @@ case $1 in
 
         PS3="   Select the name of environment for this server: "
         ENVS=("PRODUCTION" "DEVELOPMENT" "TEST")
-        select ENVRM in "${ENVS[@]}"; do
-        echo "$ENVRM" > "$DOTFILES_DIR/bash/var.env"
-        break
+        select ENVRM in "${ENVS[@]}"
+        do
+            echo "$ENVRM" > "$DOTFILES_DIR/bash/var.env"
+            break
         done
 
         echo ""
         PS3="   Select complexity of bash prompt:"
         PRPTS=("COMPLEX" "SIMPLE")
-        select PRPT in "${PRPTS[@]}"; do
-        echo "$PRPT" > "$DOTFILES_DIR/bash/var.prompt"
-        break
+        select PRPT in "${PRPTS[@]}"
+        do
+            echo "$PRPT" > "$DOTFILES_DIR/bash/var.prompt"
+            break
         done
         ;;
 esac
@@ -70,10 +72,12 @@ ln -sf "$DOTFILES_DIR/tmux.conf"            "$HOME/.tmux.conf"
 ln -sf "$DOTFILES_DIR/vim"                  "$HOME/.vim"
 ln -sf "$DOTFILES_DIR/vimrc"                "$HOME/.vimrc"
 
-if [ -f /proc/version_signature ] ; then
+if [ -f /proc/version_signature ]
+then
     kernel=$(cat /proc/version_signature)
     kernelWSL="Microsoft"
-    if [[ "${kernel}" =~ "${kernelWSL}" ]]; then
+    if [[ "${kernel}" =~ "${kernelWSL}" ]]
+    then
         sudo rm -rf "/etc/wsl.conf"               2> /dev/null
         sudo ln -sf "$DOTFILES_DIR/data/wsl.conf" "/etc/wsl.conf"
     fi

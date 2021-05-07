@@ -169,4 +169,3 @@ case $1 in
         echo "Unknown display configuration"
         ;;
 esac
-
