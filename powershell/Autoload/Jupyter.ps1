@@ -6,7 +6,6 @@ Jupyter scripts.
 Jupyter scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,10 +15,10 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
+${function:jpn} = { jupyter notebook @args }
 
-${function:jpn}      = { jupyter notebook @args }
-
-function jp {
+function jp
+{
     <#
     .SYNOPSIS
         Wrapprer for Jupyter notebooks
@@ -58,36 +57,54 @@ function jp {
         [switch]$ReInstall,
         [switch]$KeepEnv
     )
-    if (-Not (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)) {
+
+    if (-Not (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path))
+    {
         Write-Host "ERROR: Python doesn't found in system Path. Exiting..." -ForegroundColor Red
         break
     }
-    if (-Not (Get-Command virtualenv.exe -ErrorAction SilentlyContinue | Test-Path)) {
+
+    if (-Not (Get-Command virtualenv.exe -ErrorAction SilentlyContinue | Test-Path))
+    {
         python.exe -m pip install virtualenv
     }
+
     $jenvDir = Join-Path $env:USERPROFILE .jpenv
-    If ($ReInstall -And (Test-Path $jenvDir) ) {
+    if ($ReInstall -And (Test-Path $jenvDir))
+    {
         Remove-Item -Recurse -Force $jenvDir
     }
-    If (-Not (Test-Path $jenvDir)) {
+
+    if (-Not (Test-Path $jenvDir))
+    {
         $python = Get-Command python.exe | Select-Object -ExpandProperty Definition
         python.exe -m virtualenv -p $python $jenvDir
     }
+
     & $jenvDir\Scripts\activate.ps1
-    If (-Not (Get-Command jupyter.exe -ErrorAction SilentlyContinue | Test-Path)) {
+
+    if (-Not (Get-Command jupyter.exe -ErrorAction SilentlyContinue | Test-Path))
+    {
         python.exe -m pip install jupyter
     }
-    If ($NoteBookPath) {
+
+    if ($NoteBookPath)
+    {
         jupyter.exe $Command --port $Port $NoteBookPath
-    } Else {
+    }
+    else
+    {
         jupyter.exe $Command --port $Port
     }
-    if (-Not $KeepEnv) {
+
+    if (-Not $KeepEnv)
+    {
         deactivate
     }
 }
 
-function jp-conf {
+function jp-conf
+{
     <#
     .SYNOPSIS
         Jupyter environment configureation.
@@ -110,26 +127,37 @@ function jp-conf {
     (
         [switch]$ReInstall
     )
-    if (-Not (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)) {
+
+    if (-Not (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path))
+    {
         Write-Host "ERROR: Python doesn't found in system Path. Exiting..." -ForegroundColor Red
         break
     }
-    if (-Not (Get-Command virtualenv.exe -ErrorAction SilentlyContinue | Test-Path)) {
+
+    if (-Not (Get-Command virtualenv.exe -ErrorAction SilentlyContinue | Test-Path))
+    {
         python.exe -m pip install virtualenv
     }
+
+
     $jenvDir = Join-Path $env:USERPROFILE .jpenv
-    If ($ReInstall -And (Test-Path $jenvDir) ) {
+    if ($ReInstall -And (Test-Path $jenvDir) )
+    {
         Remove-Item -Recurse -Force $jenvDir
     }
-    If (-Not (Test-Path $jenvDir)) {
+
+    if (-Not (Test-Path $jenvDir))
+    {
         $python = Get-Command python.exe | Select-Object -ExpandProperty Definition
         python.exe -m virtualenv -p $python $jenvDir
     }
+
     # Set-Location $jenvDir
     & $jenvDir\Scripts\activate.ps1
 }
 
-function jp-install {
+function jp-install
+{
     <#
     .SYNOPSIS
         Install or update my set of module for Jupiter Nortebookss.
@@ -152,21 +180,30 @@ function jp-install {
     (
         [switch]$ReInstall
     )
-    if (-Not (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)) {
+
+    if (-Not (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path))
+    {
         Write-Host "ERROR: Python doesn't found in system Path. Exiting..." -ForegroundColor Red
         break
     }
-    if (-Not (Get-Command virtualenv.exe -ErrorAction SilentlyContinue | Test-Path)) {
+
+    if (-Not (Get-Command virtualenv.exe -ErrorAction SilentlyContinue | Test-Path))
+    {
         python.exe -m pip install virtualenv
     }
+
     $jenvDir = Join-Path $env:USERPROFILE .jpenv
-    If ($ReInstall -And (Test-Path $jenvDir) ) {
+    if ($ReInstall -And (Test-Path $jenvDir))
+    {
         Remove-Item -Recurse -Force $jenvDir
     }
-    If (-Not (Test-Path $jenvDir)) {
+
+    if (-Not (Test-Path $jenvDir))
+    {
         $python = Get-Command python.exe | Select-Object -ExpandProperty Definition
         python.exe -m virtualenv -p $python $jenvDir
     }
+
     # Set-Location $jenvDir
     & $jenvDir\Scripts\activate.ps1
     python -m pip install --upgrade jupyter
@@ -177,7 +214,8 @@ function jp-install {
     deactivate
 }
 
-function jp-remove {
+function jp-remove
+{
     <#
     .SYNOPSIS
         Cleanup local Jupiter Environment.
@@ -191,18 +229,24 @@ function jp-remove {
         Written by: Dmitry Ivanov
     #>
     $jenvDir = Join-Path $env:USERPROFILE .jpenv
-    If (Test-Path $jenvDir) {
+    if (Test-Path $jenvDir)
+    {
         $title    = "Removing Jupiter Environment: $jenvDir"
         $question = 'Are you sure you want to remove it?'
         $choices  = '&Yes', '&No'
 
         $decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
-        if ($decision -eq 0) {
+        if ($decision -eq 0)
+        {
             Remove-Item -Recurse -Force $jenvDir
-        } else {
+        }
+        else
+        {
             Write-Host 'cancelled'
         }
-    } else {
+    }
+    else
+    {
         Write-Host "ERROR: Jupiter Environment: $jenvDir doesn't exist. Exiting..." -ForegroundColor Red
     }
 }

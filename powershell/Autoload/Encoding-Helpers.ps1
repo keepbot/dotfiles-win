@@ -24,7 +24,8 @@ if ($MyInvocation.InvocationName -ne '.')
 .EXAMPLE
     Convert-FileEncoding -Include *.js -Path scripts -Encoding UTF8
 #>
-function Convert-FileEncoding([string]$Include, [string]$Path, [string]$Encoding='UTF8') {
+function Convert-FileEncoding([string]$Include, [string]$Path, [string]$Encoding='UTF8')
+{
     $count = 0
     Get-ChildItem -Include $Pattern -Recurse -Path $Path                          `
     | Select-Object FullName, @{n='Encoding';e={Get-FileEncoding $_.FullName}}    `
@@ -71,53 +72,67 @@ function Get-FileEncoding
 
     # EF BB BF (UTF8)
     if ( $byte[0] -eq 0xef -and $byte[1] -eq 0xbb -and $byte[2] -eq 0xbf )
-    { Write-Output 'UTF8' }
-
+    {
+        Write-Output 'UTF8'
+    }
     # FE FF  (UTF-16 Big-Endian)
     elseif ($byte[0] -eq 0xfe -and $byte[1] -eq 0xff)
-    { Write-Output 'Unicode UTF-16 Big-Endian' }
-
+    {
+        Write-Output 'Unicode UTF-16 Big-Endian'
+    }
     # FF FE  (UTF-16 Little-Endian)
     elseif ($byte[0] -eq 0xff -and $byte[1] -eq 0xfe)
-    { Write-Output 'Unicode UTF-16 Little-Endian' }
-
+    {
+        Write-Output 'Unicode UTF-16 Little-Endian'
+    }
     # 00 00 FE FF (UTF32 Big-Endian)
     elseif ($byte[0] -eq 0 -and $byte[1] -eq 0 -and $byte[2] -eq 0xfe -and $byte[3] -eq 0xff)
-    { Write-Output 'UTF32 Big-Endian' }
-
+    {
+        Write-Output 'UTF32 Big-Endian'
+    }
     # FE FF 00 00 (UTF32 Little-Endian)
     elseif ($byte[0] -eq 0xfe -and $byte[1] -eq 0xff -and $byte[2] -eq 0 -and $byte[3] -eq 0)
-    { Write-Output 'UTF32 Little-Endian' }
-
+    {
+        Write-Output 'UTF32 Little-Endian'
+    }
     # 2B 2F 76 (38 | 38 | 2B | 2F)
     elseif ($byte[0] -eq 0x2b -and $byte[1] -eq 0x2f -and $byte[2] -eq 0x76 -and ($byte[3] -eq 0x38 -or $byte[3] -eq 0x39 -or $byte[3] -eq 0x2b -or $byte[3] -eq 0x2f) )
-    { Write-Output 'UTF7'}
-
+    {
+        Write-Output 'UTF7'
+    }
     # F7 64 4C (UTF-1)
     elseif ( $byte[0] -eq 0xf7 -and $byte[1] -eq 0x64 -and $byte[2] -eq 0x4c )
-    { Write-Output 'UTF-1' }
-
+    {
+        Write-Output 'UTF-1'
+    }
     # DD 73 66 73 (UTF-EBCDIC)
     elseif ($byte[0] -eq 0xdd -and $byte[1] -eq 0x73 -and $byte[2] -eq 0x66 -and $byte[3] -eq 0x73)
-    { Write-Output 'UTF-EBCDIC' }
-
+    {
+        Write-Output 'UTF-EBCDIC'
+    }
     # 0E FE FF (SCSU)
     elseif ( $byte[0] -eq 0x0e -and $byte[1] -eq 0xfe -and $byte[2] -eq 0xff )
-    { Write-Output 'SCSU' }
-
+    {
+        Write-Output 'SCSU'
+    }
     # FB EE 28  (BOCU-1)
     elseif ( $byte[0] -eq 0xfb -and $byte[1] -eq 0xee -and $byte[2] -eq 0x28 )
-    { Write-Output 'BOCU-1' }
-
+    {
+        Write-Output 'BOCU-1'
+    }
     # 84 31 95 33 (GB-18030)
     elseif ($byte[0] -eq 0x84 -and $byte[1] -eq 0x31 -and $byte[2] -eq 0x95 -and $byte[3] -eq 0x33)
-    { Write-Output 'GB-18030' }
-
+    {
+        Write-Output 'GB-18030'
+    }
     else
-    { Write-Output 'ASCII' }
+    {
+        Write-Output 'ASCII'
+    }
 }
 
-function genguids {
+function genguids
+{
     [CmdletBinding()]
     param
     (

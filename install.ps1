@@ -58,7 +58,7 @@ if (-Not (Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue).Instal
 }
 
 # $NormalizationPath = Join-Path $dotfilesProfileDir "normalization-done"
-# if(![System.IO.File]::Exists($NormalizationPath)) {
+# if (![System.IO.File]::Exists($NormalizationPath)) {
 #     . (Join-Path $dotfilesScriptsDir "Normalilze-Manually-Installed-Modules.ps1") -force
 #     Normalilze-Manually-Installed-Modules
 #     New-Item (Join-Path $dotfilesProfileDir "normalization-done") -ItemType file
@@ -71,14 +71,14 @@ if (-Not (Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue).Instal
 Import-Module -FullyQualifiedName (Join-Path $dotfilesModulesDir "ApplicationCompatibility")
 
 # ConEmu
-if(Test-Path "C:\Program Files\ConEmu\ConEmu64.exe")
+if (Test-Path "C:\Program Files\ConEmu\ConEmu64.exe")
 {
     Set-ApplicationCompatibility -CurrentUser -ApplicationLocation "C:\Program Files\ConEmu\ConEmu64.exe" -PrivilegeLevel
 }
 Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path ${Env:APPDATA} "ConEmu.xml")
 cmd /c mklink (Join-Path ${Env:APPDATA} "ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\ConEmu.xml")
 
-# If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path)
+# if (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path)
 # {
 #     $cmder_home = Get-Command cmder.exe | Select-Object -ExpandProperty Definition | Split-Path
 #     Remove-Item -Force -Confirm:$false -Recurse -ErrorAction SilentlyContinue (Join-Path $cmder_home "config\user-ConEmu.xml")

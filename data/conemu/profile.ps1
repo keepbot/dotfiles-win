@@ -5,7 +5,7 @@
 # !!! Use "%CMDER_ROOT%\config\user-profile.ps1" to add your own startup commands
 
 # Compatibility with PS major versions <= 2
-#if(!$PSScriptRoot) {
+#if (!$PSScriptRoot) {
 #    $PSScriptRoot = Split-Path $Script:MyInvocation.MyCommand.Path
 #}
 

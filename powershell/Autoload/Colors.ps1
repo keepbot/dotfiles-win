@@ -6,7 +6,6 @@ Color scripts.
 Color scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 ### Enable 256 Colors
 Add-Type -MemberDefinition @"
@@ -69,7 +67,7 @@ function Show-Colors-All()
 {
     $colors = [Enum]::GetValues( [ConsoleColor] )
     $max = ($colors | ForEach-Object { "$_ ".Length } | Measure-Object -Maximum).Maximum
-    foreach( $color in $colors )
+    foreach ( $color in $colors )
     {
         Write-Host (" {0,2} {1,$max} " -f [int]$color,$color) -NoNewline
         Write-Host "$color" -Foreground $color

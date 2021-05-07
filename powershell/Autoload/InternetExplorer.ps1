@@ -6,7 +6,6 @@ Internet Explorer scripts.
 Internet Explorer scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,9 +15,9 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
 # Disable 'Automatically detect proxy settings' in Internet Explorer. by Reuben Bond
-function Disable-AutomaticallyDetectProxySettings {
+function Disable-AutomaticallyDetectProxySettings
+{
     # Read connection settings from Internet Explorer.
     $regKeyPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Connections\"
     $conSet = $(Get-ItemProperty $regKeyPath).DefaultConnectionSettings

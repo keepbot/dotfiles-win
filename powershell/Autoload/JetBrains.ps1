@@ -6,7 +6,6 @@ JetBrains scripts.
 JetBrains scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,8 +15,8 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-function Get-JBList {
+function Get-JBList
+{
     $IdeaPaths = @(
         "${Env:LOCALAPPDATA}\JetBrains\Toolbox\apps\AndroidStudio"
         "${Env:LOCALAPPDATA}\JetBrains\Toolbox\apps\IDEA-U"
@@ -27,11 +26,14 @@ function Get-JBList {
     return $IdeaPaths
 }
 
-function Find-JBApps {
+function Find-JBApps
+{
     $apps = Get-JBList
 
-    foreach($app in $apps) {
-        if (Test-Path $app) {
+    foreach ($app in $apps)
+    {
+        if (Test-Path $app)
+        {
             Write-Host " -> ${app}"
         }
     }

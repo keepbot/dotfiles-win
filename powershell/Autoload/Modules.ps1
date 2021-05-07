@@ -6,7 +6,6 @@ PowerShell modules scripts.
 PowerShell modules scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 $ModulesDir = Join-Path (Get-Item $PSScriptRoot).Parent.FullName "Modules"
 
@@ -37,16 +35,21 @@ $modules = @(
     "PSReadline"
 )
 
-foreach($module in $local_modules) {
+foreach ($module in $local_modules)
+{
     Import-Module (Join-Path $ModulesDir $module)
 }
 
-foreach($module in $modules) {
-    if (Get-Module -ListAvailable -Name ${module} ) {
+foreach ($module in $modules)
+{
+    if (Get-Module -ListAvailable -Name ${module})
+    {
     #  Write-Host "Module $module already exist"
     #  Get-Date -Format HH:mm:ss.fff
         Import-Module -Name $module
-    } else {
+    }
+    else
+    {
         Install-Module -Scope AllUsers -Name ${module} -Force
         Write-Host "Module ${module} succesfully installed"
         Import-Module -Name ${module}
@@ -62,7 +65,8 @@ $GitPromptSettings.RepositoriesInWhichToDisableFileStatus += "${Env:USERPROFILE}
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
+if (Test-Path($ChocolateyProfile))
+{
     Import-Module "$ChocolateyProfile"
 }
 
@@ -79,9 +83,11 @@ $InstallPaths = @(
     'C:\Program Files (x86)\Microsoft Visual Studio\2017\Preview'
 )
 
-foreach($InstallPath in $InstallPaths) {
+foreach ($InstallPath in $InstallPaths)
+{
     $DevShell = (Join-Path "$InstallPath" 'Common7\Tools\Microsoft.VisualStudio.DevShell.dll')
-    if (Test-Path "$DevShell") {
+    if (Test-Path "$DevShell")
+    {
         Import-Module "$DevShell"
         ${function:vsdevenv}    = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" -DevCmdArguments -arch=x64 @args }
         ${function:vsdevenv32}  = { $curDir = Get-Location; Enter-VsDevShell -VsInstallPath "$InstallPath" -StartInPath "$curDir" -DevCmdArguments -arch=x86 @args }
@@ -94,13 +100,15 @@ foreach($InstallPath in $InstallPaths) {
     }
 }
 
-function Get-Manually-Installed-Modules {
+function Get-Manually-Installed-Modules
+{
     Get-Module -ListAvailable |
     Where-Object ModuleBase -like $env:ProgramFiles\WindowsPowerShell\Modules\* |
     Sort-Object -Property Name, Version -Descending |
     Get-Unique -PipelineVariable Module |
     ForEach-Object {
-        if (-not(Test-Path -Path "$($_.ModuleBase)\PSGetModuleInfo.xml")) {
+        if (-not(Test-Path -Path "$($_.ModuleBase)\PSGetModuleInfo.xml"))
+        {
             Find-Module -Name $_.Name -OutVariable Repo -ErrorAction SilentlyContinue |
             Compare-Object -ReferenceObject $_ -Property Name, Version |
             Where-Object SideIndicator -eq '=>' |

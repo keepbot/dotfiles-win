@@ -6,7 +6,6 @@ GitHub scripts.
 GitHub scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -35,7 +34,8 @@ function Get-GithubBasicCreds
 {
     [string] $SecretFile   = (Join-Path $env:USERPROFILE '.github.secrets')
 
-    if (-Not (Test-Path -Path $SecretFile)) {
+    if (-Not (Test-Path -Path $SecretFile))
+    {
         Write-Host `
             "ERROR: Secretfile $SecretFile wasn't found. Run 'Set-GitHubOAuthCreds' for initialization. Exiting..." `
             -ForegroundColor Red
@@ -125,9 +125,9 @@ function GithubRepos
         }
 
         $Repos = $RequestAnswer | ConvertFrom-Json
-        foreach($repo in $Repos)
+        foreach ($repo in $Repos)
         {
-            if((-Not $All) -And $repo.fork) { continue }
+            if ((-Not $All) -And $repo.fork) { continue }
 
             switch ($Protocol)
             {

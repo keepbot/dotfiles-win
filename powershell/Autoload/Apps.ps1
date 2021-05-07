@@ -6,7 +6,6 @@ Application scripts.
 Application scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 function Get-InstalledApps
 {

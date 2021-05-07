@@ -6,7 +6,6 @@ DISM scripts.
 DISM scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 # TMP
 # Dism /Unmount-Image /?
@@ -34,7 +32,8 @@ if ($MyInvocation.InvocationName -ne '.')
 # Dism /Online /Cleanup-Image /RestoreHealth /Source:wim:H:\sources\install.wim:1 /limitaccess ?????
 #
 
-${function:sys-repair} = {
+function sys-repair
+{
     DISM.exe /Online /Cleanup-image /Restorehealth
     sfc /scannow
     cmd /c 'findstr /c:"[SR]" %windir%\Logs\CBS\CBS.log >"%userprofile%\Desktop\sfcdetails.txt"'
@@ -51,7 +50,8 @@ ${function:sys-repair} = {
     # copy Source_File Destination
 }
 
-${function:hyperv-repair} = {
+function hyperv-repair
+{
     dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
     Get-HNSNetwork | Remove-HNSNetwork
     netsh int ipv4 add excludedportrange protocol=tcp startport=50051 numberofports=1

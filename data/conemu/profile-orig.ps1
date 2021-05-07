@@ -5,7 +5,7 @@
 # !!! Use "%CMDER_ROOT%\config\user_profile.ps1" to add your own startup commands
 
 # Compatibility with PS major versions <= 2
-if(!$PSScriptRoot) {
+if (!$PSScriptRoot) {
     $PSScriptRoot = Split-Path $Script:MyInvocation.MyCommand.Path
 }
 
@@ -39,7 +39,7 @@ $CmderModulePath = Join-path $PSScriptRoot "psmodules/"
 $CmderFunctions =  Join-Path $CmderModulePath "Cmder.ps1"
 . $CmderFunctions
 
-if(-not $moduleInstallerAvailable -and -not $env:PSModulePath.Contains($CmderModulePath) ){
+if (-not $moduleInstallerAvailable -and -not $env:PSModulePath.Contains($CmderModulePath) ){
     $env:PSModulePath = $env:PSModulePath.Insert(0, "$CmderModulePath;")
 }
 

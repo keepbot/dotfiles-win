@@ -6,7 +6,6 @@ Web scripts.
 Web scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 # WGet: Use `wget.exe` if available
 if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path)
@@ -49,7 +47,7 @@ function curlex($url)
     $uri = new-object system.uri $url
     $filename = $uri.segments | Select-Object -Last 1
     $path = join-path $env:Temp $filename
-    if( test-path $path ) { Remove-Item -Force $path }
+    if ( test-path $path ) { Remove-Item -Force $path }
     (new-object net.webclient).DownloadFile($url, $path)
     return new-object io.fileinfo $path
 }

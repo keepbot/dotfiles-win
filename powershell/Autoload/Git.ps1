@@ -6,7 +6,6 @@ Git scripts.
 Git scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,9 +15,9 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
 # Git:
-if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     # Main
     ${function:g}           = { git.exe @args }
     ${function:gunsec}      = { git.exe -c http.sslVerify=false @args }
@@ -134,7 +133,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
     # IRQ
     ${function:git-irq}     = { git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'divanov@irq.ru' }
 
-    ${function:gprune} = {
+    function gprune
+    {
         [CmdletBinding()]
         param
         (
@@ -227,22 +227,29 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
         Set-Location $dir
     }
 
-    ${function:get_repo_with_target} = {
-        if (-Not $args[0]){
+    function get_repo_with_target
+    {
+        if (-Not $args[0])
+        {
             Write-Host "You should enter repo URI."
             Write-Host ( "Usage: {0} <repo_url>"  -f $MyInvocation.MyCommand )
             Write-Host
-        } else {
+        }
+        else
+        {
             $scheme = python -c "from urllib.parse import urlparse; uri='$($args[0])'; result = urlparse(uri); print(result.scheme)"
-            if ($scheme -eq "https") {
+            if ($scheme -eq "https")
+            {
                 $target = python -c "from urllib.parse import urlparse; import os.path; uri='$($args[0])'; result = urlparse(uri); path = os.path.splitext(result.path.strip('/')); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))"
-            } else {
+            }
+            else
+            {
                 $target = python -c "from urllib.parse import urlparse; import os.path; uri='$($args[0])'; result = urlparse(uri); path = os.path.splitext(result.path.split(':', 1)[-1]); print(os.path.basename(path[0]) + '-' + os.path.dirname(path[0]))"
             }
             git clone --recurse-submodules "$($args[0])" "$target"
         }
     }
-    ${function:grt}  = { get_repo_with_target @args }
+    ${function:grt} = { get_repo_with_target @args }
 
     function Move-GitRepo
     {
@@ -276,30 +283,39 @@ function Set-GitVerbosity
         [string]$Button,
         [string]$Category='all'
     )
-    switch ($Button) {
-        ({$PSItem -eq 'On' -Or $PSItem -eq 'on'}) {
-            if (($Category -eq 'curl') -Or ($Category -eq 'all')) {
+    switch ($Button)
+    {
+        ({$PSItem -eq 'On' -Or $PSItem -eq 'on'})
+        {
+            if (($Category -eq 'curl') -Or ($Category -eq 'all'))
+            {
                 $Env:GIT_CURL_VERBOSE=1
                 $Env:GIT_TRACE_CURL=1
             }
-            if (($Category -eq 'trace') -Or ($Category -eq 'all')) {
+            if (($Category -eq 'trace') -Or ($Category -eq 'all'))
+            {
                 $Env:GIT_TRACE=1
             }
-            if (($Category -eq 'pack') -Or ($Category -eq 'all')) {
+            if (($Category -eq 'pack') -Or ($Category -eq 'all'))
+            {
                 $Env:GIT_TRACE_PACK_ACCESS=1
             }
-            if (($Category -eq 'packet') -Or ($Category -eq 'all')) {
+            if (($Category -eq 'packet') -Or ($Category -eq 'all'))
+            {
                 $Env:GIT_TRACE_PACKET=1
             }
-            if (($Category -eq 'perf') -Or ($Category -eq 'all')) {
+            if (($Category -eq 'perf') -Or ($Category -eq 'all'))
+            {
                 $Env:GIT_TRACE_PERFORMANCE=1
             }
-            if (($Category -eq 'setup') -Or ($Category -eq 'all')) {
+            if (($Category -eq 'setup') -Or ($Category -eq 'all'))
+            {
                 $Env:GIT_TRACE_SETUP=1
             }
             break
         }
-        ({$PSItem -eq 'Off' -Or $PSItem -eq 'off'}){
+        ({$PSItem -eq 'Off' -Or $PSItem -eq 'off'})
+        {
             $Env:GIT_CURL_VERBOSE=0
             $Env:GIT_TRACE_CURL=0
             $Env:GIT_TRACE=0
@@ -309,7 +325,8 @@ function Set-GitVerbosity
             $Env:GIT_TRACE_SETUP=0
             break
         }
-        default {
+        default
+        {
             Write-Host "ERROR: Wrong operation..." -ForegroundColor Red
             Write-Host "Usage: Git-Verbose <On|Off> [Category]" -ForegroundColor Red
             Write-Host "  Categories: curl, trace, pack, packet, perf" -ForegroundColor Red
@@ -347,7 +364,8 @@ function Get-GitCommitsByAuthor
     $cmd += "--pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' "
     $cmd += "--abbrev-commit --date=relative "
 
-    if ($AllBranches) {
+    if ($AllBranches)
+    {
         $cmd += "--all "
     }
 
@@ -437,7 +455,7 @@ function Remove-GitSubmodule
         [string] $SubmoduleName
     )
 
-    If (-Not (Test-Path '.\\.gitmodules'))
+    if (-Not (Test-Path '.\\.gitmodules'))
     {
         Write-Host `
             "Error: Wrong directory. You should be in the root of git repo to use this function. Exiting..." `
@@ -467,6 +485,3 @@ function Remove-GitSubmodule
     # 7. Delete files
     # rm -rf path/to/submodule
 }
-
-
-

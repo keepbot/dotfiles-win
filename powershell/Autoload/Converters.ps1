@@ -6,7 +6,6 @@ Convert scripts.
 Convert scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,8 +15,8 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-function ConvertTo-Base64() {
+function ConvertTo-Base64()
+{
     [CmdletBinding()]
     param
     (
@@ -29,7 +28,8 @@ function ConvertTo-Base64() {
     Write-Output $encoded;
 }
 
-function ConvertFrom-Base64() {
+function ConvertFrom-Base64()
+{
     [CmdletBinding()]
     param
     (
@@ -41,7 +41,8 @@ function ConvertFrom-Base64() {
     Write-Output $decoded;
 }
 
-function ResizePDF() {
+function ResizePDF()
+{
     [CmdletBinding()]
     param
     (
@@ -53,12 +54,14 @@ function ResizePDF() {
 
     )
 
-    if (-Not $OutputPath) {
+    if (-Not $OutputPath)
+    {
         $OutputPath = "$((Get-Item $Path).BaseName)_${Resolution}dpi.pdf"
         Write-Host "`t Setting OutputPath to ${OutputPath}" -ForegroundColor Yellow
     }
 
-    If (Get-Command gswin64.exe -ErrorAction SilentlyContinue | Test-Path) {
+    if (Get-Command gswin64.exe -ErrorAction SilentlyContinue | Test-Path)
+    {
         $cmd  = "cmd /c '"
         $cmd  += "gswin64.exe"
         $cmd += " -q -dNOPAUSE -dBATCH -dSAFER"
@@ -80,7 +83,9 @@ function ResizePDF() {
 
         Write-Host "`t GhostScript cmd: $cmd`n" -ForegroundColor Yellow
         Invoke-Expression "$cmd"
-    } else {
+    }
+    else
+    {
         Write-Host "ERROR: gswin64 not found..." -ForegroundColor Red
         Write-Host "ERROR: GhostScript for Windows should be installed and gswin64.exe added to the %PATH% env" -ForegroundColor Red
     }

@@ -6,7 +6,6 @@ Bamboo scripts.
 Bamboo scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -104,14 +103,14 @@ function Invoke-BambooLink
 
     };
 
-    If ($ShowRequestUri)
+    if ($ShowRequestUri)
     {
         Write-Host "Request URI: ${Link}" -ForegroundColor Yellow
     }
 
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-    If ($OutFile -eq 'None')
+    if ($OutFile -eq 'None')
     {
         $Response = Invoke-WebRequest -Headers ${Headers} -Uri ${Link} -Method "${Method}"
     }
@@ -136,7 +135,7 @@ function Invoke-BambooLink-Curl
         [switch] $ShowRequestUri
     )
 
-    If($VerboseOutput)
+    if ($VerboseOutput)
     {
         $CurlArgs += '-v'
     }
@@ -146,7 +145,7 @@ function Invoke-BambooLink-Curl
     # $Headers    = "Authorization: Basic ${EncodedCredentials}; Content-Type: application/json"
     $Headers    = "Content-Type: application/json"
 
-    If ($ShowRequestUri)
+    if ($ShowRequestUri)
     {
         Write-Host "Request URI: ${Link}" -ForegroundColor Yellow
     }
@@ -173,7 +172,7 @@ function Invoke-BambooREST
 
     };
 
-    If ($ShowRequestUri)
+    if ($ShowRequestUri)
     {
         Write-Host "Request URI: ${UrlBase}${Path}" -ForegroundColor Yellow
     }
@@ -195,7 +194,7 @@ function Invoke-BambooREST-Curl
         [switch] $ShowRequestUri
     )
 
-    If($VerboseOutput)
+    if ($VerboseOutput)
     {
         $CurlArgs += '-v'
     }
@@ -204,7 +203,7 @@ function Invoke-BambooREST-Curl
     $Token      = Get-BambooToken
     $Headers    = "Authorization: Bearer ${Token}; Content-Type: application/json"
 
-    If ($ShowRequestUri)
+    if ($ShowRequestUri)
     {
         Write-Host "Request URI: ${UrlBase}${Path}" -ForegroundColor Yellow
     }
@@ -212,4 +211,3 @@ function Invoke-BambooREST-Curl
     $Response = (curl.exe -k -X ${Method} -H ${Headers} ${UrlBase}${Path} ${CurlArgs})
     return $Response
 }
-

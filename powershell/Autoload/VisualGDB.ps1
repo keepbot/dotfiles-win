@@ -6,7 +6,6 @@ VisualGDB scripts.
 VisualGDB scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,7 +15,7 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-if (Get-Command VisualGDB.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command VisualGDB.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ${function:vgdb_pm} = { VisualGDB.exe /pkgmgr }
 }

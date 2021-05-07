@@ -58,20 +58,20 @@ if (-Not (Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue).Instal
 }
 
 # $NormalizationPath = Join-Path $dotfilesProfileDir "normalization-done"
-# if(![System.IO.File]::Exists($NormalizationPath)) {
+# if (![System.IO.File]::Exists($NormalizationPath)) {
 #     . (Join-Path $dotfilesScriptsDir "Normalilze-Manually-Installed-Modules.ps1") -force
 #     Normalilze-Manually-Installed-Modules
 #     New-Item (Join-Path $dotfilesProfileDir "normalization-done") -ItemType file
 # }
 
 # Load Modules
-# If (Test-Path (Join-Path $dotfilesProfileDir "modules.ps1"))  { . (Join-Path $dotfilesProfileDir "modules.ps1"            ) }
+# if (Test-Path (Join-Path $dotfilesProfileDir "modules.ps1"))  { . (Join-Path $dotfilesProfileDir "modules.ps1"            ) }
 
 # Chocolatey
-# If (-Not (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe")) {
+# if (-Not (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe")) {
 #     Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 # }
-# If (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
+# if (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe") {
 #     $candies = @(
 #         "7zip.install"                      # Archive manager
 #         "adobereader"                       # PDF reader
@@ -266,7 +266,7 @@ If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path) {
     C:\Windows\System32\cmd.exe /c mklink (Join-Path $cmder_home "vendor\conemu-maximus5\ConEmu.xml") (Join-Path $PSScriptRoot "data\conemu\ConEmu.xml")
 
     $dep_modules                     = @("ApplicationCompatibility")
-    foreach($module in $dep_modules)    { Import-Module -FullyQualifiedName (Join-Path $dotfilesModulesDir $module) }
+    foreach ($module in $dep_modules)    { Import-Module -FullyQualifiedName (Join-Path $dotfilesModulesDir $module) }
     Set-ApplicationCompatibility -CurrentUser -ApplicationLocation (Get-Command cmder.exe | Select-Object -ExpandProperty Definition) -PrivilegeLevel
 }
 

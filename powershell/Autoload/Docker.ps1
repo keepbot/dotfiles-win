@@ -6,7 +6,6 @@ Docker scripts.
 Docker scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 # Docker
 if (Get-Command docker -ErrorAction SilentlyContinue | Test-Path)
@@ -53,6 +51,7 @@ if (Get-Command docker -ErrorAction SilentlyContinue | Test-Path)
     }
 }
 
-if (Get-Command $Env:ProgramFiles\Docker\Docker\DockerCli.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command $Env:ProgramFiles\Docker\Docker\DockerCli.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ${function:dokkaSD} = { & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon }
 }

@@ -6,7 +6,6 @@ Prompt scripts.
 Prompt scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -46,35 +45,41 @@ function CheckGit($Path)
         $ts = New-TimeSpan $history.StartExecutionTime $history.EndExecutionTime
         switch ($ts)
         {
-            {$_.TotalMilliseconds -lt 1} {
+            {$_.TotalMilliseconds -lt 1}
+            {
                 [int]$us = $(($_.Ticks / 10) % 1000)
                 '{0:d3}µs' -f ($us) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor DarkGray -NoNewline
                 break
             }
-            {$_.TotalMilliseconds -lt 100} {
+            {$_.TotalMilliseconds -lt 100}
+            {
                 [int]$ms = $_.TotalMilliseconds
                 [int]$us = $(($_.Ticks / 10) % 1000)
                 '{0}.{1:d3}ms' -f ($ms, $us) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor Cyan -NoNewline
                 break
             }
-            {$_.TotalSeconds -lt 1} {
+            {$_.TotalSeconds -lt 1}
+            {
                 [int]$ms = $_.TotalMilliseconds
                 '{0}ms' -f ($ms) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor Cyan -NoNewline
                 break
             }
-            {$_.TotalSeconds -lt 5} {
+            {$_.TotalSeconds -lt 5}
+            {
                 [int]$s = [Math]::Floor([decimal]($_.TotalSeconds))
                 [int]$ms = $($_.TotalMilliseconds % 1000)
                 '{0}.{1:d3}s' -f ($s, $ms) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor Cyan -NoNewline
                 break
             }
-            {$_.TotalMinutes -lt 1} {
+            {$_.TotalMinutes -lt 1}
+            {
                 [int]$s = [Math]::Floor([decimal]($_.TotalSeconds))
                 [int]$ms = $($_.TotalMilliseconds % 1000)
                 '{0}.{1:d3}s' -f ($s, $ms) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor Yellow -NoNewline
                 break
             }
-            {$_.TotalMinutes -ge 1} {
+            {$_.TotalMinutes -ge 1}
+            {
                 "{0:HH:mm:ss}" -f ([datetime]$ts.Ticks) | Microsoft.PowerShell.Utility\Write-Host -ForegroundColor Red -NoNewline
                 break
             }
@@ -82,8 +87,8 @@ function CheckGit($Path)
         Microsoft.PowerShell.Utility\Write-Host "] " -NoNewline -ForegroundColor DarkGreen
     }
 }
-[ScriptBlock]$GitPrompt = {
-}
+
+[ScriptBlock]$GitPrompt = {}
 
 # ==========================================================================================
 # This scriptblock runs every time the prompt is returned.

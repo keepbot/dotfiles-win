@@ -6,7 +6,6 @@ YouTube scripts.
 YouTube scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 if (Get-Command youtube-dl.exe -ErrorAction SilentlyContinue | Test-Path)
 {

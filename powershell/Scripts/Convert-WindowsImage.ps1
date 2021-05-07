@@ -33,7 +33,7 @@
 
     .PARAMETER WorkingDirectory
         Specifies the directory where the VHD(X) file should be generated.
-        If specified along with -VHDPath, the -WorkingDirectory value is ignored.
+        if specified along with -VHDPath, the -WorkingDirectory value is ignored.
         The default value is the current directory ($pwd).
 
     .PARAMETER SizeBytes
@@ -291,7 +291,7 @@
 
             $parameterDictionary = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
 
-            If
+            if
             (
                 Test-Path -Path "Variable:\EnableDebugger"
             )
@@ -3100,11 +3100,11 @@ namespace WIM2VHD {
                     $text
                 )
 
-                If ( $text )
+                if ( $text )
                 {
                     Write-Host "INFO   : $($text)" -ForegroundColor White
                 }
-                Else
+                else
                 {
                     Write-Host
                 }
@@ -4156,7 +4156,7 @@ namespace WIM2VHD {
 
                         Write-W2VInfo "Disk partitioned"
 
-                        If
+                        if
                         (
                             $BCDinVHD -eq "VirtualMachine"
                         )
@@ -4175,7 +4175,7 @@ namespace WIM2VHD {
                         Write-W2VInfo "Volume formatted..."
                     } elseif ( $VHDPartitionStyle -eq "GPT" ) {
 
-                        If
+                        if
                         (
                             $BCDinVHD -eq "VirtualMachine"
                         )
@@ -4204,7 +4204,7 @@ format fs=fat32 label="System"
                         Write-W2VInfo "Access path ($drive) has been assigned..."
                     } elseif ( $VHDPartitionStyle -eq "GPT" ) {
 
-                        If
+                        if
                         (
                             $BCDinVHD -eq "VirtualMachine"
                         )
@@ -4218,7 +4218,7 @@ format fs=fat32 label="System"
                             $drive           = $(Get-Partition -Disk $disk).AccessPaths[2]
                             Write-W2VInfo "Access path ($drive) has been assigned to the Boot Volume..."
                         }
-                        ElseIf
+                        elseIf
                         (
                             $BCDinVHD -eq "NativeBoot"
                         )
@@ -4430,7 +4430,7 @@ format fs=fat32 label="System"
                         }
                     }
 
-                    If ( $Feature ) {
+                    if ( $Feature ) {
 
                         Write-W2VInfo -text "Installing Windows Feature(s) $Feature to the Image"
                         $FeatureSourcePath = Join-Path -Path "$($driveLetter):" -ChildPath "sources\sxs"

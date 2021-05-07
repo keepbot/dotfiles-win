@@ -6,7 +6,6 @@ Hardware scripts.
 Hardware scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 # http://xkcd.com/530/
 Set-Alias mute Set-SoundMute

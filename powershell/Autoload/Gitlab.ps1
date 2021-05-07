@@ -6,7 +6,6 @@ Gitlab scripts.
 Gitlab scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,6 +14,7 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
+
 function Set-GitlabToken
 {
     [CmdletBinding()]
@@ -31,7 +31,8 @@ function Get-GitlabToken
 {
     [string] $SecretFile   = (Join-Path $env:USERPROFILE '.gitlab.secrets')
 
-    if (-Not (Test-Path -Path $SecretFile)) {
+    if (-Not (Test-Path -Path $SecretFile))
+    {
         Write-Host `
             "ERROR: Secretfile $SecretFile wasn't found. Run 'Set-GitlabToken' for initialization. Exiting..." `
             -ForegroundColor Red
@@ -91,7 +92,7 @@ function GitlabListSubgroups
         }
 
         $Repos = $RequestAnswer | ConvertFrom-Json
-        foreach($subgroup in $Repos)
+        foreach ($subgroup in $Repos)
         {
             Write-Output ("{0}`t{1}" -f $subgroup.name,$subgroup.id)
         }
@@ -175,9 +176,9 @@ function GitlabRepos
         }
 
         $Repos = $RequestAnswer | ConvertFrom-Json
-        foreach($repo in $Repos)
+        foreach ($repo in $Repos)
         {
-            if((-Not $All) -And $repo.fork) { continue }
+            if ((-Not $All) -And $repo.fork) { continue }
 
             switch ($Protocol)
             {

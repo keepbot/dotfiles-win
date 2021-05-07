@@ -6,7 +6,6 @@ Chef scripts.
 Chef scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 if (Get-Command kitchen.bat -ErrorAction SilentlyContinue | Test-Path)
 {

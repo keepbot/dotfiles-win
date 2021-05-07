@@ -6,7 +6,6 @@ AWS scripts.
 AWS scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -116,5 +115,3 @@ function aws_assume_role()
 }
 
 ${function:aws-profiles} = { aws configure list-profiles @args }
-
-

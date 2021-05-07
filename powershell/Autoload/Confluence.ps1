@@ -6,7 +6,6 @@ Confluence scripts.
 Confluence scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -41,7 +40,8 @@ function Get-ConfluenceUrlBase
 {
     [string] $SecretFile   = (Join-Path $env:USERPROFILE '.confluence.secrets')
 
-    if (-Not (Test-Path -Path $SecretFile)) {
+    if (-Not (Test-Path -Path $SecretFile))
+    {
         Write-Host `
             "ERROR: Secretfile $SecretFile wasn't found. Run 'Set-ConfluenceSecrets' for initialization. Exiting..." `
             -ForegroundColor Red
@@ -56,7 +56,8 @@ function Get-ConfluenceRESTUrlBase
 {
     [string] $SecretFile   = (Join-Path $env:USERPROFILE '.confluence.secrets')
 
-    if (-Not (Test-Path -Path $SecretFile)) {
+    if (-Not (Test-Path -Path $SecretFile))
+    {
         Write-Host `
             "ERROR: Secretfile $SecretFile wasn't found. Run 'Set-ConfluenceSecrets' for initialization. Exiting..." `
             -ForegroundColor Red
@@ -71,7 +72,8 @@ function Get-ConfluenceToken
 {
     [string] $SecretFile   = (Join-Path $env:USERPROFILE '.confluence.secrets')
 
-    if (-Not (Test-Path -Path $SecretFile)) {
+    if (-Not (Test-Path -Path $SecretFile))
+    {
         Write-Host `
             "ERROR: Secretfile $SecretFile wasn't found. Run 'Set-ConfluenceSecrets' for initialization. Exiting..." `
             -ForegroundColor Red
@@ -85,7 +87,8 @@ function Get-ConfluenceCreds
 {
     [string] $SecretFile   = (Join-Path $env:USERPROFILE '.confluence.secrets')
 
-    if (-Not (Test-Path -Path $SecretFile)) {
+    if (-Not (Test-Path -Path $SecretFile))
+    {
         Write-Host `
             "ERROR: Secretfile $SecretFile wasn't found. Run 'Set-ConfluenceSecrets' for initialization. Exiting..." `
             -ForegroundColor Red
@@ -118,24 +121,24 @@ function Invoke-ConfluenceLink
 
     };
 
-    If ($ShowRequestUri)
+    if ($ShowRequestUri)
     {
         Write-Host "Request URI: ${Link}" -ForegroundColor Yellow
     }
 
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-    If ($OutFile -eq 'None')
+    if ($OutFile -eq 'None')
     {
         $Response = Invoke-WebRequest -Headers ${Headers} -Uri ${Link} -Method "${Method}"
     }
-    else {
+    else
+    {
         $Response = Invoke-WebRequest -Headers ${Headers} -Uri ${Link} -Method "${Method}" -OutFile ${OutFile}
     }
 
     return $Response
 }
-
 
 function Invoke-ConfluenceREST
 {
@@ -157,7 +160,7 @@ function Invoke-ConfluenceREST
 
     };
 
-    If ($ShowRequestUri)
+    if ($ShowRequestUri)
     {
         Write-Host "Request URI: ${UrlBase}${Path}" -ForegroundColor Yellow
     }
@@ -189,7 +192,7 @@ function ConfluenceGetAllSpaces
 
     $FinalPath = "${UrlBase}/rest/api/${Path}"
 
-    If ($ShowRequestUri)
+    if ($ShowRequestUri)
     {
         Write-Host "Request URI: ${FinalPath}" -ForegroundColor Yellow
     }
@@ -226,7 +229,7 @@ function ConfluenceGetAllSpaces
         # $Spaces = $RequestAnswer.results | ConvertFrom-Json
         $Spaces = $RequestAnswer.results
         Write-Output ${Spaces}
-        # foreach($space in $Spaces)
+        # foreach ($space in $Spaces)
         # {
         #     # Write-Output ("{0}`t{1}" -f $subgroup.name,$subgroup.id)
         #     Write-Output ${space}

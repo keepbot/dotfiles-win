@@ -6,7 +6,6 @@ Python scripts.
 Python scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 # Python virtualenv aliases - personal
 if (Get-Command c:\tools\python2\python.exe -ErrorAction SilentlyContinue | Test-Path)
@@ -45,7 +43,7 @@ if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:vd}      = { deactivate }
     ${function:vr}      = { rmrf venv }
     ${function:vpi}     = { python.exe -m pip install  }
-    ${function:vins}    = { If (-Not (Test-Path venv)){vc}; va; python.exe -m pip install -r .\requirements.txt }
+    ${function:vins}    = { if (-Not (Test-Path venv)){vc}; va; python.exe -m pip install -r .\requirements.txt }
     ${function:vgen}    = { va; python.exe -m pip freeze > .\requirements.txt }
 
     # Basic environment
@@ -129,7 +127,7 @@ function List-Py
     $serpents = Get-PyList
 
     Write-Host "List of Python interpretators on this PC:"
-    foreach($snake in $serpents)
+    foreach ($snake in $serpents)
     {
         $snakeBin = (Join-Path $snake "python.exe")
         if (Test-Path $snakeBin)
@@ -144,7 +142,7 @@ function Set-Py
     $serpents = Get-PyList
     $ValidatedSerpents = @()
     $Versions = @()
-    foreach($snake in $serpents)
+    foreach ($snake in $serpents)
     {
         $snakeBin = (Join-Path $snake "python.exe")
         if (Test-Path $snakeBin)

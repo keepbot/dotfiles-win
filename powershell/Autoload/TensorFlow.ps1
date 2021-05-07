@@ -6,7 +6,6 @@ TensorFlow scripts.
 TensorFlow scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,11 +15,14 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-function TF_Env_Vars {
-    if (Test-Path ".\venv\Scripts\activate")  {
+function TF_Env_Vars
+{
+    if (Test-Path ".\venv\Scripts\activate")
+    {
         .\venv\Scripts\activate
-    } else {
+    }
+    else
+    {
         Write-Host "ERROR: venv not found. Please execute TF_Build_Env. Exiting..." -ForegroundColor Red
         return
     }
@@ -65,31 +67,40 @@ function TF_Env_Vars {
     # set WIN_OUT_TARGET="gen_win_out"
     # set PATH="C:\tools\msys64\usr\bin;C:\tools\bazel;C:\tools\swig;C:\Program Files\Git\cmd;%PATH%"
 
-    if ($env:VIRTUAL_ENV) {
+    if ($env:VIRTUAL_ENV)
+    {
         deactivate
     }
 }
 
-function TF_Build_Env {
+function TF_Build_Env
+{
     $python_bin = $((Get-Command python.exe -ErrorAction SilentlyContinue).Source)
-    if ($python_bin) {
+    if ($python_bin)
+    {
         $cmd = $(Write-Output "$python_bin -m virtualenv -p $python_bin venv")
         Invoke-Expression $cmd
-    } else {
+    }
+    else
+    {
         Write-Host "ERROR: Python not found. Exiting..." -ForegroundColor Red
         return
     }
 
     TF_Env_Vars
 
-    if (Test-Path ".\venv\Scripts\activate")  {
+    if (Test-Path ".\venv\Scripts\activate")
+    {
         .\venv\Scripts\activate
-    } else {
+    }
+    else
+    {
         Write-Host "ERROR: venv not found. Exiting..." -ForegroundColor Red
         return
     }
 
-    if ($env:VIRTUAL_ENV) {
+    if ($env:VIRTUAL_ENV)
+    {
         # wget.exe -q https://github.com/bazelbuild/bazel/releases/download/${Env:BAZEL_VERSION}/bazel-${Env:BAZEL_VERSION}-windows-x86_64.exe -O C:/tools/bazel/bazel.exe
         # bazel version``
 
@@ -106,37 +117,49 @@ function TF_Build_Env {
         python -m pip install keras_preprocessing==1.1.0 --upgrade --no-deps
         python -m pip install wrapt --upgrade --no-deps
         python -m pip install six wheel flake8
-    } else {
+    }
+    else
+    {
         Write-Host "ERROR: Not in virtual environment. Exiting..." -ForegroundColor Red
         return
     }
 }
 
-function TF_Build {
+function TF_Build
+{
     [CmdletBinding()]
     param
     (
         [ValidateNotNullOrEmpty()]
         [string]$Arch   = "x64"
     )
-    if ($env:VIRTUAL_ENV) {
+
+    if ($env:VIRTUAL_ENV)
+    {
         deactivate
     }
 
     TF_Env_Vars
     Set-VC-Vars-All $Arch 8.1
 
-    if (Test-Path ".\venv\Scripts\activate")  {
+    if (Test-Path ".\venv\Scripts\activate")
+    {
         .\venv\Scripts\activate
-    } else {
+    }
+    else
+    {
         Write-Host "ERROR: venv not found. Exiting..." -ForegroundColor Red
         return
     }
 
-    if ($env:VIRTUAL_ENV) {
-        if (Test-Path ".\configure.py")  {
+    if ($env:VIRTUAL_ENV)
+    {
+        if (Test-Path ".\configure.py")
+        {
             python .\configure.py
-        } else {
+        }
+        else
+        {
             Write-Host "ERROR: configure.py not found. Please go to tensorflow source dir. Exiting..." -ForegroundColor Red
             return
         }
@@ -153,7 +176,9 @@ function TF_Build {
             tensorflow/tools/lib_package:clicenses_generate     `
             tensorflow/java:tensorflow_jni.dll                  `
             tensorflow/tools/lib_package:jnilicenses_generate
-    } else {
+    }
+    else
+    {
         Write-Host "ERROR: Not in virtual environment. Exiting..." -ForegroundColor Red
         return
     }

@@ -6,7 +6,6 @@
 .Net scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -32,7 +31,8 @@ function Get-DotNet-All
 #>
 function Get-DotNet-FrameworkVersion
 {
-    param(
+    param
+    (
         [string]$ComputerName = $env:COMPUTERNAME
     )
 
@@ -62,15 +62,16 @@ function Get-DotNet-FrameworkVersion
         '528372' = @{ Version = [System.Version]'4.8'     ; Comment = '(Windows 10 2004)'                 }
     }
 
-    foreach($computer in $ComputerName)
+    foreach ($computer in $ComputerName)
     {
-        if($regKey = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey('LocalMachine', $computer))
+        if ($regKey = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey('LocalMachine', $computer))
         {
             if ($netRegKey = $regKey.OpenSubKey("$dotNetRegistry"))
             {
                 foreach ($versionKeyName in $netRegKey.GetSubKeyNames())
                 {
-                    if ($versionKeyName -match '^v[123]') {
+                    if ($versionKeyName -match '^v[123]')
+                    {
                         $versionKey = $netRegKey.OpenSubKey($versionKeyName)
                         $version = [System.Version]($versionKey.GetValue('Version', ''))
                         New-Object -TypeName PSObject -Property ([ordered]@{
@@ -85,7 +86,7 @@ function Get-DotNet-FrameworkVersion
 
             if ($net4RegKey = $regKey.OpenSubKey("$dotNet4Registry"))
             {
-                if(-not ($net4Release = $net4RegKey.GetValue('Release')))
+                if (-not ($net4Release = $net4RegKey.GetValue('Release')))
                 {
                     $net4Release = 30319
                 }

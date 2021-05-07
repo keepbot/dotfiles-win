@@ -6,7 +6,6 @@ Atlassian scripts.
 Atlassian scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 function bamboo_get_ami
 {
@@ -79,7 +77,7 @@ function bamboo_generate_specs()
 
     $ArtifactId = $($($Package -replace "^\w+\.\w+\.","") -replace "\.","-")
 
-    If (Get-Command mvn -ErrorAction SilentlyContinue | Test-Path)
+    if (Get-Command mvn -ErrorAction SilentlyContinue | Test-Path)
     {
         # Simplest:
         # mvn archetype:generate -DarchetypeGroupId=com.atlassian.bamboo -DarchetypeArtifactId=bamboo-specs-archetype -DarchetypeVersion=7.0.4

@@ -6,7 +6,6 @@ Fuction to get factors of a number.
 Fuction to get factors of a number.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 # Calculates Prime Factors of Given Integer
 #
@@ -51,14 +49,15 @@ Function Get-Factors
 
     Write-Verbose ("Finding factors of $n (with root ~{0:0.##})" -f $Root)
 
-    For (; ;) {
+    for (; ;)
+    {
         Write-Verbose "Trying $Divisor"
         $Remainder = $n / $Divisor
-        If ($Remainder -eq [Math]::Truncate($Remainder))
+        if ($Remainder -eq [Math]::Truncate($Remainder))
         {
             # Remainder is a whole number, found a factor...
             Write-Verbose "Found factor $Divisor"
-            If ($Remainder -eq 1)
+            if ($Remainder -eq 1)
             {
                 # All factors have been found
                 Write-Verbose "Remainder is 1, all factors found"
@@ -69,18 +68,18 @@ Function Get-Factors
             Write-Verbose ("Remainder is now $Remainder (root ~{0:0.##}), finding factors of this..." -f $Root)
             $Answer += " $Divisor x"    # ... save list of factors for display
         }
-        Else
+        else
         {
             # Current divisor was not a factor
             Write-Verbose "$Divisor is not a factor"
             $Divisor += $DivisorIncrements[$i]        # Add to the divisor, skipping multiples of 2, 3, 4, 5
             Write-Verbose "Adding $( $DivisorIncrements[$i] ); divisor is now $Divisor"
             $i++        # Next time add the next increment from the list
-            If ($i -ge $IncrementLength)
+            if ($i -ge $IncrementLength)
             {
                 # Got to end of increments list...
                 $i = 3        # List repeats from the 4th element
-                If ($Divisor -gt $Root)
+                if ($Divisor -gt $Root)
                 {
                     # Check at this point that the divisor isn't too large
                     Write-Verbose "Divisor now greater than Sqrt of remainder... done"
@@ -90,11 +89,11 @@ Function Get-Factors
         }
     }
 
-    If ($n -eq $Number)
+    if ($n -eq $Number)
     {
         "$n is Prime"
     }
-    Else
+    else
     {
         "$Number =$Answer $n"   # Append last remainder and display list of factors
     }

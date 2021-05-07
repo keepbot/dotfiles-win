@@ -6,7 +6,6 @@ Filesystem scripts.
 Filesystem scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 Remove-Item alias:cd -ErrorAction SilentlyContinue
 ${function:cd} = {
@@ -90,7 +88,8 @@ function Get-DuList
 Set-Alias dul Get-DuList
 
 # Determine size of a file or total size of a directory
-function Get-DiskUsage([string] $Path=(Get-Location).Path) {
+function Get-DiskUsage([string] $Path=(Get-Location).Path)
+{
     Convert-ToDiskSize `
         ( `
             Get-ChildItem $Path -Force -Recurse -ErrorAction SilentlyContinue `
@@ -99,19 +98,25 @@ function Get-DiskUsage([string] $Path=(Get-Location).Path) {
         1
 }
 
-function Convert-ToDiskSize {
+function Convert-ToDiskSize
+{
     param
     (
         $bytes,
         $precision='0'
     )
 
-    foreach ($size in ("B","K","M","G","T")) {
-        if (($bytes -lt 1000) -or ($size -eq "T")){
+    foreach ($size in ("B","K","M","G","T"))
+    {
+        if (($bytes -lt 1000) -or ($size -eq "T"))
+        {
             $bytes = ($bytes).tostring("F0" + "$precision")
             return "${bytes}${size}"
         }
-        else { $bytes /= 1KB }
+        else
+        {
+            $bytes /= 1KB
+        }
     }
 }
 Set-Alias du Get-DiskUsage
@@ -133,32 +138,45 @@ if (Get-Command busybox.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:dirs}    = { ls -l  @args | busybox.exe grep ^d }
     ${function:dirsa}   = { ls -la @args | busybox.exe grep ^d }
     # List only directories
-    ${function:lsd} = { Get-ChildItem -Directory -Force @args }
+    ${function:lsd}     = { Get-ChildItem -Directory -Force @args }
     # List directories recursively
-    ${function:llr} = { lsd | ForEach-Object{ll $_ @args} }
-} else {
+    ${function:llr}     = { lsd | ForEach-Object{ll $_ @args} }
+}
+else
+{
     # List all files, including hidden files
-    ${function:la} = { Get-ChildItem -Force @args }
+    ${function:la}      = { Get-ChildItem -Force @args }
     # List only directories
-    ${function:lsd} = { Get-ChildItem -Directory -Force @args }
+    ${function:lsd}     = { Get-ChildItem -Directory -Force @args }
     # List directories recursively
-    ${function:llr} = { lsd | ForEach-Object{la $_ @args} }
+    ${function:llr}     = { lsd | ForEach-Object{la $_ @args} }
 }
 
-function  llf() {
-    if ($Args[0]) {
+${function:lsf}         = { Get-ChildItem . | ForEach-Object{ $_.Name } }
+
+function  llf()
+{
+    if ($Args[0])
+    {
         $path = $Args[0]
-    } else {
+    }
+    else
+    {
         $path = "."
     }
 
-    if ($Args[1]) {
+    if ($Args[1])
+    {
         $pattern = ".*$($Args[1]).*"
-    } else {
+    }
+    else
+    {
         $pattern = ''
     }
-    Get-ChildItem "$path" | ForEach-Object{
-        if ($_.Name -match "$pattern") {
+
+    Get-ChildItem "$path" | ForEach-Object {
+        if ($_.Name -match "$pattern")
+        {
             $_.FullName
         }
     }
@@ -177,20 +195,24 @@ function Remove-File-Recursively
     )
     Get-ChildItem $PathToFolderTree | ForEach-Object {
         $targetFile = $(Join-Path $_.FullName $FileName)
-        if(Test-Path $targetFile){
+        if (Test-Path $targetFile)
+        {
             Remove-Item -Force $targetFile
             Write-Host $targetFile " removed"
         }
     }
 }
 
-#if (Get-Command rm.exe -ErrorAction SilentlyContinue | Test-Path) {
+#if (Get-Command rm.exe -ErrorAction SilentlyContinue | Test-Path)
+# {
 #   ${function:rmf}  = { rm.exe -f  @args }
 #   ${function:rmrf} = { rm.exe -rf @args }
-#} else {
+# }
+# else
+# {
     ${function:rmf}  = { Remove-Item -Force @args }
     ${function:rmrf} = { Remove-Item -Recurse -Force @args }
-#}
+# }
 
 function touch($file) { $null | Out-File -Append $file -Encoding ASCII }
 
@@ -224,14 +246,14 @@ function Copy-FilesWithFolderStructure
         [String[]]$Items
     )
 
-    if(-Not (Test-Path $Destination))
+    if (-Not (Test-Path $Destination))
     {
         New-Item -ItemType Directory -Path "$Destination" -Force
     }
 
     foreach ($item in $Items)
     {
-        if(Test-Path $item)
+        if (Test-Path $item)
         {
             $Dir = Split-Path -Path $item
             New-Item -Path "$(Join-Path $Destination $Dir)" -ItemType Directory -Force
@@ -250,7 +272,8 @@ function join_files
 
         [Parameter(ValueFromPipeline=$true)]
         [ValidateScript({
-            foreach ($file in $_) {
+            foreach ($file in $_)
+            {
                 Test-Path $file.FullName
             }
         })]
@@ -288,24 +311,3 @@ function mkl
     Write-Host "`t Creating link: ${cmd}" -ForegroundColor Yellow
     Invoke-Expression "${cmd}"
 }
-
-function mkl
-{
-    [CmdletBinding()]
-    param
-    (
-        [Parameter(Mandatory = $True)]
-        [ValidateScript({Test-Path -Path $_})]
-        [String] $Source,
-        [Parameter(Mandatory = $True)]
-        [String] $Destination
-    )
-    $cmd = "cmd.exe /c 'mklink /d"
-    $cmd += " $($ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("$Destination"))".trim('\')
-    $cmd += " $(Convert-Path $Source)".trim('\')
-    $cmd += "'"
-
-    Write-Host "`t Creating link: ${cmd}" -ForegroundColor Yellow
-    Invoke-Expression "${cmd}"
-}
-

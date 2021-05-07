@@ -6,7 +6,6 @@ MSI scripts.
 MSI scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,8 +15,8 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-function Get-MSI-Upgrade-Codes {
+function Get-MSI-Upgrade-Codes
+{
     $wmipackages = Get-WmiObject -Class win32_product
     $wmiproperties = gwmi -Query "SELECT ProductCode,Value FROM Win32_Property WHERE Property='UpgradeCode'"
     $packageinfo = New-Object System.Data.Datatable
@@ -29,20 +28,21 @@ function Get-MSI-Upgrade-Codes {
     {
         $foundupgradecode = $false # Assume no upgrade code is found
 
-        foreach ($property in $wmiproperties) {
-
-            if ($package.IdentifyingNumber -eq $property.ProductCode) {
+        foreach ($property in $wmiproperties)
+        {
+            if ($package.IdentifyingNumber -eq $property.ProductCode)
+            {
                [void]$packageinfo.Rows.Add($package.Name,$package.IdentifyingNumber, $property.Value)
                $foundupgradecode = $true
                break
             }
         }
 
-        if(-Not ($foundupgradecode)) {
+        if (-Not ($foundupgradecode))
+        {
              # No upgrade code found, add product code to list
              [void]$packageinfo.Rows.Add($package.Name,$package.IdentifyingNumber, "")
         }
-
     }
 
     $packageinfo | sort Name | Format-table ProductCode, UpgradeCode, Name

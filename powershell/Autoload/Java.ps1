@@ -6,7 +6,6 @@ Java scripts.
 Java scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,8 +15,8 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-function Get-JavaList {
+function Get-JavaList
+{
     <#
     .SYNOPSIS
         List installed Java versions on current PC.
@@ -40,15 +39,19 @@ function Get-JavaList {
     )
 
     $javas = @()
-    foreach($javaBase in $javaBases) {
-        if (Test-Path $javaBase) {
+    foreach ($javaBase in $javaBases)
+    {
+        if (Test-Path $javaBase)
+        {
             $((Get-ChildItem $javaBase).FullName | ForEach-Object { $javas += $_ })
         }
     }
 
     $javasValidated = @()
-    foreach($java in $javas) {
-        if (Test-Path $java) {
+    foreach ($java in $javas)
+    {
+        if (Test-Path $java)
+        {
             $javasValidated  += $java
         }
     }
@@ -56,13 +59,15 @@ function Get-JavaList {
     return $javasValidated
 }
 
-function Find-Java {
+function Find-Java
+{
     Write-Host "List of Java Kits on this PC:"
     return Get-JavaList
 }
 
 
-function Set-Java {
+function Set-Java
+{
     <#
     .SYNOPSIS
         Enable to use particular version of JAVA within current session.
@@ -83,7 +88,8 @@ function Set-Java {
     $env:PATH = "${env:JAVA_HOME}\bin;${env:PATH}"
 }
 
-function ormco_gen_aligners_reports {
+function ormco_gen_aligners_reports
+{
     [CmdletBinding()]
     param
     (

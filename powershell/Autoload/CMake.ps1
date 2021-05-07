@@ -6,7 +6,6 @@ Cmake scripts.
 Cmake scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 if (Get-Command cmake.exe -ErrorAction SilentlyContinue | Test-Path)
 {

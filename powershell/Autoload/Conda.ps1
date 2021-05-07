@@ -6,7 +6,6 @@ Conda scripts.
 Conda scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,8 +15,8 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-if (Get-Command conda.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command conda.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     #region conda initialize
     # !! Contents within this block are managed by 'conda init' !!
     (& "conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
@@ -31,11 +30,13 @@ if (Get-Command conda.exe -ErrorAction SilentlyContinue | Test-Path) {
     ${function:cni}     = { conda init powershell }
     ${function:cneu}    = { conda update -n @args -c defaults conda  }
 
-    function cupdate {
+    function cupdate
+    {
         conda update -n base -c defaults conda
     }
 
-    function Install-Conda-Cling {
+    function Install-Conda-Cling
+    {
         conda install cling -c QuantStack -c conda-forge
         conda install xeus-cling -c QuantStack -c conda-forge
         conda install notebook -c conda-forge

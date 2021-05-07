@@ -6,7 +6,6 @@ QT scripts.
 QT scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 function Find-QT
 {
@@ -27,11 +25,11 @@ function Find-QT
     Write-Host "List of QT Toolset on this PC:"
     if ($QTVersions)
     {
-        foreach($v in $QTVersions)
+        foreach ($v in $QTVersions)
         {
             $CurrentQT = "C:\Qt\" + $v
             (Get-ChildItem $CurrentQT).Name | ForEach-Object {
-                If ($_ -match "Src" -Or $_ -match "sha1s.txt")
+                if ($_ -match "Src" -Or $_ -match "sha1s.txt")
                 {
                     continue
                 }
@@ -58,7 +56,7 @@ function Set-QT
     $CurrentQTPath = "C:\Qt\" + $ChoosenQTVersion
     $QTToolsets = @()
     (Get-ChildItem $CurrentQTPath).Name | ForEach-Object {
-        If ($_ -Match "^Src$" -Or $_ -Match "^sha1s.txt$")
+        if ($_ -Match "^Src$" -Or $_ -Match "^sha1s.txt$")
         {
             return
         }

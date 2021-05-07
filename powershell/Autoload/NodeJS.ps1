@@ -6,7 +6,6 @@ NodeJS' scripts.
 NodeJS' scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {

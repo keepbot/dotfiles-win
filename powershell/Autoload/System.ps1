@@ -6,7 +6,6 @@ System scripts.
 System scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,10 +15,8 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
 # Clear screen
 Set-Alias c Clear-Host
-
 
 # Empty the Recycle Bin on all drives
 function EmptyRecycleBin
@@ -44,7 +41,7 @@ function Reload-Powershell
 {
     function Invoke-PowerShell
     {
-        if($PSVersionTable.PSEdition -eq "Core")
+        if ($PSVersionTable.PSEdition -eq "Core")
         {
             pwsh -ExecutionPolicy Bypass -NoLogo -NoExit
         }
@@ -96,10 +93,13 @@ Set-Alias update System-Update
 # Sudo
 function sudo()
 {
-    if ($args.Length -eq 1) {
+    if ($args.Length -eq 1)
+    {
         start-process $args[0] -verb "runAs"
     }
-    if ($args.Length -gt 1) {
+
+    if ($args.Length -gt 1)
+    {
         start-process $args[0] -ArgumentList $args[1..$args.Length] -verb "runAs"
     }
 }
@@ -123,26 +123,33 @@ function Get-WindowsKey
     $hklm = 2147483650
     $regPath = "Software\Microsoft\Windows NT\CurrentVersion"
     $regValue = "DigitalProductId"
-    Foreach ($target in $targets) {
+    foreach ($target in $targets)
+    {
         $productKey = $null
         $win32os = $null
         $wmi = [WMIClass]"\\$target\root\default:stdRegProv"
         $data = $wmi.GetBinaryValue($hklm,$regPath,$regValue)
         $binArray = ($data.uValue)[52..66]
         $charsArray = "B","C","D","F","G","H","J","K","M","P","Q","R","T","V","W","X","Y","2","3","4","6","7","8","9"
+
         ## decrypt base24 encoded binary data
-        For ($i = 24; $i -ge 0; $i--) {
+        for ($i = 24; $i -ge 0; $i--)
+        {
             $k = 0
-            For ($j = 14; $j -ge 0; $j--) {
+            for ($j = 14; $j -ge 0; $j--)
+            {
                 $k = $k * 256 -bxor $binArray[$j]
                 $binArray[$j] = [math]::truncate($k / 24)
                 $k = $k % 24
             }
+
             $productKey = $charsArray[$k] + $productKey
-            If (($i % 5 -eq 0) -and ($i -ne 0)) {
+            if (($i % 5 -eq 0) -and ($i -ne 0))
+            {
                 $productKey = "-" + $productKey
             }
         }
+
         # Write-host "Here:" + $productKey
         $win32os = Get-WmiObject Win32_OperatingSystem -computer $target
         $obj = New-Object Object

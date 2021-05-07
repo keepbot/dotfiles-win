@@ -1,3 +1,19 @@
+<#
+.SYNOPSIS
+Sonar scripts.
+
+.DESCRIPTION
+Sonar scripts.
+#>
+
+# Check invocation
+if ($MyInvocation.InvocationName -ne '.')
+{
+    Write-Host `
+        "Error: Bad invocation. $($MyInvocation.MyCommand) supposed to be sourced. Exiting..." `
+        -ForegroundColor Red
+    Exit
+}
 
 function sonar_set_token
 {
@@ -22,7 +38,8 @@ function sonar_run_msbuild_cpp
         [string] $WinSDK = '8.1'
     )
 
-    if (-Not (Get-Command build-wrapper-win-x86-64.exe -ErrorAction SilentlyContinue | Test-Path)) {
+    if (-Not (Get-Command build-wrapper-win-x86-64.exe -ErrorAction SilentlyContinue | Test-Path))
+    {
         Write-Host `
             "ERROR: build-wrapper-win-x86-64.exe wasn't found. Please download it from https://sonarcloud.io/ and add it to `$PATH. Exiting..." `
             -ForegroundColor Red
@@ -46,22 +63,32 @@ function sonar_scan_ormco_cpp
         [string] $Threads = '4'
     )
 
-    if (-Not (Get-Command sonar-scanner.bat -ErrorAction SilentlyContinue | Test-Path)) {
+    if (-Not (Get-Command sonar-scanner.bat -ErrorAction SilentlyContinue | Test-Path))
+    {
         Write-Host `
             "ERROR: sonar-scanner.bat wasn't found. Please download it from https://sonarcloud.io/ and add it to `$PATH. Exiting..." `
             -ForegroundColor Red
         return
     }
 
-    Switch ($Language) {
-        'maven'     { $cmd  = "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar" }
-        'gradle'    { $cmd  = "./gradlew sonarqube" }
-        'dotnet'    {
+    switch ($Language)
+    {
+        'maven'
+        {
+            $cmd  = "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar"
+        }
+        'gradle'
+        {
+            $cmd  = "./gradlew sonarqube"
+        }
+        'dotnet'
+        {
             $cmd  = 'dotnet sonarscanner begin /o:"ormcornd" /k:"ormcornd_alignerweb-api" /d:sonar.host.url="https://sonarcloud.io"; '
             $cmd  = 'dotnet build -c release; '
             $cmd  = 'dotnet sonarscanner end'
         }
-        'cpp'       {
+        'cpp'
+        {
             $cmd  = "sonar-scanner.bat"
             $cmd += " -Dsonar.cfamily.build-wrapper-output=bw-output"
             $cmd += " -Dsonar.cfamily.threads=${Threads}"
@@ -70,7 +97,8 @@ function sonar_scan_ormco_cpp
             $cmd += " -Dsonar.projectKey=${ProjectKey}"
             $cmd += " -Dsonar.sources=."
         }
-        Default     {
+        Default
+        {
             $cmd  = "sonar-scanner.bat"
             $cmd += " -Dsonar.host.url=https://sonarcloud.io"
             $cmd += " -Dsonar.organization=${Organization}"

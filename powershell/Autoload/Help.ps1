@@ -6,7 +6,6 @@ Information and Help scripts.
 Information and Help scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,9 +15,9 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
 # Get help from cheat.sh
-function cht {
+function cht
+{
     param
     (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]

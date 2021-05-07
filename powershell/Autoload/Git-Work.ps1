@@ -6,7 +6,6 @@ Personalized git scripts for work.
 Personalized git scripts for work.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,9 +15,9 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
 # Git:
-if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     function grcpr
     {
         git fetch origin main

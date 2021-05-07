@@ -6,7 +6,6 @@ Environment scripts.
 Environment scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 # Make vim the default editor\
 # $Env:VISUAL = "vim --nofork"
@@ -138,7 +136,7 @@ function Initialize-Paths-APP
 
     foreach ($path in $paths)
     {
-        If (Test-Path $path)
+        if (Test-Path $path)
         {
             $final_path += ";$path"
         }
@@ -191,7 +189,7 @@ function Initialize-Paths-SYS
 
     foreach ($path in $paths)
     {
-        If (Test-Path $path)
+        if (Test-Path $path)
         {
             $final_path += ";$path"
         }
@@ -253,7 +251,7 @@ function Initialize-Paths-User
 
     foreach ($path in $paths)
     {
-        If (Test-Path $path)
+        if (Test-Path $path)
         {
             $final_path += ";$path"
         }
@@ -276,38 +274,57 @@ function Set-Env
     Reset-Environment
 
     $system_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
-    if ($env:PYTHON_PATH) {
+    if ($env:PYTHON_PATH)
+    {
         $system_path += ";$env:PYTHON_PATH\Scripts"
         $system_path += ";$env:PYTHON_PATH"
     }
-    # if ($env:PYENV) {
+
+    # if ($env:PYENV)
+    # {
     #     $system_path += ";$env:PYENV\bin"
     #     $system_path += ";$env:PYENV\shims"
     # }
-    if ($env:RUBY_PATH) {
+
+    if ($env:RUBY_PATH)
+    {
         $system_path += ";$env:RUBY_PATH"
     }
-    if ($env:RPROJECT_PATH) {
+
+    if ($env:RPROJECT_PATH)
+    {
         $system_path += ";$env:RPROJECT_PATH"
     }
-    if ($env:JAVA_HOME) {
+
+    if ($env:JAVA_HOME)
+    {
         $system_path += ";$env:JAVA_HOME\bin"
     }
-    if ($env:VC_IDE) {
+
+    if ($env:VC_IDE)
+    {
         $system_path += ";$env:VC_IDE"
     }
+
     # if ($env:VC_PATH) {
     #     $system_path += ";$env:VC_PATH"
     # }
-    if ($env:QTDIR) {
+
+    if ($env:QTDIR)
+    {
         $system_path += ";$env:QTDIR\bin"
     }
-    if ($env:SquishBinDir) {
+
+    if ($env:SquishBinDir)
+    {
         $system_path += ";$env:SquishBinDir"
     }
-    if ($env:VISUALGDB_DIR) {
+
+    if ($env:VISUALGDB_DIR)
+    {
         $system_path += ";$env:VISUALGDB_DIR"
     }
+
     $system_path += ";$env:PathsApp"
     $system_path += ";$env:PathsSys"
     [Environment]::SetEnvironmentVariable("PATH", "$system_path", "Machine")
@@ -318,23 +335,22 @@ function Set-Env
     [Environment]::SetEnvironmentVariable("LANG", "en_US", "Machine")
 
     # Development Env
-    If (Test-Path "C:\Program Files\Git LFS")  {
+    if (Test-Path "C:\Program Files\Git LFS")
+    {
         [Environment]::SetEnvironmentVariable("GIT_LFS_PATH", "C:\Program Files\Git LFS", "Machine")
     }
 
     # Set-PowershellEnvironment
-
     Set-WorkEnv
-
     Reset-Environment
 }
 
 function Set-WorkEnv
 {
-    # If (Test-Path "$env:HOME\workspace\ormco\common\aligner-thirdparty")  {
+    # if (Test-Path "$env:HOME\workspace\ormco\common\aligner-thirdparty")  {
     #     [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "$env:HOME\workspace\ormco\common\aligner-thirdparty", "Machine")
     # }
-    # If (Test-Path "$env:HOME\workspace\ormco\aligner\testdataaligner")  {
+    # if (Test-Path "$env:HOME\workspace\ormco\aligner\testdataaligner")  {
     #     [Environment]::SetEnvironmentVariable("TESTDATA_LOCATION", "$env:HOME\workspace\ormco\aligner\testdataaligner", "Machine")
     # }
 }
@@ -361,7 +377,7 @@ function Set-PowershellEnvironment
 
     foreach ($path in $paths)
     {
-        If (Test-Path $path)
+        if (Test-Path $path)
         {
             $final_path += ";$path"
         }
@@ -401,7 +417,7 @@ function Reset-Environment
 function Edit-Hosts
 {
     Invoke-Expression "sudo $(
-        if($null -ne $env:EDITOR)
+        if ($null -ne $env:EDITOR)
         {
             $env:EDITOR
         }
@@ -414,7 +430,7 @@ function Edit-Hosts
 function Edit-Profile
 {
     Invoke-Expression "$(
-        if($null -ne $env:EDITOR)
+        if ($null -ne $env:EDITOR)
         {
             $env:EDITOR
         }

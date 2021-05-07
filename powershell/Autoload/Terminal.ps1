@@ -7,7 +7,6 @@ Terminal scripts.
 Terminal scripts.
 #>
 
-`
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {

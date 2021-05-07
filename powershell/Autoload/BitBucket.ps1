@@ -6,7 +6,6 @@ Bitbucket scripts.
 Bitbucket scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,10 +15,8 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
 ${function:git-ssh-bb}  = { (Get-Content .gitmodules).replace('https://bitbucket.org/', 'git@bitbucket.org:') | Set-Content .gitmodules }
 ${function:git-ssh-bbr} = { (Get-Content .gitmodules).replace('git@bitbucket.org:', 'https://bitbucket.org/') | Set-Content .gitmodules }
-
 
 function Set-BitbucketOAuthCreds
 {
@@ -36,12 +33,12 @@ function Set-BitbucketOAuthCreds
     Add-Content $SecretFile "$Secret"
 }
 
-
 function Get-BitbucketOAuthToken
 {
     [string] $SecretFile   = (Join-Path $env:USERPROFILE '.bitbucket.secrets')
 
-    if (-Not (Test-Path -Path $SecretFile)) {
+    if (-Not (Test-Path -Path $SecretFile))
+    {
         Write-Host `
             "ERROR: Secretfile $SecretFile wasn't found. Run 'Set-BitbucketOAuthCreds' for initialization. Exiting..." `
             -ForegroundColor Red
@@ -59,12 +56,12 @@ function Get-BitbucketOAuthToken
     return $OAuthToken
 }
 
-
 function Get-BitbucketOAuthTokenCurl
 {
     [string] $SecretFile   = (Join-Path $env:USERPROFILE '.bitbucket.secrets')
 
-    if (-Not (Test-Path -Path $SecretFile)) {
+    if (-Not (Test-Path -Path $SecretFile))
+    {
         Write-Host "ERROR: Secretfile $SecretFile wasn't found. Run 'Set-BitbucketOAuthCreds' for initialization. Exiting..." -ForegroundColor Red
         return
     }
@@ -78,7 +75,6 @@ function Get-BitbucketOAuthTokenCurl
     $Response = (curl.exe -k -X POST -H "Authorization: Basic ${base64AuthInfo})" $UriToken -d "grant_type=client_credentials" -s) | ConvertFrom-Json
     return $Response.access_token
 }
-
 
 function Invoke-BitbucketAPIUri
 {
@@ -97,7 +93,7 @@ function Invoke-BitbucketAPIUri
 
     };
 
-    If ($ShowRequestUri)
+    if ($ShowRequestUri)
     {
         Write-Host "Request URI: $Uri" -ForegroundColor Yellow
     }
@@ -119,7 +115,7 @@ function Invoke-BitbucketAPIUri-Curl
         [switch] $ShowRequestUri
     )
 
-    If($VerboseOutput)
+    if ($VerboseOutput)
     {
         $CurlArgs += '-v'
     }
@@ -127,7 +123,7 @@ function Invoke-BitbucketAPIUri-Curl
     $Token = Get-BitbucketOAuthTokenCurl
     $Headers = "Authorization: Bearer ${Token}; Content-Type: application/json"
 
-    If ($ShowRequestUri)
+    if ($ShowRequestUri)
     {
         Write-Host "Request URI: $Uri" -ForegroundColor Yellow
     }
@@ -135,7 +131,6 @@ function Invoke-BitbucketAPIUri-Curl
     $Response = (curl.exe -k -X ${Method} -H ${Headers} ${Uri} ${CurlArgs})
     return $Response
 }
-
 
 function Invoke-BitbucketAPI-Simple
 {
@@ -161,7 +156,6 @@ function Invoke-BitbucketAPI-Simple
     return $Response
 }
 
-
 function Invoke-BitbucketAPI-Simple-Curl
 {
     [CmdletBinding()]
@@ -174,7 +168,7 @@ function Invoke-BitbucketAPI-Simple-Curl
         [switch] $VerboseOutput
     )
 
-    If($VerboseOutput)
+    if ($VerboseOutput)
     {
         $CurlArgs += '-v'
     }
@@ -183,7 +177,6 @@ function Invoke-BitbucketAPI-Simple-Curl
     $Response = Invoke-BitbucketAPIUri-Curl -Uri $Uri -Method $Method -CurlArgs $CurlArgs -ShowRequestUri
     return $Response
 }
-
 
 function Invoke-BitbucketAPI
 {
@@ -204,7 +197,6 @@ function Invoke-BitbucketAPI
     return $Response
 }
 
-
 function Invoke-BitbucketAPI-Curl
 {
     [CmdletBinding()]
@@ -219,7 +211,7 @@ function Invoke-BitbucketAPI-Curl
         [switch] $VerboseOutput
     )
 
-    If($VerboseOutput)
+    if ($VerboseOutput)
     {
         $CurlArgs += '-v'
     }
@@ -229,7 +221,6 @@ function Invoke-BitbucketAPI-Curl
     $Response = Invoke-BitbucketAPIUri-Curl -Uri $Uri -Method $Method -CurlArgs $CurlArgs -ShowRequestUri
     return $Response
 }
-
 
 function Get-BitbucketPR
 {
@@ -242,7 +233,6 @@ function Get-BitbucketPR
     return $Response
 }
 
-
 function Get-BitbucketPR-Curl
 {
     [CmdletBinding()]
@@ -254,7 +244,6 @@ function Get-BitbucketPR-Curl
     return $Response
 }
 
-
 function Get-BitbucketPRComments
 {
     [CmdletBinding()]
@@ -265,7 +254,6 @@ function Get-BitbucketPRComments
     $Response = Invoke-BitbucketAPI -RequestPath "/$PR/comments"
     return $Response
 }
-
 
 function Get-BitbucketPRDiff
 {
@@ -296,7 +284,7 @@ function Get-BitbucketPRDiff
     catch
     {
         $_.Exception.Response.Headers | Format-List
-        if(($_.Exception.GetType() -match "HttpResponseException") -and ($_.Exception -match "302"))
+        if (($_.Exception.GetType() -match "HttpResponseException") -and ($_.Exception -match "302"))
         {
             $Response = Invoke-BitbucketAPIUri $_.Exception.Response.Headers.Location.AbsoluteUri
         }
@@ -307,7 +295,6 @@ function Get-BitbucketPRDiff
     }
     return $Response
 }
-
 
 function Get-BitbucketUser
 {
@@ -321,7 +308,6 @@ function Get-BitbucketUser
     return $Response
 }
 
-
 function Get-BitbucketUser-Curl
 {
     [CmdletBinding()]
@@ -333,7 +319,6 @@ function Get-BitbucketUser-Curl
     $Response = Invoke-BitbucketAPI-Curl -Type "/$AccountID" -UriSuffix 'users'
     return $Response
 }
-
 
 function Get-BitbucketTeamMembers
 {
@@ -360,7 +345,6 @@ function Get-BitbucketTeamMembers
     $Response = Invoke-BitbucketAPI -Type "/${Team}/members?pagelen=100" -UriSuffix 'teams'
     return $Response
 }
-
 
 function Get-BitbucketTeamMembers-Curl
 {
@@ -414,7 +398,6 @@ function Show-BitbucketTeamMembers
     return $Response.values | Format-Table -Property display_name,has_2fa_enabled,nickname,account_id,account_status,uuid -AutoSize
 }
 
-
 function Show-BitbucketTeamMembers-Curl
 {
     [CmdletBinding()]
@@ -441,7 +424,6 @@ function Show-BitbucketTeamMembers-Curl
     # return $Response.values | Format-Table -Property display_name,has_2fa_enabled,nickname,account_id,account_status,uuid -AutoSize
 }
 
-
 function Get-BitbucketWikiPage
 {
     # DEPRECATED API
@@ -455,7 +437,6 @@ function Get-BitbucketWikiPage
     return $Response
 }
 
-
 if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
 {
     ${function:list_bb_user_repos} = {
@@ -464,7 +445,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
         $count = 0
         do
         {
-            foreach($repo in $repoList.values)
+            foreach ($repo in $repoList.values)
             {
                 $count += 1
                 Write-Host "$count.`t" -NoNewLine
@@ -478,7 +459,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
         $repoList = Invoke-BitbucketAPIUri "https://api.bitbucket.org/2.0/repositories/$($args[0])?pagelen=100"
         do
         {
-            foreach($repo in $repoList.values)
+            foreach ($repo in $repoList.values)
             {
                 $response = Invoke-BitbucketAPIUri "https://api.bitbucket.org/2.0/repositories/$($repo.full_name)"
                 git.exe clone --recurse-submodules $(($response.links.clone | Where-Object {$_.name -eq 'https'}).href)
@@ -491,7 +472,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
         $repoList = Invoke-BitbucketAPIUri "https://api.bitbucket.org/2.0/repositories/$($args[0])?pagelen=100"
         do
         {
-            foreach($repo in $repoList.values)
+            foreach ($repo in $repoList.values)
             {
                 $response = Invoke-BitbucketAPIUri "https://api.bitbucket.org/2.0/repositories/$($repo.full_name)"
                 git.exe clone --recurse-submodules $(($response.links.clone | Where-Object {$_.name -eq 'ssh'}).href)

@@ -6,7 +6,6 @@ Debugging scripts.
 Debugging scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,7 +15,7 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-if (Get-Command gdb.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command gdb.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ${function:gdb_py}   = { gdb.exe -ex r --args python @args }
 }

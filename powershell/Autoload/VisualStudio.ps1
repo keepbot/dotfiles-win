@@ -6,7 +6,6 @@ Visual Studio scripts.
 Visual Studio scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 function Set-VCToolsArchx64
 {
@@ -53,7 +51,8 @@ function Set-VCToolsArchx64
     }
 }
 
-function Find-VC {
+function Find-VC
+{
     $VS_Community_2017      = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
     $VS_BuildTools_2017     = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
     $VS_Professional_2017   = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional'
@@ -65,64 +64,100 @@ function Find-VC {
     $VS_Enterprise_2019     = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise'
 
     # if (Test-Path 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\')
-    if (Test-Path "$VS_Community_2017\VC\Tools\MSVC\") {
+    if (Test-Path "$VS_Community_2017\VC\Tools\MSVC\")
+    {
         $CommunityVersions2017 = $((Get-ChildItem "$VS_Community_2017\VC\Tools\MSVC\").Name)
     }
-    if (Test-Path "$VS_BuildTools_2017\VC\Tools\MSVC\") {
+
+    if (Test-Path "$VS_BuildTools_2017\VC\Tools\MSVC\")
+    {
         $BuildToolsVersions2017 = $((Get-ChildItem "$VS_BuildTools_2017\VC\Tools\MSVC\").Name)
     }
-    if (Test-Path "$VS_Professional_2017\VC\Tools\MSVC\") {
+
+    if (Test-Path "$VS_Professional_2017\VC\Tools\MSVC\")
+    {
         $ProfessionalVersions2017 = $((Get-ChildItem "$VS_Professional_2017\VC\Tools\MSVC\").Name)
     }
-    if (Test-Path "$VS_Enterprise_2017\VC\Tools\MSVC\") {
+
+    if (Test-Path "$VS_Enterprise_2017\VC\Tools\MSVC\")
+    {
         $EnterpriseVersions2017 = $((Get-ChildItem "$VS_Enterprise_2017\VC\Tools\MSVC\").Name)
     }
-    if (Test-Path "$VS_Preview_2019\VC\Tools\MSVC\") {
+
+    if (Test-Path "$VS_Preview_2019\VC\Tools\MSVC\")
+    {
         $PreviewVersions2019 = $((Get-ChildItem "$VS_Preview_2019\VC\Tools\MSVC\").Name)
     }
-    if (Test-Path "$VS_Community_2019\VC\Tools\MSVC\") {
+
+    if (Test-Path "$VS_Community_2019\VC\Tools\MSVC\")
+    {
         $CommunityVersions2019 = $((Get-ChildItem "$VS_Community_2019\VC\Tools\MSVC\").Name)
     }
-    if (Test-Path "$VS_BuildTools_2019\VC\Tools\MSVC\") {
+
+    if (Test-Path "$VS_BuildTools_2019\VC\Tools\MSVC\")
+    {
         $BuildToolsVersions2019 = $((Get-ChildItem "$VS_BuildTools_2019\VC\Tools\MSVC\").Name)
     }
-    if (Test-Path "$VS_Professional_2019\VC\Tools\MSVC\") {
+
+    if (Test-Path "$VS_Professional_2019\VC\Tools\MSVC\")
+    {
         $ProfessionalVersions2019 = $((Get-ChildItem "$VS_Professional_2019\VC\Tools\MSVC\").Name)
     }
-    if (Test-Path "$VS_Enterprise_2019\VC\Tools\MSVC\") {
+
+    if (Test-Path "$VS_Enterprise_2019\VC\Tools\MSVC\")
+    {
         $EnterpriseVersions2019 = $((Get-ChildItem "$VS_Enterprise_2019\VC\Tools\MSVC\").Name)
     }
+
     Write-Host "List of VC versions on this PC:"
-    if ($CommunityVersions2017) {
-        foreach($v in $CommunityVersions2017) {Write-Host " -" $v " (VS Community 2017)"}
+    if ($CommunityVersions2017)
+    {
+        foreach ($v in $CommunityVersions2017) {Write-Host " -" $v " (VS Community 2017)"}
     }
-    if ($BuildToolsVersions2017) {
-        foreach($v in $BuildToolsVersions2017) {Write-Host " -" $v " (VS BuildTools 2017)"}
+
+    if ($BuildToolsVersions2017)
+    {
+        foreach ($v in $BuildToolsVersions2017) {Write-Host " -" $v " (VS BuildTools 2017)"}
     }
-    if ($ProfessionalVersions2017) {
-        foreach($v in $ProfessionalVersions2017) {Write-Host " -" $v " (VS Professional 2017)"}
+
+    if ($ProfessionalVersions2017)
+    {
+        foreach ($v in $ProfessionalVersions2017) {Write-Host " -" $v " (VS Professional 2017)"}
     }
-    if ($EnterpriseVersions2017) {
-        foreach($v in $EnterpriseVersions2017) {Write-Host " -" $v " (VS Enterprise 2017)"}
+
+    if ($EnterpriseVersions2017)
+    {
+        foreach ($v in $EnterpriseVersions2017) {Write-Host " -" $v " (VS Enterprise 2017)"}
     }
-    if ($PreviewVersions2019) {
-        foreach($v in $PreviewVersions2019) {Write-Host " -" $v " (VS Preview 2019)"}
+
+    if ($PreviewVersions2019)
+    {
+        foreach ($v in $PreviewVersions2019) {Write-Host " -" $v " (VS Preview 2019)"}
     }
-    if ($CommunityVersions2019) {
-        foreach($v in $CommunityVersions2019) {Write-Host " -" $v " (VS Community 2019)"}
+
+    if ($CommunityVersions2019)
+    {
+        foreach ($v in $CommunityVersions2019) {Write-Host " -" $v " (VS Community 2019)"}
     }
-    if ($BuildToolsVersions2019) {
-        foreach($v in $BuildToolsVersions2019) {Write-Host " -" $v " (VS BuildTools 2019)"}
+
+    if ($BuildToolsVersions2019)
+    {
+        foreach ($v in $BuildToolsVersions2019) {Write-Host " -" $v " (VS BuildTools 2019)"}
     }
-    if ($ProfessionalVersions2019) {
-        foreach($v in $ProfessionalVersions2019) {Write-Host " -" $v " (VS Professional 2019)"}
+
+    if ($ProfessionalVersions2019)
+    {
+        foreach ($v in $ProfessionalVersions2019) {Write-Host " -" $v " (VS Professional 2019)"}
     }
-    if ($EnterpriseVersions2019) {
-        foreach($v in $EnterpriseVersions2019) {Write-Host " -" $v " (VS Enterprise 2019)"}
+
+    if ($EnterpriseVersions2019)
+    {
+        foreach ($v in $EnterpriseVersions2019) {Write-Host " -" $v " (VS Enterprise 2019)"}
     }
 }
 
-function Set-VC {
+function Set-VC
+{
     $tools = @(
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
@@ -136,9 +171,12 @@ function Set-VC {
     )
 
     $VCVersions = @()
-    foreach($tool in $tools) {
-        if (Test-Path "$tool\VC\Tools\MSVC\") {
-            foreach($ver in $(Get-ChildItem "$tool\VC\Tools\MSVC").Name ) {
+    foreach ($tool in $tools)
+    {
+        if (Test-Path "$tool\VC\Tools\MSVC\")
+        {
+            foreach ($ver in $(Get-ChildItem "$tool\VC\Tools\MSVC").Name )
+            {
                 $VCVersions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx86").FullName
                 $VCVersions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx64").FullName
             }
@@ -150,7 +188,8 @@ function Set-VC {
     # Set-Env
 }
 
-function Set-VSINSTALLDIRS {
+function Set-VSINSTALLDIRS
+{
     $tools = @(
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
@@ -164,8 +203,10 @@ function Set-VSINSTALLDIRS {
     )
 
     $VSVersions = @()
-    foreach($tool in $tools) {
-        if (Test-Path "$tool\VC\Tools\MSVC\") {
+    foreach ($tool in $tools)
+    {
+        if (Test-Path "$tool\VC\Tools\MSVC\")
+        {
             $VSVersions += $tool
         }
     }
@@ -176,18 +217,22 @@ function Set-VSINSTALLDIRS {
     # Set-Env
 }
 
-function Clear-VSINSTALLDIRS {
+function Clear-VSINSTALLDIRS
+{
     [Environment]::SetEnvironmentVariable("VSINSTALLDIR", $null, "Machine")
     [Environment]::SetEnvironmentVariable("VCINSTALLDIR", $null, "Machine")
-    if ($env:VSINSTALLDIR) {
+    if ($env:VSINSTALLDIR)
+    {
         Remove-Item Env:VSINSTALLDIR
     }
-    if ($env:VCINSTALLDIR) {
+    if ($env:VCINSTALLDIR)
+    {
         Remove-Item Env:VCINSTALLDIR
     }
 }
 
-function Set-VC-Session {
+function Set-VC-Session
+{
     $tools = @(
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community'
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools'
@@ -201,9 +246,12 @@ function Set-VC-Session {
     )
 
     $VCVersions = @()
-    foreach($tool in $tools) {
-        if (Test-Path "$tool\VC\Tools\MSVC\") {
-            foreach($ver in $(Get-ChildItem "$tool\VC\Tools\MSVC").Name ) {
+    foreach ($tool in $tools)
+    {
+        if (Test-Path "$tool\VC\Tools\MSVC\")
+        {
+            foreach ($ver in $(Get-ChildItem "$tool\VC\Tools\MSVC").Name)
+            {
                 $VCVersions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx86").FullName
                 $VCVersions += $(Get-ChildItem "$tool\VC\Tools\MSVC\$ver\bin\Hostx64").FullName
             }
@@ -214,7 +262,8 @@ function Set-VC-Session {
     Set-Item -Path Env:PATH -Value "$ChoosenVCVersion;$Env:PATH"
 }
 
-function Set-VC-IDE {
+function Set-VC-IDE
+{
     $ideList = @(
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE'
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\IDE'
@@ -226,30 +275,33 @@ function Set-VC-IDE {
         'C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE'
         'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE'
     )
-
     $VCIDEVersions = @()
-    foreach($ide in $ideList) {
-        if (Test-Path "$ide") {
+    foreach ($ide in $ideList)
+    {
+        if (Test-Path "$ide")
+        {
             $VCIDEVersions += $ide
         }
     }
-
     $ChoosenVCIDEVersion = Select-From-List $VCIDEVersions "Visual Studio IDE Version: "
     [Environment]::SetEnvironmentVariable("VC_IDE", $ChoosenVCIDEVersion, "Machine")
     # Set-Env
 }
 
-function Clear-VC {
+function Clear-VC
+{
     [Environment]::SetEnvironmentVariable("VC_IDE", $null, "Machine")
     [Environment]::SetEnvironmentVariable("VC_PATH", $null, "Machine")
-    if ($env:VC_PATH) {
+    if ($env:VC_PATH)
+    {
         Remove-Item Env:VC_IDE
         Remove-Item Env:VC_PATH
     }
     # Set-Env
 }
 
-function Get-VS {
+function Get-VS
+{
     $ideList = @(
         'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\devenv.exe'
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\devenv.exe'
@@ -261,14 +313,17 @@ function Get-VS {
         'C:\Program Files (x86)\Microsoft Visual Studio\2017\Preview\Common7\IDE\devenv.exe'
 
     )
-    foreach($ide in $ideList) {
-        if (Test-Path "$ide") {
+    foreach ($ide in $ideList)
+    {
+        if (Test-Path "$ide")
+        {
             return $ide
         }
     }
 }
 
-function Set-VC-Vars-All {
+function Set-VC-Vars-All
+{
     <#
     .SYNOPSIS
         Script to initialize all VC Variables.
@@ -315,7 +370,8 @@ function Set-VC-Vars-All {
         [switch]$Help
     )
 
-    if ($Help) {
+    if ($Help)
+    {
         Write-Host '
         Syntax:
             VC-Vars-All [-Arch <string>] [-SDK <string>] [-Platform <string>] [-VC <string>] [-Spectre] [-Help]
@@ -347,31 +403,38 @@ function Set-VC-Vars-All {
 
     $cmd_string = "cmd /c "
 
-    foreach($distro in $VC_Distros) {
+    foreach ($distro in $VC_Distros)
+    {
         $vars_file = $distro + "\VC\Auxiliary\Build\vcvarsall.bat"
-        if (Test-Path "$vars_file") {
+        if (Test-Path "$vars_file")
+        {
             $cmd_string += "`'`"" + $vars_file + "`" " + $Arch
             break
         }
     }
 
-    If ($Arch -eq "x64" -Or $Arch -eq "x64_x86"){
+    if ($Arch -eq "x64" -Or $Arch -eq "x64_x86")
+    {
         Set-Item -Path Env:PreferredToolArchitecture -Value "x64"
     }
 
-    if ($Platform) {
+    if ($Platform)
+    {
         $cmd_string += " " + $Platform
     }
 
-    if ($SDK) {
+    if ($SDK)
+    {
         $cmd_string += " " + $SDK
     }
 
-    if ($VC) {
+    if ($VC)
+    {
         $cmd_string += " -vcvars_ver=" + $VC
     }
 
-    if ($Spectre) {
+    if ($Spectre)
+    {
         $cmd_string += " -vcvars_spectre_libs=spectre"
     }
 
@@ -381,28 +444,33 @@ function Set-VC-Vars-All {
 
     Invoke-Expression $cmd_string |
     ForEach-Object {
-        if ($_ -match "=") {
+        if ($_ -match "=")
+        {
             $v = $_.split("="); set-item -force -path "ENV:\$($v[0])" -value "$($v[1])"
         }
     }
 }
 
-if ($ENV:VSDevEnv){
+if ($ENV:VSDevEnv)
+{
     ${function:vs}              = { if (-Not ${ENV:VCToolsVersion}) { dev }; devenv @args }
     ${function:vsix}            = { dev; VSIXInstaller.exe @args }
     # color picker: 11559f0c-c44f-4a26-98e7-f5015f07d691
     ${function:vsix_remove}     = { dev; VSIXInstaller.exe /u:@args }
-} else {
+}
+else
+{
     ${function:vs}              = { if (-Not ${ENV:VCToolsVersion}) { Set-VC-Vars-All }; devenv @args }
     ${function:vsix}            = { Set-VC-Vars-All; VSIXInstaller.exe @args }
     # color picker: 11559f0c-c44f-4a26-98e7-f5015f07d691
     ${function:vsix_remove}     = { Set-VC-Vars-All; VSIXInstaller.exe /u:@args }
 }
+
 ${function:vs64}                = { Set-VC-Vars-All x64; devenv @args }
 ${function:vs32}                = { Set-VC-Vars-All x86; devenv @args }
 ${function:vssafe}              = { vs /SafeMode @args }
 
-If (Test-Path "C:\Program Files\Microsoft VS Code\bin")
+if (Test-Path "C:\Program Files\Microsoft VS Code\bin")
 {
     ${function:icode}  = {code.cmd @args}
     ${function:vscode} = {code.cmd @args}

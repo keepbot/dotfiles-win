@@ -6,7 +6,6 @@ Unix-like scripts.
 Unix-like scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,11 +15,11 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-# Missing Bash aliases
 # Set-Alias time Measure-Command
 # ${function:time} = { Measure-Command { @args }}
-${function:time} = {
+
+function time
+{
     $command = $args
     $timings = $(Measure-Command { Invoke-Expression "${command}" | Out-Default })
     $obj = New-Object PSObject
@@ -43,6 +42,7 @@ ${function:time} = {
     Write-Host "Miliseconds :" $timings.TotalMilliseconds
     # Write-Host $('-' * 50)
 }
+
 # ${function:time} = {
 #     $sw = [Diagnostics.Stopwatch]::StartNew()
 #     Invoke-Expression "${args}" | Out-Default
@@ -50,9 +50,6 @@ ${function:time} = {
 #     $sw.Elapsed
 # }
 
-${function:lsf}         = { Get-ChildItem . | ForEach-Object{ $_.Name } }
-
-# WSL
 ${function:bash-wsl}    = { conemu-cyg-64.exe --wsl -cur_console:h0 }
 
 Set-Alias wc Measure-Object

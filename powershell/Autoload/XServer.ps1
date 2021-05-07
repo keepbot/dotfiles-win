@@ -7,7 +7,6 @@ X Server scripts.
 X Server scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {

@@ -6,7 +6,6 @@ Terraform scripts.
 Terraform scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,8 +15,8 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-if (Get-Command terraform.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command terraform.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ${function:terrafrom}   = { terraform.exe @args }
     ${function:t}           = { terraform.exe @args }
     ${function:ta}          = { terraform.exe apply terraform.plan @args }

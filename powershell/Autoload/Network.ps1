@@ -6,7 +6,6 @@ Network scripts.
 Network scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,8 +15,8 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-if (Get-Command dig.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command dig.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ${function:myip}   = { dig.exe +short myip.opendns.com `@resolver1.opendns.com }
     function digga
     {
@@ -33,7 +32,8 @@ if (Get-Command dig.exe -ErrorAction SilentlyContinue | Test-Path) {
 
         $cmd  = "dig.exe"
 
-        if ($DNSServer) {
+        if ($DNSServer)
+        {
             $cmd += " ``@${DNSServer}"
         }
 
@@ -58,7 +58,8 @@ if (Get-Command dig.exe -ErrorAction SilentlyContinue | Test-Path) {
 
         $cmd  = "dig.exe"
 
-        if ($DNSServer) {
+        if ($DNSServer)
+        {
             $cmd += " ``@${DNSServer}"
         }
 
@@ -68,14 +69,11 @@ if (Get-Command dig.exe -ErrorAction SilentlyContinue | Test-Path) {
         Invoke-Expression "${cmd}"
     }
 }
-${function:ipif} = {if ($($args[0])) {curl ipinfo.io/"$($args[0].ToString())"} else {curl ipinfo.io}}
 
-${function:localip} = { Get-NetIPAddress | Format-Table }
-
-${function:urlencode} = { python.exe -c "import sys, urllib.parse; print(urllib.parse.quote(str(sys.argv[1])));" @args }
-
+${function:ipif}        = { if ($($args[0])) {curl ipinfo.io/"$($args[0].ToString())"} else {curl ipinfo.io} }
+${function:localip}     = { Get-NetIPAddress | Format-Table }
+${function:urlencode}   = { python.exe -c "import sys, urllib.parse; print(urllib.parse.quote(str(sys.argv[1])));" @args }
 ${function:net_show_excluded} = { netsh interface ipv4 show excludedportrange protocol=tcp }
-
 ${function:net_show_connects} = { netstat -ano }
 
 function List-ServersSortedFastest
@@ -135,9 +133,13 @@ function List-ServersSortedFastest
             Name = 'DNSName'
             Expression = { if ($_.StatusCode -eq 0) {
                     if ($_.Address -like '*.*.*.*')
-                    { [Net.DNS]::GetHostByAddress($_.Address).HostName  }
+                    {
+                        [Net.DNS]::GetHostByAddress($_.Address).HostName
+                    }
                     else
-                    { [Net.DNS]::GetHostByName($_.Address).HostName  }
+                    {
+                        [Net.DNS]::GetHostByName($_.Address).HostName
+                    }
                 }
             }
         }
@@ -145,9 +147,7 @@ function List-ServersSortedFastest
 
     process
     {
-        $ServerList | ForEach-Object {
-            $null = $buffer.Add($_)
-        }
+        $ServerList | ForEach-Object { $null = $buffer.Add($_) }
     }
 
     end
@@ -178,9 +178,7 @@ function Get-FastestServerInList
 
     process
     {
-        $ServerList | ForEach-Object {
-            $null = $buffer.Add($_)
-        }
+        $ServerList | ForEach-Object { $null = $buffer.Add($_) }
     }
 
     end

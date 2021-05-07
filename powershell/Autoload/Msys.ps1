@@ -6,7 +6,6 @@ MSYS scripts.
 MSYS scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -16,8 +15,8 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
-
-function Use-Msys2 {
+function Use-Msys2
+{
     [CmdletBinding()]
     param
     (
@@ -25,12 +24,14 @@ function Use-Msys2 {
     )
     $msys_path = $(Get-Command msys2.exe -ErrorAction SilentlyContinue | Split-Path)
 
-    if ($msys_path) {
+    if ($msys_path)
+    {
         $msys_bin_path  = $(Join-Path $msys_path "usr\bin")
         $mingw_bin_path = $(Join-Path $msys_path "mingw${arch}\bin")
-
         Set-Item -Path Env:PATH -Value "${msys_bin_path};${mingw_bin_path};${Env:PATH}"
-    } else {
+    }
+    else
+    {
         Write-Host "ERROR: MSYS2 not found. Exiting..." -ForegroundColor Red
         return
     }

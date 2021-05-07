@@ -6,7 +6,6 @@ WASM scripts.
 WASM scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {

@@ -15,7 +15,6 @@ if ( $MyInvocation.InvocationName -ne '.' )
     Exit
 }
 
-
 function conan_set_vars
 {
     [CmdletBinding()]
@@ -26,22 +25,22 @@ function conan_set_vars
     )
 
     # Set Conan Home Path
-    if($ConanHome -ne "None")
+    if ($ConanHome -ne "None")
     {
         $Env:CONAN_USER_HOME="${ConanHome}"
         [Environment]::SetEnvironmentVariable("CONAN_USER_HOME", "${Env:CONAN_USER_HOME}", "Machine")
-        if(-Not (Test-Path "${Env:CONAN_USER_HOME}"))
+        if (-Not (Test-Path "${Env:CONAN_USER_HOME}"))
         {
             New-Item "${Env:CONAN_USER_HOME}" -ItemType Directory -ErrorAction SilentlyContinue
         }
     }
 
     # Set Conan Home Short Path
-    if($ConanShort -ne "None")
+    if ($ConanShort -ne "None")
     {
         $Env:CONAN_USER_HOME_SHORT="${ConanShort}"
         [Environment]::SetEnvironmentVariable("CONAN_USER_HOME_SHORT", "${Env:CONAN_USER_HOME_SHORT}", "Machine")
-        if(-Not (Test-Path "${Env:CONAN_USER_HOME_SHORT}"))
+        if (-Not (Test-Path "${Env:CONAN_USER_HOME_SHORT}"))
         {
             New-Item "${Env:CONAN_USER_HOME_SHORT}" -ItemType Directory -ErrorAction SilentlyContinue
         }
@@ -52,7 +51,7 @@ function conan_set_vars
         [Environment]::SetEnvironmentVariable("CONAN_USER_HOME_SHORT", "${Env:CONAN_USER_HOME_SHORT}", "Machine")
     }
 
-    if($Env:CONAN_USER_HOME)
+    if ($Env:CONAN_USER_HOME)
     {
         $Env:CONAN_TRACE_FILE="${Env:CONAN_USER_HOME}\conan.log"
         [Environment]::SetEnvironmentVariable("CONAN_TRACE_FILE", "${Env:CONAN_USER_HOME}\conan.log", "Machine")
@@ -88,7 +87,7 @@ $conan_env_path = 'c:\tools\conan_env'
 
 function conan_symlinks
 {
-    if($Env:CONAN_USER_HOME)
+    if ($Env:CONAN_USER_HOME)
     {
         $conan_my_path  = Join-Path $Env:USERPROFILE ".conan_my"
         $conan_config   = Join-Path $Env:CONAN_USER_HOME ".conan\conan.conf"
@@ -103,17 +102,17 @@ function conan_symlinks
         $conan_profiles = Join-Path $Env:USERPROFILE ".conan\profiles"
     }
 
-    if(-Not (Test-Path $conan_hooks))
+    if (-Not (Test-Path $conan_hooks))
     {
         New-Item "${conan_hooks}" -ItemType Directory -ErrorAction SilentlyContinue
     }
 
-    if(-Not (Test-Path $conan_profiles))
+    if (-Not (Test-Path $conan_profiles))
     {
         New-Item "${conan_profiles}" -ItemType Directory -ErrorAction SilentlyContinue
     }
 
-    if(Test-Path $conan_my_path)
+    if (Test-Path $conan_my_path)
     {
         Remove-Item -Force -Confirm:$false "${conan_config}" -ErrorAction SilentlyContinue
         cmd.exe /c mklink "${conan_config}" "${conan_my_path}\conan.conf"
@@ -174,7 +173,7 @@ Set-Alias cenv_activate ce
 
 function ced
 {
-    if(${Env:VIRTUAL_ENV})
+    if (${Env:VIRTUAL_ENV})
     {
         deactivate
     }
@@ -252,7 +251,7 @@ if (Get-Command conan.exe -ErrorAction SilentlyContinue | Test-Path)
 }
 
 function get_conan_home {
-    if(${Env:CONAN_USER_HOME})
+    if (${Env:CONAN_USER_HOME})
     {
         return ${Env:CONAN_USER_HOME}
     }
@@ -292,7 +291,8 @@ function conan_install
 # ${function:c_create}        = { ce; conan create . orthoplatform/stable }
 # ${function:c_create_mac}    = { ce; conan create . orthoplatform/stable --settings os=Macos }
 
-function c_install_ormco {
+function c_install_ormco
+{
     ce
     conan remove --locks
     conan install                                           `

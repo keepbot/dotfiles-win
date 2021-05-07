@@ -16,7 +16,7 @@ $AvailableSecurityProtocols.ForEach({
 # $PSDefaultParameterValues['*:Encoding'] = 'utf8'
 $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 
-# If (-Not ($env:ConEmuANSI) -And -Not ($env:RELOADED_TRUE)) {
+# if (-Not ($env:ConEmuANSI) -And -Not ($env:RELOADED_TRUE)) {
 #   #Write-Host "$PID.pid"
 #   $env:RELOADED_TRUE = 1
 #   $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell"
@@ -34,9 +34,9 @@ If (Test-Path $PrivatePSAutoladFolder)
 }
 
 # Loading Cmder Profile
-# If (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path) {
+# if (Get-Command cmder.exe -ErrorAction SilentlyContinue | Test-Path) {
 #   $cmder_home = Get-Command cmder.exe | Select-Object -ExpandProperty Definition | Split-Path
-#   If (Test-Path (Join-Path $cmder_home "vendor\profile.ps1"   ))  { . (Join-Path $cmder_home "vendor\profile.ps1")      }
+#   if (Test-Path (Join-Path $cmder_home "vendor\profile.ps1"   ))  { . (Join-Path $cmder_home "vendor\profile.ps1")      }
 # }
 
 #Set-Location "~/workspace/my/dotfiles/"

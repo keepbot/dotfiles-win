@@ -6,7 +6,6 @@ Archiving scripts.
 Archiving scripts.
 #>
 
-
 # Check invocation
 if ($MyInvocation.InvocationName -ne '.')
 {
@@ -15,7 +14,6 @@ if ($MyInvocation.InvocationName -ne '.')
         -ForegroundColor Red
     Exit
 }
-
 
 # Extract a .zip file
 function Unzip
@@ -59,11 +57,11 @@ function Unzip
     $destinationPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($Destination)
 
     if (
-        ($PSVersionTable.PSVersion.Major -ge 3) -and
-          (
-            (Get-ItemProperty -Path "HKLM:\Software\Microsoft\NET Framework Setup\NDP\v4\Full"   -ErrorAction SilentlyContinue).Version -like "4.*" -or
-            (Get-ItemProperty -Path "HKLM:\Software\Microsoft\NET Framework Setup\NDP\v4\Client" -ErrorAction SilentlyContinue).Version -like "4.*"
-          )
+            ($PSVersionTable.PSVersion.Major -ge 3) -and
+            (
+                (Get-ItemProperty -Path "HKLM:\Software\Microsoft\NET Framework Setup\NDP\v4\Full"   -ErrorAction SilentlyContinue).Version -like "4.*" -or
+                (Get-ItemProperty -Path "HKLM:\Software\Microsoft\NET Framework Setup\NDP\v4\Client" -ErrorAction SilentlyContinue).Version -like "4.*"
+            )
         )
     {
         try
@@ -90,9 +88,9 @@ function Unzip
     }
 }
 
-
 ## Save PuTTY sessons and configs
-if (Get-Command putty.exe -ErrorAction SilentlyContinue | Test-Path) {
+if (Get-Command putty.exe -ErrorAction SilentlyContinue | Test-Path)
+{
     ## Export to Desktop
     ${function:Export-Putty-Config}     = { reg export HKCU\Software\SimonTatham ([Environment]::GetFolderPath("Desktop") + "\putty.reg") }
     ${function:Export-Putty-Sessions}   = { reg export HKCU\Software\SimonTatham\PuTTY\Sessions ([Environment]::GetFolderPath("Desktop") + "\putty-sessions.reg") }
