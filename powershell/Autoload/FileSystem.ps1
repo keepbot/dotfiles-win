@@ -268,3 +268,44 @@ function join_files
     # CMD equivalent
     # copy /b 01.mp3 + 02.mp3 + 03.mp3 + 04.mp3 + 05.mp3 + 06.mp3 + 07.mp3 + 08.mp3 + 09.mp3 + 10.mp3 + 11.mp3 out.mp3
 }
+
+function mkl
+{
+    [CmdletBinding()]
+    param
+    (
+        [Parameter(Mandatory = $True)]
+        [ValidateScript({Test-Path -Path $_})]
+        [String] $Source,
+        [Parameter(Mandatory = $True)]
+        [String] $Destination
+    )
+    $cmd = "cmd.exe /c 'mklink /d"
+    $cmd += " $($ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("$Destination"))".trim('\')
+    $cmd += " $(Convert-Path $Source)".trim('\')
+    $cmd += "'"
+
+    Write-Host "`t Creating link: ${cmd}" -ForegroundColor Yellow
+    Invoke-Expression "${cmd}"
+}
+
+function mkl
+{
+    [CmdletBinding()]
+    param
+    (
+        [Parameter(Mandatory = $True)]
+        [ValidateScript({Test-Path -Path $_})]
+        [String] $Source,
+        [Parameter(Mandatory = $True)]
+        [String] $Destination
+    )
+    $cmd = "cmd.exe /c 'mklink /d"
+    $cmd += " $($ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("$Destination"))".trim('\')
+    $cmd += " $(Convert-Path $Source)".trim('\')
+    $cmd += "'"
+
+    Write-Host "`t Creating link: ${cmd}" -ForegroundColor Yellow
+    Invoke-Expression "${cmd}"
+}
+
