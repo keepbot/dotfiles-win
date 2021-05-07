@@ -27,7 +27,8 @@ format_time_diff_from_ns()
     local _timestamp_stop
     local _out
 
-    if [[ -z ${1} ]]; then
+    if [[ -z ${1} ]]
+    then
         echo "Error: $0 - wrong arguments..."
         echo "Usage: $0 <timestamp_in_ns_before> [timestamp_in_ns_after]"
         return
@@ -37,7 +38,8 @@ format_time_diff_from_ns()
         _timestamp_start=$1
     fi
 
-    if [[ -z ${2} ]]; then
+    if [[ -z ${2} ]]
+    then
         # Fallback to current time
         _timestamp_stop=$(date +%s%N)
         # _timestamp_stop=${_timestamp_start}
@@ -77,13 +79,26 @@ format_time_diff_from_ns()
     # elif ((s > 0));     then _out=$(printf "${BY}%ds${ZZ}"            ${s}             )
     # elif ((ms > 0));    then _out=$(printf "${BC}%dms${ZZ}"           ${ms}            )
 
-    if   ((m  >    0)); then _out=$(printf "${BR}%02d:%02d:%02d${ZZ}" ${h}   ${m} ${s} )
-    elif ((s  >=   5)); then _out=$(printf "${BY}%d.%03ds${ZZ}"       ${s}  ${ms}      )
-    elif ((s  >    0)); then _out=$(printf "${BC}%d.%03ds${ZZ}"       ${s}  ${ms}      )
-    elif ((ms >= 100)); then _out=$(printf "${BC}%dms${ZZ}"           ${ms}            )
-    elif ((ms >    0)); then _out=$(printf "${BC}%d.%03dms${ZZ}"      ${ms} ${us}      )
-    elif ((us >    0)); then _out=$(printf "${GR}%dµs${ZZ}"           ${us}            )
-    else                     _out=$(printf "${GR}%dns${ZZ}"           ${ns}            )
+    if   ((m  >    0))
+    then
+        _out=$(printf "${BR}%02d:%02d:%02d${ZZ}" ${h}   ${m} ${s} )
+    elif ((s  >=   5))
+    then
+        _out=$(printf "${BY}%d.%03ds${ZZ}"       ${s}  ${ms}      )
+    elif ((s  >    0))
+    then
+        _out=$(printf "${BC}%d.%03ds${ZZ}"       ${s}  ${ms}      )
+    elif ((ms >= 100))
+    then
+        _out=$(printf "${BC}%dms${ZZ}"           ${ms}            )
+    elif ((ms >    0))
+    then
+        _out=$(printf "${BC}%d.%03dms${ZZ}"      ${ms} ${us}      )
+    elif ((us >    0))
+    then
+        _out=$(printf "${GR}%dµs${ZZ}"           ${us}            )
+    else
+        _out=$(printf "${GR}%dns${ZZ}"           ${ns}            )
     fi
 
     printf "$_out"
@@ -91,7 +106,8 @@ format_time_diff_from_ns()
 
 format_time_from_ns()
 {
-    if [[ -z ${1} ]]; then
+    if [[ -z ${1} ]]
+    then
         echo "Usage: $0 <timestamp_in_nanoseconds>"
         return
     fi
@@ -106,13 +122,26 @@ format_time_from_ns()
     local  m=$(((${_timestamp} / 60000000000) % 60))
     local  h=$(((${_timestamp} / 3600000000000)))
 
-    if   ((h  >    0)); then _out=$(printf "%02d:%02d:%02d"  ${h}  ${m} ${s} )
-    elif ((m  >    0)); then _out=$(printf "%dm%ds"          ${m}  ${s}      )
-    elif ((s  >    0)); then _out=$(printf "%d.%03ds"        ${s} ${ms}      )
-    elif ((ms >= 100)); then _out=$(printf "%dms"           ${ms}            )
-    elif ((ms >    0)); then _out=$(printf "%d.%03dms"      ${ms} ${us}      )
-    elif ((us >    0)); then _out=$(printf "%dµs"           ${us}            )
-    else                     _out=$(printf "%dns"           ${ns}            )
+    if   ((h  >    0))
+    then
+        _out=$(printf "%02d:%02d:%02d"  ${h}  ${m} ${s} )
+    elif ((m  >    0))
+    then
+        _out=$(printf "%dm%ds"          ${m}  ${s}      )
+    elif ((s  >    0))
+    then
+        _out=$(printf "%d.%03ds"        ${s} ${ms}      )
+    elif ((ms >= 100))
+    then
+        _out=$(printf "%dms"           ${ms}            )
+    elif ((ms >    0))
+    then
+        _out=$(printf "%d.%03dms"      ${ms} ${us}      )
+    elif ((us >    0))
+    then
+        _out=$(printf "%dµs"           ${us}            )
+    else
+        _out=$(printf "%dns"           ${ns}            )
     fi
 
     printf "${_out}"
@@ -148,7 +177,8 @@ function timer_stop
     timer_stop_timestamp=$(timer_now)
     timer_output=${timer_output:-$(format_time_diff_from_ns $timer_start_timestamp $timer_stop_timestamp)}
 
-    if [ ! -z ${timer_start_timestamp} ] && [ ! -z ${timer_stop_timestamp} ];then
+    if [ ! -z ${timer_start_timestamp} ] && [ ! -z ${timer_stop_timestamp} ]
+    then
         timer_elapsed=$(((${timer_stop_timestamp} - ${timer_start_timestamp})))
     fi
 
@@ -161,9 +191,11 @@ function timer_stop
 
 function timer_get_elapsed()
 {
-    if [[ -z ${1} ]]; then
+    if [[ -z ${1} ]]
+    then
         printf ${timer_elapsed}
-    elif [[ '-v' == ${1} ]]; then
+    elif [[ '-v' == ${1} ]]
+    then
         format_time_from_ns ${timer_elapsed}
         printf '\n'
     else
@@ -173,4 +205,3 @@ function timer_get_elapsed()
         echo
     fi
 }
-

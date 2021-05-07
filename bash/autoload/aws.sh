@@ -1,5 +1,8 @@
+#!/usr/bin/env bash
+
 # Get all instances state
-function aws.print-all-instances() {
+function aws.print-all-instances()
+{
     REGIONS=`aws ec2 describe-regions --region eu-central-1 --output text --query Regions[*].[RegionName]`
     for REGION in $REGIONS
     do
@@ -10,7 +13,8 @@ function aws.print-all-instances() {
 }
 
 # Get all instances public IPs
-function aws.print-all-public-ip() {
+function aws.print-all-public-ip()
+{
     REGIONS=`aws ec2 describe-regions --region eu-central-1 --output text --query Regions[*].[RegionName]`
     for REGION in $REGIONS
     do
@@ -21,7 +25,8 @@ function aws.print-all-public-ip() {
 }
 
 # Get all instances private IPs
-function aws.print-all-private-ip() {
+function aws.print-all-private-ip()
+{
     REGIONS=`aws ec2 describe-regions --region eu-central-1 --output text --query Regions[*].[RegionName]`
     for REGION in $REGIONS
     do

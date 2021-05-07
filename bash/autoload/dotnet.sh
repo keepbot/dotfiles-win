@@ -9,7 +9,8 @@ _dotnet_bash_complete()
 
     local completions
     completions="$(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}" 2>/dev/null)"
-    if [ $? -ne 0 ]; then
+    if [ $? -ne 0 ]
+    then
         completions=""
     fi
 

@@ -1,5 +1,8 @@
+#!/usr/bin/env bash
+
 platform=`uname`
-if [ ! "${platform}" != "Darwin"  ]; then
+if [ ! "${platform}" != "Darwin"  ]
+then
     alias sign_check='codesign -dv --verbose=4'
     alias sign_check_v='codesign -vvv --deep --strict'
     alias sign_code='codesign --force --verify --verbose --deep --sign --options=runtime'
@@ -10,7 +13,8 @@ if [ ! "${platform}" != "Darwin"  ]; then
 
     ntz_list_providers()
     {
-        if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]; then
+        if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]
+        then
             echo "Usage: $0 <apple_username> <apple_password>"
             echo
         else
@@ -20,7 +24,8 @@ if [ ! "${platform}" != "Darwin"  ]; then
 
     ntz_app()
     {
-        if [ -z "${1}" ] || [ -z "${2}" ] || [ -z "${3}" ] || [ -z "${4}" ] || [ -z "${5}" ] || [ "${6}" ]; then
+        if [ -z "${1}" ] || [ -z "${2}" ] || [ -z "${3}" ] || [ -z "${4}" ] || [ -z "${5}" ] || [ "${6}" ]
+        then
             echo "Usage: $0 <app_id> <username> <password> <provider> <file>"
             echo
         else
@@ -30,7 +35,8 @@ if [ ! "${platform}" != "Darwin"  ]; then
 
     ntz_hist()
     {
-        if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]; then
+        if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]
+        then
             echo "Usage: $0 <apple_username> <apple_password>"
         echo
         else
@@ -40,7 +46,8 @@ if [ ! "${platform}" != "Darwin"  ]; then
 
     ntz_info()
     {
-        if [ -z "${1}" ] || [ -z "${2}" ] || [ -z "${3}" ] || [ "${4}" ]; then
+        if [ -z "${1}" ] || [ -z "${2}" ] || [ -z "${3}" ] || [ "${4}" ]
+        then
             echo "Usage: $0 <apple_username> <apple_password> <notarization_id>"
             echo
         else
@@ -50,7 +57,8 @@ if [ ! "${platform}" != "Darwin"  ]; then
 
     unpack_pkg_payload()
     {
-        if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]; then
+        if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]
+        then
             echo "Usage: $0 <temp_folder> <path_to_pkg>"
             echo
         else
@@ -64,7 +72,8 @@ if [ ! "${platform}" != "Darwin"  ]; then
 
     repack_payload()
     {
-        if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]; then
+        if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]
+        then
             echo "Usage: $0 <path_to_payload> <path_to_app>"
             echo
         else
@@ -77,7 +86,8 @@ if [ ! "${platform}" != "Darwin"  ]; then
 
     repack_pkg()
     {
-        if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]; then
+        if [ -z "${1}" ] || [ -z "${2}" ] || [ "${3}" ]
+        then
             echo "Usage: $0 <path_to_pkg_folder> <path_to_new_pkg>"
             echo
         else

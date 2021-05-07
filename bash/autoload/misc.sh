@@ -5,6 +5,7 @@
 # find . -name .gitattributes | map dirname
 alias map="xargs -n1"
 
-exit_code() {
+exit_code()
+{
     echo -e '\e[1;33m'Exit code: $?'\e[m'
 }

@@ -14,6 +14,7 @@ alias twn='terraform workspace new'
 alias twl='terraform workspace list'
 alias tws='terraform workspace select'
 
-function tpdm() {
+function tpdm()
+{
     terraform plan -destroy -target module.$@ -out terraform.plan
 }

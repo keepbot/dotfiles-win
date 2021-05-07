@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-function __git_prompt {
+function __git_prompt
+{
     # preserve exit status
     local exit=$?
     local PROMPT="`cat ~/.bash/var.prompt`"
@@ -25,7 +26,8 @@ function __git_prompt {
     local BW="\033[1;37m"   # bolded white
     local ZZ="\033[0m"      # Reset
 
-    if [ ${PROMPT} == "COMPLEX" ]; then
+    if [ ${PROMPT} == "COMPLEX" ]
+    then
         # Classic Git-Prompt
         # GIT_PS1_SHOWDIRTYSTATE=1
         # GIT_PS1_STATESEPARATOR=""
@@ -59,13 +61,15 @@ function __prompt_rvm
     # preserve exit status
     local exit=$?
     local PROMPT="`cat ~/.bash/var.prompt`"
-    if [ `command -v rvm-prompt` ]; then
+    if [ `command -v rvm-prompt` ]
+    then
         rbv=$(rvm-prompt)
     fi
     [[ -z ${rbv} ]] && exit
     rbv=${rbv#ruby-}
     [[ $rbv == *"@"* ]] || rbv="${rbv}@default"
-    if [ ${PROMPT} == "COMPLEX" ]; then
+    if [ ${PROMPT} == "COMPLEX" ]
+    then
         echo "[ Ruby: $rbv ]"
     else
         echo "$rbv"
@@ -77,7 +81,8 @@ function __prompt_time
 {
     # preserve exit status
     local exit=$?
-    if [ ! -z ${timer_output} ]; then
+    if [ ! -z ${timer_output} ]
+    then
         printf ${timer_output}
     fi
     return $exit
@@ -109,7 +114,8 @@ bash_prompt()
     local PROMPT="`cat ~/.bash/var.prompt`"
 
     # Environment:
-    if [ -n "$SSH_CLIENT" ]; then
+    if [ -n "$SSH_CLIENT" ]
+    then
         local SSHIP=$(echo $SSH_CLIENT | awk '{print $1}')
         local SSHPRPT="SSH from $SSHIP"
     else
@@ -118,14 +124,16 @@ bash_prompt()
 
     case $PROMPT in
         COMPLEX)
-            if [ $ENVRM == "PRODUCTION" ]; then
+            if [ $ENVRM == "PRODUCTION" ]
+            then
                 PS1="${R}[${BY}\${?}${R}] [\$(__prompt_time)${R}] [${BR}\w${R}] \$(__git_prompt) ${M}\$(__prompt_rvm) ${BR}$SSHPRPT \n${BK}\t \u@\H λ${ZZ} "
             else
                 PS1="${G}[${BY}\${?}${G}] [\$(__prompt_time)${G}] [${BC}\w${G}] \$(__git_prompt) ${M}\$(__prompt_rvm) ${BB}$SSHPRPT \n${BK}\t \u@\H λ${ZZ} "
             fi
             ;;
         SIMPLE)
-            if [ $ENVRM == "PRODUCTION" ]; then
+            if [ $ENVRM == "PRODUCTION" ]
+            then
                 PS1="${R}[${BY}\${?}${R}] \u@\h${BY}:${R}\W \$(__git_prompt) ${M}\$(__prompt_rvm) ${BK}λ ${ZZ}"
             else
                 PS1="${G}[${BY}\${?}${G}] \u@\h${BY}:${G}\W \$(__git_prompt) ${M}\$(__prompt_rvm) ${BK}λ ${ZZ}"

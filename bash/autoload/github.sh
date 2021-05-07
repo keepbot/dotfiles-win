@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-
 function set_github_secret_file
 {
     local github_secret_file="${HOME}/.github.secrets"
 
-    if [ -f ${github_secret_file} ]; then
+    if [ -f ${github_secret_file} ]
+    then
         echo ">>> Warning: ${github_secret_file} already exist!"
         read -n 1 -p "Do you want to replace it? (y/[Any key to cancel]): " WANT_REPLACE
         [ "${WANT_REPLACE}" = "y" ] || exit 2
@@ -25,7 +25,8 @@ function get_github_secrets
 {
     local github_secret_file="${HOME}/.github.secrets"
 
-    if [ ! -f ${github_secret_file} ]; then
+    if [ ! -f ${github_secret_file} ]
+    then
         echo ">>> Error: Github secret file is missing!"
         echo "Please run set_github_secret_file to configure your github secterts"
         read -n 1 -p "Do you want to do it right now? (y/[Any key to cancel]): " WANT_INIT
@@ -67,7 +68,8 @@ function github_repos()
         printf "    -p PROTOCOL | Protocol: GIT, HTTPS, SSH or SVN (Default: SSH) \n"
     }
 
-    while getopts "ach?n:op:" opt; do
+    while getopts "ach?n:op:" opt
+    do
         case "$opt" in
             a)  all_repos=1
                 ;;
@@ -90,12 +92,14 @@ function github_repos()
 
     [ "${1:-}" = "--" ] && shift
 
-    if [ -z $gh_name ]; then
+    if [ -z $gh_name ]
+    then
         show_help
         return
     fi
 
-    if [ $clone -eq 1 ]; then
+    if [ $clone -eq 1 ]
+    then
         BaseCommand='git clone --recurse-submodules'
     else
         BaseCommand='echo'
@@ -104,14 +108,16 @@ function github_repos()
     local BasicCreds=$(get_github_secrets)
     local GithubHeaders="Accept: application/vnd.github.v3+json"
 
-    if [ $organization -eq 1 ]; then
+    if [ $organization -eq 1 ]
+    then
         BaseApiUrl="https://api.github.com/orgs/${gh_name}/repos?sort=pushed&per_page=100"
     else
         BaseApiUrl="https://api.github.com/users/${gh_name}/repos?sort=pushed&per_page=100"
     fi
 
     local ResponceCode=$(curl -I -s -u $BasicCreds $BaseApiUrl 2>/dev/null | head -n 1 | cut -d$' ' -f2)
-    if [ ${ResponceCode} -ne "200" ]; then
+    if [ ${ResponceCode} -ne "200" ]
+    then
         echo "Error: Github User or Organization not found. Exiting..."
         echo
         return
@@ -128,30 +134,35 @@ function github_repos()
     trap "{ rm -f ${TempAnswerFile2};   }" RETURN
 
     local last_page=$(curl -I -s -u $BasicCreds -H $GithubHeaders $BaseApiUrl | grep '^Link:' | sed -e 's/^Link:.*page=//g' -e 's/>.*$//g')
-    if [ -z "$last_page" ]; then
+    if [ -z "$last_page" ]
+    then
         printf "Processing single page: \n"
         curl -s -u $BasicCreds $BaseApiUrl > ${RequestAnswerFile}
     else
         printf "Processing pages: "
-        for p in $(seq 1 $last_page); do
+        for p in $(seq 1 $last_page)
+        do
             printf "${p} "
             curl -s -u $BasicCreds "$BaseApiUrl&page=${p}" > ${TempAnswerFile1}
             jq -s add ${RequestAnswerFile} ${TempAnswerFile1} > ${TempAnswerFile2}
             mv ${TempAnswerFile2} ${RequestAnswerFile}
-            if [[ $p -eq 2 ]]; then
+            if [[ $p -eq 2 ]]
+            then
                 break
             fi
         done
         printf "\n"
     fi
 
-    for repo in $(jq -r '.[] | @base64' ${RequestAnswerFile}); do
+    for repo in $(jq -r '.[] | @base64' ${RequestAnswerFile})
+    do
         _jq()
         {
             echo ${repo} | base64 --decode | jq -r ${1}
         }
 
-        if [[ $all_repos == 0  ]] && [[ $(_jq '.fork') == 'true' ]];then
+        if [[ $all_repos == 0  ]] && [[ $(_jq '.fork') == 'true' ]]
+        then
             continue
         fi
 
@@ -179,7 +190,8 @@ function github_repos()
 # Clone all users repos from GitHub
 gh_get_user_repos_https()
 {
-    if [ -z "$1" ] || [ $2 ]; then
+    if [ -z "$1" ] || [ $2 ]
+    then
         echo "You should enter name of GitHub user."
         echo "Usage: gh_get_all_repos_https <github_username>"
         echo
@@ -193,7 +205,8 @@ gh_get_user_repos_https()
 
 gh_get_user_repos_ssh()
 {
-    if [ -z "$1" ] || [ $2 ]; then
+    if [ -z "$1" ] || [ $2 ]
+    then
         echo "You should enter name of GitHub user."
         echo "Usage: gh_get_all_repos_ssh <github_username>"
         echo
@@ -208,7 +221,8 @@ gh_get_user_repos_ssh()
 # List users repos on GitHub
 gh_list_user_repos_https()
 {
-    if [ -z "$1" ] || [ $2 ]; then
+    if [ -z "$1" ] || [ $2 ]
+    then
         echo "You should enter name of GitHub user."
         echo "Usage: gh_list_all_repos_https <github_username>"
         echo
@@ -222,7 +236,8 @@ gh_list_user_repos_https()
 
 gh_list_user_repos_ssh()
 {
-    if [ -z "$1" ] || [ $2 ]; then
+    if [ -z "$1" ] || [ $2 ]
+    then
         echo "You should enter name of GitHub user."
         echo "Usage: gh_list_all_repos_ssh <github_username>"
         echo

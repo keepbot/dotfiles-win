@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-if [ ! "${OS_DISTRIBUTION}" != "Gentoo"  ]; then
+if [ ! "${OS_DISTRIBUTION}" != "Gentoo"  ]
+then
     alias addpkg='sudo emerge --ask'
     alias check_bb='eix -I "(bumblebee|virtualgl|primus|bbswitch)"'
     alias rmpkg='sudo emerge --ask --unmerge'

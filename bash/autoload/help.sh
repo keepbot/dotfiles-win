@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 # Get help from cheat.sh
-cht() {
+cht()
+{
     origIFS="${IFS}"
     IFS='+'
 
-    if [ $# -eq 0 ]; then
+    if [ $# -eq 0 ]
+    then
         echo "Usage: `basename $0` <langiage> <search string>"
         return 1
     fi

@@ -7,6 +7,7 @@ alias disp='source ~/.bin/export-display.sh'
 
 
 # Export display for WSL:
-if [[ $WSL_DISTRO_NAME ]]; then
+if [[ $WSL_DISTRO_NAME ]]
+then
     export DISPLAY=$(ip route | grep default | awk '{print $3}'):0.0
 fi

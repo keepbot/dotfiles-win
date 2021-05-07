@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 umask 027
 
 export EDITOR='vim'
@@ -21,10 +22,13 @@ shopt -s checkwinsize
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-    if [ -f /usr/share/bash-completion/bash_completion ]; then
+if ! shopt -oq posix
+then
+    if [ -f /usr/share/bash-completion/bash_completion ]
+    then
         . /usr/share/bash-completion/bash_completion
-    elif [ -f /etc/bash_completion ]; then
+    elif [ -f /etc/bash_completion ]
+    then
         . /etc/bash_completion
     fi
 fi
@@ -46,6 +50,7 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 export GPG_TTY=$(tty)
 export XZ_OPT="--threads=0"
 export LIBGL_ALWAYS_INDIRECT=1
+
 # Set PATHs
 platform=`uname`
 case $platform in
@@ -118,19 +123,23 @@ esac
 [[ -f $HOME/.localenv ]]                            && source ~/.localenv
 
 # Finout linux distro
-if [ -f /etc/os-release ]; then
+if [ -f /etc/os-release ]
+then
     . /etc/os-release
     export OS_DISTRIBUTION=$NAME
-elif type lsb_release >/dev/null 2>&1; then
+elif type lsb_release >/dev/null 2>&1
+then
     export OS_DISTRIBUTION=$(lsb_release -si)
-elif [ -f /etc/lsb-release ]; then
+elif [ -f /etc/lsb-release ]
+then
     . /etc/lsb-release
     export OS_DISTRIBUTION=$DISTRIB_ID
 else
     export OS_DISTRIBUTION=$(uname -s)
 fi
 
-list-paths() {
+list-paths()
+{
     for path in $(echo $PATH | tr ":" "\n"); do
         echo $path
     done

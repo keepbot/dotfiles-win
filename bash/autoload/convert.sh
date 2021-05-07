@@ -1,38 +1,50 @@
 #!/usr/bin/env bash
 
 # Digital converter: d - decimal h - hexadecimal b - binary
-h2d() {
+h2d()
+{
     echo "ibase=16; $@"|bc
 }
-d2h() {
+
+d2h()
+{
     echo "obase=16; $@"|bc
 }
-b2d() {
+
+b2d()
+{
     echo "ibase=2; $@"|bc
 }
-d2b() {
+
+d2b()
+{
     echo "obase=2; $@"|bc
 }
 
 # Escape UTF-8 characters into their 3-byte format
-escape() {
+escape()
+{
     printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u)
     echo # newline
 }
 
 # Decode \x{ABCD}-style Unicode escape sequences
-unidecode() {
+unidecode()
+{
     perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
     echo # newline
 }
 
-calc() {
+calc()
+{
     echo "scale=3;$@" | bc -l
 }
 
-resize_pdf() {
+resize_pdf()
+{
     # Input:
-    if [ -z "$1" ]; then
+    if [ -z "$1" ]
+    then
         Usage: $0 input_file [resolution_in_dpi=72] [output_file=input_file_72dpi.pdf]
         exit 1
     fi
@@ -43,8 +55,10 @@ resize_pdf() {
     input_filename="${input_basename%.*}"
     input_fullname="${input_directory}/${input_basename}"
     echo $input_fullname
+
     # Output resolution
-    if [ ! -z "$2" ]; then
+    if [ ! -z "$2" ]
+    then
         DPI="$2"
     else
         DPI="72"
@@ -52,7 +66,8 @@ resize_pdf() {
     echo "  DPI set to ${DPI}"
 
     # Output:
-    if [ ! -z "$3" ]; then
+    if [ ! -z "$3" ]
+    then
         output_directory=$(dirname -- "$3")
         output_basename=$(basename -- "$3")
         output_extension="${output_basename##*.}"

@@ -11,7 +11,8 @@ alias  ........='cd ../../../../../../..'
 alias cdd='cd -'  # back to last directory
 
 # Create a new directory and enter it
-mkd() {
+mkd()
+{
     mkdir -p "$@" && cd "$@"
 }
 
@@ -35,16 +36,23 @@ alias l='ls -CFh --group-directories-first '
 alias la='ls -alh --group-directories-first '
 alias ll='ls -alFh --group-directories-first '
 
-fls() {
+fls()
+{
     ls -l  "${@}" | grep -v ^d
 }
-flsa() {
+
+flsa()
+{
     ls -la "${@}" | grep -v ^d
 }
-dirs() {
+
+dirs()
+{
     ls -l  "${@}" | grep ^d
 }
-dirsa() {
+
+dirsa()
+{
     ls -la "${@}" | grep ^d
 }
 
@@ -95,32 +103,38 @@ alias du='du -h -c' # calculate disk usage for a folder
 alias mmn="mount|column -t"
 
 # find shorthand
-f() {
+f()
+{
     find . -name "$1"
 }
 
 # List files in current directory and replace spaces with underscores
-lsD() {
+lsD()
+{
     origIFS="${IFS}"
         IFS=''
-        for str in `find . -maxdepth 1 -type f -name "* *" |sed 's#.*/##'`; do
+        for str in `find . -maxdepth 1 -type f -name "* *" |sed 's#.*/##'`
+        do
             echo ${str// /_}
         done
     IFS="${origIFS}"
 }
 
-find-rootfs() {
+find-rootfs()
+{
     sudo find / -path /home/storage -prune -printf '' -o "$@"
 }
 
-find_core_dumps() {
+find_core_dumps()
+{
     sudo find / -path /home/storage -prune -printf '' -o                    \
         -type f -regextype posix-extended                                   \
         -regex '^.*core\.([0-9]{1}|[0-9]{2}|[0-9]{3}|[0-9]{4}|[0-9]{5})'    \
         -print "$@"
 }
 
-get-file-vars() {
+get-file-vars()
+{
     filename=$(basename -- "$1")
     extension="${filename##*.}"
     filename="${filename%.*}"
@@ -129,4 +143,3 @@ get-file-vars() {
     echo "Filename:     ${filename%.*}"
     echo "Extention:    ${filename##*.}"
 }
-

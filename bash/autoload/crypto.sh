@@ -16,6 +16,7 @@ alias gpg_search_ubuntu='gpg --keyserver keyserver.ubuntu.com --search-key'
 alias gpg_search_sks='gpg --keyserver pool.sks-keyservers.net --search-key'
 alias gpg_search_mit='gpg --keyserver pgp.mit.edu --search-key'
 
-decryptfrom-base64() {
+decryptfrom-base64()
+{
     echo "${1}"| base64 -d | gpg -d
 }
