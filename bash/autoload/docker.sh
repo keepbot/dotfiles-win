@@ -26,3 +26,14 @@ function dc_trace_cmd()
         dc_trace_cmd $parent $level
     fi
 }
+
+function docker_search_logs()
+{
+    if [ -z "${1}" ]
+    then
+        echo "Usage: docker_search_logs Search_String"
+        echo
+    else
+        docker ps -a --format "{{.Names}}" | xargs -i bash -c "docker logs {} |& sed -ne 's/^\[\(2020[0-9.:T-]*Z\)\(.*\)/\1 {}\t\2/p'" | grep "${1}" | sort -st ' ' -nk1 | less
+    fi
+}
