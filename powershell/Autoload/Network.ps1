@@ -214,3 +214,52 @@ function Get-NearestDC_IP
     )
     (Get-NearestDC $DomainName).Address
 }
+
+function vpn_split()
+{
+    [CmdletBinding()]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', 'FilterPrefix',
+        Justification = 'False positive as rule does not know that ForEach-Object operates within the same scope')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', 'InterfaceName',
+        Justification = 'False positive as rule does not know that Where-Object operates within the same scope')]
+    param
+    (
+        [Parameter(Mandatory = $True)]
+        [String] $Gateway,
+        [Parameter(Mandatory = $True,ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True)]
+        [String[]] $Prefixes,
+        [String] $FilterPrefix = "10.",
+        [String] $InterfaceName = "TAP"
+
+    )
+
+    # $Prefixes = @(
+    #     "10.10.10.0/24"
+    #     "10.10.20.0/24"
+    #     "10.10.30.0/24"
+    # )
+
+    $ifIindex = (Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match $InterfaceName }).ifIndex
+    # $IfIP = Get-NetIPInterface |  Where-Object {$_.ifIndex -eq $IfIindex -and $_.AddressFamily -eq "IPv4" }
+    # $vpnIP = (Get-NetIPAddress -InterfaceIndex $ifIindex -AddressFamily "IPv4").IPAddress
+
+    Get-NetRoute -InterfaceIndex $ifIindex  -AddressFamily "IPv4" | ForEach-Object {
+        if ($_.DestinationPrefix -match $FilterPrefix -Or $_.DestinationPrefix -match "0.0.0.0")
+        {
+            Write-Host "Removing prefix $($_.DestinationPrefix) from interface $($_.ifIndex)"
+            Remove-NetRoute -InterfaceIndex $_.ifIndex -DestinationPrefix $_.DestinationPrefix -Confirm:$False
+        }
+    }
+
+    foreach ($prefix in $Prefixes)
+    {
+        New-NetRoute -DestinationPrefix $prefix -InterfaceIndex $ifIindex -NextHop $Gateway -PolicyStore ActiveStore
+    }
+
+    # WIP: Cleanup
+    # foreach ($prefix in $prefixes)
+    # {
+    #     Remove-NetRoute -DestinationPrefix $prefix -InterfaceIndex $ifIindex -Confirm:$False
+    # }
+    Get-NetRoute -InterfaceIndex $ifIindex
+}
