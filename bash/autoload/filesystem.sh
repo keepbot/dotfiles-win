@@ -57,23 +57,20 @@ dirsa()
 }
 
 # Navigation Shortcuts
-alias drop='cd ~/Dropbox'
-alias desk='cd ~/Desktop'
-alias docs='cd ~/Documents'
-alias down='cd ~/down'
-alias   ws='cd ~/workspace'
-alias  wsm='cd ~/workspace/misc'
-alias wsmy='cd ~/workspace/my'
-alias wsdf='cd ~/workspace/my/dotfiles'
-alias wsaw='cd ~/.config/awesome'
-alias  wst='cd ~/workspace/tmp'
+alias  drop='cd ~/Dropbox'
+alias  desk='cd ~/Desktop'
+alias  docs='cd ~/Documents'
+alias  down='cd ~/down'
+alias    ws='cd ~/workspace'
+alias   wsm='cd ~/workspace/misc'
+alias  wsmy='cd ~/workspace/my'
+alias  wsdf='cd ~/workspace/my/dotfiles'
+alias  wsaw='cd ~/.config/awesome'
+alias   wst='cd ~/workspace/tmp'
 
-# EPAM Shortcuts
-alias  wse='cd ~/workspace/epam'
-
-# Hermes Shortcuts
-alias  wsh='cd ~/workspace/hermes'
-alias  wshd='cd ~/workspace/hermes/devops'
+# Straumann Shortcuts
+alias   wss='cd ~/workspace/straumann'
+alias wsscc='cd ~/workspace/straumann/cc-dev'
 
 # IRQ Shortcuts
 alias   wsi='cd ~/workspace/irq'
@@ -82,7 +79,7 @@ alias  wsid='cd ~/workspace/irq/devops'
 alias  wsrm='cd ~/workspace/irq/ml'
 alias wsimm='cd ~/workspace/irq/ml/irqml'
 
-alias crlf_fix='find ./ -type f -exec dos2unix {} \;'
+alias      crlf_fix='find ./ -type f -exec dos2unix {} \;'
 alias   fix_dir_755='find ./ -type d -print -exec chmod 755 {} \;'
 alias   fix_dir_750='find ./ -type d -print -exec chmod 750 {} \;'
 alias   fix_dir_700='find ./ -type d -print -exec chmod 700 {} \;'
@@ -138,7 +135,6 @@ get-file-vars()
     filename=$(basename -- "$1")
     extension="${filename##*.}"
     filename="${filename%.*}"
-
     echo "Basename:     ${filename}"
     echo "Filename:     ${filename%.*}"
     echo "Extention:    ${filename##*.}"
