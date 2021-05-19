@@ -263,3 +263,32 @@ function vpn_split()
     # }
     Get-NetRoute -InterfaceIndex $ifIindex
 }
+
+function vpn_split_cleanup()
+{
+    [CmdletBinding()]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', 'InterfaceName',
+        Justification = 'False positive as rule does not know that Where-Object operates within the same scope')]
+    param
+    (
+        [Parameter(Mandatory = $True,ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True)]
+        [String[]] $Prefixes,
+        [String] $InterfaceName = "TAP"
+
+    )
+
+    $ifIindex = (Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match $InterfaceName }).ifIndex
+    foreach ($prefix in $prefixes)
+    {
+        # Remove-NetRoute -DestinationPrefix $prefix -InterfaceIndex $ifIindex -Confirm:$False
+        Get-NetRoute -InterfaceIndex $ifIindex  -AddressFamily "IPv4" | ForEach-Object {
+            if ($_.DestinationPrefix -match $prefix -Or $_.DestinationPrefix -match "0.0.0.0")
+            {
+                Write-Host "Removing prefix $($_.DestinationPrefix) from interface $($_.ifIndex)"
+                Remove-NetRoute -InterfaceIndex $_.ifIndex -DestinationPrefix $_.DestinationPrefix -Confirm:$False
+
+            }
+        }
+    }
+    Get-NetRoute -InterfaceIndex $ifIindex
+}
