@@ -6,8 +6,8 @@ alias vc3='python3 -m virtualenv -p python3 venv' # init py3 venv in curent dir
 alias va='source ./venv/bin/activate'
 alias vd='deactivate'
 alias vr='rm -rf ./venv'
-alias vins='va && pip install -r requirements.txt'
-alias vgen='va && pip freeze > requirements.txt'
+alias vins='python -m pip install -r requirements.txt'
+alias vgen='python -m pip freeze > requirements.txt'
 
 # Basic environment
 alias pip_update='python -m pip install --upgrade pip'

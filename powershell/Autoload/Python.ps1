@@ -42,9 +42,9 @@ if (Get-Command python.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:va}      = { .\venv\Scripts\activate }
     ${function:vd}      = { deactivate }
     ${function:vr}      = { rmrf venv }
-    ${function:vpi}     = { python.exe -m pip install  }
-    ${function:vins}    = { if (-Not (Test-Path venv)){vc}; va; python.exe -m pip install -r .\requirements.txt }
-    ${function:vgen}    = { va; python.exe -m pip freeze > .\requirements.txt }
+    ${function:vpi}     = { python -m pip install  }
+    ${function:vins}    = { python -m pip install -r .\requirements.txt }
+    ${function:vgen}    = { python -m pip freeze > .\requirements.txt }
 
     # Basic environment
     ${function:pip-update}      = { python.exe -m pip install --upgrade pip }
