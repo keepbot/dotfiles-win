@@ -286,7 +286,6 @@ function vpn_split_cleanup()
             {
                 Write-Host "Removing prefix $($_.DestinationPrefix) from interface $($_.ifIndex)"
                 Remove-NetRoute -InterfaceIndex $_.ifIndex -DestinationPrefix $_.DestinationPrefix -Confirm:$False
-
             }
         }
     }
