@@ -67,13 +67,16 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:gcac}        = { gca Cleanup. @args }
     ${function:gcow}        = { gco Whitespace. @args }
     ${function:gcaw}        = { gca Whitespace. @args }
-    ${function:gfr}         = { git.exe fetch --all; git.exe reset --hard origin/master @args }
+    ${function:gfr}         = { git.exe fetch --all; git.exe reset --hard @args }
+    ${function:gfrmn}       = { git.exe fetch --all; git.exe reset --hard origin/main @args }
+    ${function:gfrms}       = { git.exe fetch --all; git.exe reset --hard origin/master @args }
     ${function:GClean}      = { while ((git diff-index HEAD --)) {git.exe reset --hard HEAD}; git.exe clean -d -x -f @args }
     ${function:GClean2}     = { while ((git diff-index HEAD --)) {git.exe reset --hard HEAD}; git.exe clean -d -f @args }
 
     # Pull
     ${function:gpl}         = { git.exe pull origin $(git.exe rev-parse --abbrev-ref HEAD) }
-    ${function:gplm}        = { git.exe pull origin main }
+    ${function:gplmn}       = { git.exe pull origin main }
+    ${function:gplms}       = { git.exe pull origin master }
     ${function:gpls}        = { git.exe stash; git.exe pull @args; git.exe stash pop}
     ${function:gplm}        = { git.exe pull; git.exe submodule update }
     ${function:gplp}        = { git.exe pull --rebase; git.exe push @args } # Can't pull because you forgot to track? Run this.
@@ -90,7 +93,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:gck}         = { git.exe checkout @args }
     ${function:gb}          = { git.exe checkout -b @args }
     ${function:got}         = { git.exe checkout - @args }
-    ${function:gom}         = { git.exe checkout master @args }
+    ${function:gomn}        = { git.exe checkout main @args }
+    ${function:goms}        = { git.exe checkout master @args }
 
     # Remove Branches
     ${function:gbr}         = { git.exe branch -d @args }
@@ -100,10 +104,13 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
 
     # Rebase
     ${function:gcp}         = { git.exe cherry-pick @args }
-    ${function:grb}         = { git.exe rebase -i origin/master @args }
+    ${function:grb}         = { git.exe rebase -i origin/@args }
+    ${function:grbmn}       = { git.exe rebase -i origin/main @args }
+    ${function:grbms}       = { git.exe rebase -i origin/master @args }
     ${function:gba}         = { git.exe rebase --abort @args }
     ${function:gbc}         = { git.exe add -A; git.exe rebase --continue @args }
-    ${function:gbm}         = { git.exe fetch origin master; git.exe rebase origin/master @args }
+    ${function:gbmn}        = { git.exe fetch origin main; git.exe rebase origin/main @args }
+    ${function:gbms}        = { git.exe fetch origin master; git.exe rebase origin/master @args }
 
     # Code-Review
     ${function:git-review}  = { if ($args[0] -and -Not $args[1]) {git.exe push origin HEAD:refs/for/@args[0]} else {Write-Host "Wrong command!`nUsage: git-review <branch_name>"}}
@@ -115,7 +122,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
 
     # Submodules
     ${function:gsu}         = { git.exe submodule update --recursive --remote @args }
-    ${function:gsu2}        = { git.exe submodule foreach git pull origin master @args }
+    ${function:gsumn}       = { git.exe submodule foreach git pull origin main @args }
+    ${function:gsums}       = { git.exe submodule foreach git pull origin master @args }
 
     # Misc
     ${function:gex}         = { GitExtensions.exe browse @args }
@@ -138,13 +146,13 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
         [CmdletBinding()]
         param
         (
-            [string]$branch = "master"
+            [string]$branch = "main"
         )
 
         $CurrentBranch = $(cmd /c "git rev-parse --abbrev-ref HEAD")
         # Stash changes
         cmd /c "git stash"
-        # Checkout master:
+        # Checkout primary branch:
         cmd /c "git checkout $branch"
         cmd /c "git fetch"
         # Run garbage collector
@@ -198,7 +206,12 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
         Set-Location $dir
     }
 
-    function ugrm
+    function ugrmn
+    {
+        ugr origin main
+    }
+
+    function ugrms
     {
         ugr origin master
     }

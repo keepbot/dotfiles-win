@@ -84,13 +84,19 @@ gitreview()
 
 gprune()
 {
+    if [ -z "$1" ] || [ "$2" ]
+    then
+        primary_branch=main
+    else
+        primary_branch=$1
+    fi
     CurrentBranch=$(git rev-parse --abbrev-ref HEAD)
 
     # Stash changes
     git stash
 
-    # Checkout master:
-    git checkout master
+    # Checkout primary branch:
+    git checkout $primary_branch
     git fetch
 
     # Run garbage collector
@@ -160,7 +166,9 @@ alias gcac="gca Cleanup."
 alias gcoc="gco Cleanup."
 alias gcaw="gca Whitespace."
 alias gcow="gco Whitespace."
-alias gfr="git fetch --all && git reset --hard origin/master"
+alias gfr="git fetch --all && git reset --hard"
+alias gfrmn="git fetch --all && git reset --hard origin/main"
+alias gfrms="git fetch --all && git reset --hard origin/master"
 alias GClean="git reset --hard && git clean -d -x -f"
 alias GClean2="git reset --hard && git clean -d -f"
 
@@ -181,7 +189,8 @@ alias gps='(git stash --include-untracked | grep -v "No local changes to save") 
 alias gck="git checkout"
 alias gb="git checkout -b"
 alias got="git checkout -"
-alias gom="git checkout master"
+alias gomn="git checkout main"
+alias goms="git checkout master"
 alias gabr='git branch -r | grep -v "\->" | while read remote; do git branch --track "${remote#origin/}" "$remote"; done'
 
 # Remove Branches
@@ -191,10 +200,13 @@ alias gbrr="git push origin --delete"
 
 # Rebase
 alias gcp="git cherry-pick"
-alias grb="git rebase -i origin/master"
+alias grb="git rebase -i origin/"
+alias grbmn="git rebase -i origin/main"
+alias grbms="git rebase -i origin/master"
 alias gba="git rebase --abort"
 alias gbc="git add -A && git rebase --continue"
-alias gbm="git fetch origin master && git rebase origin/master"
+alias gbmn="git fetch origin main && git rebase origin/main"
+alias gbms="git fetch origin master && git rebase origin/master"
 
 # Code-Review
 alias grw="git review $1"
@@ -206,7 +218,8 @@ alias grmto='git push --delete origin'
 # Update
 alias gsu='git submodule update --recursive --remote'
 alias ugr='for dir in `ls`; do echo "${dir}"; cd "${dir}"; git pull; cd ..; done' # Update all repos in current directory
-alias ugrm='for dir in `ls`; do echo "${dir}"; cd "${dir}"; git checkout master; git pull; cd ..; done' # Check out to master and update all repos in current directory
+alias ugrmn='for dir in `ls`; do echo "${dir}"; cd "${dir}"; git checkout main; git pull; cd ..; done' # Check out to main and update all repos in current directory
+alias ugrms='for dir in `ls`; do echo "${dir}"; cd "${dir}"; git checkout master; git pull; cd ..; done' # Check out to master and update all repos in current directory
 alias ugrs='root=${PWD}; for dir in `ls`; do cd "${root}/${dir}" && ugr; done'    # Update all repos within all sub directories from curent
 
  # Misc
