@@ -88,6 +88,7 @@ function Initialize-Paths-APP
         "C:\PROGRA~1\Calibre2"
         "C:\PROGRA~1\CMake\bin"
         "C:\PROGRA~1\Cppcheck"
+        "C:\PROGRA~1\doxygen\bin"
         "C:\PROGRA~1\f3d\bin"
         "C:\PROGRA~1\Git LFS"
         "C:\PROGRA~1\Git\cmd"
@@ -126,10 +127,6 @@ function Initialize-Paths-APP
         "C:\PROGRA~2\pgAdmin 4\v4\runtime"
         "C:\PROGRA~2\Subversion\bin"
         "C:\PROGRA~2\Yarn\bin"
-        "C:\tools\ghc-9.0.1\bin"
-        # "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.4\bin"
-        # "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
-        "C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin"
     )
 
     $final_path = "C:\tools\bin"
@@ -233,6 +230,7 @@ function Initialize-Paths-User
         "C:\tools\doublecmd"
         "C:\tools\emsdk"
         "C:\tools\fasm"
+        "C:\tools\ghc-9.0.1\bin"
         "C:\tools\gnuplot\bin"
         "C:\tools\msys64"
         "C:\tools\ProccessHacker"
@@ -245,6 +243,9 @@ function Initialize-Paths-User
         "C:\tools\wsl\debian"
         "C:\tools\wsl\kali"
         "C:\tools\wsl\ubuntu"
+        # "C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.4\bin"
+        # "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
+        "C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin"
     )
 
     $final_path = "${env:USERPROFILE}\AppData\Local\Microsoft\WindowsApps"
