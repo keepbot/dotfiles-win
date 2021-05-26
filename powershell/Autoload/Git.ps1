@@ -47,8 +47,9 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:gw^^^^^}     = { git.exe show HEAD^^^^^ @args    }
     ${function:gwwwwww}     = { git.exe show HEAD^^^^^ @args    }
 
-    ${function:gd}          = { git.exe diff HEAD @args } # What's changed? Both staged and unstaged.
-    ${function:gdo}         = { git.exe diff --cached @args } # What's changed? Only staged (added) changes.
+    ${function:gd}          = { git.exe diff HEAD @args }
+    ${function:gdd}         = { git.exe -c core.pager='delta --features=code-review-theme' diff HEAD @args }
+    ${function:gdo}         = { git.exe diff --cached @args }
 
     # Add and Commit
     ${function:gco}         = { if ($args) {git.exe commit -m @args} else {git.exe commit -v}} # "git commit only"

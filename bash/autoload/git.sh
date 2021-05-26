@@ -146,8 +146,9 @@ alias gwwwww="git show HEAD^^^^"
 alias gw^^^^^="git show HEAD^^^^^"
 alias gwwwwww="git show HEAD^^^^^"
 
-alias gd="git diff HEAD"  # What's changed? Both staged and unstaged.
-alias gdo="git diff --cached"  # What's changed? Only staged (added) changes.
+alias gd="git diff HEAD"
+alias gdd="git -c core.pager='delta --features=code-review-theme' diff HEAD"
+alias gdo="git diff --cached"
 
 # Add and Commit
 # for gco ("git commit only") and gca ("git commit all"), see functions.sh.
