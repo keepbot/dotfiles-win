@@ -20,6 +20,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
 {
     # Main
     ${function:g}           = { git.exe @args }
+    ${function:gg}          = { git.exe -c core.pager='delta --features=code-review-theme' @args }
     ${function:gunsec}      = { git.exe -c http.sslVerify=false @args }
 
     # Logs
@@ -72,7 +73,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:ggwwwwwwwww} = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^^^^^^ @args }
 
     ${function:gd}          = { git.exe diff HEAD @args }
-    ${function:gdd}         = { git.exe -c core.pager='delta --features=code-review-theme' diff HEAD @args }
+    ${function:ggd}         = { git.exe -c core.pager='delta --features=code-review-theme' diff HEAD @args }
     ${function:gdo}         = { git.exe diff --cached @args }
 
     # Add and Commit

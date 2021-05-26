@@ -84,7 +84,7 @@ function aws_set_mfa_session()
         [string] $MFADevice,
         [Parameter(Mandatory=$true)]
         [string] $MFAToken,
-        [string] $Duration = 1800,
+        [string] $Duration = 3600,
         [string] $Region = 'eu-west-1'
     )
     $creds = ((aws sts get-session-token --serial-number $MFADevice --token-code $MFAToken --duration-seconds $Duration) | ConvertFrom-Json).Credentials
