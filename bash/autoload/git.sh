@@ -222,6 +222,7 @@ alias gabr='git branch -r | grep -v "\->" | while read remote; do git branch --t
 alias gbr="git branch -d"
 alias gbrf="git branch -D"
 alias gbrr="git push origin --delete"
+alias g-to-main="git branch -m master main && git fetch origin && git branch -u origin/main main && git remote set-head origin -a"
 
 # Rebase
 alias gcp="git cherry-pick"

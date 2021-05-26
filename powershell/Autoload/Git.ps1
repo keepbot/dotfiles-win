@@ -126,6 +126,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:gbrf}        = { git.exe branch -D @args }
     ${function:gbrr}        = { git.exe push origin --delete @args }
     ${function:gbrrm}       = { git.exe branch -D @args; git.exe push origin --delete @args }
+    ${function:g-to-main}   = { git.exe branch -m master main; git.exe fetch origin; git.exe branch -u origin/main main; git.exe remote set-head origin -a }
 
     # Rebase
     ${function:gcp}         = { git.exe cherry-pick @args }
