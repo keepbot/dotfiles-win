@@ -46,6 +46,30 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:gwwwww}      = { git.exe show HEAD^^^^ @args     }
     ${function:gw^^^^^}     = { git.exe show HEAD^^^^^ @args    }
     ${function:gwwwwww}     = { git.exe show HEAD^^^^^ @args    }
+    ${function:gw^^^^^^}    = { git.exe show HEAD^^^^^^ @args   }
+    ${function:gwwwwwww}    = { git.exe show HEAD^^^^^^ @args   }
+    ${function:gw^^^^^^^}   = { git.exe show HEAD^^^^^^^ @args  }
+    ${function:gwwwwwwww}   = { git.exe show HEAD^^^^^^^ @args  }
+    ${function:gw^^^^^^^^}  = { git.exe show HEAD^^^^^^^^ @args }
+    ${function:gwwwwwwwww}  = { git.exe show HEAD^^^^^^^^ @args }
+
+    ${function:ggw}         = { git.exe -c core.pager='delta --features=code-review-theme' show @args              }
+    ${function:ggw^}        = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^ @args        }
+    ${function:ggww}        = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^ @args        }
+    ${function:ggw^^}       = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^ @args       }
+    ${function:ggwww}       = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^ @args       }
+    ${function:ggw^^^}      = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^ @args      }
+    ${function:ggwwww}      = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^ @args      }
+    ${function:ggw^^^^}     = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^^ @args     }
+    ${function:ggwwwww}     = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^^ @args     }
+    ${function:ggw^^^^^}    = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^^^ @args    }
+    ${function:ggwwwwww}    = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^^^ @args    }
+    ${function:ggw^^^^^^}   = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^^^^ @args   }
+    ${function:ggwwwwwww}   = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^^^^ @args   }
+    ${function:ggw^^^^^^^}  = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^^^^^ @args  }
+    ${function:ggwwwwwwww}  = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^^^^^ @args  }
+    ${function:ggw^^^^^^^^} = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^^^^^^ @args }
+    ${function:ggwwwwwwwww} = { git.exe -c core.pager='delta --features=code-review-theme' show HEAD^^^^^^^^ @args }
 
     ${function:gd}          = { git.exe diff HEAD @args }
     ${function:gdd}         = { git.exe -c core.pager='delta --features=code-review-theme' diff HEAD @args }
