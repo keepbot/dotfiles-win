@@ -171,7 +171,7 @@ alias ggw^^^^^^^^="git -c core.pager='delta --features=code-review-theme' show H
 alias ggwwwwwwwww="git -c core.pager='delta --features=code-review-theme' show HEAD^^^^^^^^"
 
 alias gd="git diff HEAD"
-alias gdd="git -c core.pager='delta --features=code-review-theme' diff HEAD"
+alias ggd="git -c core.pager='delta --features=code-review-theme' diff HEAD"
 alias gdo="git diff --cached"
 
 # Add and Commit
