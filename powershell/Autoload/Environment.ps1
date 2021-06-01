@@ -142,9 +142,14 @@ function Initialize-Paths-APP
     [Environment]::SetEnvironmentVariable("PathsApp", "$final_path", "Machine")
 }
 
-# C:\Program Files\       --> C:\PROGRA~1\
-# C:\Program Files (x86)\ --> C:\PROGRA~2\
-# C:\ProgramData\         --> C:\PROGRA~3\
+# C:\Program Files\                             --> C:\PROGRA~1\
+# C:\Program Files\Common Files                 --> C:\PROGRA~1\
+# C:\Program Files\NVIDIA Corporation           --> C:\PROGRA~1\NVIDIA~1
+# C:\Program Files\NVIDIA GPU Computing Toolkit --> C:\PROGRA~1\NVIDIA~2
+# C:\Program Files (x86)\                       --> C:\PROGRA~2\
+# C:\Program Files (x86)\NVIDIA Corporation     --> C:\PROGRA~2\NVIDIA~1
+# C:\ProgramData\                               --> C:\PROGRA~3\
+#
 function Initialize-Paths-SYS
 {
     $paths = @(
@@ -153,7 +158,7 @@ function Initialize-Paths-SYS
         "$env:SYSTEMROOT\System32\WindowsPowerShell\v1.0"
         "$env:SYSTEMROOT\System32\OpenSSH"
         "C:\ProgramData\DockerDesktop\version-bin"
-        "C:\PROGRA~1\Common Files\Intel\WirelessCommon"
+        "C:\PROGRA~1\COMMON~1\Intel\WirelessCommon"
         "C:\PROGRA~1\Docker\Docker\resources\bin"
         "C:\PROGRA~1\dotnet"
         "C:\PROGRA~1\Intel\TXE Components\DAL"
@@ -163,13 +168,16 @@ function Initialize-Paths-SYS
         "C:\PROGRA~1\Microsoft MPI\Bin\"
         "C:\PROGRA~1\Microsoft SQL Server\130\Tools\Binn\"
         "C:\PROGRA~1\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\"
-        "C:\PROGRA~1\NVIDIA Corporation\Nsight Compute 2020.3.1\"
-        "C:\PROGRA~1\NVIDIA Corporation\Nsight Compute 2019.5.0\"
-        "C:\PROGRA~1\NVIDIA GPU Computing Toolkit\CUDA\v11.2\bin"
-        "C:\PROGRA~1\NVIDIA GPU Computing Toolkit\CUDA\v11.2\libnvvp"
-        "C:\PROGRA~1\NVIDIA GPU Computing Toolkit\CUDA\v11.2\compute-sanitizer"
-        "C:\PROGRA~1\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin"
-        "C:\PROGRA~1\NVIDIA GPU Computing Toolkit\CUDA\v10.2\libnvvp"
+        "C:\PROGRA~1\NVIDIA~1\Nsight Compute 2021.1.1\"
+        "C:\PROGRA~1\NVIDIA~1\Nsight Compute 2020.3.1\"
+        "C:\PROGRA~1\NVIDIA~1\Nsight Compute 2019.5.0\"
+        "C:\PROGRA~1\NVIDIA~2\CUDA\v11.3\bin"
+        "C:\PROGRA~1\NVIDIA~2\CUDA\v11.3\compute-sanitizer"
+        "C:\PROGRA~1\NVIDIA~2\CUDA\v11.3\libnvvp"
+        "c:\PROGRA~1\NVIDIA~2\CUDA\v11.3\nvvm\bin\"
+        "C:\PROGRA~1\NVIDIA~2\CUDA\v11.2\bin"
+        "C:\PROGRA~1\NVIDIA~2\CUDA\v11.2\compute-sanitizer"
+        "C:\PROGRA~1\NVIDIA~2\CUDA\v11.2\libnvvp"
         "C:\PROGRA~2\Common Files\Oracle\Java\javapath"
         # "C:\PROGRA~2\dotnet"
         "C:\PROGRA~2\Intel\TXE Components\DAL"
@@ -178,7 +186,7 @@ function Initialize-Paths-SYS
         "C:\PROGRA~2\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Roslyn\"
         "C:\PROGRA~2\Microsoft Visual Studio\2019\Community\MSBuild\16.0\Bin\Roslyn"
         "C:\PROGRA~2\Microsoft Visual Studio\2019\Preview\MSBuild\Current\Bin\Roslyn"
-        "C:\PROGRA~2\NVIDIA Corporation\PhysX\Common"
+        "C:\PROGRA~2\NVIDIA~1\PhysX\Common"
         "C:\PROGRA~2\Windows Kits\8.1\Windows Performance Toolkit\"
     )
 
