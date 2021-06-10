@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-alias umnt_encFS="fusermount -u ~/.encFS"
-alias mnt_encFS="/usr/bin/encfs ~/Dropbox/Personal/EncFS/.encfs ~/encFS"
+alias encfs_home_mount="encfs ~/.encfs ~/encFS"
+alias encfs_home_umount="fusermount -u ~/encFS"
