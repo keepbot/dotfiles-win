@@ -88,6 +88,7 @@ function Initialize-Paths-APP
         "C:\PROGRA~1\Calibre2"
         "C:\PROGRA~1\CMake\bin"
         "C:\PROGRA~1\Cppcheck"
+        # "C:\PROGRA~1\Dokan\Dokan Library-1.3.1\"
         "C:\PROGRA~1\doxygen\bin"
         "C:\PROGRA~1\f3d\bin"
         "C:\PROGRA~1\Git LFS"
@@ -117,6 +118,7 @@ function Initialize-Paths-APP
         "C:\PROGRA~1\TAP-Windows\bin"
         "C:\PROGRA~1\VcXsrv"
         "C:\PROGRA~2\Dr. Memory\bin64"
+        "C:\PROGRA~2\encfs"
         "C:\PROGRA~2\GitExtensions\"
         "C:\PROGRA~2\GNU\GnuPG\pub"
         "C:\PROGRA~2\Gpg4win\..\GnuPG\bin"
@@ -126,6 +128,7 @@ function Initialize-Paths-APP
         "C:\PROGRA~2\OpenConnect-GUI"
         "C:\PROGRA~2\pgAdmin 4\v4\runtime"
         "C:\PROGRA~2\Subversion\bin"
+        "C:\PROGRA~2\WinFsp\bin"
         "C:\PROGRA~2\Yarn\bin"
     )
 
@@ -235,6 +238,7 @@ function Initialize-Paths-User
         "C:\tools\BCURRAN3"
         "C:\tools\binaryen\bin"
         "C:\tools\CppDepend"
+        "C:\tools\dokan\"
         "C:\tools\doublecmd"
         "C:\tools\emsdk"
         "C:\tools\fasm"
