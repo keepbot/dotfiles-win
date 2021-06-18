@@ -159,11 +159,8 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
     # Accounts
     ${function:git-home}    = { git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'd.k.ivanov@live.com' }
 
-    # EPAM
-    ${function:git-epam}    = { git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'dmitry_ivanov3@epam.com' }
-
-    # Hermes
-    ${function:git-hermes}  = { git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'dmitry.ivanov@hermes-europe.co.uk' }
+    # Straumann
+    ${function:git-cc}      = { git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'dmitry.ivanov@straumann.com' }
 
     # IRQ
     ${function:git-irq}     = { git config --local user.name 'Dmitry Ivanov'; git config --local user.email 'divanov@irq.ru' }
