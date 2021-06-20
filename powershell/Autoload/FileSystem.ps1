@@ -42,7 +42,7 @@ ${function:......}  = { Set-Location ..\..\..\..\..                             
 ${function:.......} = { Set-Location ..\..\..\..\..\..                          }
 
 # Navigation Shortcuts
-${function:drop}    = { Set-Location D:\Dropbox                                 }
+${function:drop}    = { Set-Location ~\Dropbox                                  }
 ${function:desk}    = { Set-Location ~\Desktop                                  }
 ${function:docs}    = { Set-Location ~\Documents                                }
 ${function:down}    = { Set-Location ~\Downloads                                }
@@ -53,9 +53,9 @@ ${function:wsdf}    = { Set-Location ~\workspace\my\dotfiles                    
 ${function:wsdsc}   = { Set-Location ~\workspace\my\dsc-windows-workstation     }
 ${function:wst}     = { Set-Location ~\workspace\tmp                            }
 
-# Straumann Shortcuts
-${function:wss}     = { Set-Location ~\workspace\straumann                      }
-${function:wsscc}   = { Set-Location ~\workspace\straumann\cc-dev               }
+# ClearCorrect Shortcuts
+${function:wcc}     = { Set-Location ~\workspace\clearcorrect                   }
+${function:wccdev}  = { Set-Location ~\workspace\clearcorrect\cc-dev            }
 
 # IRQ Shortcuts
 ${function:wsi}     = { Set-Location ~\workspace\irq                            }

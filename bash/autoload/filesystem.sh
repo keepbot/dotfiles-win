@@ -69,8 +69,8 @@ alias  wsaw='cd ~/.config/awesome'
 alias   wst='cd ~/workspace/tmp'
 
 # Straumann Shortcuts
-alias   wss='cd ~/workspace/straumann'
-alias wsscc='cd ~/workspace/straumann/cc-dev'
+alias    wcc='cd ~/workspace/clearcorrect'
+alias wccdev='cd ~/workspace/clearcorrect/cc-dev'
 
 # IRQ Shortcuts
 alias   wsi='cd ~/workspace/irq'
