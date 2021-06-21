@@ -21,5 +21,5 @@ decryptfrom-base64()
     echo "${1}"| base64 -d | gpg -d
 }
 
-alias encfs_home_mount="encfs ~/OneDrive/.meta ~/meta"
-alias encfs_home_umount="fusermount -u ~/meta"
+alias mount_meta="encfs ~/OneDrive/.meta ~/meta"
+alias umount_meta="fusermount -u ~/meta"
