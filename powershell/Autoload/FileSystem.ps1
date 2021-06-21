@@ -54,8 +54,11 @@ ${function:wsdsc}   = { Set-Location ~\workspace\my\dsc-windows-workstation     
 ${function:wst}     = { Set-Location ~\workspace\tmp                            }
 
 # ClearCorrect Shortcuts
-${function:wcc}     = { Set-Location ~\workspace\clearcorrect                   }
-${function:wccdev}  = { Set-Location ~\workspace\clearcorrect\cc-dev            }
+${function:wsc}     = { Set-Location ~\workspace\clearcorrect                   }
+${function:wscc}    = { Set-Location ~\workspace\clearcorrect\config            }
+${function:wsck}    = { Set-Location ~\workspace\clearcorrect\kubernetes        }
+${function:wscu}    = { Set-Location ~\workspace\clearcorrect\utilities         }
+${function:wsccdev} = { Set-Location ~\workspace\clearcorrect\cc-dev            }
 
 # IRQ Shortcuts
 ${function:wsi}     = { Set-Location ~\workspace\irq                            }
