@@ -219,6 +219,7 @@ function Initialize-Paths-User
         "${env:USERPROFILE}\.elan\bin"
         "${env:USERPROFILE}\.cargo\bin"
         "${env:USERPROFILE}\.dotnet\tools"
+        "${env:USERPROFILE}\.krew\bin"
         "${env:USERPROFILE}\AppData\Local\Android\Sdk\platform-tools\"
         "${env:USERPROFILE}\AppData\Local\Pandoc"
         "${env:USERPROFILE}\AppData\Local\Programs\Microsoft VS Code Insiders\bin"
