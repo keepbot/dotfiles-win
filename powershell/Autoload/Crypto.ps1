@@ -60,7 +60,7 @@ ${function:gpg_search_sks}      = { gpg --keyserver pool.sks-keyservers.net --se
 ${function:gpg_search_ubuntu}   = { gpg --keyserver keyserver.ubuntu.com --search-key  @args }
 ${function:gpg_search_mit}      = { gpg --keyserver pgp.mit.edu --search-key  @args }
 
-${function:mount_meta}  = { encfs ${env:USERPROFILE}\OneDrive\.meta M: }
+${function:mount_meta}  = { encfs ${env:USERPROFILE}\Dropbox\.meta M: }
 ${function:umount_meta} = { dokanctl /u M: }
 
 function gpg_file_e()
