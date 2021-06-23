@@ -233,6 +233,7 @@ alias gba="git rebase --abort"
 alias gbc="git add -A && git rebase --continue"
 alias gbmn="git fetch origin main && git rebase origin/main"
 alias gbms="git fetch origin master && git rebase origin/master"
+alias gCH='git rebase -i --root'
 
 # Code-Review
 alias grw="git review $1"

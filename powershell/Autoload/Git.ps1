@@ -138,6 +138,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:gbc}         = { git.exe add -A; git.exe rebase --continue @args }
     ${function:gbmn}        = { git.exe fetch origin main; git.exe rebase origin/main @args }
     ${function:gbms}        = { git.exe fetch origin master; git.exe rebase origin/master @args }
+    ${function:gCH}         = { git.exe rebase -i --root @args }
 
     # Code-Review
     ${function:git-review}  = { if ($args[0] -and -Not $args[1]) {git.exe push origin HEAD:refs/for/@args[0]} else {Write-Host "Wrong command!`nUsage: git-review <branch_name>"}}
