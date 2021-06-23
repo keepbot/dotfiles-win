@@ -19,8 +19,9 @@ if ($MyInvocation.InvocationName -ne '.')
 
 if (Get-Command openssl.exe -ErrorAction SilentlyContinue | Test-Path)
 {
-    ${function:genpass}             = { openssl.exe rand -base64 @args  }
+    ${function:genpass}             = { openssl rand -base64 @args  }
     ${function:ssl_check_client}    = { openssl s_client -connect @args }
+    ${function:decodecert}          = { openssl x509 -text -in @args }
 }
 
 if (Get-Command shasum.bat -ErrorAction SilentlyContinue | Test-Path)

@@ -7,6 +7,8 @@ alias sha='shasum -a 256'
 alias genpass='openssl rand -base64'
 alias ssl_check_client='openssl s_client -connect'
 
+alias decodecert='openssl x509 -in /dev/stdin -text'
+
 # GPG Aliases
 alias gpg_show_keys='gpg --list-secret-keys --keyid-format LONG'
 
