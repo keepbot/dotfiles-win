@@ -5,6 +5,7 @@ alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 
 alias sha='shasum -a 256'
 alias genpass='openssl rand -base64'
+alias ssl_check_client='openssl s_client -connect'
 
 # GPG Aliases
 alias gpg_show_keys='gpg --list-secret-keys --keyid-format LONG'
