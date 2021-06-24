@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2020-12-28 12:00:00" build="201124">
+		<key name=".Vanilla" modified="2021-06-24 02:10:04" build="210620">
 			<value name="ColorTable00" type="dword" data="00282828"/>
 			<value name="ColorTable01" type="dword" data="00758392"/>
 			<value name="ColorTable02" type="dword" data="001a9798"/>
@@ -564,25 +564,7 @@
 					<value name="Active" type="long" data="1"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task9" modified="2020-12-27 00:24:11" build="201124">
-					<value name="Name" type="string" data="{Bash::GIT}"/>
-					<value name="Flags" type="dword" data="00000004"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=""/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='set "PATH=%ConEmuDrive%\Program Files\Git\usr\bin;%PATH%" &amp; "%ConEmuDrive%\Program Files\Git\git-bash.exe" --no-cd --command=%ConEmuBaseDirShort%\conemu-msys2-64.exe /usr/bin/bash.exe -l -i -new_console:p'/>
-				</key>
-				<key name="Task10" modified="2020-12-27 00:24:11" build="201124">
-					<value name="Name" type="string" data="{Bash::MSYS2}"/>
-					<value name="Flags" type="dword" data="00000004"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=""/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='set MSYSTEM=MSYS &amp; set MSYSCON=conemu64.exe &amp; "c:\tools\msys64\usr\bin\bash.exe" --login -i -new_console:C:"c:\tools\msys64\msys2.exe"'/>
-				</key>
-				<key name="Task11" modified="2020-12-27 00:24:11" build="201124">
+				<key name="Task9" modified="2021-06-24 02:10:23" build="210620">
 					<value name="Name" type="string" data="{PS::PowerShell}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -591,7 +573,7 @@
 					<value name="Count" type="long" data="1"/>
 					<value name="Cmd1" type="string" data="PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -new_console::t:PowerShell"/>
 				</key>
-				<key name="Task12" modified="2020-12-27 00:24:11" build="201124">
+				<key name="Task10" modified="2021-06-24 02:10:23" build="210620">
 					<value name="Name" type="string" data="{PS::PowerShell 5 (Admin)}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -599,6 +581,24 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Cmd1" type="string" data="PowerShell -ExecutionPolicy Bypass -NoLogo -NoExit -new_console:a:t:PowerShell"/>
+				</key>
+				<key name="Task11" modified="2021-06-24 02:10:23" build="210620">
+					<value name="Name" type="string" data="{Bash::GIT}"/>
+					<value name="Flags" type="dword" data="00000004"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data=""/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+					<value name="Cmd1" type="string" data='set "PATH=%ConEmuDrive%\Program Files\Git\usr\bin;%PATH%" &amp; "%ConEmuDrive%\Program Files\Git\git-bash.exe" --no-cd --command=%ConEmuBaseDirShort%\conemu-msys2-64.exe /usr/bin/bash.exe -l -i -new_console:p'/>
+				</key>
+				<key name="Task12" modified="2021-06-24 02:10:04" build="210620">
+					<value name="Name" type="string" data="{Bash::MSYS2}"/>
+					<value name="Flags" type="dword" data="00000004"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data=""/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+					<value name="Cmd1" type="string" data='set MSYSTEM=MSYS &amp; set MSYSCON=conemu64.exe &amp; "c:\tools\msys64\usr\bin\bash.exe" --login -i -new_console:C:"c:\tools\msys64\msys2.exe"'/>
 				</key>
 				<key name="Task13" modified="2020-12-27 00:24:11" build="201124">
 					<value name="Name" type="string" data="{Cmd::Cmd}"/>
@@ -1194,7 +1194,7 @@
 			</key>
 			<value name="StartCreateDelay" type="ulong" data="100"/>
 			<value name="DefaultTerminalDebugLog" type="hex" data="00"/>
-			<value name="LastMonitor" type="string" data="93,0,3840,2160"/>
+			<value name="LastMonitor" type="string" data="0,46,3840,2160"/>
 			<value name="Restore2ActiveMon" type="hex" data="00"/>
 			<value name="DownShowExOnTopMessage" type="hex" data="00"/>
 			<value name="EnvironmentSet" type="multi">
