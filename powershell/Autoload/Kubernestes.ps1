@@ -36,42 +36,42 @@ ${function:kdev_cn_proxy}   = { kubectl --context devch   proxy --port=10001 }
 ${function:kstage_cn_proxy} = { kubectl --context stagech proxy --port=10001 }
 ${function:kprod_cn_proxy}  = { kubectl --context prodch  proxy --port=10001 }
 
-function kdev_token()
+function kdev_admin()
 {
     kubectl --context dev -n kube-system get secret `
     $((kubectl --context prodch -o yaml -n kube-system get serviceaccounts admin-user `
     | ConvertFrom-Yaml).secrets.name) -o jsonpath="{.data.token}" `
     | ConvertFrom-Base64
 }
-function kstage_token()
+function kstage_admin()
 {
     kubectl --context stage -n kube-system get secret `
     $((kubectl --context prodch -o yaml -n kube-system get serviceaccounts admin-user `
     | ConvertFrom-Yaml).secrets.name) -o jsonpath="{.data.token}" `
     | ConvertFrom-Base64
 }
-function kprod_token()
+function kprod_admin()
 {
     kubectl --context prod -n kube-system get secret `
     $((kubectl --context prodch -o yaml -n kube-system get serviceaccounts admin-user `
     | ConvertFrom-Yaml).secrets.name) -o jsonpath="{.data.token}" `
     | ConvertFrom-Base64
 }
-function kdev_cn_token()
+function kdev_cn_admin()
 {
     kubectl --context devch -n kube-system get secret `
     $((kubectl --context prodch -o yaml -n kube-system get serviceaccounts admin-user `
     | ConvertFrom-Yaml).secrets.name) -o jsonpath="{.data.token}" `
     | ConvertFrom-Base64
 }
-function kstage_cn_token()
+function kstage_cn_admin()
 {
     kubectl --context stagech -n kube-system get secret `
     $((kubectl --context prodch -o yaml -n kube-system get serviceaccounts admin-user `
     | ConvertFrom-Yaml).secrets.name) -o jsonpath="{.data.token}" `
     | ConvertFrom-Base64
 }
-function kprod_cn_token()
+function kprod_cn_admin()
 {
     kubectl --context prodch -n kube-system get secret `
     $((kubectl --context prodch -o yaml -n kube-system get serviceaccounts admin-user `
