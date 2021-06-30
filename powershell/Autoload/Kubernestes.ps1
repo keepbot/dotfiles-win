@@ -36,6 +36,13 @@ ${function:kdev_cn_proxy}   = { kubectl --context devch   proxy --port=10001 }
 ${function:kstage_cn_proxy} = { kubectl --context stagech proxy --port=10001 }
 ${function:kprod_cn_proxy}  = { kubectl --context prodch  proxy --port=10001 }
 
+${function:kdev_exec}       = { kubectl --context dev     exec -it @args "--" sh -c "(bash || ash || sh)" }
+${function:kstage_exec}     = { kubectl --context stage   exec -it @args "--" sh -c "(bash || ash || sh)" }
+${function:kprod_exec}      = { kubectl --context prod    exec -it @args "--" sh -c "(bash || ash || sh)" }
+${function:kdev_cn_exec}    = { kubectl --context devch   exec -it @args "--" sh -c "(bash || ash || sh)" }
+${function:kstage_cn_exec}  = { kubectl --context stagech exec -it @args "--" sh -c "(bash || ash || sh)" }
+${function:kprod_cn_exec}   = { kubectl --context prodch  exec -it @args "--" sh -c "(bash || ash || sh)" }
+
 function kdev_admin()
 {
     kubectl --context dev -n kube-system get secret `
