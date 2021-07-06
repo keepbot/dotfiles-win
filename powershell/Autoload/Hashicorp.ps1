@@ -32,3 +32,7 @@ if (Get-Command terraform.exe -ErrorAction SilentlyContinue | Test-Path)
     ${function:twl}         = { terraform.exe workspace list @args }
     ${function:tws}         = { terraform.exe workspace select @args }
 }
+
+${function:packer_verbose_logs_on}  = { $Env:PACKER_LOG=1 }
+${function:packer_verbose_logs_off} = { $Env:PACKER_LOG=0 }
+
