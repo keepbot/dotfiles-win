@@ -287,11 +287,11 @@ function Set-Env
 
     Reset-Environment
 
-    $system_path = "$env:USERPROFILE\workspace\my\dotfiles\bin-win"
-    if ($env:PYTHON_PATH)
+    $system_path = "$Env:WORKSPACE\my\dotfiles\bin-win"
+    if ($Env:PYTHON_PATH)
     {
-        $system_path += ";$env:PYTHON_PATH\Scripts"
-        $system_path += ";$env:PYTHON_PATH"
+        $system_path += ";$Env:PYTHON_PATH\Scripts"
+        $system_path += ";$Env:PYTHON_PATH"
     }
 
     # if ($env:PYENV)
@@ -361,11 +361,11 @@ function Set-Env
 
 function Set-WorkEnv
 {
-    # if (Test-Path "$env:HOME\workspace\ormco\common\aligner-thirdparty")  {
-    #     [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "$env:HOME\workspace\ormco\common\aligner-thirdparty", "Machine")
+    # if (Test-Path "$Env:WORKSPACE\thirdparty")  {
+    #     [Environment]::SetEnvironmentVariable("THIRDPARTY_LOCATION", "$Env:WORKSPACE\thirdparty", "Machine")
     # }
-    # if (Test-Path "$env:HOME\workspace\ormco\aligner\testdataaligner")  {
-    #     [Environment]::SetEnvironmentVariable("TESTDATA_LOCATION", "$env:HOME\workspace\ormco\aligner\testdataaligner", "Machine")
+    # if (Test-Path "$Env:WORKSPACE\testdata")  {
+    #     [Environment]::SetEnvironmentVariable("TESTDATA_LOCATION", "$Env:WORKSPACE\testdata", "Machine")
     # }
 }
 

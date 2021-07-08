@@ -310,7 +310,7 @@ if (Get-Command git.exe -ErrorAction SilentlyContinue | Test-Path)
     }
 
     # TMP Get Chef cookbook
-    # ${function:get_cbk} = { if (Test-Path "~/workspace/Chef/cookbooks"){ Set-Location "~/workspace/Chef/cookbooks"; git clone "gitolite@git.domain.com:chef/cookbooks/$($args[0].ToString()).git"; Set-Location "$($args[0].ToString())" } }
+    # ${function:get_cbk} = { if (Test-Path "${Env:WORKSPACE}/Chef/cookbooks"){ Set-Location "${Env:WORKSPACE}/Chef/cookbooks"; git clone "gitolite@git.domain.com:chef/cookbooks/$($args[0].ToString()).git"; Set-Location "$($args[0].ToString())" } }
 }
 
 function Set-GitVerbosity

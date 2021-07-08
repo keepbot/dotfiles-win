@@ -95,3 +95,7 @@ cmd /c mklink (Join-Path ${Env:APPDATA} "ConEmu.xml") (Join-Path $PSScriptRoot "
 #
 #     Set-ApplicationCompatibility -CurrentUser -ApplicationLocation (Get-Command cmder.exe | Select-Object -ExpandProperty Definition) -PrivilegeLevel
 # }
+
+$workspace_path = 'c:\ws'
+New-Item $workspace_path -ItemType Directory -ErrorAction SilentlyContinue
+[Environment]::SetEnvironmentVariable("WORKSPACE", $workspace_path, "Machine")

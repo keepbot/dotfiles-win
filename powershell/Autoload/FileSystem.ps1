@@ -35,37 +35,37 @@ ${function:cd} = {
 ${function:~} = { Set-Location ~ }
 # PoSh won't allow ${function:..} because of an invalid path error, so...
 ${function:Set-ParentLocation} = { Set-Location .. }; Set-Alias ".." Set-ParentLocation
-${function:...}     = { Set-Location ..\..                                      }
-${function:....}    = { Set-Location ..\..\..                                   }
-${function:.....}   = { Set-Location ..\..\..\..                                }
-${function:......}  = { Set-Location ..\..\..\..\..                             }
-${function:.......} = { Set-Location ..\..\..\..\..\..                          }
+${function:...}     = { Set-Location ..\..                                          }
+${function:....}    = { Set-Location ..\..\..                                       }
+${function:.....}   = { Set-Location ..\..\..\..                                    }
+${function:......}  = { Set-Location ..\..\..\..\..                                 }
+${function:.......} = { Set-Location ..\..\..\..\..\..                              }
 
 # Navigation Shortcuts
-${function:drop}    = { Set-Location ~\Dropbox                                  }
-${function:desk}    = { Set-Location ~\Desktop                                  }
-${function:docs}    = { Set-Location ~\Documents                                }
-${function:down}    = { Set-Location ~\Downloads                                }
-${function:ws}      = { Set-Location ~\workspace                                }
-${function:wsm}     = { Set-Location ~\workspace\misc                           }
-${function:wsmy}    = { Set-Location ~\workspace\my                             }
-${function:wsdf}    = { Set-Location ~\workspace\my\dotfiles                    }
-${function:wsdsc}   = { Set-Location ~\workspace\my\dsc-windows-workstation     }
-${function:wst}     = { Set-Location ~\workspace\tmp                            }
+${function:drop}    = { Set-Location ~\Dropbox                                      }
+${function:desk}    = { Set-Location ~\Desktop                                      }
+${function:docs}    = { Set-Location ~\Documents                                    }
+${function:down}    = { Set-Location ~\Downloads                                    }
+${function:ws}      = { Set-Location ${Env:WORKSPACE}                               }
+${function:wsm}     = { Set-Location ${Env:WORKSPACE}\misc                          }
+${function:wsmy}    = { Set-Location ${Env:WORKSPACE}\my                            }
+${function:wsdf}    = { Set-Location ${Env:WORKSPACE}\my\dotfiles                   }
+${function:wsdsc}   = { Set-Location ${Env:WORKSPACE}\my\dsc-windows-workstation    }
+${function:wst}     = { Set-Location ${Env:WORKSPACE}\tmp                           }
 
 # ClearCorrect Shortcuts
-${function:wsc}     = { Set-Location ~\workspace\clearcorrect                   }
-${function:wscc}    = { Set-Location ~\workspace\clearcorrect\config            }
-${function:wsck}    = { Set-Location ~\workspace\clearcorrect\kubernetes        }
-${function:wscu}    = { Set-Location ~\workspace\clearcorrect\utilities         }
-${function:wsccdev} = { Set-Location ~\workspace\clearcorrect\cc-dev            }
+${function:wsc}     = { Set-Location ${Env:WORKSPACE}\clearcorrect                  }
+${function:wscc}    = { Set-Location ${Env:WORKSPACE}\clearcorrect\config           }
+${function:wsck}    = { Set-Location ${Env:WORKSPACE}\clearcorrect\kubernetes       }
+${function:wscu}    = { Set-Location ${Env:WORKSPACE}\clearcorrect\utilities        }
+${function:wsccdev} = { Set-Location ${Env:WORKSPACE}\cc-dev                        }
 
 # IRQ Shortcuts
-${function:wsi}     = { Set-Location ~\workspace\irq                            }
-${function:wsic}    = { Set-Location ~\workspace\irq\common                     }
-${function:wsid}    = { Set-Location ~\workspace\irq\devops                     }
-${function:wsim}    = { Set-Location ~\workspace\irq\ml                         }
-${function:wsimm}   = { Set-Location ~\workspace\irq\ml\irqml                   }
+${function:wsi}     = { Set-Location ${Env:WORKSPACE}\irq                           }
+${function:wsic}    = { Set-Location ${Env:WORKSPACE}\irq\common                    }
+${function:wsid}    = { Set-Location ${Env:WORKSPACE}\irq\devops                    }
+${function:wsim}    = { Set-Location ${Env:WORKSPACE}\irq\ml                        }
+${function:wsimm}   = { Set-Location ${Env:WORKSPACE}\irq\ml\irqml                  }
 
 # Create a new directory and enter it
 function New-DirectoryAndSet ([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path}

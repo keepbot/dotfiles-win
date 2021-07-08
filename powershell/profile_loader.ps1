@@ -39,8 +39,6 @@ If (Test-Path $PrivatePSAutoladFolder)
 #   if (Test-Path (Join-Path $cmder_home "vendor\profile.ps1"   ))  { . (Join-Path $cmder_home "vendor\profile.ps1")      }
 # }
 
-#Set-Location "~/workspace/my/dotfiles/"
-
 # Invovoke ANSI 256 Color Console
 # AnsiColors256
 AnsiConsole
