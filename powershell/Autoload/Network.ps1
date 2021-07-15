@@ -291,3 +291,30 @@ function vpn_split_cleanup()
     }
     Get-NetRoute -InterfaceIndex $ifIindex
 }
+
+function vpn_set_default_route()
+{
+    $ifIindex = (
+        Get-NetAdapter |
+        Where-Object {
+            ($_.Status -eq "Up") -And (
+                ($_.InterfaceDescription -Match "TAP") -Or
+                ($_.InterfaceDescription -Match "PAN"))
+        }).ifIndex
+    $vpnIP = (Get-NetIPAddress -InterfaceIndex $ifIindex -AddressFamily "IPv4").IPAddress
+    New-NetRoute -DestinationPrefix "0.0.0.0/0" -InterfaceIndex $ifIindex -PolicyStore ActiveStore -RouteMetric 1
+    Get-NetRoute -InterfaceIndex $ifIindex
+}
+
+function vpn_unset_default_route()
+{
+    $ifIindex = (
+        Get-NetAdapter |
+        Where-Object {
+            ($_.Status -eq "Up") -And (
+                ($_.InterfaceDescription -Match "TAP") -Or
+                ($_.InterfaceDescription -Match "PAN"))
+        }).ifIndex
+    Remove-NetRoute -DestinationPrefix "0.0.0.0/0" -InterfaceIndex $ifIindex -Confirm:$False
+    Get-NetRoute -InterfaceIndex $ifIindex
+}
