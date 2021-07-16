@@ -15,6 +15,11 @@ if ($MyInvocation.InvocationName -ne '.')
     Exit
 }
 
+#foreach ($kube_config in Get-ChildItem $Env:USERPROFILE\\.kube -Filter '*.yaml')
+#{
+#    $Env:KUBECONFIG += $kube_config.FullName -join ";"
+#}
+
 ${function:kdev}            = { kubectl --context dev       @args }
 ${function:kstage}          = { kubectl --context stage     @args }
 ${function:kprod}           = { kubectl --context prod      @args }
